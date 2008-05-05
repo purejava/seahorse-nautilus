@@ -45,8 +45,6 @@
 #include "seahorse-gconf.h"
 #include "seahorse-vfs-data.h"
 
-static const gchar *bad_filename_chars = "/\\<>|";
-
 void
 seahorse_util_show_error (GtkWindow *parent, const gchar *heading, const gchar *message)
 {

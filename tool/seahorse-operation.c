@@ -22,6 +22,7 @@
 #include <gtk/gtk.h>
 
 #include "config.h"
+
 #include "seahorse-util.h"
 #include "seahorse-marshal.h"
 #include "seahorse-operation.h"

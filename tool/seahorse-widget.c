@@ -23,7 +23,10 @@
 #include "config.h"
 
 #include <string.h>
+
 #include <gtk/gtk.h>
+#include <gio/gio.h>
+
 #include <glib/gi18n.h>
 #include <glade/glade.h>
 #include <glade/glade-build.h>
@@ -62,9 +65,6 @@ static void     widget_help          (GtkWidget             *widget,
 
 static gboolean widget_delete_event  (GtkWidget             *widget,
                                       GdkEvent              *event,
-                                      SeahorseWidget        *swidget);
-
-static void     context_destroyed    (GtkObject             *object,
                                       SeahorseWidget        *swidget);
 
 static GtkObjectClass *parent_class = NULL;
@@ -126,7 +126,7 @@ object_finalize (GObject *gobject)
 	/* Remove widget from hash and destroy hash if empty */
     if (widgets) {
     	g_hash_table_remove (widgets, swidget->name);
-    	if (g_hash_table_size == 0) {
+    	if (g_hash_table_size (widgets) == 0) {
     		g_hash_table_destroy (widgets);
     		widgets = NULL;
     	}
@@ -304,25 +304,32 @@ seahorse_widget_find (const gchar *name)
 void
 seahorse_widget_show_help (SeahorseWidget *swidget)
 {
+    gchar *document = NULL;
     GError *err = NULL;
+    gboolean error;
 
     if (g_str_equal (swidget->name, "key-manager") ||
-        g_str_equal (swidget->name, "keyserver-results"))
-        gnome_help_display_with_doc_id (NULL, PACKAGE, PACKAGE, "introduction", &err);
-    else
-       gnome_help_display_with_doc_id (NULL, PACKAGE, PACKAGE, swidget->name, &err);
+        g_str_equal (swidget->name, "keyserver-results")) {
+        document = g_strdup ("ghelp:" PACKAGE "?introduction");
+    } else {
+        document = g_strdup_printf ("ghelp:" PACKAGE "?%s", swidget->name);
+    }
 
-    if (err != NULL) {
+    error = g_app_info_launch_default_for_uri (document, NULL, &err);
+    g_free (document);
+
+    if (error != TRUE) {
         GtkWidget *dialog;
 
         dialog = gtk_message_dialog_new (GTK_WINDOW (seahorse_widget_get_top (swidget)), GTK_DIALOG_MODAL,
                                          GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
                                          _("Could not display help: %s"),
                                          err->message);
+        g_error_free (err);
+
         g_signal_connect (G_OBJECT (dialog), "response",
                           G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);
-        g_error_free (err);
     }
 }
 

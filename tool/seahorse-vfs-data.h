@@ -19,6 +19,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <libgnomevfs/gnome-vfs-file-size.h>
+
 /**
  * A gpgme_data_t implementation which maps to a gnome-vfs handle.
  * Allows for accessing data on remote machines (ie: smb, sftp)

@@ -20,10 +20,11 @@
  */
 
 #include "config.h"
+
 #include <sys/types.h>
 #include <signal.h>
+#include <stdlib.h>
 
-#include <gnome.h>
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "seahorse-gtkstock.h"
@@ -240,7 +241,7 @@ seahorse_tool_progress_init (int argc, char* argv[])
     int r;
 
     /* Progress mode */
-    if (argc >= 2 && strcmp(argv[1], PROGRESS_ARG) == 0) {
+    if (argc >= 2 && g_strcmp0 (argv[1], PROGRESS_ARG) == 0) {
         r = progress_main (argc, argv);
         exit (r);
     }

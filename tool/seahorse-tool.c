@@ -20,9 +20,14 @@
  */
 
 #include "config.h"
-#include <gnome.h>
+
+#include <errno.h>
+#include <string.h>
+
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <glib/gprintf.h>
+
 #include <libgnomevfs/gnome-vfs.h>
 
 #include <dbus/dbus-glib-bindings.h>
@@ -650,11 +655,7 @@ main (int argc, char **argv)
     octx = g_option_context_new ("");
     g_option_context_add_main_entries (octx, options, GETTEXT_PACKAGE);
 
-    /* Main operation process */
-    gnome_program_init("seahorse-tool", VERSION, LIBGNOMEUI_MODULE, argc, argv,
-                       GNOME_PARAM_GOPTION_CONTEXT, octx,
-                       GNOME_PARAM_HUMAN_READABLE_NAME, _("File Encryption Tool"),
-                       GNOME_PARAM_APP_DATADIR, DATA_DIR, NULL);
+    gtk_init_with_args (&argc, &argv, _("File Encryption Tool"), (GOptionEntry *) options, GETTEXT_PACKAGE, NULL);
 
     /* Load up all our arguments */
     uris = read_uri_arguments ();

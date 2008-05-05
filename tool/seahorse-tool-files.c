@@ -20,12 +20,16 @@
  */
 
 #include "config.h"
+
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #include <libintl.h>
 
-#include <gnome.h>
+#include <glib/gi18n.h>
+
 #include <libgnomevfs/gnome-vfs.h>
 
 #include "seahorse-tool.h"
