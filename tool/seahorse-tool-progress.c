@@ -80,15 +80,15 @@ process_line (SeahorseOperation *op, const gchar *line)
     if (!args[0])
         g_warning ("invalid progress line");
 
-    else if (g_strcasecmp (args[0], CMD_BLOCK) == 0)
+    else if (g_ascii_strcasecmp (args[0], CMD_BLOCK) == 0)
         progress_block = TRUE;
 
-    else if (g_strcasecmp (args[0], CMD_UNBLOCK) == 0) {
+    else if (g_ascii_strcasecmp (args[0], CMD_UNBLOCK) == 0) {
         progress_block = FALSE;
         g_timeout_add (PROGRESS_DELAY, (GSourceFunc)progress_show, op);
     }
 
-    else if (g_strcasecmp (args[0], CMD_PROGRESS) == 0) {
+    else if (g_ascii_strcasecmp (args[0], CMD_PROGRESS) == 0) {
 
         if (args[1]) {
             fract = strtod (args[1], &e);
