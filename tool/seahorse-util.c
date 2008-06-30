@@ -32,8 +32,9 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
+#include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <libgnomevfs/gnome-vfs.h>
 
 #ifdef WITH_SHARING
 #include <avahi-glib/glib-watch.h>
@@ -435,6 +436,8 @@ seahorse_util_uri_split_last (gchar* uri)
 {
     gchar* t;
 
+    g_return_val_if_fail (uri, "");
+
     t = (gchar*)seahorse_util_uri_get_last (uri);
     if(t != uri)
         *(t - 1) = 0;
@@ -453,14 +456,14 @@ seahorse_util_uri_split_last (gchar* uri)
 gboolean
 seahorse_util_uri_exists (const gchar* uri)
 {
-    GnomeVFSURI* vuri;
+    GFile *file;
     gboolean exists;
 
-    vuri = gnome_vfs_uri_new (uri);
-    g_return_val_if_fail (vuri != NULL, FALSE);
+    file = g_file_new_for_uri (uri);
+    g_return_val_if_fail (file, FALSE);
 
-    exists = gnome_vfs_uri_exists (vuri);
-    gnome_vfs_uri_unref (vuri);
+    exists = g_file_query_exists (file, NULL);
+    g_object_unref (file);
 
     return exists;
 }
@@ -567,78 +570,6 @@ seahorse_util_uri_replace_ext (const gchar *uri, const gchar *ext)
     return ret;
 }
 
-/* Context for callback below */
-typedef struct _VisitUriCtx
-{
-    GArray* files;
-    const gchar* base_uri;
-}
-VisitUriCtx;
-
-/* Called for each sub file or directory */
-static gboolean
-visit_uri (const gchar *rel_path, GnomeVFSFileInfo *info, gboolean recursing_will_loop,
-                gpointer data, gboolean *recurse)
-{
-    VisitUriCtx* ctx = (VisitUriCtx*)data;
-    gchar* t = g_strconcat (ctx->base_uri, "/", rel_path, NULL);
-    gchar* uri = gnome_vfs_make_uri_canonical (t);
-    g_free (t);
-
-    if(info->type != GNOME_VFS_FILE_TYPE_DIRECTORY)
-        g_array_append_val (ctx->files, uri);
-
-    *recurse = !recursing_will_loop;
-    return TRUE;
-}
-
-/**
- * seahorse_util_uris_expand
- * @uris: The null-terminated vector of URIs to enumerate
- *
- * Find all files in the given set of uris.
- *
- * Returns: Newly allocated null-terminated string vector of URIs.
- */
-gchar**
-seahorse_util_uris_expand (const gchar** uris)
-{
-    GnomeVFSFileInfo* info;
-    GArray* files  = NULL;
-    const gchar** u;
-    gchar* uri;
-
-    files = g_array_new (TRUE, FALSE, sizeof(gchar*));
-    info = gnome_vfs_file_info_new ();
-
-    for(u = uris; *u; u++) {
-
-        uri = gnome_vfs_make_uri_canonical (*u);
-
-        if (gnome_vfs_get_file_info (uri, info, GNOME_VFS_FILE_INFO_DEFAULT) == GNOME_VFS_OK &&
-            info->type == GNOME_VFS_FILE_TYPE_DIRECTORY)
-        {
-                VisitUriCtx ctx;
-                ctx.files = files;
-                ctx.base_uri = uri;
-
-                gnome_vfs_directory_visit (uri, GNOME_VFS_FILE_INFO_DEFAULT,
-                    GNOME_VFS_DIRECTORY_VISIT_DEFAULT | GNOME_VFS_DIRECTORY_VISIT_LOOPCHECK,
-                    visit_uri, &ctx);
-
-        /* Not a directory */
-        } else {
-
-            g_array_append_val (files, uri);
-            uri = NULL; /* To prevent freeing below */
-        }
-
-        g_free (uri);
-    }
-
-    return (gchar**)g_array_free (files, FALSE);
-}
-
 /**
  * seahorse_util_uris_package
  * @package: Package uri
@@ -659,12 +590,12 @@ seahorse_util_uris_package (const gchar* package, const char** uris)
     gchar *cmd;
     gchar *t;
     gchar *x;
-    GnomeVFSFileInfo *info;
-    GnomeVFSResult result;
+    GFile *file, *fpackage;
 
-    t = gnome_vfs_get_local_path_from_uri (package);
-    x = g_shell_quote(t);
-    g_free(t);
+    fpackage = g_file_new_for_uri (package);
+    t = g_file_get_path (fpackage);
+    x = g_shell_quote (t);
+    g_free (t);
 
     /* create execution */
     str = g_string_new ("");
@@ -672,12 +603,15 @@ seahorse_util_uris_package (const gchar* package, const char** uris)
     g_free(x);
 
     while(*uris) {
-        /* We should never be passed any remote uris at this point */
-        x = gnome_vfs_make_uri_canonical (*uris);
+        x = g_uri_parse_scheme (*uris);
+        if (x)
+            file = g_file_new_for_uri (*uris);
+        else
+            file = g_file_new_for_path (*uris);
+        g_free (x);
 
-        t = gnome_vfs_get_local_path_from_uri (x);
-        g_free(x);
-
+        t = g_file_get_path (file);
+        g_object_unref (file);
         g_return_val_if_fail (t != NULL, FALSE);
 
         x = g_shell_quote(t);
@@ -710,14 +644,10 @@ seahorse_util_uris_package (const gchar* package, const char** uris)
         return FALSE;
     }
 
-    info = gnome_vfs_file_info_new ();
-	info->permissions = GNOME_VFS_PERM_USER_READ | GNOME_VFS_PERM_USER_WRITE;
-	result = gnome_vfs_set_file_info (package, info, GNOME_VFS_SET_FILE_INFO_PERMISSIONS);
-    gnome_vfs_file_info_unref (info);
-
-	if (result != GNOME_VFS_OK) {
-    	seahorse_util_handle_error (err, _("Couldn't set permissions on backup file."));
-        return FALSE;
+    t = g_file_get_path (fpackage);
+    if (t != NULL) {
+        g_chmod (t, S_IRUSR | S_IWUSR);
+        g_free (t);
     }
 
     return TRUE;

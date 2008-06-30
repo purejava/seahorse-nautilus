@@ -28,8 +28,6 @@
 #include <glib/gi18n.h>
 #include <glib/gprintf.h>
 
-#include <libgnomevfs/gnome-vfs.h>
-
 #include <dbus/dbus-glib-bindings.h>
 
 #include "cryptui.h"
@@ -735,9 +733,6 @@ main (int argc, char **argv)
         gpgmex_key_unref (mode.signer);
 
     g_strfreev (uris);
-
-    if (gnome_vfs_initialized ())
-        gnome_vfs_shutdown ();
 
     return ret;
 }

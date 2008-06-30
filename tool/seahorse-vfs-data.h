@@ -19,7 +19,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <libgnomevfs/gnome-vfs-file-size.h>
+#include <gio/gio.h>
 
 /**
  * A gpgme_data_t implementation which maps to a gnome-vfs handle.
@@ -35,7 +35,7 @@
  * writing of a file.
  */
 
-typedef void (*SeahorseVfsProgressCb) (gpgme_data_t data, GnomeVFSFileSize pos,
+typedef void (*SeahorseVfsProgressCb) (gpgme_data_t data, goffset pos,
                                        gpointer userdata);
 
 #define SEAHORSE_VFS_READ   0x00000000
@@ -45,15 +45,11 @@ typedef void (*SeahorseVfsProgressCb) (gpgme_data_t data, GnomeVFSFileSize pos,
 gpgme_data_t        seahorse_vfs_data_create        (const gchar *uri, guint mode,
                                                      GError **err);
 
-gpgme_data_t        seahorse_vfs_data_create_full   (const gchar *uri, guint mode,
+gpgme_data_t        seahorse_vfs_data_create_full   (GFile *file, guint mode,
                                                      SeahorseVfsProgressCb progcb,
                                                      gpointer userdata, GError **err);
 
 gpgme_data_t        seahorse_vfs_data_read_multi    (const gchar **uris, GError **err);
-
-/* Deprecated compat API, eventually to be removed */
-gpgme_data_t        seahorse_vfs_data_create_gerr   (const gchar *uri, guint mode,
-                                                     gpgme_error_t *err);
 
 gboolean            seahorse_vfs_data_write_all     (gpgme_data_t data, const void* buffer,
                                                      gint len, GError **err);

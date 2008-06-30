@@ -29,8 +29,7 @@
 #include <libintl.h>
 
 #include <glib/gi18n.h>
-
-#include <libgnomevfs/gnome-vfs.h>
+#include <gio/gio.h>
 
 #include "seahorse-tool.h"
 #include "seahorse-util.h"
@@ -39,16 +38,17 @@
 #include "seahorse-vfs-data.h"
 
 #define ONE_GIGABYTE 1024 * 1024 * 1024
+#define FILE_ATTRIBUTES "standard::*"
 
 typedef struct _FileInfo {
+    GFile *file;
+    GFileInfo *info;
     gchar *uri;
-    GnomeVFSFileSize size;
-    gboolean directory;
 } FileInfo;
 
 typedef struct _FilesCtx {
     GSList *uris;
-    GList *files;
+    GList *finfos;
     FileInfo *cur;
     gboolean remote;
 
@@ -57,11 +57,14 @@ typedef struct _FilesCtx {
 } FilesCtx;
 
 static void
-free_file_info (FileInfo *file, gpointer unused)
+free_file_info (FileInfo *finfo, gpointer unused)
 {
-    if (file)
-        g_free (file->uri);
-    g_free (file);
+    if (finfo) {
+        g_object_unref (finfo->file);
+        g_object_unref (finfo->info);
+        g_free (finfo->uri);
+    }
+    g_free (finfo);
 }
 
 /* Included from file-roller/src/main.c for file types */
@@ -234,22 +237,19 @@ compute_supported_archive_types (void)
 gboolean
 step_check_uris (FilesCtx *ctx, const gchar **uris, GError **err)
 {
-    GnomeVFSFileInfo *info = NULL;
-    GnomeVFSResult res;
-    GnomeVFSURI *guri, *base;
-    gchar *t, *uri = NULL;
+    GFile *file, *base;
+    GFileInfo *info;
+    gchar *t, *path;
     gboolean ret = TRUE;
-    FileInfo *file;
+    FileInfo *finfo;
     const gchar **k;
+    GFileType type;
 
     g_assert (err && !*err);
 
     t = g_get_current_dir ();
-    uri = g_strdup_printf ("file://%s/", t);
+    base = g_file_new_for_path (t);
     g_free (t);
-    base = gnome_vfs_uri_new (uri);
-
-    info = gnome_vfs_file_info_new ();
 
     for (k = uris; *k; k++) {
 
@@ -258,46 +258,52 @@ step_check_uris (FilesCtx *ctx, const gchar **uris, GError **err)
             break;
         }
 
-        if (uri)
-            g_free (uri);
-        guri = gnome_vfs_uri_resolve_relative (base, *k);
-        g_return_val_if_fail (guri != NULL, FALSE);
-        uri = gnome_vfs_uri_to_string (guri, GNOME_VFS_URI_HIDE_NONE);
-        gnome_vfs_uri_unref (guri);
+	t = g_uri_parse_scheme (*k);
+	if (t)
+		file = g_file_new_for_uri (*k);
+	else
+	        file = g_file_resolve_relative_path (base, *k);
+        g_return_val_if_fail (file != NULL, FALSE);
 
-        gnome_vfs_file_info_clear (info);
+        /* Find out if file can be accessed locally? */
+        path = g_file_get_path (file);
+        if (!path)
+            ctx->remote = TRUE;
+        g_free (path);
 
-        res = gnome_vfs_get_file_info (uri, info, GNOME_VFS_FILE_INFO_DEFAULT);
-        if (res != GNOME_VFS_OK) {
-            g_set_error (err, G_FILE_ERROR, -1, gnome_vfs_result_to_string (res));
-            ret = FALSE;
-            break;
+        info = g_file_query_info (file, FILE_ATTRIBUTES,
+                                  G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, err);
+
+        if (!info) {
+        	ret = FALSE;
+                g_object_unref (file);
+        	break;
         }
 
+        type = g_file_info_get_file_type (info);
+
         /* Only handle simple types */
-        if (info->type != GNOME_VFS_FILE_TYPE_REGULAR &&
-            info->type != GNOME_VFS_FILE_TYPE_UNKNOWN &&
-            info->type != GNOME_VFS_FILE_TYPE_DIRECTORY)
-            continue;
+        if (type == G_FILE_TYPE_REGULAR || type == G_FILE_TYPE_UNKNOWN ||
+            type == G_FILE_TYPE_DIRECTORY) {
 
-        if (!GNOME_VFS_FILE_INFO_LOCAL (info))
-            ctx->remote = TRUE;
+            finfo = g_new0 (FileInfo, 1);
+            finfo->file = file;
+            g_object_ref (file);
+            finfo->info = info;
+            g_object_ref (info);
+            finfo->uri = g_file_get_uri (file);
 
-        file = g_new0 (FileInfo, 1);
-        file->size = info->size;
-        file->directory = (info->type == GNOME_VFS_FILE_TYPE_DIRECTORY);
-        file->uri = uri;
-        uri = NULL;
+            ctx->total += g_file_info_get_size (info);
+            ctx->finfos = g_list_prepend (ctx->finfos, finfo);
+        }
 
-        ctx->total += file->size;
-        ctx->files = g_list_prepend (ctx->files, file);
+        g_object_unref (file);
+        g_object_unref (info);
     }
 
-    gnome_vfs_uri_unref (base);
-    g_free (uri);
-    gnome_vfs_file_info_unref (info);
+    g_object_unref (base);
 
-    ctx->files = g_list_reverse (ctx->files);
+    ctx->finfos = g_list_reverse (ctx->finfos);
     return ret;
 }
 
@@ -360,21 +366,21 @@ seperate_toggled (GtkWidget *widget, GtkWidget *package)
 
 /* Build the multiple file dialog */
 static SeahorseWidget*
-prepare_dialog (FilesCtx *ctx, guint nfolders, guint nfiles, gchar* pkguri, gchar* ext)
+prepare_dialog (FilesCtx *ctx, guint nfolders, guint nfiles, GFileInfo *info, gchar* ext)
 {
     SeahorseWidget *swidget;
     const gchar* pkg;
     GtkWidget *tog;
     GtkWidget *w;
     GtkWidget *combo;
-    gchar *msg;
+    gchar *msg, *display;
     gboolean sep;
     gint i;
     GtkCellRenderer *cell;
     GtkTreeModel *store;
 	FRFileType *save_type_list;
 
-    g_assert (pkguri);
+    g_assert (info);
 
     swidget = seahorse_widget_new ("multi-encrypt", NULL);
     g_return_val_if_fail (swidget != NULL, NULL);
@@ -403,8 +409,10 @@ prepare_dialog (FilesCtx *ctx, guint nfolders, guint nfiles, gchar* pkguri, gcha
 
         /* Setup the package */
         w = glade_xml_get_widget (swidget->xml, "package-name");
-        pkg = seahorse_util_uri_split_last (pkguri);
+        display = g_strdup (g_file_info_get_display_name (info));
+        pkg = seahorse_util_uri_split_last (display);
         gtk_entry_set_text (GTK_ENTRY (w), pkg);
+        g_free (display);
 
         /* Setup the URI combo box */
         combo = glade_xml_get_widget (swidget->xml, "package-extension");
@@ -493,22 +501,25 @@ step_process_multiple (FilesCtx *ctx, const gchar **orig_uris, GError **err)
 {
     SeahorseWidget *swidget;
     gboolean done = FALSE;
-    gchar *pkg_uri = NULL;
+    FileInfo *pkg_info = NULL;
     gchar *package = NULL;
     gchar *ext;
+    GFile *file, *parent;
     gboolean ok = FALSE;
     GtkWidget *dlg;
     guint nfolders, nfiles;
     gchar *uris[2];
-    gchar *t;
+    gchar *uri;
     GList *l;
 
     g_assert (err && !*err);
 
-    for (l = ctx->files, nfolders = nfiles = 0; l; l = g_list_next (l)) {
-        if (((FileInfo*)(l->data))->directory)
+    for (l = ctx->finfos, nfolders = nfiles = 0; l; l = g_list_next (l)) {
+        FileInfo *finfo = (FileInfo*)l->data;
+        if (g_file_info_get_file_type (finfo->info) == G_FILE_TYPE_DIRECTORY)
             ++nfolders;
-        ++nfiles;
+        else
+            ++nfiles;
     }
 
     /* In the case of one or less files, no dialog */
@@ -520,15 +531,15 @@ step_process_multiple (FilesCtx *ctx, const gchar **orig_uris, GError **err)
         ext = g_strdup (".zip"); /* Yes this happens when the schema isn't installed */
 
     /* Figure out a good URI for our package */
-    for (l = ctx->files; l; l = g_list_next (l)) {
+    for (l = ctx->finfos; l; l = g_list_next (l)) {
         if (l->data) {
-            pkg_uri = gnome_vfs_make_uri_canonical (((FileInfo*)(l->data))->uri);
+            pkg_info = (FileInfo*)(l->data);
             break;
         }
     }
 
     /* This sets up but doesn't run the dialog */
-    swidget = prepare_dialog (ctx, nfolders, nfiles, pkg_uri, ext);
+    swidget = prepare_dialog (ctx, nfolders, nfiles, pkg_info->info, ext);
 
     g_free (ext);
 
@@ -571,24 +582,32 @@ step_process_multiple (FilesCtx *ctx, const gchar **orig_uris, GError **err)
     /* A package was selected */
 
     /* Make a new path based on the first uri */
-    t = g_strconcat (pkg_uri, "/", package, NULL);
-    g_free (package);
+    parent = g_file_get_parent (pkg_info->file);
+    if (!parent)
+    	parent = pkg_info->file;
+    file = g_file_get_child_for_display_name (parent, package, err);
+    if (!file)
+	    return FALSE;
 
-    if (!seahorse_util_uris_package (t, orig_uris)) {
-        g_free (t);
+    uri = g_file_get_uri (file);
+    g_return_val_if_fail (uri, FALSE);
+    g_object_unref (file);
+
+    if (!seahorse_util_uris_package (uri, orig_uris)) {
+        g_free (uri);
         return FALSE;
     }
 
     /* Free all file info */
-    g_list_foreach (ctx->files, (GFunc)free_file_info, NULL);
-    g_list_free (ctx->files);
-    ctx->files = NULL;
+    g_list_foreach (ctx->finfos, (GFunc)free_file_info, NULL);
+    g_list_free (ctx->finfos);
+    ctx->finfos = NULL;
 
     /* Reload up the new file, as what to encrypt */
-    uris[0] = t;
+    uris[0] = uri;
     uris[1] = NULL;
     ok = step_check_uris (ctx, (const gchar**)uris, err);
-    g_free (t);
+    g_free (uri);
 
     return ok;
 }
@@ -597,86 +616,104 @@ step_process_multiple (FilesCtx *ctx, const gchar **orig_uris, GError **err)
  * EXPAND STEP
  */
 
-typedef struct _VisitCtx {
-    FilesCtx *ctx;
-    GList *cur;
-    const gchar *base;
-} VisitCtx;
-
-/* Called for each sub file or directory */
 static gboolean
-visit_uri (const gchar *rel_path, GnomeVFSFileInfo *info, gboolean recursing_will_loop,
-           VisitCtx *vctx, gboolean *recurse)
+visit_enumerator (FilesCtx *ctx, GFile *parent, GFileEnumerator *enumerator, GError **err)
 {
-    GList *l;
-    FileInfo *file;
-    gchar *t, *uri;
+    GFileEnumerator *children;
+    gboolean ret = TRUE;
+    GFileInfo *info;
+    FileInfo *finfo;
+    GFile *file;
 
-    /* Only files get added to our list */
-    if(info->type == GNOME_VFS_FILE_TYPE_REGULAR ||
-       info->type == GNOME_VFS_FILE_TYPE_UNKNOWN) {
+    for (;;) {
+	if (!seahorse_tool_progress_check ()) {
+            ret = FALSE;
+            break;
+	}
 
-        t = g_strconcat (vctx->base, "/", rel_path, NULL);
-        uri = gnome_vfs_make_uri_canonical (t);
-        g_free (t);
+	info = g_file_enumerator_next_file (enumerator, NULL, err);
+        if (!info) {
+            if (err && *err)
+                ret = FALSE;
+            break;
+        }
 
-        file = g_new0(FileInfo, 1);
-        file->uri = uri;
-        file->size = info->size;
+        file = g_file_resolve_relative_path (parent, g_file_info_get_name (info));
+        g_return_val_if_fail (file, FALSE);
 
-        /* A bit of list hanky panky */
-        l = g_list_insert (vctx->cur, file, 1);
-        g_assert (l == vctx->cur);
+        /* Enumerate child directories */
+        if (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY) {
+                children = g_file_enumerate_children (file, FILE_ATTRIBUTES,
+                                                      G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                                      NULL, err);
+                if (!enumerator) {
+                    ret = FALSE;
+                    break;
+                }
 
-        vctx->ctx->total += file->size;
+                ret = visit_enumerator (ctx, file, children, err);
+                if (!ret)
+                    break;
+
+        /* A file, add it */
+        } else {
+
+            finfo = g_new0 (FileInfo, 1);
+            finfo->info = info;
+            finfo->file = file;
+            finfo->uri = g_file_get_uri (file);
+            g_object_ref (info);
+            g_object_ref (file);
+
+            ctx->total += g_file_info_get_size (info);
+            ctx->finfos = g_list_append (ctx->finfos, finfo);
+        }
+
+        g_object_unref (file);
+        file = NULL;
     }
 
-    if (!seahorse_tool_progress_check ())
-        return FALSE;
+    if (file != NULL)
+        g_object_unref (file);
 
-    *recurse = !recursing_will_loop;
-    return TRUE;
+    g_object_unref (enumerator);
+    return ret;
 }
 
 gboolean
 step_expand_uris (FilesCtx *ctx, GError **err)
 {
-    GnomeVFSResult res;
+    GFileEnumerator *enumerator;
     gboolean ret = TRUE;
-    FileInfo *file;
-    VisitCtx vctx;
+    FileInfo *finfo;
     GList *l;
 
     g_assert (err && !*err);
 
-    for (l = ctx->files; l; l = g_list_next (l)) {
+    for (l = ctx->finfos; l; l = g_list_next (l)) {
 
         if (!seahorse_tool_progress_check ()) {
             ret = FALSE;
             break;
         }
 
-        file = (FileInfo*)(l->data);
-        if (!file || !file->uri)
+        finfo = (FileInfo*)(l->data);
+        if (!finfo || !finfo->uri)
             continue;
 
-        if (file->directory) {
+        if (g_file_info_get_file_type (finfo->info) == G_FILE_TYPE_DIRECTORY) {
 
-            vctx.ctx = ctx;
-            vctx.cur = l;
-            vctx.base = file->uri;
+            enumerator = g_file_enumerate_children (finfo->file, FILE_ATTRIBUTES,
+                                                    G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                                    NULL, err);
+            if (!enumerator)
+                return FALSE;
 
-            res = gnome_vfs_directory_visit (file->uri, GNOME_VFS_FILE_INFO_DEFAULT,
-                                             GNOME_VFS_DIRECTORY_VISIT_LOOPCHECK,
-                                             (GnomeVFSDirectoryVisitFunc)visit_uri, &vctx);
-            if (res != GNOME_VFS_OK) {
-                g_set_error (err, G_FILE_ERROR, -1, gnome_vfs_result_to_string (res));
-                ret = FALSE;
-                break;
-            }
+            if (!visit_enumerator (ctx, finfo->file, enumerator, err))
+                return FALSE;
 
             /* We don't actually do operations on the dirs */
-            free_file_info (file, NULL);
+            free_file_info (finfo, NULL);
             l->data = NULL;
         }
     }
@@ -689,15 +726,17 @@ step_expand_uris (FilesCtx *ctx, GError **err)
  */
 
 static void
-progress_cb (gpgme_data_t data, GnomeVFSFileSize pos, FilesCtx *ctx)
+progress_cb (gpgme_data_t data, goffset pos, FilesCtx *ctx)
 {
     gdouble total, done, size, portion;
+    goffset fsize;
 
     g_assert (ctx && ctx->cur);
 
     total = ctx->total > ONE_GIGABYTE ? ctx->total / 1000 : ctx->total;
     done = ctx->total > ONE_GIGABYTE ? ctx->done / 1000 : ctx->done;
-    size = ctx->total > ONE_GIGABYTE ? ctx->cur->size / 1000 : ctx->cur->size;
+    fsize = g_file_info_get_size (ctx->cur->info);
+    size = ctx->total > ONE_GIGABYTE ? fsize / 1000 : fsize;
     portion = ctx->total > ONE_GIGABYTE ? pos / 1000 : pos;
 
     total = total <= 0 ? 1 : total;
@@ -705,7 +744,7 @@ progress_cb (gpgme_data_t data, GnomeVFSFileSize pos, FilesCtx *ctx)
 
     /* The cancel check is done elsewhere */
     seahorse_tool_progress_update ((done / total) + ((size / total) * (portion / size)),
-                                   seahorse_util_uri_get_last (ctx->cur->uri));
+                                   seahorse_util_uri_get_last (g_file_info_get_display_name (ctx->cur->info)));
 }
 
 gboolean
@@ -716,25 +755,25 @@ step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
     gboolean ret = FALSE;
 
     SeahorseOperation *op;
-    FileInfo *file;
+    FileInfo *finfo;
     GList *l;
 
     /* Reset our done counter */
     ctx->done = 0;
 
-    for (l = ctx->files; l; l = g_list_next (l)) {
+    for (l = ctx->finfos; l; l = g_list_next (l)) {
 
-        file = (FileInfo*)l->data;
-        if (!file || !file->uri)
+        finfo = (FileInfo*)l->data;
+        if (!finfo || !finfo->file)
             continue;
 
-        ctx->cur = file;
+        ctx->cur = finfo;
 
         /* A new operation for each context */
         pop = seahorse_pgp_operation_new (NULL);
         op = SEAHORSE_OPERATION (pop);
 
-        data = seahorse_vfs_data_create_full (file->uri, SEAHORSE_VFS_READ,
+        data = seahorse_vfs_data_create_full (finfo->file, SEAHORSE_VFS_READ,
                                               (SeahorseVfsProgressCb)progress_cb,
                                               ctx, err);
         if (!data)
@@ -745,7 +784,7 @@ step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
 
         /* The start callback */
         if (mode->startcb) {
-            if (!(mode->startcb) (mode, file->uri, data, pop, err))
+            if (!(mode->startcb) (mode, finfo->uri, data, pop, err))
                 goto finally;
         }
 
@@ -769,11 +808,11 @@ step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
 
         /* The done callback */
         if (mode->donecb) {
-            if (!(mode->donecb) (mode, file->uri, data, pop, err))
+            if (!(mode->donecb) (mode, finfo->uri, data, pop, err))
                 goto finally;
         }
 
-        ctx->done += file->size;
+        ctx->done += g_file_info_get_size (finfo->info);
         ctx->cur = NULL;
 
         g_object_unref (pop);
@@ -867,12 +906,12 @@ finally:
 
     if (err) {
         seahorse_util_handle_error (err, errdesc, ctx.cur ?
-                                    seahorse_util_uri_get_last (ctx.cur->uri) : "");
+                                    g_file_info_get_display_name (ctx.cur->info) : "");
     }
 
-    if (ctx.files) {
-        g_list_foreach (ctx.files, (GFunc)free_file_info, NULL);
-        g_list_free (ctx.files);
+    if (ctx.finfos) {
+        g_list_foreach (ctx.finfos, (GFunc)free_file_info, NULL);
+        g_list_free (ctx.finfos);
     }
 
     return ret;

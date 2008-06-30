@@ -93,8 +93,6 @@ const gchar* seahorse_util_uri_get_last     (const gchar* uri);
 
 const gchar* seahorse_util_uri_split_last   (gchar* uri);
 
-gchar**     seahorse_util_uris_expand       (const gchar **uris);
-
 gboolean    seahorse_util_uris_package      (const gchar* package,
                                              const gchar** uris);
 

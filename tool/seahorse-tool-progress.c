@@ -25,8 +25,6 @@
 #include <signal.h>
 #include <stdlib.h>
 
-#include <libgnomevfs/gnome-vfs.h>
-
 #include "seahorse-gtkstock.h"
 #include "seahorse-util.h"
 #include "seahorse-progress.h"
@@ -268,25 +266,14 @@ seahorse_tool_progress_block (gboolean block)
 gboolean
 seahorse_tool_progress_update (gdouble fract, const gchar *message)
 {
-    gchar *msg;
-
-    if (message != NULL)
-        msg = gnome_vfs_unescape_string (message, NULL);
-    else
-        msg = g_strdup ("");
-
     if (progress_fd != -1) {
         if (!seahorse_util_printf_fd (progress_fd, "%s %0.2f %s\n", CMD_PROGRESS,
-                                      fract, msg)) {
+                                      fract, message ? message : "")) {
             cancelled = TRUE;
-
-            g_free (msg);
 
             return FALSE;
         }
     }
-
-    g_free (msg);
 
     return seahorse_tool_progress_check ();
 }
