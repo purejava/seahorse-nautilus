@@ -162,69 +162,75 @@ prompt_recipients (gpgme_key_t *signkey)
     *signkey = NULL;
 
     keyset = cryptui_keyset_new ("openpgp", TRUE);
-    recips = cryptui_prompt_recipients (keyset, _("Choose Recipients"), &signer);
 
-    if (recips) {
+    if (cryptui_keyset_get_count (keyset) == 0) {
+        cryptui_need_to_get_keys (TRUE);
+    } else {
+        recips = cryptui_prompt_recipients (keyset, _("Choose Recipients"), &signer);
 
-        gerr = gpgme_new (&ctx);
-        g_return_val_if_fail (GPG_IS_OK (gerr), NULL);
+        if (recips) {
 
-        if (signer) {
-            /* Load up the GPGME secret key */
-            gchar *id = cryptui_keyset_key_raw_keyid (keyset, signer);
-            gerr = gpgme_get_key (ctx, id, signkey, 1);
-            g_free (id);
+            gerr = gpgme_new (&ctx);
+            g_return_val_if_fail (GPG_IS_OK (gerr), NULL);
 
-            /* A more descriptive error message */
-            if (GPG_ERR_EOF == gpgme_err_code (gerr))
-                gerr = GPG_E (GPG_ERR_NOT_FOUND);
-        }
+            if (signer) {
+                /* Load up the GPGME secret key */
+                gchar *id = cryptui_keyset_key_raw_keyid (keyset, signer);
+                gerr = gpgme_get_key (ctx, id, signkey, 1);
+                g_free (id);
 
-        if (GPG_IS_OK (gerr)) {
-            gchar **ids;
-            guint num;
-
-            /* Load up the GPGME keys */
-            ids = cryptui_keyset_keys_raw_keyids (keyset, (const gchar**)recips);
-            num = seahorse_util_strvec_length ((const gchar**)ids);
-            keys = g_array_new (TRUE, TRUE, sizeof (gpgme_key_t));
-            gerr = gpgme_op_keylist_ext_start (ctx, (const gchar**)ids, 0, 0);
-            g_free (ids);
-
-            if (GPG_IS_OK (gerr)) {
-                while (GPG_IS_OK (gerr = gpgme_op_keylist_next (ctx, &key)))
-                    g_array_append_val (keys, key);
-                gpgme_op_keylist_end (ctx);
+                /* A more descriptive error message */
+                if (GPG_ERR_EOF == gpgme_err_code (gerr))
+                    gerr = GPG_E (GPG_ERR_NOT_FOUND);
             }
 
-            /* Ignore EOF error */
-            if (GPG_ERR_EOF == gpgme_err_code (gerr))
-                gerr = GPG_OK;
+            if (GPG_IS_OK (gerr)) {
+                gchar **ids;
+                guint num;
 
-            if (GPG_IS_OK (gerr) && num != keys->len)
-                g_warning ("couldn't load all the keys (%d/%d) from GPGME", keys->len, num);
+                /* Load up the GPGME keys */
+                ids = cryptui_keyset_keys_raw_keyids (keyset, (const gchar**)recips);
+                num = seahorse_util_strvec_length ((const gchar**)ids);
+                keys = g_array_new (TRUE, TRUE, sizeof (gpgme_key_t));
+                gerr = gpgme_op_keylist_ext_start (ctx, (const gchar**)ids, 0, 0);
+                g_free (ids);
+
+                if (GPG_IS_OK (gerr)) {
+                    while (GPG_IS_OK (gerr = gpgme_op_keylist_next (ctx, &key)))
+                        g_array_append_val (keys, key);
+                    gpgme_op_keylist_end (ctx);
+                }
+
+                /* Ignore EOF error */
+                if (GPG_ERR_EOF == gpgme_err_code (gerr))
+                    gerr = GPG_OK;
+
+                if (GPG_IS_OK (gerr) && num != keys->len)
+                    g_warning ("couldn't load all the keys (%d/%d) from GPGME", keys->len, num);
+            }
+
+            gpgme_release (ctx);
         }
 
-        gpgme_release (ctx);
+        g_object_unref (keyset);
+
+        if (!recips)
+            return NULL;
+
+        g_strfreev (recips);
+        g_free (signer);
+
+        if (GPG_IS_OK (gerr) && keys->len)
+            return (gpgme_key_t*)g_array_free (keys, FALSE);
+
+        /* When failure, free all our return values */
+        seahorse_util_free_keys ((gpgme_key_t*)g_array_free (keys, FALSE));
+        if (*signkey)
+            gpgmex_key_unref (*signkey);
+
+        seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
     }
 
-    g_object_unref (keyset);
-
-    if (!recips)
-        return NULL;
-
-    g_strfreev (recips);
-    g_free (signer);
-
-    if (GPG_IS_OK (gerr) && keys->len)
-        return (gpgme_key_t*)g_array_free (keys, FALSE);
-
-    /* When failure, free all our return values */
-    seahorse_util_free_keys ((gpgme_key_t*)g_array_free (keys, FALSE));
-    if (*signkey)
-        gpgmex_key_unref (*signkey);
-
-    seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
     return NULL;
 }
 
