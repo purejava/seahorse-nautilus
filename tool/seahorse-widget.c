@@ -148,7 +148,6 @@ object_set_property (GObject *object, guint prop_id, const GValue *value, GParam
 {
     SeahorseWidget *swidget;
     GtkWidget *w;
-    GdkPixbuf *pixbuf = NULL;
     char *path;
 
     swidget = SEAHORSE_WIDGET (object);
@@ -175,10 +174,7 @@ object_set_property (GObject *object, guint prop_id, const GValue *value, GParam
         glade_xml_set_toplevel (swidget->xml, GTK_WINDOW (w));
         glade_xml_ensure_accel (swidget->xml);
 
-        pixbuf = gtk_widget_render_icon (w, SEAHORSE_STOCK_SEAHORSE,
-                                         (GtkIconSize)-1, NULL);
-        gtk_window_set_icon (GTK_WINDOW (w), gdk_pixbuf_copy(pixbuf));
-        g_object_unref(pixbuf);
+        gtk_window_set_icon_name (GTK_WINDOW (w), "seahorse-preferences");
         break;
     }
 }
