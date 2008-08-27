@@ -60,7 +60,7 @@ seahorse_util_show_error (GtkWindow *parent, const gchar *heading, const gchar *
         t = g_strdup (message);
 
 	error = gtk_message_dialog_new_with_markup (parent, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR,
-		GTK_BUTTONS_CLOSE, t);
+		GTK_BUTTONS_CLOSE, t, NULL);
     g_free (t);
 
 	gtk_dialog_run (GTK_DIALOG (error));
@@ -629,7 +629,7 @@ seahorse_util_uris_package (const gchar* package, const char** uris)
     g_free (cmd);
 
     if (out) {
-        g_print (out);
+        g_print (out, NULL);
         g_free (out);
     }
 
