@@ -563,7 +563,7 @@ seahorse_notification_display (const gchar *summary, const gchar *body,
 
 /* Note that we can't use GTK stock here, as we hand these icons off
    to other processes in the case of notifications */
-#define ICON_PREFIX     DATA_DIR "/pixmaps/seahorse/48x48/"
+#define ICON_PREFIX     DATA_DIR "/pixmaps/seahorse-plugins/48x48/"
 
 void
 seahorse_notify_import (guint keynum, gchar **keys)
