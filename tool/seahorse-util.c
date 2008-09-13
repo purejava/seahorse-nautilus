@@ -41,6 +41,8 @@
 #include <avahi-glib/glib-malloc.h>
 #endif
 
+#include <dbus/dbus-glib-bindings.h>
+
 #include "seahorse-gpgmex.h"
 #include "seahorse-util.h"
 #include "seahorse-gconf.h"
@@ -115,6 +117,11 @@ seahorse_util_handle_error (GError* err, const char* desc, ...)
         t = g_strdup_vprintf (desc, ap);
 
     va_end(ap);
+
+    /* Never show an error for 'cancelled' */
+    if (err->code == DBUS_GERROR_REMOTE_EXCEPTION && err->domain == DBUS_GERROR &&
+        strstr (dbus_g_error_get_name (err), "Cancelled"))
+	    return;
 
     seahorse_util_show_error (NULL, t, err->message ? err->message : "");
     g_free(t);
