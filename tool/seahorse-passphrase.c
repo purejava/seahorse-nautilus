@@ -94,10 +94,14 @@ static gboolean
 grab_keyboard (GtkWidget *win, GdkEvent *event, gpointer data)
 {
 #ifndef _DEBUG
-	if (!g_object_get_data (G_OBJECT (win), "keyboard-grabbed"))
-		if (gdk_keyboard_grab (win->window, FALSE, gdk_event_get_time (event)))
-			g_message ("could not grab keyboard");
-	g_object_set_data (G_OBJECT (win), "keyboard-grabbed", GINT_TO_POINTER (TRUE));
+	GdkGrabStatus status;
+	if (!g_object_get_data (G_OBJECT (win), "keyboard-grabbed")) {
+		status = gdk_keyboard_grab (win->window, FALSE, gdk_event_get_time (event));
+		if (status == GDK_GRAB_SUCCESS)
+			g_object_set_data (G_OBJECT (win), "keyboard-grabbed", GINT_TO_POINTER (TRUE));
+		else
+			g_message ("could not grab keyboard: %d", (int)status);
+	}
 #endif
 	return FALSE;
 }
@@ -204,7 +208,7 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
     dialog = GTK_DIALOG (w);
 
     g_signal_connect (G_OBJECT (dialog), "size-request", G_CALLBACK (constrain_size), NULL);
-    g_signal_connect (G_OBJECT (dialog), "map-event", G_CALLBACK (grab_keyboard), NULL);
+    g_signal_connect_after (G_OBJECT (dialog), "map-event", G_CALLBACK (grab_keyboard), NULL);
     g_signal_connect (G_OBJECT (dialog), "unmap-event", G_CALLBACK (ungrab_keyboard), NULL);
     g_signal_connect (G_OBJECT (dialog), "window-state-event", G_CALLBACK (window_state_changed), NULL);
 
