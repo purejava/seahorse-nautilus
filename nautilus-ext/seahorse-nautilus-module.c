@@ -35,7 +35,7 @@ void
 nautilus_module_initialize (GTypeModule *module)
 {
     seahorse_nautilus_register_type (module);
-	g_printerr("seahorse nautilus module initialized\n");
+	g_debug ("seahorse nautilus module initialized\n");
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 }
@@ -43,7 +43,7 @@ nautilus_module_initialize (GTypeModule *module)
 void
 nautilus_module_shutdown (void)
 {
-	g_printerr("seahorse nautilus module shutdown\n");
+	g_debug ("seahorse nautilus module shutdown\n");
 }
 
 void
