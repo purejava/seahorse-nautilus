@@ -52,18 +52,16 @@ void
 seahorse_util_show_error (GtkWindow *parent, const gchar *heading, const gchar *message)
 {
 	GtkWidget *error;
-    gchar *t;
 
 	g_return_if_fail (message);
 
-    if (heading)
-        t = g_strconcat("<big><b>", heading, "</b></big>\n\n", message, NULL);
-    else
-        t = g_strdup (message);
+	error = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR,
+		GTK_BUTTONS_CLOSE, NULL);
 
-	error = gtk_message_dialog_new_with_markup (parent, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR,
-		GTK_BUTTONS_CLOSE, t, NULL);
-    g_free (t);
+	if (heading)
+        g_object_set (G_OBJECT (error), "text", heading, "secondary-text", message, NULL);
+    else
+        g_object_set (G_OBJECT (error), "text", message, NULL);
 
 	gtk_dialog_run (GTK_DIALOG (error));
 	gtk_widget_destroy (error);
