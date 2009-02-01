@@ -31,6 +31,7 @@
 #include <dbus/dbus-glib-bindings.h>
 
 #include "cryptui.h"
+#include "cryptui-key-store.h"
 
 #include "seahorse-secure-memory.h"
 #include "seahorse-tool.h"
@@ -285,24 +286,43 @@ encrypt_sign_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t urida
  * SIGN
  */
 
+static gboolean
+signer_filter (CryptUIKeyset *ckset, const gchar *key, gpointer user_data)
+{
+    guint flags = cryptui_keyset_key_flags (ckset, key);
+    return flags & CRYPTUI_FLAG_CAN_SIGN;
+}
+
 static gpgme_key_t
 prompt_signer ()
 {
     gpgme_error_t gerr = GPG_OK;
     CryptUIKeyset *keyset;
+    CryptUIKeyStore *ckstore;
     gpgme_key_t key = NULL;
     gpgme_ctx_t ctx = NULL;
     gchar *signer;
     gchar *id;
+    guint count;
+    GList *keys;
 
     keyset = cryptui_keyset_new ("openpgp", TRUE);
+    ckstore = cryptui_key_store_new (keyset, TRUE, NULL);
+    cryptui_key_store_set_filter (ckstore, signer_filter, NULL);
 
-    if (cryptui_keyset_get_count (keyset) == 0) {
+    count = cryptui_key_store_get_count (ckstore);
+
+    if (count == 0) {
         cryptui_need_to_get_keys ();
         return NULL;
+    } else if (count == 1) {
+        keys = cryptui_key_store_get_all_keys (ckstore);
+        signer = (gchar*) keys->data;
+        g_list_free (keys);
+    } else {
+        signer = cryptui_prompt_signer (keyset, _("Choose Signer"));
     }
 
-    signer = cryptui_prompt_signer (keyset, _("Choose Signer"));
     if (signer) {
 
         id = cryptui_keyset_key_raw_keyid (keyset, signer);
@@ -321,6 +341,7 @@ prompt_signer ()
             seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
     }
 
+    g_object_unref (ckstore);
     g_object_unref (keyset);
     return key;
 }
