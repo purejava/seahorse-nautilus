@@ -250,7 +250,7 @@ seahorse_widget_new (const gchar *name, GtkWindow *parent)
 
     /* We don't care about this floating business */
     g_object_ref (GTK_OBJECT (swidget));
-    gtk_object_sink (GTK_OBJECT (swidget));
+    g_object_ref_sink (GTK_OBJECT (swidget));
 
     return swidget;
 }
@@ -277,7 +277,7 @@ seahorse_widget_new_allow_multiple (const gchar *name, GtkWindow *parent)
 
     /* We don't care about this floating business */
     g_object_ref (GTK_OBJECT (swidget));
-    gtk_object_sink (GTK_OBJECT (swidget));
+    g_object_ref_sink (GTK_OBJECT (swidget));
 
     return swidget;
 }
