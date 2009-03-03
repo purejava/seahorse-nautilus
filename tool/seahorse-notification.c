@@ -604,8 +604,10 @@ void
 seahorse_notify_signatures (const gchar* data, gpgme_verify_result_t status)
 {
     const gchar *icon = NULL;
+    const gchar *keyid;
     gchar *title, *body;
     gboolean sig = FALSE;
+    gsize len;
 
     /* Figure out what to display */
     switch (gpgme_err_code (status->signatures->status))  {
@@ -656,9 +658,15 @@ seahorse_notify_signatures (const gchar* data, gpgme_verify_result_t status)
         return;
     };
 
+    /* TODO: This logic needs to be consolidated somewhere */
+    keyid = status->signatures->fpr;
+    len = strlen (keyid);
+    if (len > 16)
+	    keyid += len - 16;
+
     if (sig) {
         gchar *date = seahorse_util_get_display_date_string (status->signatures->timestamp);
-        gchar *id = g_strdup_printf ("openpgp:%s", status->signatures->fpr);
+        gchar *id = g_strdup_printf ("openpgp:%s", keyid);
         body = g_markup_printf_escaped (body, id, date);
         g_free (date);
         g_free (id);
