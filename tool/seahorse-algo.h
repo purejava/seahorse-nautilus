@@ -66,7 +66,7 @@ void seahorse_md5_final(unsigned char digest[MD5_LEN], md5_ctx_t* context);
  * Boston, MA 02111-1307, USA.
  */
 
-#include <glib/gtypes.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
