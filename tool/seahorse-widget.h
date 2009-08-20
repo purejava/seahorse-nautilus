@@ -20,26 +20,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-/**
- * SeahorseWidget: A window created from a glade file.
- *
- * - All SeahorseWidget objects are destroyed when the SeahorseContext
- *   goes bye-bye.
- * - Implements fun GtkUIManager stuff.
- *
- * Signals:
- *   destroy: The window was destroyed.
- *
- * Properties:
- *   name: (gchar*) The name of the glade file to load.
- */
-
 #ifndef __SEAHORSE_WIDGET_H__
 #define __SEAHORSE_WIDGET_H__
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <glade/glade-xml.h>
 
 #define SEAHORSE_TYPE_WIDGET            (seahorse_widget_get_type ())
 #define SEAHORSE_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SEAHORSE_TYPE_WIDGET, SeahorseWidget))
@@ -51,15 +36,33 @@
 typedef struct _SeahorseWidget SeahorseWidget;
 typedef struct _SeahorseWidgetClass SeahorseWidgetClass;
 
+/**
+ * SeahorseWidget:
+ * @parent: The parent #GtkObject
+ * @gtkbuilder: The #GtkBuilder object for the #SeahorseWidget
+ * @name: The name of the gtkbuilder file
+ *
+ * A window created from a gtkbuilder file.
+ *
+ * - All SeahorseWidget objects are destroyed when the SeahorseContext
+ *   goes bye-bye.
+ * - Implements fun GtkUIManager stuff.
+ *
+ * Signals:
+ *   destroy: The window was destroyed.
+ *
+ * Properties:
+ *   name: (gchar*) The name of the gtkbuilder file to load.
+ */
+
 struct _SeahorseWidget {
     GtkObject parent;
 
     /*< public >*/
-    GladeXML *xml;
+    GtkBuilder *gtkbuilder;
     gchar *name;
 
     /*< private >*/
-    GtkUIManager   *ui;
     gboolean destroying;
 };
 
@@ -77,7 +80,9 @@ SeahorseWidget*  seahorse_widget_new_allow_multiple (const gchar      *name,
 
 SeahorseWidget*  seahorse_widget_find               (const gchar      *name);
 
-GtkWidget*       seahorse_widget_get_top            (SeahorseWidget   *swidget);
+const gchar*     seahorse_widget_get_name           (SeahorseWidget   *swidget);
+
+GtkWidget*       seahorse_widget_get_toplevel       (SeahorseWidget   *swidget);
 
 GtkWidget*       seahorse_widget_get_widget         (SeahorseWidget   *swidget,
                                                      const char       *identifier);
@@ -95,14 +100,5 @@ void             seahorse_widget_set_sensitive      (SeahorseWidget   *swidget,
                                                      gboolean         sensitive);
 
 void             seahorse_widget_destroy            (SeahorseWidget   *swidget);
-
-GtkWidget*       seahorse_widget_get_ui_widget      (SeahorseWidget *swidget,
-                                                     const gchar *path);
-
-void             seahorse_widget_add_actions        (SeahorseWidget   *swidget,
-                                                     GtkActionGroup   *actions);
-
-GtkActionGroup*  seahorse_widget_find_actions       (SeahorseWidget   *swidget,
-                                                     const gchar *name);
 
 #endif /* __SEAHORSE_WIDGET_H__ */

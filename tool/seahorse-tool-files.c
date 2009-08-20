@@ -387,16 +387,16 @@ prepare_dialog (FilesCtx *ctx, guint nfolders, guint nfiles, GFileInfo *info, gc
 
     /* The main 'selected' message */
     msg = make_message (nfolders, nfiles);
-    w = glade_xml_get_widget (swidget->xml, "message");
+    w = GTK_WIDGET (seahorse_widget_get_widget (swidget, "message"));
     gtk_label_set_markup (GTK_LABEL(w), msg);
     g_free (msg);
 
     /* Setup the remote or local messages */
-    w = glade_xml_get_widget (swidget->xml,
-            ctx->remote ? "remote-options" : "local-options");
+    w = GTK_WIDGET (seahorse_widget_get_widget (swidget,
+            ctx->remote ? "remote-options" : "local-options"));
     gtk_widget_show (w);
 
-    tog = glade_xml_get_widget (swidget->xml, "do-separate");
+    tog = GTK_WIDGET (seahorse_widget_get_widget (swidget, "do-separate"));
 
     if (ctx->remote) {
         /* Always use the seperate option */
@@ -408,14 +408,14 @@ prepare_dialog (FilesCtx *ctx, guint nfolders, guint nfiles, GFileInfo *info, gc
         sep = seahorse_gconf_get_boolean (MULTI_SEPERATE_KEY);
 
         /* Setup the package */
-        w = glade_xml_get_widget (swidget->xml, "package-name");
+        w = GTK_WIDGET (seahorse_widget_get_widget (swidget, "package-name"));
         display = g_strdup (g_file_info_get_display_name (info));
         pkg = seahorse_util_uri_split_last (display);
         gtk_entry_set_text (GTK_ENTRY (w), pkg);
         g_free (display);
 
         /* Setup the URI combo box */
-        combo = glade_xml_get_widget (swidget->xml, "package-extension");
+        combo = GTK_WIDGET (seahorse_widget_get_widget (swidget, "package-extension"));
         store = GTK_TREE_MODEL (gtk_list_store_new (1, G_TYPE_STRING));
         gtk_combo_box_set_model (GTK_COMBO_BOX (combo), store);
         g_object_unref (store);
@@ -462,17 +462,17 @@ get_results (SeahorseWidget *swidget)
     GtkWidget *w;
     gboolean sep;
 
-    w = glade_xml_get_widget (swidget->xml, "do-separate");
+    w = GTK_WIDGET (seahorse_widget_get_widget (swidget, "do-separate"));
     sep = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (w));
     seahorse_gconf_set_boolean (MULTI_SEPERATE_KEY, sep);
 
     /* no packaging */
     if(!sep) {
 
-        w = glade_xml_get_widget (swidget->xml, "package-name");
+        w = GTK_WIDGET (seahorse_widget_get_widget (swidget, "package-name"));
         name = gtk_entry_get_text (GTK_ENTRY (w));
 
-        w = glade_xml_get_widget (swidget->xml, "package-extension");
+        w = GTK_WIDGET (seahorse_widget_get_widget (swidget, "package-extension"));
         ext = gtk_combo_box_get_active_text (GTK_COMBO_BOX (w));
 
 
@@ -543,7 +543,7 @@ step_process_multiple (FilesCtx *ctx, const gchar **orig_uris, GError **err)
 
     g_free (ext);
 
-    dlg = seahorse_widget_get_top (swidget);
+    dlg = seahorse_widget_get_toplevel (swidget);
 
     /* Inhibit popping up of progress dialog */
     seahorse_tool_progress_block (TRUE);

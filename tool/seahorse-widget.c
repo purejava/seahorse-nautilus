@@ -20,18 +20,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "config.h"
+#include <config.h>
 
 #include <string.h>
 
-#include <gtk/gtk.h>
-#include <gio/gio.h>
-
 #include <glib/gi18n.h>
-#include <glade/glade.h>
-#include <glade/glade-build.h>
 
 #include "seahorse-widget.h"
+#include "seahorse-gconf.h"
 #include "seahorse-gtkstock.h"
 
 #define STATUS "status"
@@ -56,16 +52,20 @@ static void     object_get_property (GObject                *object,
                                      GValue                 *value,
                                      GParamSpec             *pspec);
 
+static GObject* seahorse_widget_constructor (GType                  type,
+                                             guint                  n_props,
+                                             GObjectConstructParam* props);
+
 /* signal functions */
-static void     widget_closed        (GtkWidget             *widget,
-                                      SeahorseWidget        *swidget);
+G_MODULE_EXPORT void on_widget_closed   (GtkWidget             *widget,
+                                              SeahorseWidget        *swidget);
 
-static void     widget_help          (GtkWidget             *widget,
-                                      SeahorseWidget        *swidget);
+G_MODULE_EXPORT void on_widget_help     (GtkWidget             *widget,
+                                              SeahorseWidget        *swidget);
 
-static gboolean widget_delete_event  (GtkWidget             *widget,
-                                      GdkEvent              *event,
-                                      SeahorseWidget        *swidget);
+G_MODULE_EXPORT gboolean on_widget_delete_event  (GtkWidget             *widget,
+                                                       GdkEvent              *event,
+                                                       SeahorseWidget        *swidget);
 
 static GtkObjectClass *parent_class = NULL;
 
@@ -99,12 +99,13 @@ class_init (SeahorseWidgetClass *klass)
 	parent_class = g_type_class_peek_parent (klass);
 	gobject_class = G_OBJECT_CLASS (klass);
 
+	gobject_class->constructor = seahorse_widget_constructor;
 	gobject_class->finalize = object_finalize;
 	gobject_class->set_property = object_set_property;
 	gobject_class->get_property = object_get_property;
 
     g_object_class_install_property (gobject_class, PROP_NAME,
-        g_param_spec_string ("name", "Widget name", "Name of glade file and main widget",
+        g_param_spec_string ("name", "Widget name", "Name of gtkbuilder file and main widget",
                              NULL, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
@@ -112,6 +113,38 @@ static void
 object_init (SeahorseWidget *swidget)
 {
 
+}
+
+static GObject*
+seahorse_widget_constructor (GType type, guint n_props, GObjectConstructParam* props)
+{
+    SeahorseWidget *swidget;
+    GObject *obj;
+
+    GtkWindow *window;
+    gint width, height;
+    gchar *widthkey, *heightkey;
+
+    obj = G_OBJECT_CLASS (parent_class)->constructor (type, n_props, props);
+    swidget = SEAHORSE_WIDGET (obj);
+
+    /* Load window size for windows that aren't dialogs */
+    window = GTK_WINDOW (seahorse_widget_get_toplevel (swidget));
+    if (!GTK_IS_DIALOG (window)) {
+	    widthkey = g_strdup_printf ("%s%s%s", WINDOW_SIZE, swidget->name, "_width");
+	    width = seahorse_gconf_get_integer (widthkey);
+
+	    heightkey = g_strdup_printf ("%s%s%s", WINDOW_SIZE, swidget->name, "_height");
+	    height = seahorse_gconf_get_integer (heightkey);
+
+	    if (width > 0 && height > 0)
+		    gtk_window_resize (window, width, height);
+
+	    g_free (widthkey);
+	    g_free (heightkey);
+    }
+
+    return obj;
 }
 
 /* Disconnects callbacks, destroys main window widget,
@@ -132,11 +165,11 @@ object_finalize (GObject *gobject)
     	}
     }
 
-    if (glade_xml_get_widget (swidget->xml, swidget->name))
-	    gtk_widget_destroy (glade_xml_get_widget (swidget->xml, swidget->name));
+    if (seahorse_widget_get_widget (swidget, swidget->name))
+        gtk_widget_destroy (GTK_WIDGET (seahorse_widget_get_widget (swidget, swidget->name)));
 
-	g_object_unref (swidget->xml);
-	swidget->xml = NULL;
+	g_object_unref (swidget->gtkbuilder);
+	swidget->gtkbuilder = NULL;
 
 	g_free (swidget->name);
 
@@ -153,28 +186,24 @@ object_set_property (GObject *object, guint prop_id, const GValue *value, GParam
     swidget = SEAHORSE_WIDGET (object);
 
     switch (prop_id) {
-    /* Loads xml definition from name, connects common callbacks */
+    /* Loads gtkbuilder xml definition from name, connects common callbacks */
     case PROP_NAME:
         g_return_if_fail (swidget->name == NULL);
         swidget->name = g_value_dup_string (value);
-        path = g_strdup_printf ("%sseahorse-%s.glade",
-                                SEAHORSE_GLADEDIR, swidget->name);
-        swidget->xml = glade_xml_new (path, swidget->name, NULL);
+        path = g_strdup_printf ("%sseahorse-%s.xml",
+                                SEAHORSE_UIDIR, swidget->name);
+        swidget->gtkbuilder = gtk_builder_new ();
+        gtk_builder_add_from_file (swidget->gtkbuilder, path, NULL);
         g_free (path);
-        g_return_if_fail (swidget->xml != NULL);
+        g_return_if_fail (swidget->gtkbuilder != NULL);
 
-        glade_xml_signal_connect_data (swidget->xml, "closed",
-                                       G_CALLBACK (widget_closed), swidget);
-        glade_xml_signal_connect_data (swidget->xml, "delete_event",
-                                       G_CALLBACK (widget_delete_event), swidget);
-        glade_xml_signal_connect_data (swidget->xml, "help",
-                                       G_CALLBACK (widget_help), swidget);
+        gtk_builder_connect_signals (swidget->gtkbuilder, swidget);
 
-        w = glade_xml_get_widget (swidget->xml, swidget->name);
-        glade_xml_set_toplevel (swidget->xml, GTK_WINDOW (w));
-        glade_xml_ensure_accel (swidget->xml);
+        w = GTK_WIDGET (seahorse_widget_get_widget (swidget, swidget->name));
+		GTK_WIDGET_SET_FLAGS (GTK_WINDOW (w), GTK_TOPLEVEL);
+        /*TODO: glade_xml_ensure_accel (swidget->gtkbuilder);*/
 
-        gtk_window_set_icon_name (GTK_WINDOW (w), "seahorse-preferences");
+        gtk_window_set_icon_name (GTK_WINDOW (w), "seahorse");
         break;
     }
 }
@@ -194,30 +223,30 @@ object_get_property (GObject *object, guint prop_id, GValue *value, GParamSpec *
 	}
 }
 
-static void
-widget_help (GtkWidget *widget, SeahorseWidget *swidget)
+G_MODULE_EXPORT void
+on_widget_help (GtkWidget *widget, SeahorseWidget *swidget)
 {
     seahorse_widget_show_help (swidget);
 }
 
 /* Destroys widget */
-static void
-widget_closed (GtkWidget *widget, SeahorseWidget *swidget)
+G_MODULE_EXPORT void
+on_widget_closed (GtkWidget *widget, SeahorseWidget *swidget)
 {
 	seahorse_widget_destroy (swidget);
 }
 
 /* Closed widget */
-static gboolean
-widget_delete_event (GtkWidget *widget, GdkEvent *event, SeahorseWidget *swidget)
+G_MODULE_EXPORT gboolean
+on_widget_delete_event (GtkWidget *widget, GdkEvent *event, SeahorseWidget *swidget)
 {
-	widget_closed (widget, swidget);
+	on_widget_closed (widget, swidget);
     return FALSE; /* propogate event */
 }
 
 /**
  * seahorse_widget_new:
- * @name: Name of widget, filename part of glade file, and name of main window
+ * @name: Name of widget, filename part of gtkbuilder file, and name of main window
  * @parent: GtkWindow to make the parent of the new swidget
  *
  * Creates a new #SeahorseWidget.
@@ -233,7 +262,7 @@ seahorse_widget_new (const gchar *name, GtkWindow *parent)
 
     /* If widget already exists, present */
     if (swidget != NULL) {
-        gtk_window_present (GTK_WINDOW (glade_xml_get_widget (swidget->xml, swidget->name)));
+        gtk_window_present (GTK_WINDOW (seahorse_widget_get_widget (swidget, swidget->name)));
         return NULL;
     }
 
@@ -244,7 +273,7 @@ seahorse_widget_new (const gchar *name, GtkWindow *parent)
     g_hash_table_insert (widgets, g_strdup (name), swidget);
 
     if (parent != NULL) {
-        window = GTK_WINDOW (glade_xml_get_widget (swidget->xml, swidget->name));
+        window = GTK_WINDOW (seahorse_widget_get_widget (swidget, swidget->name));
         gtk_window_set_transient_for (window, parent);
     }
 
@@ -258,7 +287,7 @@ seahorse_widget_new (const gchar *name, GtkWindow *parent)
 
 /**
  * seahorse_widget_new_allow_multiple:
- * @name: Name of widget, filename part of glade file, and name of main window
+ * @name: Name of widget, filename part of gtkbuilder file, and name of main window
  * @parent: GtkWindow to make the parent of the new swidget
  *
  * Creates a new #SeahorseWidget without checking if it already exists.
@@ -272,9 +301,11 @@ seahorse_widget_new_allow_multiple (const gchar *name, GtkWindow *parent)
     SeahorseWidget *swidget = g_object_new (SEAHORSE_TYPE_WIDGET, "name", name,  NULL);
 
     if (parent != NULL) {
-        window = GTK_WINDOW (glade_xml_get_widget (swidget->xml, swidget->name));
+        window = GTK_WINDOW (seahorse_widget_get_widget (swidget, swidget->name));
         gtk_window_set_transient_for (window, parent);
     }
+
+	gtk_builder_connect_signals (swidget->gtkbuilder, NULL);
 
     /* We don't care about this floating business */
     g_object_ref (GTK_OBJECT (swidget));
@@ -302,9 +333,9 @@ seahorse_widget_find (const gchar *name)
 void
 seahorse_widget_show_help (SeahorseWidget *swidget)
 {
+    GError *error = NULL;
     gchar *document = NULL;
-    GError *err = NULL;
-    gboolean error;
+    GtkWidget *dialog = NULL;
 
     if (g_str_equal (swidget->name, "key-manager") ||
         g_str_equal (swidget->name, "keyserver-results")) {
@@ -313,26 +344,29 @@ seahorse_widget_show_help (SeahorseWidget *swidget)
         document = g_strdup_printf ("ghelp:" PACKAGE "?%s", swidget->name);
     }
 
-    error = g_app_info_launch_default_for_uri (document, NULL, &err);
-    g_free (document);
-
-    if (error != TRUE) {
-        GtkWidget *dialog;
-
-        dialog = gtk_message_dialog_new (GTK_WINDOW (seahorse_widget_get_top (swidget)), GTK_DIALOG_MODAL,
-                                         GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                                         _("Could not display help: %s"),
-                                         err->message);
-        g_error_free (err);
-
-        g_signal_connect (G_OBJECT (dialog), "response",
-                          G_CALLBACK (gtk_widget_destroy), NULL);
+    if (!g_app_info_launch_default_for_uri (document, NULL, &error)) {
+        dialog = gtk_message_dialog_new (GTK_WINDOW (seahorse_widget_get_toplevel (swidget)),
+                                         GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                                         _("Could not display help: %s"), error->message);
+        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);
     }
+
+    g_free (document);
+
+    if (error)
+        g_error_free (error);
+}
+
+const gchar*
+seahorse_widget_get_name (SeahorseWidget   *swidget)
+{
+	g_return_val_if_fail (SEAHORSE_IS_WIDGET (swidget), NULL);
+	return swidget->name;
 }
 
 /**
- * seahorse_widget_get_top
+ * seahorse_widget_get_toplevel
  * @swidget: The seahorse widget
  *
  * Return the top level widget in this seahorse widget
@@ -340,9 +374,9 @@ seahorse_widget_show_help (SeahorseWidget *swidget)
  * Returns: The top level widget
  **/
 GtkWidget*
-seahorse_widget_get_top     (SeahorseWidget     *swidget)
+seahorse_widget_get_toplevel (SeahorseWidget     *swidget)
 {
-    GtkWidget *widget = glade_xml_get_widget (swidget->xml, swidget->name);
+    GtkWidget *widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, swidget->name));
     g_return_val_if_fail (widget != NULL, NULL);
     return widget;
 }
@@ -350,8 +384,9 @@ seahorse_widget_get_top     (SeahorseWidget     *swidget)
 GtkWidget*
 seahorse_widget_get_widget (SeahorseWidget *swidget, const char *identifier)
 {
-    GtkWidget *widget = glade_xml_get_widget (swidget->xml, identifier);
-    g_return_val_if_fail (widget != NULL, NULL);
+    GtkWidget *widget = GTK_WIDGET (gtk_builder_get_object (swidget->gtkbuilder, identifier));
+    if (widget == NULL)
+	    g_warning ("could not find widget %s for seahorse-%s.xml", identifier, swidget->name);
     return widget;
 }
 
@@ -359,17 +394,14 @@ seahorse_widget_get_widget (SeahorseWidget *swidget, const char *identifier)
  * seahorse_widget_show:
  * @swidget: #SeahorseWidget to show
  *
- * Show the toplevel widget in the glade file.
+ * Show the toplevel widget in the gtkbuilder file.
  **/
 void
 seahorse_widget_show (SeahorseWidget *swidget)
 {
     GtkWidget *widget;
 
-    if (swidget->ui)
-        gtk_ui_manager_ensure_update (swidget->ui);
-
-    widget = glade_xml_get_widget (swidget->xml, swidget->name);
+    widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, swidget->name));
     g_return_if_fail (widget != NULL);
     gtk_widget_show (widget);
 }
@@ -378,7 +410,7 @@ void
 seahorse_widget_set_visible (SeahorseWidget *swidget, const char *identifier,
                              gboolean visible)
 {
-    GtkWidget *widget = glade_xml_get_widget (swidget->xml, identifier);
+    GtkWidget *widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, identifier));
     g_return_if_fail (widget != NULL);
 
     if (visible)
@@ -391,7 +423,7 @@ void
 seahorse_widget_set_sensitive (SeahorseWidget *swidget, const char *identifier,
                                gboolean sensitive)
 {
-    GtkWidget *widget = glade_xml_get_widget (swidget->xml, identifier);
+    GtkWidget *widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, identifier));
     g_return_if_fail (widget != NULL);
     gtk_widget_set_sensitive (widget, sensitive);
 }
@@ -405,163 +437,32 @@ seahorse_widget_set_sensitive (SeahorseWidget *swidget, const char *identifier,
 void
 seahorse_widget_destroy (SeahorseWidget *swidget)
 {
+    GtkWidget *widget;
+    gchar *widthkey, *heightkey;
+    gint width, height;
+
     g_return_if_fail (swidget != NULL && SEAHORSE_IS_WIDGET (swidget));
+    widget = seahorse_widget_get_toplevel (swidget);
+
+    /* Don't save window size for dialogs */
+    if (!GTK_IS_DIALOG (widget)) {
+
+	    /* Save window size */
+	    gtk_window_get_size (GTK_WINDOW (widget), &width, &height);
+
+	    widthkey = g_strdup_printf ("%s%s%s", WINDOW_SIZE, swidget->name, "_width");
+	    seahorse_gconf_set_integer (widthkey, width);
+
+	    heightkey = g_strdup_printf ("%s%s%s", WINDOW_SIZE, swidget->name, "_height");
+	    seahorse_gconf_set_integer (heightkey, height);
+
+	    g_free (widthkey);
+	    g_free (heightkey);
+    }
+
+    /* Destroy Widget */
     if (!swidget->destroying) {
         swidget->destroying = TRUE;
         g_object_unref (swidget);
     }
-}
-
-/* UI MANAGER CODE ---------------------------------------------------------- */
-
-static void
-ui_add_widget (GtkUIManager *ui, GtkWidget *widget, SeahorseWidget *swidget)
-{
-    GtkWidget *holder;
-    const gchar *name;
-
-    /* We automatically add menus and toolbars */
-    if (GTK_IS_MENU_BAR (widget))
-        name = "menu-placeholder";
-    else
-        name = "toolbar-placeholder";
-
-    if (name != NULL) {
-        /* Find the appropriate position in the glade file */
-        holder = glade_xml_get_widget (swidget->xml, name);
-        if (holder != NULL)
-            gtk_container_add (GTK_CONTAINER (holder), widget);
-        else
-            g_warning ("no place holder found for: %s", name);
-    }
-}
-
-static void
-ui_load (SeahorseWidget *swidget)
-{
-    GtkWidget *w;
-    GError *err = NULL;
-    gchar *path;
-
-    if (!swidget->ui) {
-
-        /* Load the menu/toolbar description file */
-        swidget->ui = gtk_ui_manager_new ();
-    	path = g_strdup_printf ("%sseahorse-%s.ui", SEAHORSE_GLADEDIR, swidget->name);
-        gtk_ui_manager_add_ui_from_file (swidget->ui, path, &err);
-		g_free (path);
-
-        if (err) {
-            g_warning ("couldn't load ui description for '%s': %s", swidget->name, err->message);
-            g_error_free (err);
-            return;
-        }
-
-        /* The widgets get added in an idle loop later */
-        g_signal_connect (swidget->ui, "add-widget", G_CALLBACK (ui_add_widget), swidget);
-
-        /* Attach accelerators to the window */
-        w = glade_xml_get_widget (swidget->xml, swidget->name);
-        if (GTK_IS_WINDOW (w))
-            gtk_window_add_accel_group (GTK_WINDOW (w), gtk_ui_manager_get_accel_group (swidget->ui));
-    }
-}
-
-static void
-cleanup_actions (GtkActionGroup *group)
-{
-    GList *actions, *l;
-
-    #define ELIPSIS "..."
-    #define ELIPSIS_LEN 3
-
-    actions = gtk_action_group_list_actions (group);
-
-    for (l = actions; l; l = g_list_next (l)) {
-        GtkAction *action = GTK_ACTION (l->data);
-        gchar *label;
-        guint len;
-
-        /* Remove the ellipsis from the end of action labels if present */
-        g_object_get (action, "short-label", &label, NULL);
-        if (label) {
-            len = strlen (label);
-            if (strcmp (ELIPSIS, label + (len - ELIPSIS_LEN)) == 0) {
-                label[len - ELIPSIS_LEN] = 0;
-                g_object_set (action, "short-label", label, NULL);
-            }
-            g_free (label);
-        }
-    }
-
-    g_list_free (actions);
-}
-
-/**
- * seahorse_widget_get_ui_widget
- * @swidget: The #SeahorseWidget.
- * @path: The path to the widget. See gtk_ui_manager_get_widget
- *
- * Returns a piece of generated UI. Note this doesn't look in the glade
- * file but rather looks in the GtkUIManager UI. If no UI has been loaded
- * then one will be loaded. The UI file has the same name as the glade file
- * but with a 'ui' extension.
- */
-GtkWidget*
-seahorse_widget_get_ui_widget (SeahorseWidget *swidget, const gchar *path)
-{
-    g_return_val_if_fail (SEAHORSE_IS_WIDGET (swidget), NULL);
-
-    ui_load (swidget);
-    g_return_val_if_fail (swidget->ui, NULL);
-
-    return gtk_ui_manager_get_widget (swidget->ui, path);
-}
-
-/**
- * seahorse_widget_add_actions
- * @swidget: The #SeahorseWidget.
- * @actions: A #GtkActionGroup to add to the UI.
- *
- * Adds a GtkActionGroup to this widget's GtkUIManager UI. If no UI
- * has been loaded then one will be loaded. The UI file has the same
- * name as the glade file but with a 'ui' extension.
- */
-void
-seahorse_widget_add_actions (SeahorseWidget *swidget, GtkActionGroup *actions)
-{
-    g_return_if_fail (SEAHORSE_IS_WIDGET (swidget));
-
-    ui_load (swidget);
-    g_return_if_fail (swidget->ui);
-
-    cleanup_actions (actions);
-    gtk_ui_manager_insert_action_group (swidget->ui, actions, -1);
-}
-
-/**
- * seahorse_widget_find_actions
- * @swidget: The #SeahorseWidget.
- * @name: The name of the action group.
- *
- * Find an #GtkActionGroup previously added to this widget.
- *
- * Returns: The action group.
- */
-GtkActionGroup*
-seahorse_widget_find_actions (SeahorseWidget *swidget, const gchar *name)
-{
-    GList *l;
-
-    g_return_val_if_fail (SEAHORSE_IS_WIDGET (swidget), NULL);
-
-    if (!swidget->ui)
-        return NULL;
-
-    for (l = gtk_ui_manager_get_action_groups (swidget->ui); l; l = g_list_next (l)) {
-        if (g_str_equal (gtk_action_group_get_name (GTK_ACTION_GROUP (l->data)), name))
-            return GTK_ACTION_GROUP (l->data);
-    }
-
-    return NULL;
 }
