@@ -40,7 +40,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <glade/glade-xml.h>
 
 #include "seahorse-gpgmex.h"
 #include "seahorse-libdialogs.h"
