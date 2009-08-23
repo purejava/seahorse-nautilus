@@ -692,7 +692,7 @@ main (int argc, char **argv)
     uris = read_uri_arguments ();
 
     if(!uris || !uris[0]) {
-        fprintf (stderr, "seahorse-tool: must specify files");
+        fprintf (stderr, "seahorse-tool: must specify files\n");
         return 2;
     }
 
