@@ -46,7 +46,7 @@
 #include "seahorse-widget.h"
 #include "seahorse-util.h"
 #include "seahorse-passphrase.h"
-#include "seahorse-secure-entry.h"
+#include "seahorse-secure-buffer.h"
 #include "seahorse-gpg-options.h"
 #include "agent/seahorse-agent.h"
 
@@ -122,7 +122,7 @@ static void
 confirm_callback (GtkWidget *widget, GtkDialog *dialog)
 {
     GtkWidget *entry = GTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "secure-entry"));
-    g_assert (SEAHORSE_IS_SECURE_ENTRY (entry));
+    g_assert (GTK_IS_ENTRY (entry));
     gtk_widget_grab_focus (entry);
 }
 
@@ -136,14 +136,14 @@ enter_callback (GtkWidget *widget, GtkDialog *dialog)
 static void
 entry_changed (GtkEditable *editable, GtkDialog *dialog)
 {
-    SeahorseSecureEntry *entry, *confirm;
+    GtkEntry *entry, *confirm;
 
-    entry = SEAHORSE_SECURE_ENTRY (g_object_get_data (G_OBJECT (dialog), "secure-entry"));
-    confirm = SEAHORSE_SECURE_ENTRY (g_object_get_data (G_OBJECT (dialog), "confirm-entry"));
+    entry = GTK_ENTRY (g_object_get_data (G_OBJECT (dialog), "secure-entry"));
+    confirm = GTK_ENTRY (g_object_get_data (G_OBJECT (dialog), "confirm-entry"));
 
     gtk_dialog_set_response_sensitive (dialog, GTK_RESPONSE_ACCEPT,
-                                       strcmp (seahorse_secure_entry_get_text (entry),
-                                               seahorse_secure_entry_get_text (confirm)) == 0);
+                                       strcmp (gtk_entry_get_text (entry),
+                                               gtk_entry_get_text (confirm)) == 0);
 }
 
 static gboolean
@@ -185,7 +185,8 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
                                  const gchar *prompt, const gchar *check,
                                  gboolean confirm)
 {
-    SeahorseSecureEntry *entry;
+    GtkEntryBuffer *buffer;
+    GtkEntry *entry;
     GtkDialog *dialog;
     GtkWidget *w;
     GtkWidget *box;
@@ -251,7 +252,9 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
         g_free (msg);
         gtk_table_attach (table, w, 0, 1, 0, 1, GTK_FILL, 0, 0, 0);
 
-        entry = SEAHORSE_SECURE_ENTRY (seahorse_secure_entry_new ());
+        buffer = seahorse_secure_buffer_new ();
+        entry = GTK_ENTRY (gtk_entry_new_with_buffer (buffer));
+        g_object_unref (buffer);
         gtk_widget_set_size_request (GTK_WIDGET (entry), 200, -1);
         g_object_set_data (G_OBJECT (dialog), "confirm-entry", entry);
         g_signal_connect (G_OBJECT (entry), "activate", G_CALLBACK (confirm_callback), dialog);
@@ -267,7 +270,9 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
     g_free (msg);
     gtk_table_attach (table, w, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
 
-    entry = SEAHORSE_SECURE_ENTRY (seahorse_secure_entry_new ());
+    buffer = seahorse_secure_buffer_new ();
+    entry = GTK_ENTRY (gtk_entry_new_with_buffer (buffer));
+    g_object_unref (buffer);
     gtk_widget_set_size_request (GTK_WIDGET (entry), 200, -1);
     g_object_set_data (G_OBJECT (dialog), "secure-entry", entry);
     g_signal_connect (G_OBJECT (entry), "activate", G_CALLBACK (enter_callback), dialog);
@@ -315,10 +320,10 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
 const gchar*
 seahorse_passphrase_prompt_get (GtkDialog *dialog)
 {
-    SeahorseSecureEntry *entry;
+    GtkEntry *entry;
 
-    entry = SEAHORSE_SECURE_ENTRY (g_object_get_data (G_OBJECT (dialog), "secure-entry"));
-    return seahorse_secure_entry_get_text (entry);
+    entry = GTK_ENTRY (g_object_get_data (G_OBJECT (dialog), "secure-entry"));
+    return gtk_entry_get_text (entry);
 }
 
 gboolean
