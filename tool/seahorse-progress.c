@@ -300,6 +300,8 @@ progress_show (SeahorseOperation *operation)
     /* Cancel events */
     g_signal_connect (seahorse_widget_get_toplevel (swidget), "delete_event",
                       G_CALLBACK (progress_delete_event), operation);
+    g_signal_connect (seahorse_widget_get_widget (swidget, "cancel") , "clicked",
+                      G_CALLBACK (on_progress_operation_cancel), operation);
 
     /* Done and cleanup */
     w = GTK_WIDGET (seahorse_widget_get_widget (swidget, swidget->name));
