@@ -254,6 +254,7 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
 
         buffer = seahorse_secure_buffer_new ();
         entry = GTK_ENTRY (gtk_entry_new_with_buffer (buffer));
+        gtk_entry_set_visibility (entry, FALSE);
         g_object_unref (buffer);
         gtk_widget_set_size_request (GTK_WIDGET (entry), 200, -1);
         g_object_set_data (G_OBJECT (dialog), "confirm-entry", entry);
@@ -272,6 +273,7 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
 
     buffer = seahorse_secure_buffer_new ();
     entry = GTK_ENTRY (gtk_entry_new_with_buffer (buffer));
+    gtk_entry_set_visibility (entry, FALSE);
     g_object_unref (buffer);
     gtk_widget_set_size_request (GTK_WIDGET (entry), 200, -1);
     g_object_set_data (G_OBJECT (dialog), "secure-entry", entry);
