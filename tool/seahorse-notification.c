@@ -675,8 +675,9 @@ seahorse_notify_signatures (const gchar* data, gpgme_verify_result_t status)
     }
 
     if (data) {
-        data = seahorse_util_uri_get_last (data);
-        title = g_strdup_printf ("%s: %s", data, title);
+        gchar *unesc_uri = g_uri_unescape_string (seahorse_util_uri_get_last (data), NULL);
+        title = g_strdup_printf ("%s: %s", unesc_uri, title);
+        g_free (unesc_uri);
     } else {
         title = g_strdup (title);
     }

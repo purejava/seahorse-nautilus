@@ -554,7 +554,7 @@ verify_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
 {
     gpgme_data_t plain;
     gpgme_error_t gerr;
-    gchar *original;
+    gchar *original, *unesc_uri;
 
     /* File to decrypt to */
     original = seahorse_util_remove_suffix (uri, NULL);
@@ -565,8 +565,9 @@ verify_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
         GtkWidget *dialog;
         gchar *t;
 
+        unesc_uri = g_uri_unescape_string (seahorse_util_uri_get_last (uri), NULL);
         t = g_strdup_printf (_("Choose Original File for '%s'"),
-                             seahorse_util_uri_get_last (uri));
+                             unesc_uri);
 
         dialog = gtk_file_chooser_dialog_new (t,
                                 NULL, GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -574,6 +575,7 @@ verify_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
                                 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
                                 NULL);
 
+        g_free (unesc_uri);
         g_free (t);
 
         gtk_file_chooser_set_uri (GTK_FILE_CHOOSER (dialog), original);
