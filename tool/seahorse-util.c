@@ -1083,6 +1083,7 @@ seahorse_util_determine_popup_menu_position (GtkMenu *menu, int *x, int *y,
 {
         GtkWidget      *widget;
         GtkRequisition  requisition;
+        GtkAllocation   allocation;
         gint            menu_xpos;
         gint            menu_ypos;
 
@@ -1090,16 +1091,17 @@ seahorse_util_determine_popup_menu_position (GtkMenu *menu, int *x, int *y,
 
         gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
 
-        gdk_window_get_origin (widget->window, &menu_xpos, &menu_ypos);
+        gdk_window_get_origin (gtk_widget_get_window (widget), &menu_xpos, &menu_ypos);
 
-        menu_xpos += widget->allocation.x;
-        menu_ypos += widget->allocation.y;
+        gtk_widget_get_allocation (widget, &allocation);
+        menu_xpos += allocation.x;
+        menu_ypos += allocation.y;
 
 
         if (menu_ypos > gdk_screen_get_height (gtk_widget_get_screen (widget)) / 2)
                 menu_ypos -= requisition.height;
         else
-                menu_ypos += widget->allocation.height;
+                menu_ypos += allocation.height;
 
         *x = menu_xpos;
         *y = menu_ypos;
