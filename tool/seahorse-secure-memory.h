@@ -1,5 +1,5 @@
 /*
- * Quintuple Agent secure memory allocation
+ * Secure memory allocation
  * Copyright (C) 1998,1999 Free Software Foundation, Inc.
  * Copyright (C) 1999,2000 Robert Bihlmeyer <robbe@orcus.priv.at>
  *
