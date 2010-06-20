@@ -323,6 +323,7 @@ seahorse_pgp_operation_init (SeahorsePGPOperation *pop)
     gpgme_error_t err;
     gpgme_ctx_t ctx;
 
+    gpgme_check_version (NULL);
     err = gpgme_engine_check_version (proto);
     g_return_if_fail (GPG_IS_OK (err));
 
