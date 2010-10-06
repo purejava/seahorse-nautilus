@@ -394,7 +394,7 @@ multi_operation_progress (SeahorseOperation *operation, const gchar *message,
     /* One or two operations, simple */
     if (g_slist_length (list) <= 1) {
 
-        DEBUG_OPERATION (("[multi-operation 0x%08X] single progress: %s %lf\n", (guint)mop,
+        DEBUG_OPERATION (("[multi-operation 0x%08X] single progress: %s %lf\n", GPOINTER_TO_UINT (mop),
             seahorse_operation_get_message (operation), operation->progress));
 
         seahorse_operation_mark_progress (SEAHORSE_OPERATION (mop),
@@ -435,7 +435,7 @@ multi_operation_progress (SeahorseOperation *operation, const gchar *message,
 
         progress = total ? current / total : -1;
 
-        DEBUG_OPERATION (("[multi-operation 0x%08X] multi progress: %s %lf\n", (guint)mop,
+        DEBUG_OPERATION (("[multi-operation 0x%08X] multi progress: %s %lf\n", GPOINTER_TO_UINT (mop),
                           message, progress));
 
         seahorse_operation_mark_progress (SEAHORSE_OPERATION (mop), message, progress);
@@ -457,8 +457,8 @@ multi_operation_done (SeahorseOperation *op, SeahorseMultiOperation *mop)
     if (!seahorse_operation_is_successful (op) && !SEAHORSE_OPERATION (mop)->error)
         seahorse_operation_copy_error (op, &(SEAHORSE_OPERATION (mop)->error));
 
-    DEBUG_OPERATION (("[multi-operation 0x%08X] part complete (%d): 0x%08X/%s\n", (guint)mop,
-                g_slist_length (mop->operations), (guint)op, seahorse_operation_get_message (op)));
+    DEBUG_OPERATION (("[multi-operation 0x%08X] part complete (%d): 0x%08X/%s\n", GPOINTER_TO_UINT (mop),
+                g_slist_length (mop->operations), GPOINTER_TO_UINT (op), seahorse_operation_get_message (op)));
 
     /* Are we done with all of them? */
     for (l = mop->operations; l; l = g_slist_next (l)) {
@@ -472,7 +472,7 @@ multi_operation_done (SeahorseOperation *op, SeahorseMultiOperation *mop)
         return;
     }
 
-    DEBUG_OPERATION (("[multi-operation 0x%08X] complete\n", (guint)mop));
+    DEBUG_OPERATION (("[multi-operation 0x%08X] complete\n", GPOINTER_TO_UINT (mop)));
 
     /* Remove all the listeners */
     for (l = mop->operations; l; l = g_slist_next (l)) {
@@ -575,11 +575,11 @@ seahorse_multi_operation_take (SeahorseMultiOperation* mop, SeahorseOperation *o
     g_return_if_fail (SEAHORSE_OPERATION (op) != SEAHORSE_OPERATION (mop));
 
     if(mop->operations == NULL) {
-        DEBUG_OPERATION (("[multi-operation 0x%08X] start\n", (guint)mop));
+        DEBUG_OPERATION (("[multi-operation 0x%08X] start\n", GPOINTER_TO_UINT (mop)));
         seahorse_operation_mark_start (SEAHORSE_OPERATION (mop));
     }
 
-    DEBUG_OPERATION (("[multi-operation 0x%08X] adding part: 0x%08X\n", (guint)mop, (guint)op));
+    DEBUG_OPERATION (("[multi-operation 0x%08X] adding part: 0x%08X\n", GPOINTER_TO_UINT (mop), GPOINTER_TO_UINT (op)));
 
     mop->operations = seahorse_operation_list_add (mop->operations, op);
     seahorse_operation_watch (op, G_CALLBACK (multi_operation_done),
