@@ -24,6 +24,13 @@
 
 #include "seahorse-pgp-operation.h"
 
+extern gboolean mode_import;
+extern gboolean mode_encrypt;
+extern gboolean mode_sign;
+extern gboolean mode_encrypt_sign;
+extern gboolean mode_decrypt;
+extern gboolean mode_verify;
+
 struct _SeahorseToolMode;
 typedef gboolean (*SeahorseToolCallback) (struct _SeahorseToolMode *mode, const gchar *uri,
                                           gpgme_data_t uridata, SeahorsePGPOperation *pop,

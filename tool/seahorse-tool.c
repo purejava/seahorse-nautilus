@@ -50,12 +50,12 @@
 
 static gchar **arg_uris = NULL;
 static gboolean read_uris = FALSE;
-static gboolean mode_import = FALSE;
-static gboolean mode_encrypt = FALSE;
-static gboolean mode_sign = FALSE;
-static gboolean mode_encrypt_sign = FALSE;
-static gboolean mode_decrypt = FALSE;
-static gboolean mode_verify = FALSE;
+gboolean mode_import = FALSE;
+gboolean mode_encrypt = FALSE;
+gboolean mode_sign = FALSE;
+gboolean mode_encrypt_sign = FALSE;
+gboolean mode_decrypt = FALSE;
+gboolean mode_verify = FALSE;
 
 static const GOptionEntry options[] = {
     { "import", 'i', 0, G_OPTION_ARG_NONE, &mode_import,

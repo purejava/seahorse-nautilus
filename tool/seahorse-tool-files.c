@@ -764,6 +764,7 @@ step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
     SeahorseOperation *op;
     FileInfo *finfo;
     GList *l;
+    gchar *filename;
 
     /* Reset our done counter */
     ctx->done = 0;
@@ -788,6 +789,14 @@ step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
 
         /* Inhibit popping up of progress dialog */
         seahorse_tool_progress_block (TRUE);
+
+        /* Embed filename during encryption */
+        if (mode_encrypt)
+        {
+            filename = g_file_get_basename (finfo->file);
+            gpgme_data_set_file_name (data, filename);
+            g_free (filename);
+        }
 
         /* The start callback */
         if (mode->startcb) {
