@@ -342,8 +342,7 @@ make_message (guint folders, guint files)
 
     } else if (files > 0) {
 
-        g_assert (files > 1);    /* should never be called for just one file */
-        return g_strdup_printf (_("You have selected %d files"), files);
+        return g_strdup_printf (ngettext ("You have selected %d file", "You have selected %d files", files), files);
 
     } else if (folders > 0) {
 
