@@ -28,7 +28,6 @@
 
 #include "seahorse-widget.h"
 #include "seahorse-gconf.h"
-#include "seahorse-gtkstock.h"
 
 #define STATUS "status"
 

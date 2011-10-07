@@ -395,13 +395,10 @@ keys_start_element (GMarkupParseContext *ctx, const gchar *element_name,
     if (strcmp (element_name, "key") == 0) {
 
         const gchar *key = NULL;
-        const gchar *field = NULL;
 
         for (; *attribute_names && *attribute_values; attribute_names++, attribute_values++) {
             if (strcmp (*attribute_names, "id") == 0)
                 key = *attribute_values;
-            else if (strcmp (*attribute_names, "field") == 0)
-                field = *attribute_values;
         }
 
         if (!key)

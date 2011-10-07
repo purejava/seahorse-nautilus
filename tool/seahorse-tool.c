@@ -38,7 +38,6 @@
 #include "seahorse-util.h"
 #include "seahorse-vfs-data.h"
 #include "seahorse-libdialogs.h"
-#include "seahorse-gtkstock.h"
 #include "seahorse-gconf.h"
 #include "seahorse-util.h"
 
@@ -704,9 +703,6 @@ main (int argc, char **argv)
         fprintf (stderr, "seahorse-tool: must specify files\n");
         return 2;
     }
-
-    /* Insert Icons into Stock */
-    seahorse_gtkstock_init();
 
     /* The basic settings for the operation */
     memset (&mode, 0, sizeof (mode));

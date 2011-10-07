@@ -25,7 +25,6 @@
 #include <signal.h>
 #include <stdlib.h>
 
-#include "seahorse-gtkstock.h"
 #include "seahorse-util.h"
 #include "seahorse-progress.h"
 #include "seahorse-widget.h"
@@ -158,9 +157,6 @@ progress_main (int argc, char* argv[])
     GIOChannel *io;
 
     gtk_init (&argc, &argv);
-
-    /* Insert Icons into Stock */
-    seahorse_gtkstock_init();
 
     op = g_object_new (SEAHORSE_TYPE_OPERATION, NULL);
     seahorse_operation_mark_start (op);

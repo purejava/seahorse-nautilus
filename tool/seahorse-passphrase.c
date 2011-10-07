@@ -50,7 +50,6 @@
 #include "seahorse-util.h"
 #include "seahorse-passphrase.h"
 #include "seahorse-secure-buffer.h"
-#include "seahorse-gpg-options.h"
 
 #define HIG_SMALL      6        /* gnome hig small space in pixels */
 #define HIG_LARGE     12        /* gnome hig large space in pixels */
@@ -192,7 +191,6 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
     GtkDialog *dialog;
     GtkWidget *w;
     GtkWidget *box;
-    GtkWidget *ebox;
     GtkTable *table;
     GtkWidget *wvbox;
     GtkWidget *chbox;
@@ -248,7 +246,6 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
 
     /* The first entry if we have one */
     if (confirm) {
-        ebox = gtk_hbox_new (FALSE, HIG_LARGE);
         msg = utf8_validate (prompt);
         w = gtk_label_new (msg);
         g_free (msg);
@@ -267,7 +264,6 @@ seahorse_passphrase_prompt_show (const gchar *title, const gchar *description,
     }
 
     /* The second and main entry */
-    ebox = gtk_hbox_new (FALSE, HIG_LARGE);
     msg = utf8_validate (confirm ? _("Confirm:") : prompt);
     w = gtk_label_new (msg);
     g_free (msg);
