@@ -24,6 +24,9 @@
 #include "seahorse-progress.h"
 #include "seahorse-widget.h"
 
+G_MODULE_EXPORT void     on_progress_operation_cancel    (GtkButton *button,
+                                                          SeahorseOperation *operation);
+
 /* -----------------------------------------------------------------------------
  *  GENERIC PROGRESS BAR HANDLING
  */
@@ -130,61 +133,6 @@ disconnect_progress (SeahorseWidget *widget, SeahorseOperation *op)
 {
     g_signal_handlers_disconnect_by_func (op, operation_progress, widget);
     g_signal_handlers_disconnect_by_func (op, operation_done, widget);
-}
-
-void
-seahorse_progress_status_set_operation (SeahorseWidget *swidget,
-                                        SeahorseOperation *operation)
-{
-    SeahorseOperation *prev;
-
-    /*
-     * Note that this is not one off, the operation is monitored until it is
-     * replaced, so if the operation starts up again the progress will be
-     * displayed
-     */
-
-    g_return_if_fail (SEAHORSE_IS_WIDGET (swidget));
-    g_return_if_fail (SEAHORSE_IS_OPERATION (operation));
-
-    prev = SEAHORSE_OPERATION (g_object_get_data (G_OBJECT (swidget), "operation"));
-    if (prev) {
-
-        /* If it's the same operation, just ignore */
-        if (prev == operation)
-            return;
-
-        /* If the previous one was a multi operation, just piggy back this one in */
-        if (SEAHORSE_IS_MULTI_OPERATION (prev)) {
-       	    g_object_ref (operation);
-            seahorse_multi_operation_take (SEAHORSE_MULTI_OPERATION (prev), operation);
-            return;
-        }
-
-        /* Otherwise disconnect old progress, replace with new */
-        disconnect_progress (swidget, prev);
-    }
-
-    g_object_ref (operation);
-    g_object_set_data_full (G_OBJECT (swidget), "operation", operation,
-                            (GDestroyNotify)g_object_unref);
-    g_signal_connect (swidget, "destroy",
-                      G_CALLBACK (disconnect_progress), operation);
-
-    if (!seahorse_operation_is_running (operation))
-        operation_done (operation, swidget);
-
-    operation_progress (operation, seahorse_operation_get_message (operation),
-                        seahorse_operation_get_progress (operation), swidget);
-
-    g_signal_connect (operation, "done", G_CALLBACK (operation_done), swidget);
-    g_signal_connect (operation, "progress", G_CALLBACK (operation_progress), swidget);
-}
-
-SeahorseOperation*
-seahorse_progress_status_get_operation (SeahorseWidget *swidget)
-{
-    return SEAHORSE_OPERATION (g_object_get_data (G_OBJECT (swidget), "operation"));
 }
 
 /* -----------------------------------------------------------------------------

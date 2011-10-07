@@ -28,7 +28,6 @@
 
 #include <cryptui.h>
 
-#include "seahorse-gpgmex.h"
 #include "seahorse-libdialogs.h"
 #include "seahorse-util.h"
 
@@ -67,6 +66,8 @@ typedef struct _SeahorseNotification {
 typedef struct _SeahorseNotificationClass {
     GObjectClass parent_class;
 } SeahorseNotificationClass;
+
+GType seahorse_notification_get_type (void) G_GNUC_CONST;
 
 G_DEFINE_TYPE (SeahorseNotification, seahorse_notification, G_TYPE_OBJECT);
 
@@ -342,8 +343,8 @@ setup_fallback_notification (SeahorseNotification *snotif, gboolean urgent,
     gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
 
     /* Layout */
-    hbox = gtk_hbox_new (FALSE, 12);
-    vbox = gtk_vbox_new (FALSE, 6);
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
     gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (messages), hbox, FALSE, FALSE, 0);
@@ -410,7 +411,7 @@ keys_start_element (GMarkupParseContext *ctx, const gchar *element_name,
 
 }
 
-void
+static void
 free_keyset (void)
 {
     if (keyset)
@@ -599,15 +600,6 @@ seahorse_notify_import (guint keynum, gchar **keys)
 }
 
 void
-seahorse_notify_import_local (guint keys, GtkWidget *attachto)
-{
-    gchar *body = g_strdup_printf(ngettext("Imported %i key", "Imported %i keys", keys), keys);
-    seahorse_notification_display (ngettext("Key Imported", "Keys Imported", keys), body,
-                                   FALSE, ICON_PREFIX "seahorse-key.png", attachto);
-    g_free (body);
-}
-
-void
 seahorse_notify_signatures (const gchar* data, gpgme_verify_result_t status)
 {
     const gchar *icon = NULL;
@@ -659,7 +651,7 @@ seahorse_notify_signatures (const gchar* data, gpgme_verify_result_t status)
     case GPG_ERR_NO_DATA:
         return;
     default:
-        if (!GPG_IS_OK (status->signatures->status))
+        if (status->signatures->status != 0)
             seahorse_util_handle_gpgme (status->signatures->status,
                                         _("Couldn't verify signature."));
         return;

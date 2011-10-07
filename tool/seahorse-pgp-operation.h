@@ -55,7 +55,7 @@
  */
 
 #include "seahorse-operation.h"
-#include "seahorse-gpgmex.h"
+#include <gpgme.h>
 
 #define SEAHORSE_TYPE_PGP_OPERATION            (seahorse_pgp_operation_get_type ())
 #define SEAHORSE_PGP_OPERATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SEAHORSE_TYPE_PGP_OPERATION, SeahorsePGPOperation))

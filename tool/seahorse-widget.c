@@ -248,12 +248,6 @@ object_get_property (GObject *object, guint prop_id, GValue *value, GParamSpec *
 	}
 }
 
-G_MODULE_EXPORT void
-on_widget_help (GtkWidget *widget, SeahorseWidget *swidget)
-{
-    seahorse_widget_show_help (swidget);
-}
-
 /* Destroys widget */
 G_MODULE_EXPORT void
 on_widget_closed (GtkWidget *widget, SeahorseWidget *swidget)
@@ -340,47 +334,6 @@ seahorse_widget_find (const gchar *name)
 }
 
 /**
- * seahorse_widget_show_help
- * @swidget: The #SeahorseWidget.
- *
- * Show help appropriate for the top level widget.
- */
-void
-seahorse_widget_show_help (SeahorseWidget *swidget)
-{
-    GError *error = NULL;
-    gchar *document = NULL;
-    GtkWidget *dialog = NULL;
-
-    if (g_str_equal (swidget->name, "key-manager") ||
-        g_str_equal (swidget->name, "keyserver-results")) {
-        document = g_strdup ("ghelp:" PACKAGE "?introduction");
-    } else {
-        document = g_strdup_printf ("ghelp:" PACKAGE "?%s", swidget->name);
-    }
-
-    if (!g_app_info_launch_default_for_uri (document, NULL, &error)) {
-        dialog = gtk_message_dialog_new (GTK_WINDOW (seahorse_widget_get_toplevel (swidget)),
-                                         GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                                         _("Could not display help: %s"), error->message);
-        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
-        gtk_widget_show (dialog);
-    }
-
-    g_free (document);
-
-    if (error)
-        g_error_free (error);
-}
-
-const gchar*
-seahorse_widget_get_name (SeahorseWidget   *swidget)
-{
-	g_return_val_if_fail (SEAHORSE_IS_WIDGET (swidget), NULL);
-	return swidget->name;
-}
-
-/**
  * seahorse_widget_get_toplevel
  * @swidget: The seahorse widget
  *
@@ -403,44 +356,6 @@ seahorse_widget_get_widget (SeahorseWidget *swidget, const char *identifier)
     if (widget == NULL)
 	    g_warning ("could not find widget %s for seahorse-%s.xml", identifier, swidget->name);
     return widget;
-}
-
-/**
- * seahorse_widget_show:
- * @swidget: #SeahorseWidget to show
- *
- * Show the toplevel widget in the gtkbuilder file.
- **/
-void
-seahorse_widget_show (SeahorseWidget *swidget)
-{
-    GtkWidget *widget;
-
-    widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, swidget->name));
-    g_return_if_fail (widget != NULL);
-    gtk_widget_show (widget);
-}
-
-void
-seahorse_widget_set_visible (SeahorseWidget *swidget, const char *identifier,
-                             gboolean visible)
-{
-    GtkWidget *widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, identifier));
-    g_return_if_fail (widget != NULL);
-
-    if (visible)
-        gtk_widget_show (widget);
-    else
-        gtk_widget_hide (widget);
-}
-
-void
-seahorse_widget_set_sensitive (SeahorseWidget *swidget, const char *identifier,
-                               gboolean sensitive)
-{
-    GtkWidget *widget = GTK_WIDGET (seahorse_widget_get_widget (swidget, identifier));
-    g_return_if_fail (widget != NULL);
-    gtk_widget_set_sensitive (widget, sensitive);
 }
 
 /**

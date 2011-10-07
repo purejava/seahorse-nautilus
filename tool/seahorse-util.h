@@ -38,22 +38,19 @@ typedef enum {
     SEAHORSE_SIG_SUFFIX,
 } SeahorseSuffix;
 
-#define SEAHORSE_EXT_ASC ".asc"
 #define SEAHORSE_EXT_SIG ".sig"
 #define SEAHORSE_EXT_PGP ".pgp"
-#define SEAHORSE_EXT_GPG ".gpg"
 
-gchar*		seahorse_util_get_date_string		    (const time_t		time);
 gchar*		seahorse_util_get_display_date_string   (const time_t		time);
 
 
 #define SEAHORSE_GPGME_ERROR  (seahorse_util_gpgme_error_domain ())
 
-GQuark      seahorse_util_gpgme_error_domain ();
+GQuark      seahorse_util_gpgme_error_domain (void) G_GNUC_CONST;
 
 #define SEAHORSE_ERROR  (seahorse_util_error_domain ())
 
-GQuark      seahorse_util_error_domain ();
+GQuark      seahorse_util_error_domain (void) G_GNUC_CONST;
 
 void        seahorse_util_gpgme_to_error        (gpgme_error_t gerr,
                                                  GError** err);
@@ -68,26 +65,10 @@ void        seahorse_util_handle_gpgme          (gpgme_error_t      err,
 void        seahorse_util_handle_error          (GError*            err,
                                                  const char*        desc, ...);
 
-gchar*      seahorse_util_write_data_to_text    (gpgme_data_t       data,
-                                                 guint              *len);
-
-guint       seahorse_util_read_data_block       (GString            *buf,
-                                                 gpgme_data_t       data,
-                                                 const gchar        *start,
-                                                 const gchar*       end);
-
-gboolean    seahorse_util_print_fd          (int fd,
-                                             const char* data);
-
 gboolean    seahorse_util_printf_fd         (int fd,
                                              const char* data, ...);
 
 gboolean    seahorse_util_uri_exists        (const gchar* uri);
-
-gchar*      seahorse_util_uri_unique        (const gchar* uri);
-
-gchar*      seahorse_util_uri_replace_ext   (const gchar *uri,
-                                             const gchar *ext);
 
 const gchar* seahorse_util_uri_get_last     (const gchar* uri);
 
@@ -96,13 +77,6 @@ const gchar* seahorse_util_uri_split_last   (gchar* uri);
 gboolean    seahorse_util_uris_package      (const gchar* package,
                                              const gchar** uris);
 
-gboolean    seahorse_util_write_file_private            (const gchar* filename,
-                                                         const gchar* contents,
-                                                         GError **err);
-
-GtkWidget*  seahorse_util_chooser_open_new              (const gchar *title,
-                                                         GtkWindow *parent);
-
 GtkWidget*  seahorse_util_chooser_save_new              (const gchar *title,
                                                          GtkWindow *parent);
 
@@ -110,12 +84,7 @@ void        seahorse_util_chooser_show_key_files        (GtkWidget *dialog);
 
 void        seahorse_util_chooser_show_archive_files    (GtkWidget *dialog);
 
-gchar*      seahorse_util_chooser_open_prompt           (GtkWidget *dialog);
-
 gchar*      seahorse_util_chooser_save_prompt           (GtkWidget *dialog);
-
-gboolean	seahorse_util_check_suffix		(const gchar		*path,
-                                             SeahorseSuffix     suffix);
 
 gchar*		seahorse_util_add_suffix		(const gchar        *path,
                                              SeahorseSuffix     suffix,
@@ -124,33 +93,9 @@ gchar*		seahorse_util_add_suffix		(const gchar        *path,
 gchar*      seahorse_util_remove_suffix     (const gchar        *path,
                                              const gchar        *prompt);
 
-gchar**     seahorse_util_strvec_dup        (const gchar        **vec);
-
-guint       seahorse_util_strvec_length       (const gchar      **vec);
-
 void         seahorse_util_free_keys          (gpgme_key_t* keys);
 
 gboolean    seahorse_util_string_equals       (const gchar *s1, const gchar *s2);
-
-gchar*      seahorse_util_string_up_first     (const gchar *orig);
-
-void        seahorse_util_string_lower        (gchar *s);
-
-GSList*     seahorse_util_string_slist_free   (GSList *slist);
-
-GSList*     seahorse_util_string_slist_copy   (GSList *slist);
-
-gboolean    seahorse_util_string_slist_equal  (GSList *sl1, GSList *sl2);
-
-gboolean    seahorse_util_string_is_whitespace (const gchar *text);
-
-void        seahorse_util_string_trim_whitespace (gchar *text);
-
-void        seahorse_util_determine_popup_menu_position  (GtkMenu *menu,
-                                                           int *x,
-                                                           int *y,
-                                                           gboolean *push_in,
-                                                           gpointer gdata);
 
 #define     seahorse_util_wait_until(expr)                \
     while (!(expr)) {                                     \
@@ -158,11 +103,5 @@ void        seahorse_util_determine_popup_menu_position  (GtkMenu *menu,
             g_main_context_iteration (NULL, FALSE);       \
         g_thread_yield ();                                \
     }
-
-#ifdef _DEBUG
-#define DBG_PRINT(x) g_printerr x
-#else
-#define DBG_PRINT(x)
-#endif
 
 #endif /* __SEAHORSE_UTIL_H__ */

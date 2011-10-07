@@ -186,7 +186,7 @@ FRCommandDescription tar_command_desc[] = {
 
 FRFileType save_type[32];
 
-gboolean
+static gboolean
 is_program_in_path (const char *filename)
 {
 	char *str;
@@ -234,8 +234,10 @@ compute_supported_archive_types (void)
  * CHECK STEP
  */
 
-gboolean
-step_check_uris (FilesCtx *ctx, const gchar **uris, GError **err)
+static gboolean
+step_check_uris (FilesCtx *ctx,
+                 const gchar **uris,
+                 GError **err)
 {
     GFile *file, *base;
     GFileInfo *info;
@@ -502,8 +504,10 @@ get_results (SeahorseWidget *swidget)
     return NULL;
 }
 
-gboolean
-step_process_multiple (FilesCtx *ctx, const gchar **orig_uris, GError **err)
+static gboolean
+step_process_multiple (FilesCtx *ctx,
+                       const gchar **orig_uris,
+                       GError **err)
 {
     SeahorseWidget *swidget;
     gboolean done = FALSE;
@@ -686,8 +690,9 @@ visit_enumerator (FilesCtx *ctx, GFile *parent, GFileEnumerator *enumerator, GEr
     return ret;
 }
 
-gboolean
-step_expand_uris (FilesCtx *ctx, GError **err)
+static gboolean
+step_expand_uris (FilesCtx *ctx,
+                  GError **err)
 {
     GFileEnumerator *enumerator;
     gboolean ret = TRUE;
@@ -753,8 +758,10 @@ progress_cb (gpgme_data_t data, goffset pos, FilesCtx *ctx)
                                    seahorse_util_uri_get_last (g_file_info_get_display_name (ctx->cur->info)));
 }
 
-gboolean
-step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
+static gboolean
+step_operation (FilesCtx *ctx,
+                SeahorseToolMode *mode,
+                GError **err)
 {
     SeahorsePGPOperation *pop = NULL;
     gpgme_data_t data = NULL;
@@ -833,7 +840,7 @@ step_operation (FilesCtx *ctx, SeahorseToolMode *mode, GError **err)
         g_object_unref (pop);
         pop = NULL;
 
-        gpgmex_data_release (data);
+        gpgme_data_release (data);
         data = NULL;
     }
 
@@ -844,7 +851,7 @@ finally:
     if (pop)
         g_object_unref (pop);
     if (data)
-        gpgmex_data_release (data);
+        gpgme_data_release (data);
 
     return ret;
 }

@@ -9,7 +9,7 @@ AM_INIT_AUTOMAKE([1.11 tar-ustar foreign -Wno-portability])
 AM_SANITY_CHECK
 AM_CONFIG_HEADER(config.h)
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
-AM_MAINTAINER_MODE([enable])
+AM_MAINTAINER_MODE([ena])
 AC_CONFIG_MACRO_DIR([m4])
 
 # -----------------------------------------------------------------------------
@@ -297,7 +297,6 @@ nautilus-ext/Makefile
 ])
 
 echo "
-GTK+ Version:            $GTK_API_VERSION
 GnuPG Version:           $gnupg_version
 GPGME Version:           $gpgme_config_version
 Notification Support:    $enable_libnotify

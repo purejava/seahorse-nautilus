@@ -22,7 +22,6 @@
 #include "config.h"
 #include "seahorse-passphrase.h"
 #include "seahorse-pgp-operation.h"
-#include "seahorse-gpgmex.h"
 #include "seahorse-util.h"
 
 #define DEBUG_OPERATION_ENABLE 0
@@ -210,7 +209,7 @@ register_cb (void *data, int fd, int dir, gpgme_io_cb_t fnc, void *fnc_data,
     pv->watches = g_list_append (pv->watches, watch);
     *tag = watch;
 
-    return GPG_OK;
+    return 0;
 }
 
 /* Remove a callback. */
@@ -325,13 +324,13 @@ seahorse_pgp_operation_init (SeahorsePGPOperation *pop)
 
     gpgme_check_version (NULL);
     err = gpgme_engine_check_version (proto);
-    g_return_if_fail (GPG_IS_OK (err));
+    g_return_if_fail (err == 0);
 
     err = gpgme_new (&ctx);
-    g_return_if_fail (GPG_IS_OK (err));
+    g_return_if_fail (err == 0);
 
     err = gpgme_set_protocol (ctx, proto);
-    g_return_if_fail (GPG_IS_OK (err));
+    g_return_if_fail (err == 0);
 
     gpgme_set_passphrase_cb (ctx, (gpgme_passphrase_cb_t)seahorse_passphrase_get, NULL);
     gpgme_set_keylist_mode (ctx, GPGME_KEYLIST_MODE_LOCAL);

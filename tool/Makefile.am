@@ -17,7 +17,6 @@ BUILT_SOURCES = \
 
 seahorse_tool_SOURCES = \
 	seahorse-gconf.c seahorse-gconf.h \
-	seahorse-gpgmex-op.c seahorse-gpgmex-util.c seahorse-gpgmex.h \
 	seahorse-libdialogs.h \
 	seahorse-notification.c \
 	seahorse-operation.c seahorse-operation.h \

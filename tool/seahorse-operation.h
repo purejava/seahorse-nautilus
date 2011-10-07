@@ -99,18 +99,10 @@ GType       seahorse_operation_get_type      (void);
 
 /* Methods ------------------------------------------------------------ */
 
-/* Assumes ownership of |err| */
-SeahorseOperation*  seahorse_operation_new_complete (GError *err);
-
-SeahorseOperation*  seahorse_operation_new_cancelled ();
-
 void                seahorse_operation_cancel      (SeahorseOperation *operation);
 
 #define             seahorse_operation_is_running(operation) \
                                                    ((operation)->is_running)
-
-#define             seahorse_operation_is_cancelled(operation) \
-                                                   ((operation)->is_cancelled)
 
 #define             seahorse_operation_is_successful(operation) \
                                                    ((operation)->error == NULL)
@@ -120,63 +112,11 @@ void                seahorse_operation_copy_error  (SeahorseOperation *operation
 
 const GError*       seahorse_operation_get_error   (SeahorseOperation *operation);
 
-void                seahorse_operation_wait        (SeahorseOperation *operation);
-
-/* When called on an already complete operation, the callbacks are called immediately */
-void                seahorse_operation_watch       (SeahorseOperation *operation,
-                                                    GCallback done_callback,
-                                                    GCallback progress_callback,
-                                                    gpointer userdata);
-
 #define             seahorse_operation_get_progress(op) \
                                                    ((op)->progress)
 
 #define             seahorse_operation_get_message(operation) \
                                                    ((const gchar*)((operation)->message))
-
-gpointer            seahorse_operation_get_result  (SeahorseOperation *operation);
-
-/* Helpers for Tracking Operation Lists ------------------------------ */
-
-GSList*             seahorse_operation_list_add    (GSList *list,
-                                                    SeahorseOperation *operation);
-
-GSList*             seahorse_operation_list_remove (GSList *list,
-                                                    SeahorseOperation *operation);
-
-void                seahorse_operation_list_cancel (GSList *list);
-
-GSList*             seahorse_operation_list_purge  (GSList *list);
-
-GSList*             seahorse_operation_list_free   (GSList *list);
-
-/* Combining parallel operations ------------------------------------- */
-
-#define SEAHORSE_TYPE_MULTI_OPERATION            (seahorse_multi_operation_get_type ())
-#define SEAHORSE_MULTI_OPERATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SEAHORSE_TYPE_MULTI_OPERATION, SeahorseMultiOperation))
-#define SEAHORSE_MULTI_OPERATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), SEAHORSE_TYPE_MULTI_OPERATION, SeahorseMultiOperationClass))
-#define SEAHORSE_IS_MULTI_OPERATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SEAHORSE_TYPE_MULTI_OPERATION))
-#define SEAHORSE_IS_MULTI_OPERATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SEAHORSE_TYPE_MULTI_OPERATION))
-#define SEAHORSE_MULTI_OPERATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), SEAHORSE_TYPE_MULTI_OPERATION, SeahorseMultiOperationClass))
-
-typedef struct _SeahorseMultiOperation {
-    SeahorseOperation parent;
-
-    /*< public >*/
-    GSList *operations;
-
-} SeahorseMultiOperation;
-
-typedef struct _SeahorseMultiOperationClass {
-    SeahorseOperationClass parent_class;
-} SeahorseMultiOperationClass;
-
-GType                    seahorse_multi_operation_get_type  ();
-
-SeahorseMultiOperation*  seahorse_multi_operation_new       ();
-
-void                     seahorse_multi_operation_take      (SeahorseMultiOperation* mop,
-                                                             SeahorseOperation *op);
 
 /* ----------------------------------------------------------------------------
  *  SUBCLASS DECLARATION MACROS

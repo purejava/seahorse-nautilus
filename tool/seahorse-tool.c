@@ -151,7 +151,7 @@ init_crypt ()
 static gpgme_key_t*
 prompt_recipients (gpgme_key_t *signkey)
 {
-    gpgme_error_t gerr = GPG_OK;
+    gpgme_error_t gerr = 0;
     CryptUIKeyset *keyset;
     gpgme_ctx_t ctx;
     gpgme_key_t key;
@@ -171,10 +171,10 @@ prompt_recipients (gpgme_key_t *signkey)
         if (recips) {
             gpgme_check_version (NULL);
             gerr = gpgme_engine_check_version (GPGME_PROTOCOL_OpenPGP);
-            g_return_val_if_fail (GPG_IS_OK (gerr), NULL);
+            g_return_val_if_fail (gerr == 0, NULL);
 
             gerr = gpgme_new (&ctx);
-            g_return_val_if_fail (GPG_IS_OK (gerr), NULL);
+            g_return_val_if_fail (gerr == 0, NULL);
 
             if (signer) {
                 /* Load up the GPGME secret key */
@@ -184,31 +184,31 @@ prompt_recipients (gpgme_key_t *signkey)
 
                 /* A more descriptive error message */
                 if (GPG_ERR_EOF == gpgme_err_code (gerr))
-                    gerr = GPG_E (GPG_ERR_NOT_FOUND);
+                    gerr = gpgme_error (GPG_ERR_NOT_FOUND);
             }
 
-            if (GPG_IS_OK (gerr)) {
+            if (gerr == 0) {
                 gchar **ids;
                 guint num;
 
                 /* Load up the GPGME keys */
                 ids = cryptui_keyset_keys_raw_keyids (keyset, (const gchar**)recips);
-                num = seahorse_util_strvec_length ((const gchar**)ids);
+                num = g_strv_length (ids);
                 keys = g_array_new (TRUE, TRUE, sizeof (gpgme_key_t));
                 gerr = gpgme_op_keylist_ext_start (ctx, (const gchar**)ids, 0, 0);
                 g_free (ids);
 
-                if (GPG_IS_OK (gerr)) {
-                    while (GPG_IS_OK (gerr = gpgme_op_keylist_next (ctx, &key)))
+                if (gerr == 0) {
+                    while ((gerr = gpgme_op_keylist_next (ctx, &key)) == 0)
                         g_array_append_val (keys, key);
                     gpgme_op_keylist_end (ctx);
                 }
 
                 /* Ignore EOF error */
                 if (GPG_ERR_EOF == gpgme_err_code (gerr))
-                    gerr = GPG_OK;
+                    gerr = 0;
 
-                if (GPG_IS_OK (gerr) && num != keys->len)
+                if (gerr == 0 && num != keys->len)
                     g_warning ("couldn't load all the keys (%d/%d) from GPGME", keys->len, num);
             }
 
@@ -223,13 +223,13 @@ prompt_recipients (gpgme_key_t *signkey)
         g_strfreev (recips);
         g_free (signer);
 
-        if (GPG_IS_OK (gerr) && keys->len)
+        if (gerr == 0 && keys->len)
             return (gpgme_key_t*)g_array_free (keys, FALSE);
 
         /* When failure, free all our return values */
         seahorse_util_free_keys ((gpgme_key_t*)g_array_free (keys, FALSE));
         if (*signkey)
-            gpgmex_key_unref (*signkey);
+            gpgme_key_unref (*signkey);
 
         seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
     }
@@ -276,7 +276,7 @@ encrypt_sign_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t urida
                                        GPGME_ENCRYPT_ALWAYS_TRUST, uridata, cipher);
     }
 
-    if (!GPG_IS_OK (gerr)) {
+    if (gerr != 0) {
         seahorse_util_gpgme_to_error (gerr, err);
         return FALSE;
     }
@@ -298,7 +298,7 @@ signer_filter (CryptUIKeyset *ckset, const gchar *key, gpointer user_data)
 static gpgme_key_t
 prompt_signer ()
 {
-    gpgme_error_t gerr = GPG_OK;
+    gpgme_error_t gerr = 0;
     CryptUIKeyset *keyset;
     CryptUIKeyStore *ckstore;
     gpgme_key_t key = NULL;
@@ -332,10 +332,10 @@ prompt_signer ()
 
         gpgme_check_version (NULL);
         gerr = gpgme_engine_check_version (GPGME_PROTOCOL_OpenPGP);
-        g_return_val_if_fail (GPG_IS_OK (gerr), NULL);
+        g_return_val_if_fail (gerr == 0, NULL);
 
         gerr = gpgme_new (&ctx);
-        g_return_val_if_fail (GPG_IS_OK (gerr), NULL);
+        g_return_val_if_fail (gerr == 0, NULL);
 
         /* Load up the GPGME secret key */
         gerr = gpgme_get_key (ctx, id, &key, 1);
@@ -343,7 +343,7 @@ prompt_signer ()
 
         gpgme_release (ctx);
 
-        if (!GPG_IS_OK (gerr))
+        if (gerr != 0)
             seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
     }
 
@@ -383,7 +383,7 @@ sign_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
     gpgme_signers_clear (pop->gctx);
     gpgme_signers_add (pop->gctx, mode->signer);
     gerr = gpgme_op_sign_start (pop->gctx, uridata, cipher, GPGME_SIG_MODE_DETACH);
-    if (!GPG_IS_OK (gerr)) {
+    if (gerr != 0) {
         seahorse_util_gpgme_to_error (gerr, err);
         return FALSE;
     }
@@ -529,7 +529,7 @@ decrypt_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
 
     /* Start actual decryption */
     gerr = gpgme_op_decrypt_verify_start (pop->gctx, uridata, plain);
-    if (!GPG_IS_OK (gerr)) {
+    if (gerr != 0) {
         seahorse_util_gpgme_to_error (gerr, err);
         return FALSE;
     }
@@ -614,7 +614,7 @@ verify_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
 
     /* Start actual verify */
     gerr = gpgme_op_verify_start (pop->gctx, uridata, plain, NULL);
-    if (!GPG_IS_OK (gerr)) {
+    if (gerr != 0) {
         seahorse_util_gpgme_to_error (gerr, err);
         return FALSE;
     }
@@ -768,7 +768,7 @@ main (int argc, char **argv)
     if (mode.recipients)
         seahorse_util_free_keys (mode.recipients);
     if (mode.signer)
-        gpgmex_key_unref (mode.signer);
+        gpgme_key_unref (mode.signer);
 
     g_strfreev (uris);
 

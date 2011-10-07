@@ -74,7 +74,7 @@ struct _SeahorseWidgetClass {
 	void (*destroy) (SeahorseWidget *swidget);
 };
 
-GType            seahorse_widget_get_type ();
+GType            seahorse_widget_get_type (void) G_GNUC_CONST;
 
 SeahorseWidget*  seahorse_widget_new                (const gchar      *name,
                                                      GtkWindow        *parent);
@@ -84,24 +84,10 @@ SeahorseWidget*  seahorse_widget_new_allow_multiple (const gchar      *name,
 
 SeahorseWidget*  seahorse_widget_find               (const gchar      *name);
 
-const gchar*     seahorse_widget_get_name           (SeahorseWidget   *swidget);
-
 GtkWidget*       seahorse_widget_get_toplevel       (SeahorseWidget   *swidget);
 
 GtkWidget*       seahorse_widget_get_widget         (SeahorseWidget   *swidget,
                                                      const char       *identifier);
-
-void             seahorse_widget_show               (SeahorseWidget   *swidget);
-
-void             seahorse_widget_show_help          (SeahorseWidget   *swidget);
-
-void             seahorse_widget_set_visible        (SeahorseWidget   *swidget,
-                                                     const char       *identifier,
-                                                     gboolean         visible);
-
-void             seahorse_widget_set_sensitive      (SeahorseWidget   *swidget,
-                                                     const char       *identifier,
-                                                     gboolean         sensitive);
 
 void             seahorse_widget_destroy            (SeahorseWidget   *swidget);
 

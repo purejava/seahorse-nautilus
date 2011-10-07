@@ -25,6 +25,7 @@
 #include <signal.h>
 #include <stdlib.h>
 
+#include "seahorse-tool.h"
 #include "seahorse-util.h"
 #include "seahorse-progress.h"
 #include "seahorse-widget.h"
@@ -205,15 +206,15 @@ progress_cancel (GPid pid, gint status, gpointer data)
 }
 
 void
-seahorse_tool_progress_start (gchar *title)
+seahorse_tool_progress_start (const gchar *title)
 {
     GError *err = NULL;
     gboolean ret;
     gchar* argv[4];
 
-    argv[0] = (gchar*)progress_binary;
+    argv[0] = (gchar *)progress_binary;
     argv[1] = PROGRESS_ARG;
-    argv[2] = title;
+    argv[2] = (gchar *)title;
     argv[3] = NULL;
 
     ret = g_spawn_async_with_pipes (NULL, argv, NULL, G_SPAWN_STDOUT_TO_DEV_NULL | G_SPAWN_SEARCH_PATH,
@@ -245,7 +246,7 @@ seahorse_tool_progress_init (int argc, char* argv[])
 }
 
 gboolean
-seahorse_tool_progress_check ()
+seahorse_tool_progress_check (void)
 {
     /* Process all events necessary for this check */
     while (g_main_context_iteration (NULL, FALSE));

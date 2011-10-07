@@ -33,13 +33,6 @@
  * SEAHORSE APPBAR HOOKS
  */
 
-/* Updates two glade widgets 'status' and 'progress' in the SeahorseWidget */
-void                seahorse_progress_status_set_operation      (SeahorseWidget *swidget,
-                                                                 SeahorseOperation *operation);
-
-/* Gets the operation set with above function */
-SeahorseOperation*  seahorse_progress_status_get_operation      (SeahorseWidget *swidget);
-
 /* Keeps operation refed until progress dialog goes away */
 void                seahorse_progress_show                      (SeahorseOperation *operation,
                                                                  const gchar *title,

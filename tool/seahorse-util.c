@@ -43,10 +43,11 @@
 
 #include <dbus/dbus-glib-bindings.h>
 
-#include "seahorse-gpgmex.h"
 #include "seahorse-util.h"
 #include "seahorse-gconf.h"
 #include "seahorse-vfs-data.h"
+
+#include <gpgme.h>
 
 void
 seahorse_util_show_error (GtkWindow *parent, const gchar *heading, const gchar *message)
@@ -164,7 +165,7 @@ seahorse_util_gpgme_to_error (gpgme_error_t gerr, GError** err)
     gpgme_err_code_t code;
 
     /* Make sure this is actually an error */
-    g_assert (!GPG_IS_OK(gerr));
+    g_assert (gerr != 0);
     code = gpgme_err_code (gerr);
 
     /* Special case some error messages */
@@ -175,29 +176,6 @@ seahorse_util_gpgme_to_error (gpgme_error_t gerr, GError** err)
         g_set_error (err, SEAHORSE_GPGME_ERROR, code, "%s",
                      gpgme_strerror (gerr));
     }
-}
-/**
- * seahorse_util_get_date_string:
- * @time: Time value to parse
- *
- * Creates a string representation of @time for use with gpg.
- *
- * Returns: A string representing @time
- **/
-gchar*
-seahorse_util_get_date_string (const time_t time)
-{
-	GDate *created_date;
-	gchar *created_string;
-
-	if (time == 0)
-		return "0";
-
-	created_date = g_date_new ();
-	g_date_set_time_t (created_date, time);
-	created_string = g_new (gchar, 11);
-	g_date_strftime (created_string, 11, "%Y-%m-%d", created_date);
-	return created_string;
 }
 
 /**
@@ -224,130 +202,7 @@ seahorse_util_get_display_date_string (const time_t time)
 	return created_string;
 }
 
-gchar*
-seahorse_util_get_text_view_text (GtkTextView *view)
-{
-	GtkTextBuffer *buffer;
-	GtkTextIter start;
-    GtkTextIter end;
-	gchar *text;
-
-    g_return_val_if_fail (view != NULL, "");
-
-	buffer = gtk_text_view_get_buffer (view);
-    gtk_text_buffer_get_bounds (buffer, &start, &end);
-    text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-    return text;
-}
-
-void
-seahorse_util_set_text_view_string (GtkTextView *view, GString *string)
-{
-    GtkTextBuffer *buffer;
-	g_return_if_fail (view != NULL && string != NULL);
-
-	buffer = gtk_text_view_get_buffer (view);
-	gtk_text_buffer_set_text (buffer, string->str, string->len);
-}
-
-/**
- * seahorse_util_write_data_to_text:
- * @data: Data to write
- * @len: Length of the data
- *
- * Converts @data to a string.
- *
- * Returns: The string read from data
- **/
-gchar*
-seahorse_util_write_data_to_text (gpgme_data_t data, guint *len)
-{
-    gint size = 128;
-    gchar *buffer, *text;
-    guint nread = 0;
-    GString *string;
-
-    gpgme_data_seek (data, 0, SEEK_SET);
-
-    string = g_string_new ("");
-    buffer = g_new (gchar, size);
-
-    while ((nread = gpgme_data_read (data, buffer, size)) > 0)
-        string = g_string_append_len (string, buffer, nread);
-
-    if (len)
-        *len = string->len;
-
-    text = string->str;
-    g_string_free (string, FALSE);
-    g_free (buffer);
-
-    return text;
-}
-
-/**
- * seahorse_util_read_data_block
- *
- * Breaks out one block of data (usually a key)
- *
- * @buf: A string buffer to write the data to.
- * @data: The GPGME data block to read from.
- * @start: The start signature to look for.
- * @end: The end signature to look for.
- *
- * Returns: The number of bytes copied.
- */
-guint
-seahorse_util_read_data_block (GString *buf, gpgme_data_t data,
-                               const gchar *start, const gchar* end)
-{
-    const gchar *t;
-    guint copied = 0;
-    gchar ch;
-
-    /* Look for the beginning */
-    t = start;
-    while (gpgme_data_read (data, &ch, 1) == 1) {
-
-        /* Match next char */
-        if (*t == ch)
-            t++;
-
-        /* Did we find the whole string? */
-        if (!*t) {
-            buf = g_string_append (buf, start);
-            copied += strlen (start);
-            break;
-        }
-    }
-
-    /* Look for the end */
-    t = end;
-    while (gpgme_data_read (data, &ch, 1) == 1) {
-
-        /* Match next char */
-        if (*t == ch)
-            t++;
-
-        buf = g_string_append_c (buf, ch);
-        copied++;
-
-        /* Did we find the whole string? */
-        if (!*t)
-            break;
-    }
-
-    return copied;
-}
-
-/**
- * seahorse_util_printf_fd:
- * @fd: The file descriptor to write to
- * @fmt: The data to write
- *
- * Returns: Whether the operation was successful or not.
- **/
-gboolean
+static gboolean
 seahorse_util_print_fd (int fd, const char* s)
 {
     /* Guarantee all data is written */
@@ -474,108 +329,6 @@ seahorse_util_uri_exists (const gchar* uri)
 }
 
 /**
- * seahorse_util_uri_unique
- * @uri: The uri to guarantee is unique
- *
- * Creates a URI based on @uri that does not exist.
- * A simple numbering scheme is used to create new
- * URIs. Not meant for temp file creation.
- *
- * Returns: Newly allocated unique URI.
- **/
-gchar*
-seahorse_util_uri_unique (const gchar* uri)
-{
-    gchar* suffix;
-    gchar* prefix;
-    gchar* uri_try;
-    gchar* x;
-    guint len;
-    int i;
-
-    /* Simple when doesn't exist */
-    if (!seahorse_util_uri_exists (uri))
-        return g_strdup (uri);
-
-    prefix = g_strdup (uri);
-    len = strlen (prefix);
-
-    /* Always take off a slash at end */
-    g_return_val_if_fail (len > 1, g_strdup (uri));
-    if (prefix[len - 1] == '/')
-        prefix[len - 1] = 0;
-
-    /* Split into prefix and suffix */
-    suffix = strrchr (prefix, '.');
-    x = strrchr(uri, '/');
-    if (suffix == NULL || (x != NULL && suffix < x)) {
-        suffix = g_strdup ("");
-    } else {
-        x = suffix;
-        suffix = g_strdup (suffix);
-        *x = 0;
-    }
-
-    for (i = 1; i < 1000; i++) {
-
-        uri_try = g_strdup_printf ("%s-%d%s", prefix, i, suffix);
-
-        if (!seahorse_util_uri_exists (uri_try))
-            break;
-
-        g_free (uri_try);
-        uri_try = NULL;
-    }
-
-    g_free (suffix);
-    g_free (prefix);
-    return uri_try ? uri_try : g_strdup (uri);
-}
-
-/**
- * seahorse_util_uri_replace_ext
- * @uri: The uri with old extension
- * @ext: The new extension
- *
- * Replaces the extension on @uri
- *
- * Returns: Newly allocated URI string with new extension.
- **/
-gchar*
-seahorse_util_uri_replace_ext (const gchar *uri, const gchar *ext)
-{
-    gchar* ret;
-    gchar* dot;
-    gchar* slash;
-    guint len;
-
-    len = strlen (uri);
-    ret = g_new0 (gchar, len + strlen(ext) + 16);
-    strcpy (ret, uri);
-
-    /* Always take off a slash at end */
-    g_return_val_if_fail (len > 1, ret);
-    if (ret[len - 1] == '/')
-        ret[len - 1] = 0;
-
-    dot = strrchr (ret, '.');
-    if (dot != NULL) {
-        slash = strrchr (ret, '/');
-        if (slash == NULL || dot > slash)
-            *dot = 0;
-    }
-
-    /* Only begin extension with . if provided extension doesn't start with
-       one already. */
-    if(ext[0] != '.')
-        strcat (ret, ".");
-
-    /* Finally append the caller's provided extension. */
-    strcat (ret, ext);
-    return ret;
-}
-
-/**
  * seahorse_util_uris_package
  * @package: Package uri
  * @uris: null-terminated array of uris to package
@@ -658,15 +411,6 @@ seahorse_util_uris_package (const gchar* package, const char** uris)
     return TRUE;
 }
 
-gboolean
-seahorse_util_write_file_private (const gchar* filename, const gchar* contents, GError **err)
-{
-    mode_t mask = umask (0077);
-    gboolean ret = g_file_set_contents (filename, contents, -1, err);
-    umask (mask);
-    return ret;
-}
-
 GtkWidget*
 seahorse_util_chooser_save_new (const gchar *title, GtkWindow *parent)
 {
@@ -683,21 +427,6 @@ seahorse_util_chooser_save_new (const gchar *title, GtkWindow *parent)
     return dialog;
 }
 
-GtkWidget*
-seahorse_util_chooser_open_new (const gchar *title, GtkWindow *parent)
-{
-    GtkWidget *dialog;
-
-    dialog = gtk_file_chooser_dialog_new (title,
-                parent, GTK_FILE_CHOOSER_ACTION_OPEN,
-                GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-                NULL);
-
-    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
-    gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (dialog), FALSE);
-    return dialog;
-}
 void
 seahorse_util_chooser_show_key_files (GtkWidget *dialog)
 {
@@ -797,39 +526,6 @@ seahorse_util_chooser_save_prompt (GtkWidget *dialog)
     return uri;
 }
 
-gchar*
-seahorse_util_chooser_open_prompt (GtkWidget *dialog)
-{
-    gchar *uri = NULL;
-
-    if(gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
-        uri = gtk_file_chooser_get_uri (GTK_FILE_CHOOSER (dialog));
-
-    gtk_widget_destroy (dialog);
-    return uri;
-}
-
-/**
- * seahorse_util_check_suffix:
- * @path: Path of file to check
- * @suffix: Suffix type to check for
- *
- * Checks that @path has a suffix specified by @suffix.
- *
- * Returns: TRUE if the file has a correct suffix, FALSE otherwise
- **/
-gboolean
-seahorse_util_check_suffix (const gchar *path, SeahorseSuffix suffix)
-{
-	if (suffix == SEAHORSE_SIG_SUFFIX)
-        return g_str_has_suffix (path, SEAHORSE_EXT_SIG) ||
-               g_str_has_suffix (path, SEAHORSE_EXT_ASC);
-	else
-        return g_str_has_suffix (path, SEAHORSE_EXT_PGP) ||
-               g_str_has_suffix (path, SEAHORSE_EXT_GPG) ||
-               g_str_has_suffix (path, SEAHORSE_EXT_ASC);
-}
-
 /**
  * seahorse_util_add_suffix:
  * @ctx: Gpgme Context
@@ -914,35 +610,6 @@ seahorse_util_remove_suffix (const gchar *path, const gchar *prompt)
     return uri;
 }
 
-gchar**
-seahorse_util_strvec_dup (const gchar** vec)
-{
-    gint len = 0;
-    gchar** ret;
-    const gchar** v;
-
-    if (vec) {
-        for(v = vec; *v; v++)
-            len++;
-    }
-
-    ret = (gchar**)g_new0(gchar*, len + 1);
-
-    while((--len) >= 0)
-        ret[len] = g_strdup(vec[len]);
-
-    return ret;
-}
-
-guint
-seahorse_util_strvec_length (const gchar **vec)
-{
-    guint len = 0;
-    while (*(vec++))
-        len++;
-    return len;
-}
-
 void
 seahorse_util_free_keys (gpgme_key_t* keys)
 {
@@ -950,7 +617,7 @@ seahorse_util_free_keys (gpgme_key_t* keys)
     if (!keys)
         return;
     while (*k)
-        gpgmex_key_unref (*(k++));
+        gpgme_key_unref (*(k++));
     g_free (keys);
 }
 
@@ -963,148 +630,3 @@ seahorse_util_string_equals (const gchar *s1, const gchar *s2)
         return FALSE;
     return g_str_equal (s1, s2);
 }
-
-gchar*
-seahorse_util_string_up_first (const gchar *orig)
-{
-    gchar *t, *t2, *ret;
-
-    if (g_utf8_validate (orig, -1, NULL)) {
-
-        t = g_utf8_find_next_char (orig, NULL);
-        if (t != NULL) {
-            t2 = g_utf8_strup (orig, t - orig);
-            ret = g_strdup_printf ("%s%s", t2, t);
-            g_free (t2);
-
-        /* Can't find first UTF8 char */
-        } else {
-            ret = g_strdup (orig);
-        }
-
-    /* Just use ASCII functions when not UTF8 */
-    } else {
-        ret = g_strdup (orig);
-        ret[0] = g_ascii_toupper (ret[0]);
-    }
-
-    return ret;
-}
-
-void
-seahorse_util_string_lower (gchar *s)
-{
-    for ( ; *s; s++)
-        *s = g_ascii_tolower (*s);
-}
-
-/* Free a GSList along with string values */
-GSList*
-seahorse_util_string_slist_free (GSList *list)
-{
-    GSList *l;
-    for (l = list; l; l = l->next)
-        g_free (l->data);
-    g_slist_free (list);
-    return NULL;
-}
-
-/* Copy a GSList along with string values */
-GSList*
-seahorse_util_string_slist_copy (GSList *list)
-{
-    GSList *l = NULL;
-    for ( ; list; list = g_slist_next(list))
-        l = g_slist_append (l, g_strdup(list->data));
-    return l;
-}
-
-/* Compare two string GSLists */
-gboolean
-seahorse_util_string_slist_equal (GSList *l1, GSList *l2)
-{
-    while (l1 && l2) {
-        if (!g_str_equal ((const gchar*)l1->data, (const gchar*)l2->data))
-            break;
-        l1 = g_slist_next (l1);
-        l2 = g_slist_next (l2);
-    }
-
-    return !l1 && !l2;
-}
-
-gboolean
-seahorse_util_string_is_whitespace (const gchar *text)
-{
-    g_assert (text);
-    g_assert (g_utf8_validate (text, -1, NULL));
-
-    while (*text) {
-        if (!g_unichar_isspace (g_utf8_get_char (text)))
-            return FALSE;
-        text = g_utf8_next_char (text);
-    }
-    return TRUE;
-}
-
-void
-seahorse_util_string_trim_whitespace (gchar *text)
-{
-    gchar *b, *e, *n;
-
-    g_assert (text);
-    g_assert (g_utf8_validate (text, -1, NULL));
-
-    /* Trim the front */
-    b = text;
-    while (*b && g_unichar_isspace (g_utf8_get_char (b)))
-        b = g_utf8_next_char (b);
-
-    /* Trim the end */
-    n = e = b + strlen (b);
-    while (n >= b) {
-        if (*n && !g_unichar_isspace (g_utf8_get_char (n)))
-            break;
-        e = n;
-        n = g_utf8_prev_char (e);
-    }
-
-    g_assert (b >= text);
-    g_assert (e >= b);
-
-    *e = 0;
-    g_memmove (text, b, (e + 1) - b);
-}
-
-/* Callback to determine where a popup menu should be placed */
-void
-seahorse_util_determine_popup_menu_position (GtkMenu *menu, int *x, int *y,
-                                             gboolean *push_in, gpointer  gdata)
-{
-        GtkWidget      *widget;
-        GtkRequisition  requisition;
-        GtkAllocation   allocation;
-        gint            menu_xpos;
-        gint            menu_ypos;
-
-        widget = GTK_WIDGET (gdata);
-
-        gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
-
-        gdk_window_get_origin (gtk_widget_get_window (widget), &menu_xpos, &menu_ypos);
-
-        gtk_widget_get_allocation (widget, &allocation);
-        menu_xpos += allocation.x;
-        menu_ypos += allocation.y;
-
-
-        if (menu_ypos > gdk_screen_get_height (gtk_widget_get_screen (widget)) / 2)
-                menu_ypos -= requisition.height;
-        else
-                menu_ypos += allocation.height;
-
-        *x = menu_xpos;
-        *y = menu_ypos;
-        *push_in = TRUE;
-}
-

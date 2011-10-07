@@ -21,6 +21,8 @@
 
 #include <gio/gio.h>
 
+#include <gpgme.h>
+
 /**
  * A gpgme_data_t implementation which maps to a gnome-vfs handle.
  * Allows for accessing data on remote machines (ie: smb, sftp)
@@ -48,13 +50,5 @@ gpgme_data_t        seahorse_vfs_data_create        (const gchar *uri, guint mod
 gpgme_data_t        seahorse_vfs_data_create_full   (GFile *file, guint mode,
                                                      SeahorseVfsProgressCb progcb,
                                                      gpointer userdata, GError **err);
-
-gpgme_data_t        seahorse_vfs_data_read_multi    (const gchar **uris, GError **err);
-
-gboolean            seahorse_vfs_data_write_all     (gpgme_data_t data, const void* buffer,
-                                                     gint len, GError **err);
-
-gboolean            seahorse_vfs_set_file_contents  (const gchar *uri, const gchar *text,
-                                                     gint len, GError **err);
 
 #endif /* __SEAHORSE_VFS_DATA__ */

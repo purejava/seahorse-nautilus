@@ -30,9 +30,10 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include "seahorse-gpgmex.h"
 #include "seahorse-vfs-data.h"
 #include "seahorse-util.h"
+
+#include <gpgme.h>
 
 #define PROGRESS_BLOCK  16 * 1024
 
@@ -523,7 +524,7 @@ create_vfs_data (GFile *file, guint mode, SeahorseVfsProgressCb progcb,
     if (handle) {
 
         *err = gpgme_data_new_from_cbs (&ret, &vfs_data_cbs, handle);
-        if (!GPG_IS_OK (*err)) {
+        if (*err != 0) {
             vfs_data_cbs.release (handle);
             ret = NULL;
         }
@@ -560,168 +561,5 @@ seahorse_vfs_data_create_full (GFile *file, guint mode, SeahorseVfsProgressCb pr
     data = create_vfs_data (file, mode, progcb, userdata, &gerr);
     if (!data)
         seahorse_util_gpgme_to_error (gerr, err);
-    return data;
-}
-
-gboolean
-seahorse_vfs_set_file_contents (const gchar *uri, const gchar *text, gint len,
-                                GError **err)
-{
-    gpgme_data_t data;
-    gboolean ret;
-
-    data = seahorse_vfs_data_create (uri, SEAHORSE_VFS_WRITE, err);
-    if (!data)
-        return FALSE;
-
-    ret = seahorse_vfs_data_write_all (data, (void*)text, len, err);
-
-    gpgme_data_release (data);
-    return ret;
-}
-
-gboolean
-seahorse_vfs_data_write_all (gpgme_data_t data, const void* buffer, gint len, GError **err)
-{
-    guchar *text = (guchar*)buffer;
-    gint written;
-
-    if (len < 0)
-        len = strlen ((gchar*)text);
-
-    while (len > 0) {
-        written = gpgme_data_write (data, (void*)text, len);
-        if (written < 0) {
-            if (errno == EAGAIN || errno == EINTR)
-                continue;
-            g_set_error (err, G_FILE_ERROR, g_file_error_from_errno (errno),
-                         "%s", strerror (errno));
-            return FALSE;
-        }
-
-        len -= written;
-        text += written;
-    }
-
-    return TRUE;
-}
-
-/* -----------------------------------------------------------------------------
- * MULTIPLE CONCATED FILES
- */
-
-/* Called by gpgme to read data */
-static ssize_t
-multi_data_read (void *handle, void *buffer, size_t size)
-{
-    gpgme_data_t data = NULL;
-    ssize_t sz = 0;
-    GList *datas, *l;
-    guchar *buf;
-
-    datas = (GList*)handle;
-    buf = (guchar*)buffer;
-
-    /* Find first non-null data thingy */
-    for (l = datas; l; l = g_list_next (l)) {
-        data = (gpgme_data_t)l->data;
-        if (data)
-            break;
-    }
-
-    while (size > 0 && data) {
-        sz = gpgme_data_read (data, buf, size);
-
-        /* An error */
-        if (sz < 0)
-            return sz;
-
-        if (sz > size)
-            sz = size;
-
-        /* Free current data, get next one */
-        if (sz < size) {
-            l->data = NULL;
-            gpgmex_data_release (data);
-            l = g_list_next (l);
-            data = (gpgme_data_t)(l ? l->data : NULL);
-        }
-
-        /* Read later in buffer */
-        size -= sz;
-        buf += sz;
-    }
-
-    return sz;
-}
-
-/* Called by gpgme to write data */
-static ssize_t
-multi_data_write (void *handle, const void *buffer, size_t size)
-{
-    /* No writing */
-    errno = EBADF;
-    return -1;
-}
-
-/* Called from gpgme to seek a file */
-static off_t
-multi_data_seek(void *handle, off_t offset, int whence)
-{
-    /* No real seeking */
-    return offset;
-}
-
-/* Called by gpgme to close a file */
-static void
-multi_data_release(void *handle)
-{
-    GList *datas = (GList*)handle;
-    GList *l;
-
-    for (l = datas; l; l = g_list_next (l))
-        gpgmex_data_release ((gpgme_data_t)l->data);
-    g_list_free (datas);
-}
-
-static struct gpgme_data_cbs multi_data_cbs =
-{
-    multi_data_read,
-    multi_data_write,
-    multi_data_seek,
-    multi_data_release
-};
-
-gpgme_data_t
-seahorse_vfs_data_read_multi (const gchar **uris, GError **err)
-{
-    gpgme_error_t gerr;
-    gpgme_data_t data;
-    GList *datas = NULL;
-    const gchar **u;
-
-    for (u = uris; *u; u++) {
-        if(!(*u)[0])
-            continue;
-        data = seahorse_vfs_data_create (*u, SEAHORSE_VFS_READ, err);
-        if (!data)
-            break;
-        datas = g_list_prepend (datas, data);
-    }
-
-    /* Failed somewhere */
-    if (!data) {
-        multi_data_release (datas);
-        return NULL;
-    }
-
-    datas = g_list_reverse (datas);
-    gerr = gpgme_data_new_from_cbs (&data, &multi_data_cbs, datas);
-    if (!GPG_IS_OK (gerr)) {
-        seahorse_util_gpgme_to_error (gerr, err);
-        multi_data_release (datas);
-        return NULL;
-    }
-
     return data;
 }

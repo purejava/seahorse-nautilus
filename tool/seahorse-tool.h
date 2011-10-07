@@ -62,16 +62,16 @@ int  seahorse_tool_files_process  (SeahorseToolMode *mode, const gchar **uris);
  * PROGRESS FUNCTIONS
  */
 
-int         seahorse_tool_progress_init    (int argc, char* argv[]);
+void        seahorse_tool_progress_init    (int argc, char* argv[]);
 
-int         seahorse_tool_progress_start   (const gchar *title);
+void        seahorse_tool_progress_start   (const gchar *title);
 
-gboolean    seahorse_tool_progress_check   ();
+gboolean    seahorse_tool_progress_check   (void);
 
 void        seahorse_tool_progress_block   (gboolean block);
 
 gboolean    seahorse_tool_progress_update  (gdouble fract, const gchar *message);
 
-void        seahorse_tool_progress_stop    ();
+void        seahorse_tool_progress_stop    (void);
 
 #endif /* __SEAHORSE_TOOL_H__ */

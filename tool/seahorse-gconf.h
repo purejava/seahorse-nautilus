@@ -30,29 +30,14 @@
 #include <gtk/gtk.h>
 
 #define SEAHORSE_DESKTOP_KEYS           "/desktop/pgp"
-#define SEAHORSE_DEFAULT_KEY            SEAHORSE_DESKTOP_KEYS "/default_key"
-#define SEAHORSE_LASTSIGNER_KEY         SEAHORSE_DESKTOP_KEYS "/last_signer"
-#define SEAHORSE_ENCRYPTSELF_KEY        SEAHORSE_DESKTOP_KEYS "/encrypt_to_self"
-#define SEAHORSE_RECIPIENTS_SORT_KEY    SEAHORSE_DESKTOP_KEYS "/recipients/sort_by"
 
 #define ARMOR_KEY SEAHORSE_DESKTOP_KEYS "/ascii_armor"
-#define ENCRYPTSELF_KEY SEAHORSE_DESKTOP_KEYS "/encrypt_to_self"
 #define MULTI_EXTENSION_KEY SEAHORSE_DESKTOP_KEYS "/package_extension"
 #define MULTI_SEPERATE_KEY SEAHORSE_DESKTOP_KEYS "/multi_seperate"
-#define KEYSERVER_KEY SEAHORSE_DESKTOP_KEYS "/keyservers/all_keyservers"
-#define AUTORETRIEVE_KEY SEAHORSE_DESKTOP_KEYS "/keyservers/auto_retrieve"
-#define AUTOSYNC_KEY SEAHORSE_DESKTOP_KEYS "/keyservers/auto_sync"
-#define LASTSEARCH_KEY SEAHORSE_DESKTOP_KEYS "/keyservers/search_text"
-#define LASTSERVERS_KEY SEAHORSE_DESKTOP_KEYS "/keyservers/search_keyservers"
-#define PUBLISH_TO_KEY SEAHORSE_DESKTOP_KEYS "/keyservers/publish_to"
 
 #define SEAHORSE_SCHEMAS            "/apps/seahorse"
 
-#define KEYSHARING_KEY              SEAHORSE_SCHEMAS "/sharing/sharing_enabled"
-
 #define WINDOW_SIZE                SEAHORSE_SCHEMAS "/windows/"
-
-void            seahorse_gconf_disconnect        ();
 
 void            seahorse_gconf_set_boolean       (const char         *key,
                                                   gboolean           boolean_value);
@@ -68,21 +53,3 @@ void            seahorse_gconf_set_string        (const char         *key,
                                                   const char         *string_value);
 
 char*           seahorse_gconf_get_string        (const char         *key);
-
-void            seahorse_gconf_set_string_list   (const char         *key,
-                                                  const GSList       *slist);
-
-GSList*         seahorse_gconf_get_string_list   (const char         *key);
-
-GConfEntry*     seahorse_gconf_get_entry         (const char         *key);
-
-guint           seahorse_gconf_notify            (const char         *key,
-                                                  GConfClientNotifyFunc notification_callback,
-                                                  gpointer           callback_data);
-
-void            seahorse_gconf_notify_lazy       (const char         *key,
-                                                  GConfClientNotifyFunc notification_callback,
-                                                  gpointer           callback_data,
-                                                  gpointer           lifetime);
-
-void            seahorse_gconf_unnotify          (guint              notification_id);
