@@ -1,0 +1,24 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:gnome="http://api.gnome.org/doap-extensions#"
+	xmlns="http://usefulinc.com/ns/doap#">
+
+	<name xml:lang="en">seahorse-nautilus</name>
+	<shortdesc xml:lang="en">PGP encryption and signing for nautilus.</shortdesc>
+
+	<homepage rdf:resource="http://projects.gnome.org/seahorse/" />
+	<mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/seahorse-list" />
+	<download-page rdf:resource="http://download.gnome.org/sources/seahorse-nautilus/"/>
+	<bug-database rdf:resource="http://bugzilla.gnome.org/browse.cgi?product=seahorse-plugins"/>
+	<category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
+	
+	<maintainer>
+		<foaf:Person>
+			<foaf:name>Stef Walter</foaf:name>
+			<foaf:mbox rdf:resource="mailto:stef@memberwebs.com" />
+			<gnome:userid>stefw</gnome:userid>
+		</foaf:Person>
+	</maintainer>
+</Project>
+
