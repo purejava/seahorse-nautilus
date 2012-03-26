@@ -1,5 +1,5 @@
 AC_PREREQ([2.63])
-AC_INIT([seahorse-nautilus], [3.3.2],
+AC_INIT([seahorse-nautilus], [3.4.0],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=seahorse-plugins&component=Nautilus],
         [seahorse-nautilus])
 
