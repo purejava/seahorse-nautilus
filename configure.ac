@@ -39,10 +39,9 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of the gettext dom
 # -----------------------------------------------------------------------------
 # GLib and GTK+ stuff
 
-AM_GCONF_SOURCE_2
+GLIB_GSETTINGS
 AM_GLIB_GNU_GETTEXT
 
-PKG_CHECK_MODULES(GCONF, gconf-2.0)
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= 3.0 gio-2.0)
 
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
@@ -288,6 +287,7 @@ AC_SUBST(SEAHORSE_LIBS)
 
 AC_OUTPUT([
 Makefile
+data/Makefile
 po/Makefile.in
 tool/Makefile
 tool/seahorse-pgp-encrypted.desktop.in

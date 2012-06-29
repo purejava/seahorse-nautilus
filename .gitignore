@@ -6,6 +6,7 @@
 *.o
 *.pot
 *.tar.gz
+*.valid
 
 .deps
 .project
