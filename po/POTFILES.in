@@ -1,5 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
+data/org.gnome.seahorse.nautilus.gschema.xml
+data/org.gnome.seahorse.nautilus.window.gschema.xml
 nautilus-ext/seahorse-nautilus.c
 [type: gettext/glade]tool/seahorse-multi-encrypt.xml
 tool/seahorse-notification.c
