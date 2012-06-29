@@ -1,4 +1,4 @@
-uidir = $(datadir)/seahorse-nautilus/ui
+uidir = $(datadir)/seahorse-nautilus/ui/
 localedir = $(datadir)/locale
 
 INCLUDES = -I$(top_builddir) \
