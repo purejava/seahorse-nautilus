@@ -773,6 +773,8 @@ main (int argc, char **argv)
     g_object_unref (seahorse_tool_settings);
     seahorse_tool_settings = NULL;
 
+    seahorse_notification_cleanup ();
+
     g_strfreev (uris);
 
     return ret;
