@@ -1,3 +1,10 @@
+seahorse-nautilus 3.5.4
+ * Update for newer Gtk and Glib
+ * Use Gcr library for prompting of passwords
+ * Migrate from GConf to GSettings
+ * Fix several crashers
+ * Translation fixes
+
 seahorse-nautilus 3.4.0
  (no changes since previous release)
 
