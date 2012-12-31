@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: seahorse-plugins.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-04 12:40+0000\n"
-"PO-Revision-Date: 2012-12-04 13:40+0100\n"
+"POT-Creation-Date: 2012-12-04 12:41+0000\n"
+"PO-Revision-Date: 2012-12-31 11:12+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -152,7 +152,7 @@ msgstr "Firmada por <i><key id='%s'/> <b>caducó</b></i> en %s."
 
 #: ../tool/seahorse-notification.c:607
 msgid "Invalid Signature"
-msgstr "Firma inválida"
+msgstr "Firma no válida"
 
 #: ../tool/seahorse-notification.c:613
 #, c-format
@@ -358,7 +358,7 @@ msgstr "Elija el archivo original para «%s»"
 #: ../tool/seahorse-tool.c:648
 #, c-format
 msgid "No valid signatures found"
-msgstr "No se encontraron firmas inválidas"
+msgstr "No se encontraron firmas no válidas"
 
 #: ../tool/seahorse-tool.c:695
 msgid "File Encryption Tool"
