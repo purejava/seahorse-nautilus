@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: seahorse-nautilus master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-03 23:46+0000\n"
-"PO-Revision-Date: 2012-12-19 11:26+0100\n"
+"POT-Creation-Date: 2013-01-08 20:34+0000\n"
+"PO-Revision-Date: 2013-01-10 20:53+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -32,7 +32,6 @@ msgid "File extension for packages when handling mulitple files."
 msgstr "Pripona datotek paketov med upravljanjem več datotek."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
-#| msgid "Encrypt each file separately"
 msgid "Handle multiple files separately"
 msgstr "Upravljaj več datotek ločeno"
 
@@ -42,13 +41,13 @@ msgid ""
 msgstr "Ne pakiraj datotek med upravljanjem, ampak opravila izvajaj ločeno."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
-#, fuzzy
 msgid "Use armor mode when encrypting"
-msgstr "Način za prikaz elektronske pošte"
+msgstr "Uporabi zaščiteni način med šifriranjem"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
 msgid "Use PGP ASCII armor mode when encrypting or signing files."
 msgstr ""
+"Uporabi zaščiteni način PGP ASCII med šifriranjem ali podpisovanjem datotek."
 
 #: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
 msgid "Width of the window"
