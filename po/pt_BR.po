@@ -1,25 +1,70 @@
-# Brazilian Portuguese translation of seahorse.
-# Copyright (C) 2000-2007 Free Software Foundation, Inc.
-# This file is distributed under the same license as the seahorse package
+# Brazilian Portuguese translation of seahorse-nautilus.
+# Copyright (C) 2000-2013 Free Software Foundation, Inc.
+# This file is distributed under the same license as the seahorse-nautilus package
 # Fábio Rafael da Rosa <f2r@users.sourceforge.net>, 2003.
 # Max Reinhold Jahnke <jahnke@brfree.com.br>, 2004.
 # Luiz Armesto <luiz.armesto@gmail.com>, 2007.
 # Raphael Higino <In memoriam>, 2004, 2007.
 # Djavan Fagundes <dnoway@gmail.com>, 2008.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: seahorse\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-07 11:29+0200\n"
-"PO-Revision-Date: 2011-09-18 09:03-0300\n"
-"Last-Translator: Antonio Fernandes C. Neto <fernandesn@gnome.org>\n"
+"Project-Id-Version: seahorse-nautilus\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-18 15:09+0000\n"
+"PO-Revision-Date: 2013-03-12 08:29-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
+msgid "File extension for packages"
+msgstr "Extensão de arquivos de pacotes"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
+msgid "File extension for packages when handling mulitple files."
+msgstr "A extensão de arquivos de pacotes ao lidar com múltiplos arquivos."
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
+msgid "Handle multiple files separately"
+msgstr "Lidar com múltiplos arquivos separadamente"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
+msgid ""
+"When handling multiple files, don't package them but process separately."
+msgstr ""
+"Ao lidar com múltiplos arquivos, não empacota-os mas processa separadamente."
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
+msgid "Use armor mode when encrypting"
+msgstr "Usar modo de armadura ao criptografar"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
+msgid "Use PGP ASCII armor mode when encrypting or signing files."
+msgstr "Usa o modo armadura ASCII de PGP ao criptografar ou assinar arquivos."
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
+msgid "Width of the window"
+msgstr "Largura da janela"
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:2
+msgid "Width (in pixels) of the window."
+msgstr "A largura (em pixels) da janela."
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:3
+msgid "Height of the window"
+msgstr "Altura da janela"
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:4
+msgid "Height (in pixels) of the window."
+msgstr "A altura (em pixels) da janela."
 
 #: ../nautilus-ext/seahorse-nautilus.c:158
 msgid "Encrypt..."
@@ -42,20 +87,16 @@ msgstr[0] "Assinar o arquivo selecionado"
 msgstr[1] "Assinar os arquivos selecionados"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:1
+msgid "Encrypt Multiple Files"
+msgstr "Criptografar múltiplos arquivos"
+
+#: ../tool/seahorse-multi-encrypt.xml.h:2
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>Você selecionou múltiplos arquivos ou pastas</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
-msgid ""
-"Because the files are located remotely, each file will be encrypted "
-"separately."
-msgstr ""
-"Já que os arquivos estão localizados remotamente, cada arquivo será "
-"criptografado separadamente."
-
 #: ../tool/seahorse-multi-encrypt.xml.h:3
-msgid "Encrypt Multiple Files"
-msgstr "Criptografar múltiplos arquivos"
+msgid "encrypted-package"
+msgstr "pacote-criptografado"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:4
 msgid "Encrypt each file separately"
@@ -66,31 +107,35 @@ msgid "Encrypt packed together in a package"
 msgstr "Criptografar tudo junto em um pacote"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:6
-msgid "Package Name:"
-msgstr "Nome do pacote:"
-
-#: ../tool/seahorse-multi-encrypt.xml.h:7
 msgid "Packaging:"
 msgstr "Pacote:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:8
-msgid "encrypted-package"
-msgstr "pacote-criptografado"
+#: ../tool/seahorse-multi-encrypt.xml.h:7
+msgid "Package Name:"
+msgstr "Nome do pacote:"
 
-#: ../tool/seahorse-notification.c:580 ../tool/seahorse-notification.c:605
+#: ../tool/seahorse-multi-encrypt.xml.h:8
+msgid ""
+"Because the files are located remotely, each file will be encrypted "
+"separately."
+msgstr ""
+"Já que os arquivos estão localizados remotamente, cada arquivo será "
+"criptografado separadamente."
+
+#: ../tool/seahorse-notification.c:572
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Chave importada"
 msgstr[1] "Chaves importadas"
 
-#: ../tool/seahorse-notification.c:584 ../tool/seahorse-notification.c:604
+#: ../tool/seahorse-notification.c:576
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
 msgstr[0] "%i chave importada"
 msgstr[1] "%i chaves importadas"
 
-#: ../tool/seahorse-notification.c:586
+#: ../tool/seahorse-notification.c:578
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
@@ -98,62 +143,62 @@ msgstr[0] "Chave importada para"
 msgstr[1] "Chaves importadas para"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:623
+#: ../tool/seahorse-notification.c:606
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr "Assinado por <i><key id=\"%s\"/> <b>expirada</b></i> em %s."
 
-#: ../tool/seahorse-notification.c:624
+#: ../tool/seahorse-notification.c:607
 msgid "Invalid Signature"
 msgstr "Assinatura inválida"
 
-#: ../tool/seahorse-notification.c:630
+#: ../tool/seahorse-notification.c:613
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr "Assinado por <i><key id=\"%s\"/></i> em %s <b>Expirado</b>."
 
-#: ../tool/seahorse-notification.c:631
+#: ../tool/seahorse-notification.c:614
 msgid "Expired Signature"
 msgstr "Assinatura expirada"
 
-#: ../tool/seahorse-notification.c:637
+#: ../tool/seahorse-notification.c:620
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr "Assinado por <i><key id=\"%s\"/> <b>Revogado</b></i> em %s."
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:621
 msgid "Revoked Signature"
 msgstr "Assinatura revogada"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:644
+#: ../tool/seahorse-notification.c:627
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "Assinado por <i><key id=\"%s\"/></i> em %s."
 
 # "Bad Signature" é "Assinatura Inválida".
 # Traduzir como "Assinatura Válida"?
-#: ../tool/seahorse-notification.c:645
+#: ../tool/seahorse-notification.c:628
 msgid "Good Signature"
 msgstr "Assinatura válida"
 
-#: ../tool/seahorse-notification.c:650
+#: ../tool/seahorse-notification.c:633
 msgid "Signing key not in keyring."
 msgstr "Chave de assinatura fora do chaveiro."
 
-#: ../tool/seahorse-notification.c:651
+#: ../tool/seahorse-notification.c:634
 msgid "Unknown Signature"
 msgstr "Assinatura desconhecida"
 
-#: ../tool/seahorse-notification.c:655
+#: ../tool/seahorse-notification.c:638
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Assinatura inválida ou forjada. A data da assinatura foi modificada."
 
-#: ../tool/seahorse-notification.c:656
+#: ../tool/seahorse-notification.c:639
 msgid "Bad Signature"
 msgstr "Assinatura inválida"
 
-#: ../tool/seahorse-notification.c:664
+#: ../tool/seahorse-notification.c:647
 msgid "Couldn't verify signature."
 msgstr "Não foi possível verificar a assinatura."
 
@@ -161,41 +206,40 @@ msgstr "Não foi possível verificar a assinatura."
 msgid "Notification Messages"
 msgstr "Mensagens de notificação"
 
-#: ../tool/seahorse-passphrase.c:200
-msgid "Passphrase"
-msgstr "Frase secreta"
-
-#: ../tool/seahorse-passphrase.c:203
-msgid "Password:"
-msgstr "Senha:"
-
-#. The second and main entry
-#: ../tool/seahorse-passphrase.c:267
-msgid "Confirm:"
-msgstr "Confirmar:"
-
-#: ../tool/seahorse-passphrase.c:355
+#: ../tool/seahorse-passphrase.c:114
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Frase secreta incorreta."
 
-#: ../tool/seahorse-passphrase.c:359
+#: ../tool/seahorse-passphrase.c:118
 #, c-format
 msgid "Enter new passphrase for '%s'"
 msgstr "Digite a nova frase secreta para \"%s\""
 
-#: ../tool/seahorse-passphrase.c:361
+#: ../tool/seahorse-passphrase.c:120
 #, c-format
 msgid "Enter passphrase for '%s'"
 msgstr "Digite a frase secreta para \"%s\""
 
-#: ../tool/seahorse-passphrase.c:364
+#: ../tool/seahorse-passphrase.c:123
 msgid "Enter new passphrase"
 msgstr "Digite a nova frase secreta"
 
-#: ../tool/seahorse-passphrase.c:366
+#: ../tool/seahorse-passphrase.c:125
 msgid "Enter passphrase"
 msgstr "Digite a frase secreta"
+
+#: ../tool/seahorse-passphrase.c:130
+msgid "Passphrase"
+msgstr "Frase secreta"
+
+#: ../tool/seahorse-passphrase.c:138
+msgid "Ok"
+msgstr "Ok"
+
+#: ../tool/seahorse-passphrase.c:139
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
 msgid "Decrypt File"
@@ -273,7 +317,7 @@ msgstr "Importação está completa"
 
 #: ../tool/seahorse-tool.c:440
 msgid "Importing keys ..."
-msgstr "Importando chaves..."
+msgstr "Importando chaves ..."
 
 #: ../tool/seahorse-tool.c:470
 msgid "Import Failed"
@@ -316,7 +360,7 @@ msgstr "Escolha o arquivo original para \"%s\""
 msgid "No valid signatures found"
 msgstr "Nenhuma assinatura válida localizada"
 
-#: ../tool/seahorse-tool.c:697
+#: ../tool/seahorse-tool.c:695
 msgid "File Encryption Tool"
 msgstr "Ferramenta de criptografia de arquivos"
 
@@ -365,81 +409,81 @@ msgstr "Verificando"
 msgid "Couldn't verify file: %s"
 msgstr "Não foi possível verificar arquivo: %s"
 
-#: ../tool/seahorse-tool-files.c:120
+#: ../tool/seahorse-tool-files.c:119
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: ../tool/seahorse-tool-files.c:120
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:122
+#: ../tool/seahorse-tool-files.c:121
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: ../tool/seahorse-tool-files.c:128
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:130
+#: ../tool/seahorse-tool-files.c:129
 msgid "Self-extracting zip (.exe)"
 msgstr "Zip auto-extrator (.exe)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: ../tool/seahorse-tool-files.c:131
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:133
+#: ../tool/seahorse-tool-files.c:132
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:135
+#: ../tool/seahorse-tool-files.c:134
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: ../tool/seahorse-tool-files.c:136
 msgid "Tar uncompressed (.tar)"
 msgstr "Tar não compactado (.tar)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: ../tool/seahorse-tool-files.c:137
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "Tar compactado com bzip (.tar.bz)"
 
-#: ../tool/seahorse-tool-files.c:139
+#: ../tool/seahorse-tool-files.c:138
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "Tar compactado com bzip2 (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: ../tool/seahorse-tool-files.c:139
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "Tar compactado com gzip (.tar.gz)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: ../tool/seahorse-tool-files.c:140
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "Tar compactado com lzop (.tar.lzo)"
 
-#: ../tool/seahorse-tool-files.c:142
+#: ../tool/seahorse-tool-files.c:141
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "Tar compactado com compress (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: ../tool/seahorse-tool-files.c:143
 msgid "War (.war)"
 msgstr "War (.war)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: ../tool/seahorse-tool-files.c:144
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: ../tool/seahorse-tool-files.c:145
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:147
+#: ../tool/seahorse-tool-files.c:146
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:327
+#: ../tool/seahorse-tool-files.c:328
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
@@ -448,7 +492,7 @@ msgstr[1] "Você selecionou %d arquivos "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:332
+#: ../tool/seahorse-tool-files.c:333
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -457,34 +501,34 @@ msgstr[1] "e %d pastas"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:337
+#: ../tool/seahorse-tool-files.c:338
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
-#: ../tool/seahorse-tool-files.c:345
+#: ../tool/seahorse-tool-files.c:346
 #, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
-msgstr[0] "Você selecionou %d arquivo "
-msgstr[1] "Você selecionou %d arquivos "
+msgstr[0] "Você selecionou %d arquivo"
+msgstr[1] "Você selecionou %d arquivos"
 
-#: ../tool/seahorse-tool-files.c:350
+#: ../tool/seahorse-tool-files.c:351
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
 msgstr[0] "Você selecionou %d pasta"
 msgstr[1] "Você selecionou %d pastas"
 
-#: ../tool/seahorse-tool-files.c:868
+#: ../tool/seahorse-tool-files.c:866
 msgid "Preparing..."
 msgstr "Preparando..."
 
-#: ../tool/seahorse-tool-files.c:877 ../tool/seahorse-tool-files.c:900
+#: ../tool/seahorse-tool-files.c:875 ../tool/seahorse-tool-files.c:898
 msgid "Couldn't list files"
 msgstr "Não foi possível listar arquivos"
 
-#: ../tool/seahorse-tool-files.c:887 ../tool/seahorse-util.c:647
+#: ../tool/seahorse-tool-files.c:885 ../tool/seahorse-util.c:399
 msgid "Couldn't package files"
 msgstr "Não foi possível empacotar arquivos"
 
@@ -495,33 +539,33 @@ msgstr ""
 "descriptografia."
 
 # Mudar para %d/%m/%Y?
-#: ../tool/seahorse-util.c:223
+#: ../tool/seahorse-util.c:200
 msgid "%Y-%m-%d"
 msgstr "%d-%m-%Y"
 
-#: ../tool/seahorse-util.c:642
+#: ../tool/seahorse-util.c:394
 msgid "Couldn't run file-roller"
 msgstr "Não foi possível executar o file-roller"
 
-#: ../tool/seahorse-util.c:648
+#: ../tool/seahorse-util.c:400
 msgid "The file-roller process did not complete successfully"
 msgstr "O processo do file-roller não terminou com sucesso"
 
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:708
+#: ../tool/seahorse-util.c:436
 msgid "All key files"
 msgstr "Todos os arquivos de chave"
 
-#: ../tool/seahorse-util.c:715 ../tool/seahorse-util.c:755
+#: ../tool/seahorse-util.c:443 ../tool/seahorse-util.c:483
 msgid "All files"
 msgstr "Todos os arquivos"
 
-#: ../tool/seahorse-util.c:748
+#: ../tool/seahorse-util.c:476
 msgid "Archive files"
 msgstr "Arquivos de dados"
 
-#: ../tool/seahorse-util.c:777
+#: ../tool/seahorse-util.c:505
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -531,11 +575,15 @@ msgstr ""
 "\n"
 "Deseja substituí-lo por um novo arquivo?"
 
-#: ../tool/seahorse-util.c:780
+#: ../tool/seahorse-util.c:508
 msgid "_Replace"
 msgstr "_Substituir"
 
-#: ../tool/seahorse-widget.c:365
-#, c-format
-msgid "Could not display help: %s"
-msgstr "Não foi possível exibir ajuda: %s"
+#~ msgid "Password:"
+#~ msgstr "Senha:"
+
+#~ msgid "Confirm:"
+#~ msgstr "Confirmar:"
+
+#~ msgid "Could not display help: %s"
+#~ msgstr "Não foi possível exibir ajuda: %s"
