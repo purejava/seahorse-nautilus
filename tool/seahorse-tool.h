@@ -45,6 +45,7 @@ typedef struct _SeahorseToolMode {
     gboolean package;
 
     /* Used for encryption /signing */
+    gboolean symmetric;
     gpgme_key_t *recipients;
     gpgme_key_t signer;
 
