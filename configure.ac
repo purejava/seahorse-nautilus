@@ -172,7 +172,7 @@ SEAHORSE_LIBS="$SEAHORSE_LIBS $DBUS_LIBS"
 # -----------------------------------------------------------------------------
 # Libcryptui
 
-PKG_CHECK_MODULES([LIBCRYPTUI], cryptui-0.0)
+PKG_CHECK_MODULES([LIBCRYPTUI], cryptui-0.0 >= 3.9.90)
 
 SEAHORSE_CFLAGS="$SEAHORSE_CFLAGS $LIBCRYPTUI_CFLAGS"
 SEAHORSE_LIBS="$SEAHORSE_LIBS $LIBCRYPTUI_LIBS"
