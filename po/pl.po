@@ -7,14 +7,14 @@
 # Artur Flinta <aflinta@at.kernel.pl>, 2003-2006.
 # Andrzej Polatyński <andrzej@datatel.net.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2012.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2012.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2013.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse-nautilus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-04 20:45+0200\n"
-"PO-Revision-Date: 2012-09-04 20:47+0200\n"
+"POT-Creation-Date: 2013-08-17 01:29+0200\n"
+"PO-Revision-Date: 2013-08-17 01:30+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -297,50 +297,50 @@ msgstr "Odczytuje listę adresów URI ze standardowego wejścia"
 msgid "file..."
 msgstr "plik..."
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Wybór odbiorców"
+#: ../tool/seahorse-tool.c:171
+msgid "Encryption settings"
+msgstr "Ustawienia szyfrowania"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
 msgid "Couldn't load keys"
 msgstr "Nie można wczytać kluczy"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:253
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "Wybór nazwy zaszyfrowanego pliku dla \"%s\""
 
-#: ../tool/seahorse-tool.c:325
+#: ../tool/seahorse-tool.c:328
 msgid "Choose Signer"
 msgstr "Wybór osoby podpisującej"
 
-#: ../tool/seahorse-tool.c:367
+#: ../tool/seahorse-tool.c:370
 #, c-format
 msgid "Choose Signature File Name for '%s'"
 msgstr "Wybór nazwy pliku podpisu dla \"%s\""
 
-#: ../tool/seahorse-tool.c:407
+#: ../tool/seahorse-tool.c:410
 msgid "Import is complete"
 msgstr "Importowanie ukończone"
 
-#: ../tool/seahorse-tool.c:440
+#: ../tool/seahorse-tool.c:443
 msgid "Importing keys ..."
 msgstr "Importowanie kluczy ..."
 
-#: ../tool/seahorse-tool.c:470
+#: ../tool/seahorse-tool.c:473
 msgid "Import Failed"
 msgstr "Importowanie się nie powiodło"
 
-#: ../tool/seahorse-tool.c:471
+#: ../tool/seahorse-tool.c:474
 msgid "Keys were found but not imported."
 msgstr "Odnaleziono klucze, ale nie zostały one zaimportowane."
 
-#: ../tool/seahorse-tool.c:494
+#: ../tool/seahorse-tool.c:497
 #, c-format
 msgid "Imported key"
 msgstr "Zaimportowany klucz"
 
-#: ../tool/seahorse-tool.c:496
+#: ../tool/seahorse-tool.c:499
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -349,12 +349,12 @@ msgstr[1] "Zaimportowano %d klucze"
 msgstr[2] "Zaimportowano %d kluczy"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: ../tool/seahorse-tool.c:521
 #, c-format
 msgid "Choose Decrypted File Name for '%s'"
 msgstr "Wybór nazwy odszyfrowanego pliku dla \"%s\""
 
-#: ../tool/seahorse-tool.c:575
+#: ../tool/seahorse-tool.c:578
 #, c-format
 msgid "Choose Original File for '%s'"
 msgstr "Wybór pliku oryginału dla \"%s\""
@@ -364,56 +364,56 @@ msgstr "Wybór pliku oryginału dla \"%s\""
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: ../tool/seahorse-tool.c:651
 #, c-format
 msgid "No valid signatures found"
 msgstr "Nie odnaleziono prawidłowych podpisów"
 
-#: ../tool/seahorse-tool.c:695
+#: ../tool/seahorse-tool.c:698
 msgid "File Encryption Tool"
 msgstr "Narzędzie do szyfrowania plików"
 
-#: ../tool/seahorse-tool.c:713
+#: ../tool/seahorse-tool.c:716
 msgid "Encrypting"
 msgstr "Szyfrowanie"
 
-#: ../tool/seahorse-tool.c:714
+#: ../tool/seahorse-tool.c:717
 #, c-format
 msgid "Couldn't encrypt file: %s"
 msgstr "Nie można zaszyfrować pliku: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: ../tool/seahorse-tool.c:725
 msgid "Signing"
 msgstr "Podpisywanie"
 
-#: ../tool/seahorse-tool.c:723
+#: ../tool/seahorse-tool.c:726
 #, c-format
 msgid "Couldn't sign file: %s"
 msgstr "Nie można podpisać pliku: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: ../tool/seahorse-tool.c:731
 msgid "Importing"
 msgstr "Importowanie"
 
-#: ../tool/seahorse-tool.c:729
+#: ../tool/seahorse-tool.c:732
 #, c-format
 msgid "Couldn't import keys from file: %s"
 msgstr "Nie można zaimportować kluczy z pliku: %s"
 
-#: ../tool/seahorse-tool.c:735
+#: ../tool/seahorse-tool.c:738
 msgid "Decrypting"
 msgstr "Odszyfrowywanie"
 
-#: ../tool/seahorse-tool.c:736
+#: ../tool/seahorse-tool.c:739
 #, c-format
 msgid "Couldn't decrypt file: %s"
 msgstr "Nie można odszyfrować pliku: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: ../tool/seahorse-tool.c:744
 msgid "Verifying"
 msgstr "Weryfikowanie"
 
-#: ../tool/seahorse-tool.c:742
+#: ../tool/seahorse-tool.c:745
 #, c-format
 msgid "Couldn't verify file: %s"
 msgstr "Nie można zweryfikować pliku: %s"
