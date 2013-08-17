@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the seahorse-plugins package.
 #
 # Andraž Tori <andraz.tori1@guest.arnes.si>, 2000.
-# Matej Urbančič <mateju@svn.gnome.org>, 2007 - 2012.
+# Matej Urbančič <mateju@svn.gnome.org>, 2007 - 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse-nautilus master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-08 20:34+0000\n"
-"PO-Revision-Date: 2013-01-10 20:53+0100\n"
+"POT-Creation-Date: 2013-08-16 23:30+0000\n"
+"PO-Revision-Date: 2013-08-17 15:38+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -296,50 +296,50 @@ msgstr "Preberi seznam naslovov URI preko standardnega vhoda"
 msgid "file..."
 msgstr "datoteka ..."
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Izbor prejemnikov"
+#: ../tool/seahorse-tool.c:171
+msgid "Encryption settings"
+msgstr "Nastavitve šifriranja"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
 msgid "Couldn't load keys"
 msgstr "Ni mogoče naložiti ključev"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:253
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "Izberi ime šifrirane datoteke za '%s'"
 
-#: ../tool/seahorse-tool.c:325
+#: ../tool/seahorse-tool.c:328
 msgid "Choose Signer"
 msgstr "Izbor podpisnika"
 
-#: ../tool/seahorse-tool.c:367
+#: ../tool/seahorse-tool.c:370
 #, c-format
 msgid "Choose Signature File Name for '%s'"
 msgstr "Izberi ime datoteke s podpisom za '%s'"
 
-#: ../tool/seahorse-tool.c:407
+#: ../tool/seahorse-tool.c:410
 msgid "Import is complete"
 msgstr "Uvoz je končan"
 
-#: ../tool/seahorse-tool.c:440
+#: ../tool/seahorse-tool.c:443
 msgid "Importing keys ..."
 msgstr "Uvažanje ključev ..."
 
-#: ../tool/seahorse-tool.c:470
+#: ../tool/seahorse-tool.c:473
 msgid "Import Failed"
 msgstr "Uvoz ni uspel"
 
-#: ../tool/seahorse-tool.c:471
+#: ../tool/seahorse-tool.c:474
 msgid "Keys were found but not imported."
 msgstr "Ključi so najdeni, vendar niso uvoženi."
 
-#: ../tool/seahorse-tool.c:494
+#: ../tool/seahorse-tool.c:497
 #, c-format
 msgid "Imported key"
 msgstr "Uvoženi ključ"
 
-#: ../tool/seahorse-tool.c:496
+#: ../tool/seahorse-tool.c:499
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -349,12 +349,12 @@ msgstr[2] "Uvožena %d ključa"
 msgstr[3] "Uvoženi %d ključi"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: ../tool/seahorse-tool.c:521
 #, c-format
 msgid "Choose Decrypted File Name for '%s'"
 msgstr "Izberi ime odšifrirane datoteke za '%s'"
 
-#: ../tool/seahorse-tool.c:575
+#: ../tool/seahorse-tool.c:578
 #, c-format
 msgid "Choose Original File for '%s'"
 msgstr "Izberi ime obstoječe datoteke za '%s'"
@@ -364,56 +364,56 @@ msgstr "Izberi ime obstoječe datoteke za '%s'"
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: ../tool/seahorse-tool.c:651
 #, c-format
 msgid "No valid signatures found"
 msgstr "Ni veljavnih podpisov"
 
-#: ../tool/seahorse-tool.c:695
+#: ../tool/seahorse-tool.c:698
 msgid "File Encryption Tool"
 msgstr "Orodje za šifriranje datotek"
 
-#: ../tool/seahorse-tool.c:713
+#: ../tool/seahorse-tool.c:716
 msgid "Encrypting"
 msgstr "Šifriranje"
 
-#: ../tool/seahorse-tool.c:714
+#: ../tool/seahorse-tool.c:717
 #, c-format
 msgid "Couldn't encrypt file: %s"
 msgstr "Ni mogoče šifrirati datoteke: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: ../tool/seahorse-tool.c:725
 msgid "Signing"
 msgstr "Podpisovanje"
 
-#: ../tool/seahorse-tool.c:723
+#: ../tool/seahorse-tool.c:726
 #, c-format
 msgid "Couldn't sign file: %s"
 msgstr "Ni mogoče podpisati datoteke: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: ../tool/seahorse-tool.c:731
 msgid "Importing"
 msgstr "Uvažanje"
 
-#: ../tool/seahorse-tool.c:729
+#: ../tool/seahorse-tool.c:732
 #, c-format
 msgid "Couldn't import keys from file: %s"
 msgstr "Ni mogoče uvoziti ključev iz datoteke: %s"
 
-#: ../tool/seahorse-tool.c:735
+#: ../tool/seahorse-tool.c:738
 msgid "Decrypting"
 msgstr "Odšifriranje"
 
-#: ../tool/seahorse-tool.c:736
+#: ../tool/seahorse-tool.c:739
 #, c-format
 msgid "Couldn't decrypt file: %s"
 msgstr "Ni mogoče odšifrirati datoteke: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: ../tool/seahorse-tool.c:744
 msgid "Verifying"
 msgstr "Overjanje"
 
-#: ../tool/seahorse-tool.c:742
+#: ../tool/seahorse-tool.c:745
 #, c-format
 msgid "Couldn't verify file: %s"
 msgstr "Ni mogoče overiti datoteke: %s"
@@ -592,6 +592,9 @@ msgstr ""
 #: ../tool/seahorse-util.c:508
 msgid "_Replace"
 msgstr "_Zamenjaj"
+
+#~ msgid "Choose Recipients"
+#~ msgstr "Izbor prejemnikov"
 
 #~ msgid "Password:"
 #~ msgstr "Geslo:"
