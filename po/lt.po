@@ -6,20 +6,24 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2007.
 # Vytautas Liuolia <vytautas.liuolia@gmail.com>, 2008.
 # Žygimantas Beručka <zygis@gnome.org>, 2010.
+# Aurimas Černius <aurisc4@gmail.com>, 2013.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-03 23:46+0000\n"
-"PO-Revision-Date: 2012-12-20 22:58+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-08-16 17:26+0000\n"
+"PO-Revision-Date: 2013-08-18 23:11+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
-"Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
+"Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 2.91.6\n"
 "X-Poedit-Language: Lithuanian\n"
 "X-Poedit-Country: LITHUANIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -33,13 +37,14 @@ msgid "File extension for packages when handling mulitple files."
 msgstr "Failo plėtinys paketams apdorojant daug failų."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
-#| msgid "Encrypt each file separately"
 msgid "Handle multiple files separately"
 msgstr "Apdoroti kiekvieną failą atskirai"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
-msgid "When handling multiple files, don't package them but process separately."
-msgstr "Apdorojant daug failų, nepakuokite jų, bet apdorokite kiekvieną atskirai."
+msgid ""
+"When handling multiple files, don't package them but process separately."
+msgstr ""
+"Apdorojant daug failų, nepakuokite jų, bet apdorokite kiekvieną atskirai."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
 msgid "Use armor mode when encrypting"
@@ -116,8 +121,12 @@ msgid "Package Name:"
 msgstr "Paketo failo vardas:"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:8
-msgid "Because the files are located remotely, each file will be encrypted separately."
-msgstr "Kadangi failai yra ne jūsų kompiuteryje, kiekvienas iš jų bus užšifruotas atskirai."
+msgid ""
+"Because the files are located remotely, each file will be encrypted "
+"separately."
+msgstr ""
+"Kadangi failai yra ne jūsų kompiuteryje, kiekvienas iš jų bus užšifruotas "
+"atskirai."
 
 #: ../tool/seahorse-notification.c:572
 msgid "Key Imported"
@@ -155,7 +164,9 @@ msgstr "Netinkamas parašas"
 #: ../tool/seahorse-notification.c:613
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
-msgstr "Pasirašė <i><key id='%s'/></i>, pasirašymo data: %s, <b>baigėsi galiojimas</b>."
+msgstr ""
+"Pasirašė <i><key id='%s'/></i>, pasirašymo data: %s, <b>baigėsi galiojimas</"
+"b>."
 
 #: ../tool/seahorse-notification.c:614
 msgid "Expired Signature"
@@ -287,51 +298,51 @@ msgstr "Skaityti failų (URI) sąrašą iš standartinės įvesties"
 msgid "file..."
 msgstr "failas..."
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Pasirinkite gavėjus, kuriems skirta ši informacija"
+#: ../tool/seahorse-tool.c:171
+#| msgid "Encrypting"
+msgid "Encryption settings"
+msgstr "Šifravimo nustatymai"
 
-#: ../tool/seahorse-tool.c:234
-#: ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
 msgid "Couldn't load keys"
 msgstr "Nepavyko įkelti raktų"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:253
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "Nurodykite vardą užšifruojam failui '%s'"
 
-#: ../tool/seahorse-tool.c:325
+#: ../tool/seahorse-tool.c:328
 msgid "Choose Signer"
 msgstr "Pasirinkite asmenį bei raktą, kuriuo pasirašysite"
 
-#: ../tool/seahorse-tool.c:367
+#: ../tool/seahorse-tool.c:370
 #, c-format
 msgid "Choose Signature File Name for '%s'"
 msgstr "Nurodykite vardą el. parašo failui: '%s'"
 
-#: ../tool/seahorse-tool.c:407
+#: ../tool/seahorse-tool.c:410
 msgid "Import is complete"
 msgstr "Importavimas baigtas"
 
-#: ../tool/seahorse-tool.c:440
+#: ../tool/seahorse-tool.c:443
 msgid "Importing keys ..."
 msgstr "Importuojami raktai..."
 
-#: ../tool/seahorse-tool.c:470
+#: ../tool/seahorse-tool.c:473
 msgid "Import Failed"
 msgstr "Nepavyko importuoti"
 
-#: ../tool/seahorse-tool.c:471
+#: ../tool/seahorse-tool.c:474
 msgid "Keys were found but not imported."
 msgstr "Raktai surasti, bet nebuvo importuoti. "
 
-#: ../tool/seahorse-tool.c:494
+#: ../tool/seahorse-tool.c:497
 #, c-format
 msgid "Imported key"
 msgstr "Importuotas raktas"
 
-#: ../tool/seahorse-tool.c:496
+#: ../tool/seahorse-tool.c:499
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -340,12 +351,12 @@ msgstr[1] "Importuoti %d raktai"
 msgstr[2] "Importuota %d raktų"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: ../tool/seahorse-tool.c:521
 #, c-format
 msgid "Choose Decrypted File Name for '%s'"
 msgstr "Nurodykite vardą iššifruotam failui '%s'"
 
-#: ../tool/seahorse-tool.c:575
+#: ../tool/seahorse-tool.c:578
 #, c-format
 msgid "Choose Original File for '%s'"
 msgstr "Pasirinkite failą, kurį tikrinsite su el. parašu iš failo '%s'"
@@ -355,56 +366,56 @@ msgstr "Pasirinkite failą, kurį tikrinsite su el. parašu iš failo '%s'"
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: ../tool/seahorse-tool.c:651
 #, c-format
 msgid "No valid signatures found"
 msgstr "Nerasta galiojančių parašų"
 
-#: ../tool/seahorse-tool.c:695
+#: ../tool/seahorse-tool.c:698
 msgid "File Encryption Tool"
 msgstr "Failų šifravimo įrankis"
 
-#: ../tool/seahorse-tool.c:713
+#: ../tool/seahorse-tool.c:716
 msgid "Encrypting"
 msgstr "Šifruojama"
 
-#: ../tool/seahorse-tool.c:714
+#: ../tool/seahorse-tool.c:717
 #, c-format
 msgid "Couldn't encrypt file: %s"
 msgstr "Nepavyko užšifruoti failo: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: ../tool/seahorse-tool.c:725
 msgid "Signing"
 msgstr "Pasirašoma"
 
-#: ../tool/seahorse-tool.c:723
+#: ../tool/seahorse-tool.c:726
 #, c-format
 msgid "Couldn't sign file: %s"
 msgstr "Nepavyko pasirašyti failo: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: ../tool/seahorse-tool.c:731
 msgid "Importing"
 msgstr "Importuojama"
 
-#: ../tool/seahorse-tool.c:729
+#: ../tool/seahorse-tool.c:732
 #, c-format
 msgid "Couldn't import keys from file: %s"
 msgstr "Nepavyko importuoti raktų iš failo: %s"
 
-#: ../tool/seahorse-tool.c:735
+#: ../tool/seahorse-tool.c:738
 msgid "Decrypting"
 msgstr "Iššifruojama"
 
-#: ../tool/seahorse-tool.c:736
+#: ../tool/seahorse-tool.c:739
 #, c-format
 msgid "Couldn't decrypt file: %s"
 msgstr "Nepavyko iššifruoti failo: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: ../tool/seahorse-tool.c:744
 msgid "Verifying"
 msgstr "Tikrinama"
 
-#: ../tool/seahorse-tool.c:742
+#: ../tool/seahorse-tool.c:745
 #, c-format
 msgid "Couldn't verify file: %s"
 msgstr "Nepavyko patikrinti failo: %s"
@@ -528,13 +539,11 @@ msgstr[2] "Jūs pasirinkote %d aplankų"
 msgid "Preparing..."
 msgstr "Ruošiama..."
 
-#: ../tool/seahorse-tool-files.c:875
-#: ../tool/seahorse-tool-files.c:898
+#: ../tool/seahorse-tool-files.c:875 ../tool/seahorse-tool-files.c:898
 msgid "Couldn't list files"
 msgstr "Nepavyko sudaryti failų sąrašo"
 
-#: ../tool/seahorse-tool-files.c:885
-#: ../tool/seahorse-util.c:399
+#: ../tool/seahorse-tool-files.c:885 ../tool/seahorse-util.c:399
 msgid "Couldn't package files"
 msgstr "Nepavyko supakuoti failų"
 
@@ -560,8 +569,7 @@ msgstr "Programa file-roller nesėkmingai baigė darbą"
 msgid "All key files"
 msgstr "Visi raktų failai"
 
-#: ../tool/seahorse-util.c:443
-#: ../tool/seahorse-util.c:483
+#: ../tool/seahorse-util.c:443 ../tool/seahorse-util.c:483
 msgid "All files"
 msgstr "Visi failai"
 
