@@ -40,3 +40,7 @@ dist-hook:
 	else \
 		echo A git clone is required to generate a ChangeLog >&2; \
 	fi
+
+upload-release: $(DIST_ARCHIVES)
+	scp $(DIST_ARCHIVES) master.gnome.org:
+	ssh master.gnome.org ftpadmin install $(DIST_ARCHIVES)
