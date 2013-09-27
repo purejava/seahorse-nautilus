@@ -13,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: seahorse-plugins\n"
+"Project-Id-Version: seahorse-plugins gnome-3.8\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-03 23:46+0000\n"
+"POT-Creation-Date: 2013-09-27 10:23+0000\n"
 "PO-Revision-Date: 2013-01-23 21:56+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
@@ -32,7 +32,7 @@ msgid "File extension for packages"
 msgstr "Přípona souboru pro balíčky"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-msgid "File extension for packages when handling mulitple files."
+msgid "File extension for packages when handling multiple files."
 msgstr "Přípona souboru pro balíčky, když se pracuje s více soubory."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
