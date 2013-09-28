@@ -3,7 +3,7 @@
 		<key name="package-extension" type="s">
 			<default>'.zip'</default>
 			<summary>File extension for packages</summary>
-			<description>File extension for packages when handling multiple files.</description>
+			<description>File extension for packages when handling mulitple files.</description>
 		</key>
 		<key name="separate-files" type="b">
 			<default>false</default>
