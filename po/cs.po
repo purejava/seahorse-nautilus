@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: seahorse-plugins\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-28 00:06+0000\n"
-"PO-Revision-Date: 2013-08-19 14:16+0200\n"
+"POT-Creation-Date: 2013-10-17 16:24+0000\n"
+"PO-Revision-Date: 2013-10-18 18:11+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -180,33 +180,41 @@ msgstr "Podepsáno klíčem <i><key id='%s'/> <b>Klíč odvolán</b></i> dne %s.
 msgid "Revoked Signature"
 msgstr "Odvolaný podpis"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:627
-#, c-format
-msgid "Signed by <i><key id='%s'/></i> on %s."
-msgstr "Podepsáno klíčem <i><key id='%s'/></i> dne %s."
-
 #: ../tool/seahorse-notification.c:628
 msgid "Good Signature"
 msgstr "Správný podpis"
 
-#: ../tool/seahorse-notification.c:633
+#: ../tool/seahorse-notification.c:629
+#, c-format
+msgid "Signed by <i><key id='%s'/></i> on %s."
+msgstr "Podepsáno klíčem <i><key id='%s'/></i> dne %s."
+
+#: ../tool/seahorse-notification.c:631
+msgid "Untrusted Valid Signature"
+msgstr "Nedůvěryhodný platný podpis"
+
+#: ../tool/seahorse-notification.c:632
+#, c-format
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr "Podepsáno platným, ale <b>nedůvěryhodným</b> klíčem <i><key id='%s'/></i> dne %s."
+
+#: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
 msgstr "Podpisový klíč v klíčence chybí."
 
-#: ../tool/seahorse-notification.c:634
+#: ../tool/seahorse-notification.c:639
 msgid "Unknown Signature"
 msgstr "Neznámý podpis"
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:643
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Špatný nebo padělaný podpis. Podepsaná data byla změněna."
 
-#: ../tool/seahorse-notification.c:639
+#: ../tool/seahorse-notification.c:644
 msgid "Bad Signature"
 msgstr "Špatný podpis"
 
-#: ../tool/seahorse-notification.c:647
+#: ../tool/seahorse-notification.c:652
 msgid "Couldn't verify signature."
 msgstr "Nebylo možno ověřit podpis."
 
