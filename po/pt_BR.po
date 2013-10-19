@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: seahorse-nautilus\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-17 13:42+0000\n"
-"PO-Revision-Date: 2013-08-17 20:53-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"POT-Creation-Date: 2013-10-18 18:12+0000\n"
+"PO-Revision-Date: 2013-10-19 09:29-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -170,35 +170,44 @@ msgstr "Assinado por <i><key id=\"%s\"/> <b>Revogado</b></i> em %s."
 msgid "Revoked Signature"
 msgstr "Assinatura revogada"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:627
-#, c-format
-msgid "Signed by <i><key id='%s'/></i> on %s."
-msgstr "Assinado por <i><key id=\"%s\"/></i> em %s."
-
 # "Bad Signature" é "Assinatura Inválida".
 # Traduzir como "Assinatura Válida"?
 #: ../tool/seahorse-notification.c:628
 msgid "Good Signature"
 msgstr "Assinatura válida"
 
-#: ../tool/seahorse-notification.c:633
+#: ../tool/seahorse-notification.c:629
+#, c-format
+msgid "Signed by <i><key id='%s'/></i> on %s."
+msgstr "Assinado por <i><key id=\"%s\"/></i> em %s."
+
+#: ../tool/seahorse-notification.c:631
+msgid "Untrusted Valid Signature"
+msgstr "Assinatura válida não confiável"
+
+#: ../tool/seahorse-notification.c:632
+#, c-format
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr ""
+"Assinado válida, porém <b>não confiável</b> por <i><key id='%s'/></i> em %s."
+
+#: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
 msgstr "Chave de assinatura fora do chaveiro."
 
-#: ../tool/seahorse-notification.c:634
+#: ../tool/seahorse-notification.c:639
 msgid "Unknown Signature"
 msgstr "Assinatura desconhecida"
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:643
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Assinatura inválida ou forjada. A data da assinatura foi modificada."
 
-#: ../tool/seahorse-notification.c:639
+#: ../tool/seahorse-notification.c:644
 msgid "Bad Signature"
 msgstr "Assinatura inválida"
 
-#: ../tool/seahorse-notification.c:647
+#: ../tool/seahorse-notification.c:652
 msgid "Couldn't verify signature."
 msgstr "Não foi possível verificar a assinatura."
 
