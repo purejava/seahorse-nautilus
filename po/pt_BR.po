@@ -189,7 +189,7 @@ msgstr "Assinatura válida não confiável"
 #, c-format
 msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
 msgstr ""
-"Assinado válida, porém <b>não confiável</b> por <i><key id='%s'/></i> em %s."
+"Assinatura válida, porém <b>não confiável</b> por <i><key id='%s'/></i> em %s."
 
 #: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
