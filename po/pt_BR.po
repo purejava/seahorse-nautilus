@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: seahorse-nautilus\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-18 18:12+0000\n"
-"PO-Revision-Date: 2013-10-19 09:29-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2013-11-23 05:06+0000\n"
+"PO-Revision-Date: 2013-11-25 08:45-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgid "File extension for packages"
 msgstr "Extensão de arquivos de pacotes"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-msgid "File extension for packages when handling mulitple files."
+msgid "File extension for packages when handling multiple files."
 msgstr "A extensão de arquivos de pacotes ao lidar com múltiplos arquivos."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
@@ -189,7 +189,8 @@ msgstr "Assinatura válida não confiável"
 #, c-format
 msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
 msgstr ""
-"Assinatura válida, porém <b>não confiável</b> por <i><key id='%s'/></i> em %s."
+"Assinatura válida, porém <b>não confiável</b> por <i><key id='%s'/></i> em "
+"%s."
 
 #: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
