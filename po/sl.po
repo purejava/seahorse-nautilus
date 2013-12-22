@@ -10,16 +10,15 @@ msgstr ""
 "Project-Id-Version: seahorse-nautilus master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-19 13:10+0000\n"
-"PO-Revision-Date: 2013-10-20 18:27+0100\n"
+"POT-Creation-Date: 2013-12-19 16:22+0000\n"
+"PO-Revision-Date: 2013-12-22 19:17+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 1.5.4\n"
 
@@ -28,7 +27,7 @@ msgid "File extension for packages"
 msgstr "Pripona datotek paketov"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-msgid "File extension for packages when handling mulitple files."
+msgid "File extension for packages when handling multiple files."
 msgstr "Pripona datotek paketov med upravljanjem več datotek."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
