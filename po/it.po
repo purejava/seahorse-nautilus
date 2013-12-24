@@ -1,4 +1,4 @@
-# Italian translation of seahorse-plugins
+# Italian translation of seahorse-nautilus
 # Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2013 The Free Software Foundation, Inc.
 # This file is distributed under the same license as the seahorse package.
 # Luigi maselli <metnik at tiscali.it>, 2003
@@ -10,10 +10,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: seahorse-plugin\n"
+"Project-Id-Version: seahorse-nautilus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-26 19:02+0200\n"
-"PO-Revision-Date: 2013-08-26 19:02+0200\n"
+"POT-Creation-Date: 2013-12-24 10:30+0100\n"
+"PO-Revision-Date: 2013-12-24 10:32+0100\n"
 "Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -28,7 +28,7 @@ msgid "File extension for packages"
 msgstr "Estensione file per pacchetti"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-msgid "File extension for packages when handling mulitple files."
+msgid "File extension for packages when handling multiple files."
 msgstr "Estensione file per pacchetti quando vengono gestiti molteplici file."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
@@ -171,33 +171,42 @@ msgstr "Firmato da <i><key id='%s'/>, <b>revocata</b></i> il %s."
 msgid "Revoked Signature"
 msgstr "Firma revocata"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:627
-#, c-format
-msgid "Signed by <i><key id='%s'/></i> on %s."
-msgstr "Firmato da <i><key id='%s'/></i> il %s."
-
 #: ../tool/seahorse-notification.c:628
 msgid "Good Signature"
 msgstr "Firma valida"
 
-#: ../tool/seahorse-notification.c:633
+#: ../tool/seahorse-notification.c:629
+#, c-format
+msgid "Signed by <i><key id='%s'/></i> on %s."
+msgstr "Firmato da <i><key id='%s'/></i> il %s."
+
+#: ../tool/seahorse-notification.c:631
+msgid "Untrusted Valid Signature"
+msgstr "Firma valida non affidabile"
+
+#: ../tool/seahorse-notification.c:632
+#, c-format
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr ""
+"Firma valida, ma <b>non affidabile</b>, da <i><key id='%s'/></i> il %s."
+
+#: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
 msgstr "Chiave di firma non presente nel portachiavi."
 
-#: ../tool/seahorse-notification.c:634
+#: ../tool/seahorse-notification.c:639
 msgid "Unknown Signature"
 msgstr "Firma sconosciuta"
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:643
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Firma errata o contraffatta. I dati firmati sono stati modificati."
 
-#: ../tool/seahorse-notification.c:639
+#: ../tool/seahorse-notification.c:644
 msgid "Bad Signature"
 msgstr "Firma errata"
 
-#: ../tool/seahorse-notification.c:647
+#: ../tool/seahorse-notification.c:652
 msgid "Couldn't verify signature."
 msgstr "Impossibile verificare la firma."
 
