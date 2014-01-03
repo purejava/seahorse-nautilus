@@ -7,14 +7,14 @@
 # Artur Flinta <aflinta@at.kernel.pl>, 2003-2006.
 # Andrzej Polatyński <andrzej@datatel.net.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2013.
-# Aviary.pl <gnomepl@aviary.pl>, 2007-2013.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2014.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse-nautilus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-17 01:29+0200\n"
-"PO-Revision-Date: 2013-08-17 01:30+0200\n"
+"POT-Creation-Date: 2014-01-03 16:47+0100\n"
+"PO-Revision-Date: 2014-01-03 16:48+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -31,7 +31,7 @@ msgid "File extension for packages"
 msgstr "Rozszerzenie pliku dla pakietów"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-msgid "File extension for packages when handling mulitple files."
+msgid "File extension for packages when handling multiple files."
 msgstr "Rozszerzenie pliku dla pakietów podczas obsługiwania wielu plików."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
@@ -180,33 +180,43 @@ msgstr "Podpisany przez <i><key id='%s'/> <b>Unieważniony</b></i> dnia %s."
 msgid "Revoked Signature"
 msgstr "Podpis unieważniony"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:627
-#, c-format
-msgid "Signed by <i><key id='%s'/></i> on %s."
-msgstr "Podpisany przez <i><key id='%s'/></i> dnia %s."
-
 #: ../tool/seahorse-notification.c:628
 msgid "Good Signature"
 msgstr "Podpis prawidłowy"
 
-#: ../tool/seahorse-notification.c:633
+#: ../tool/seahorse-notification.c:629
+#, c-format
+msgid "Signed by <i><key id='%s'/></i> on %s."
+msgstr "Podpisany przez <i><key id='%s'/></i> dnia %s."
+
+#: ../tool/seahorse-notification.c:631
+msgid "Untrusted Valid Signature"
+msgstr "Niezaufany prawidłowy podpis"
+
+#: ../tool/seahorse-notification.c:632
+#, c-format
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr ""
+"Prawidłowy, ale <b>niezaufany</b> podpis użytkownika <i><key id='%s'/></i> "
+"dnia %s."
+
+#: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
 msgstr "Klucz podpisujący nie jest w bazie kluczy."
 
-#: ../tool/seahorse-notification.c:634
+#: ../tool/seahorse-notification.c:639
 msgid "Unknown Signature"
 msgstr "Nieznany podpis"
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:643
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Błędny lub podrobiony podpis. Podpisane dane zostały zmodyfikowane."
 
-#: ../tool/seahorse-notification.c:639
+#: ../tool/seahorse-notification.c:644
 msgid "Bad Signature"
 msgstr "Błędny podpis"
 
-#: ../tool/seahorse-notification.c:647
+#: ../tool/seahorse-notification.c:652
 msgid "Couldn't verify signature."
 msgstr "Nie można zweryfikować podpisu."
 
