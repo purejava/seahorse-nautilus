@@ -5,14 +5,14 @@
 # Translated on 2009-05-09 by: Branko Kokanović <branko.kokanovic@gmail.com>
 # Branko Kokanović <branko.kokanovic@gmail.com>, 2009.
 # Miloš Popović <gpopac@gmail.com>, 2010.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011, 2013.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Seahorse\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
 "=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-16 17:26+0000\n"
-"PO-Revision-Date: 2013-09-09 22:35+0200\n"
+"POT-Creation-Date: 2014-01-02 04:00+0000\n"
+"PO-Revision-Date: 2014-01-27 22:39+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -28,7 +28,8 @@ msgid "File extension for packages"
 msgstr "Proširenje datoteke za pakete"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-msgid "File extension for packages when handling mulitple files."
+#| msgid "File extension for packages when handling mulitple files."
+msgid "File extension for packages when handling multiple files."
 msgstr "Proširenje datoteke za pakete prilikom obrade brojnih datoteka."
 
 # bug: s/seperately/separately/
@@ -183,33 +184,43 @@ msgstr "Potpisan od <i><key id='%s'/> <b>Opozvan</b></i> %s."
 msgid "Revoked Signature"
 msgstr "Opozvan potpis"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:627
-#, c-format
-msgid "Signed by <i><key id='%s'/></i> on %s."
-msgstr "Potpisan od <i><key id='%s'/></i> %s."
-
 #: ../tool/seahorse-notification.c:628
 msgid "Good Signature"
 msgstr "Dobar potpis"
 
-#: ../tool/seahorse-notification.c:633
+#: ../tool/seahorse-notification.c:629
+#, c-format
+msgid "Signed by <i><key id='%s'/></i> on %s."
+msgstr "Potpisan od <i><key id='%s'/></i> %s."
+
+#: ../tool/seahorse-notification.c:631
+#| msgid "Invalid Signature"
+msgid "Untrusted Valid Signature"
+msgstr "Nepoverljiv ispravan potpis"
+
+#: ../tool/seahorse-notification.c:632
+#, c-format
+#| msgid "Signed by <i><key id='%s'/></i> on %s."
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr "Ispravan ali <b>nepoverljiv</b> potpis od <i><key id='%s'/></i> na „%s“."
+
+#: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
 msgstr "Ključ za potpis nije u privesku ključeva."
 
-#: ../tool/seahorse-notification.c:634
+#: ../tool/seahorse-notification.c:639
 msgid "Unknown Signature"
 msgstr "Nepoznat potpis"
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:643
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Loš ili falsifikovan potpis. Potpisani podaci su menjani."
 
-#: ../tool/seahorse-notification.c:639
+#: ../tool/seahorse-notification.c:644
 msgid "Bad Signature"
 msgstr "Loš potpis"
 
-#: ../tool/seahorse-notification.c:647
+#: ../tool/seahorse-notification.c:652
 msgid "Couldn't verify signature."
 msgstr "Ne mogu da proverim potpis."
 
@@ -301,7 +312,6 @@ msgid "file..."
 msgstr "datoteka..."
 
 #: ../tool/seahorse-tool.c:171
-#| msgid "Encrypting"
 msgid "Encryption settings"
 msgstr "Podešavanja šifrovanja"
 
