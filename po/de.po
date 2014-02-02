@@ -4,21 +4,23 @@
 # Henrik Kröger <henrikkroeger@googlemail.com>, 2007.
 # Philipp Kerling <k.philipp@gmail.com>, 2008.
 # Mario Blättermann <mariobl@freenet.de>, 2010, 2011.
+# Benjamin Steinwender <b@stbe.at>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse-plugins master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-10 23:40+0200\n"
-"PO-Revision-Date: 2013-06-03 15:02+0100\n"
-"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-02-02 12:11+0000\n"
+"PO-Revision-Date: 2014-02-02 14:12+0100\n"
+"Last-Translator: Benjamin Steinwender <b@stbe.at>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
 msgid "File extension for packages"
@@ -41,11 +43,11 @@ msgstr ""
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
 msgid "Use armor mode when encrypting"
-msgstr ""
+msgstr "Geschützten Modus beim Verschlüsseln verwenden"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
 msgid "Use PGP ASCII armor mode when encrypting or signing files."
-msgstr ""
+msgstr "Geschützten PGP-Textmodus beim Verschlüsseln oder Signieren verwenden"
 
 #: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
 msgid "Width of the window"
@@ -285,50 +287,51 @@ msgstr "Adressliste (URIs) von Standard-Eingabe lesen"
 msgid "file..."
 msgstr "Datei …"
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Empfänger wählen"
+#: ../tool/seahorse-tool.c:171
+#| msgid "Encrypting"
+msgid "Encryption settings"
+msgstr "Verschlüsselungseinstellungen"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
 msgid "Couldn't load keys"
 msgstr "Schlüssel konnten nicht geladen werden"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:253
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "Name für die verschlüsselte Datei für »%s« auswählen"
 
-#: ../tool/seahorse-tool.c:325
+#: ../tool/seahorse-tool.c:328
 msgid "Choose Signer"
 msgstr "Signierer wählen"
 
-#: ../tool/seahorse-tool.c:367
+#: ../tool/seahorse-tool.c:370
 #, c-format
 msgid "Choose Signature File Name for '%s'"
 msgstr "Name für die Signaturdatei von »%s« auswählen"
 
-#: ../tool/seahorse-tool.c:407
+#: ../tool/seahorse-tool.c:410
 msgid "Import is complete"
 msgstr "Import abgeschlossen"
 
-#: ../tool/seahorse-tool.c:440
+#: ../tool/seahorse-tool.c:443
 msgid "Importing keys ..."
 msgstr "Schlüssel werden importiert …"
 
-#: ../tool/seahorse-tool.c:470
+#: ../tool/seahorse-tool.c:473
 msgid "Import Failed"
 msgstr "Import gescheitert"
 
-#: ../tool/seahorse-tool.c:471
+#: ../tool/seahorse-tool.c:474
 msgid "Keys were found but not imported."
 msgstr "Es wurden Schlüssel gefunden, aber nicht importiert."
 
-#: ../tool/seahorse-tool.c:494
+#: ../tool/seahorse-tool.c:497
 #, c-format
 msgid "Imported key"
 msgstr "Importierter Schlüssel"
 
-#: ../tool/seahorse-tool.c:496
+#: ../tool/seahorse-tool.c:499
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -336,12 +339,12 @@ msgstr[0] "%d Schlüssel importiert."
 msgstr[1] "%d Schlüssel importiert."
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: ../tool/seahorse-tool.c:521
 #, c-format
 msgid "Choose Decrypted File Name for '%s'"
 msgstr "Name für die entschlüsselte Datei für »%s« auswählen"
 
-#: ../tool/seahorse-tool.c:575
+#: ../tool/seahorse-tool.c:578
 #, c-format
 msgid "Choose Original File for '%s'"
 msgstr "Original-Datei für »%s« auswählen"
@@ -351,56 +354,56 @@ msgstr "Original-Datei für »%s« auswählen"
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: ../tool/seahorse-tool.c:651
 #, c-format
 msgid "No valid signatures found"
 msgstr "Keine gültigen Signaturen gefunden."
 
-#: ../tool/seahorse-tool.c:695
+#: ../tool/seahorse-tool.c:698
 msgid "File Encryption Tool"
 msgstr "Programm zur Datei-Verschlüsselung"
 
-#: ../tool/seahorse-tool.c:713
+#: ../tool/seahorse-tool.c:716
 msgid "Encrypting"
 msgstr "Verschlüsseln"
 
-#: ../tool/seahorse-tool.c:714
+#: ../tool/seahorse-tool.c:717
 #, c-format
 msgid "Couldn't encrypt file: %s"
 msgstr "Die Datei konnte nicht verschlüsselt werden: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: ../tool/seahorse-tool.c:725
 msgid "Signing"
 msgstr "Signieren"
 
-#: ../tool/seahorse-tool.c:723
+#: ../tool/seahorse-tool.c:726
 #, c-format
 msgid "Couldn't sign file: %s"
 msgstr "Die Datei konnte nicht signiert werden: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: ../tool/seahorse-tool.c:731
 msgid "Importing"
 msgstr "Importieren"
 
-#: ../tool/seahorse-tool.c:729
+#: ../tool/seahorse-tool.c:732
 #, c-format
 msgid "Couldn't import keys from file: %s"
 msgstr "Die Schlüssel konnten nicht aus der Datei importiert werden: %s"
 
-#: ../tool/seahorse-tool.c:735
+#: ../tool/seahorse-tool.c:738
 msgid "Decrypting"
 msgstr "Entschlüsseln"
 
-#: ../tool/seahorse-tool.c:736
+#: ../tool/seahorse-tool.c:739
 #, c-format
 msgid "Couldn't decrypt file: %s"
 msgstr "Die Datei konnte nicht entschlüsselt werden: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: ../tool/seahorse-tool.c:744
 msgid "Verifying"
 msgstr "Überprüfen"
 
-#: ../tool/seahorse-tool.c:742
+#: ../tool/seahorse-tool.c:745
 #, c-format
 msgid "Couldn't verify file: %s"
 msgstr "Die Datei konnte nicht überprüft werden: %s"
@@ -573,6 +576,9 @@ msgstr ""
 #: ../tool/seahorse-util.c:508
 msgid "_Replace"
 msgstr "_Ersetzen"
+
+#~ msgid "Choose Recipients"
+#~ msgstr "Empfänger wählen"
 
 #~ msgid "Password:"
 #~ msgstr "Passwort:"
