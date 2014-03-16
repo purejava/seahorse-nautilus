@@ -1,3 +1,9 @@
+seahorse-nautilus 3.11.92
+ * Warn when signatures are valid but untrusted [#708640]
+ * License update
+ * Documentation fixes
+ * Updated translations
+
 seahorse-nautilus 3.10.1
  * Updated translations
 
