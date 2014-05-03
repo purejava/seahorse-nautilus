@@ -1,22 +1,68 @@
-# translation of eu_to_be_translate.po to Basque
+# Basque translation of seahorse-nautilus.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2010, 2011.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2008, 2010, 2011, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu_to_be_translate\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-07 11:29+0200\n"
-"PO-Revision-Date: 2011-09-25 13:37+0200\n"
-"Last-Translator: \n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"Project-Id-Version: seahorse-nautilus master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=seahorse"
+"-"
+"nautilus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-05-03 12:27+0200\n"
+"PO-Revision-Date: 2014-05-03 12:36+0200\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"Language-Team: Basque <librezale@librezale.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
+msgid "File extension for packages"
+msgstr "Paketeen fitxategi-luzapena"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
+msgid "File extension for packages when handling multiple files."
+msgstr "Paketeen fitxategi-luzapena hainbat fitxategi kudeatzean."
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
+msgid "Handle multiple files separately"
+msgstr "Kudeatu fitxategi bakoitza bere aldetik"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
+msgid ""
+"When handling multiple files, don't package them but process separately."
+msgstr ""
+"Hainbat fitxategi kudeatzean ez sartu haiek pakete batean, prozesatu bakoitza "
+"bere aldetik."
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
+msgid "Use armor mode when encrypting"
+msgstr "Erabili blindajearen modua enkriptatzean"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
+msgid "Use PGP ASCII armor mode when encrypting or signing files."
+msgstr ""
+"Erabili PGP ASCII blindajearen modua fitxategiak enkriptatzean edo sinatzean."
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
+msgid "Width of the window"
+msgstr "Leihoaren zabalera"
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:2
+msgid "Width (in pixels) of the window."
+msgstr "Leihoaren zabalera (pixeletan)."
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:3
+msgid "Height of the window"
+msgstr "Leihoaren altuera"
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:4
+msgid "Height (in pixels) of the window."
+msgstr "Leihoaren altuera (pixeletan)."
 
 #: ../nautilus-ext/seahorse-nautilus.c:158
 msgid "Encrypt..."
@@ -39,20 +85,16 @@ msgstr[0] "Sinatu hautatutako fitxategia"
 msgstr[1] "Sinatu hautatutako fitxategiak"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:1
+msgid "Encrypt Multiple Files"
+msgstr "Enkriptatu fitxategi bat baino gehiago"
+
+#: ../tool/seahorse-multi-encrypt.xml.h:2
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>Hainbat fitxategi edo karpeta hautatu duzu</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
-msgid ""
-"Because the files are located remotely, each file will be encrypted "
-"separately."
-msgstr ""
-"Fitxategiak elkarrengandik urrun kokatuak daudenez, fitxategi bakoitza bere "
-"aldetik enkriptatuko da."
-
 #: ../tool/seahorse-multi-encrypt.xml.h:3
-msgid "Encrypt Multiple Files"
-msgstr "Enkriptatu fitxategi bat baino gehiago"
+msgid "encrypted-package"
+msgstr "pakete enkriptatua"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:4
 msgid "Encrypt each file separately"
@@ -63,31 +105,35 @@ msgid "Encrypt packed together in a package"
 msgstr "Enkriptatu elkarrekin paketatuta"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:6
-msgid "Package Name:"
-msgstr "Pakete-izena:"
-
-#: ../tool/seahorse-multi-encrypt.xml.h:7
 msgid "Packaging:"
 msgstr "Paketatzea:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:8
-msgid "encrypted-package"
-msgstr "pakete enkriptatua"
+#: ../tool/seahorse-multi-encrypt.xml.h:7
+msgid "Package Name:"
+msgstr "Pakete-izena:"
 
-#: ../tool/seahorse-notification.c:580 ../tool/seahorse-notification.c:605
+#: ../tool/seahorse-multi-encrypt.xml.h:8
+msgid ""
+"Because the files are located remotely, each file will be encrypted "
+"separately."
+msgstr ""
+"Fitxategiak elkarrengandik urrun kokatuak daudenez, fitxategi bakoitza bere "
+"aldetik enkriptatuko da."
+
+#: ../tool/seahorse-notification.c:569
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Gakoa inportatu da"
 msgstr[1] "Gakoak inportatu dira"
 
-#: ../tool/seahorse-notification.c:584 ../tool/seahorse-notification.c:604
+#: ../tool/seahorse-notification.c:573
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
 msgstr[0] "Gako %i inportatu da"
 msgstr[1] "%i gako inportatu dira"
 
-#: ../tool/seahorse-notification.c:586
+#: ../tool/seahorse-notification.c:575
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
@@ -95,60 +141,69 @@ msgstr[0] "Gako bat inportatu da honetarako:"
 msgstr[1] "Gakoak inportatu dira honetarako:"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:623
+#: ../tool/seahorse-notification.c:603
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr "<i><key id='%s'/></i>(e)k sinatua, %s(e)an <i><b>iraungia</b></i>."
 
-#: ../tool/seahorse-notification.c:624
+#: ../tool/seahorse-notification.c:604
 msgid "Invalid Signature"
 msgstr "Sinadura baliogabea"
 
-#: ../tool/seahorse-notification.c:630
+#: ../tool/seahorse-notification.c:610
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr "<i><key id='%s'/></i>(e)k %s(e)an sinatua; <b>iraungia</b>."
 
-#: ../tool/seahorse-notification.c:631
+#: ../tool/seahorse-notification.c:611
 msgid "Expired Signature"
 msgstr "Sinadura iraungia"
 
-#: ../tool/seahorse-notification.c:637
+#: ../tool/seahorse-notification.c:617
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr "<i><key id='%s'/></i>(e)k sinatua, %s(e)an <i><b>errebokatua</b></i>."
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:618
 msgid "Revoked Signature"
 msgstr "Sinadura errebokatua"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:644
+#: ../tool/seahorse-notification.c:625
+msgid "Good Signature"
+msgstr "Sinadura zuzena"
+
+#: ../tool/seahorse-notification.c:626
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "<i><key id='%s'/></i>(e)k %s(e)an sinatua."
 
-#: ../tool/seahorse-notification.c:645
-msgid "Good Signature"
-msgstr "Sinadura zuzena"
+#: ../tool/seahorse-notification.c:628
+msgid "Untrusted Valid Signature"
+msgstr "Fidagarritasunik gabeko baliozko sinadura"
 
-#: ../tool/seahorse-notification.c:650
+#: ../tool/seahorse-notification.c:629
+#, c-format
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr ""
+"Fidagarria ez den, baina baliozkoa, <i><key id='%s'/></i>(e)n sinadura %s(e)n."
+
+#: ../tool/seahorse-notification.c:635
 msgid "Signing key not in keyring."
 msgstr "Sinatzeko gakoa ez dago gako sortan."
 
-#: ../tool/seahorse-notification.c:651
+#: ../tool/seahorse-notification.c:636
 msgid "Unknown Signature"
 msgstr "Sinadura ezezaguna"
 
-#: ../tool/seahorse-notification.c:655
+#: ../tool/seahorse-notification.c:640
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Sinadura okerra edo faltsutua. Sinatutako datuak aldatu egin dira."
 
-#: ../tool/seahorse-notification.c:656
+#: ../tool/seahorse-notification.c:641
 msgid "Bad Signature"
 msgstr "Sinadura okerra"
 
-#: ../tool/seahorse-notification.c:664
+#: ../tool/seahorse-notification.c:649
 msgid "Couldn't verify signature."
 msgstr "Ezin izan da sinadura egiaztatu."
 
@@ -156,41 +211,40 @@ msgstr "Ezin izan da sinadura egiaztatu."
 msgid "Notification Messages"
 msgstr "Jakinarazpen-mezuak"
 
-#: ../tool/seahorse-passphrase.c:200
-msgid "Passphrase"
-msgstr "Pasaesaldia"
-
-#: ../tool/seahorse-passphrase.c:203
-msgid "Password:"
-msgstr "Pasahitza:"
-
-#. The second and main entry
-#: ../tool/seahorse-passphrase.c:267
-msgid "Confirm:"
-msgstr "Berretsi:"
-
-#: ../tool/seahorse-passphrase.c:355
+#: ../tool/seahorse-passphrase.c:111
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Pasaesaldi okerra."
 
-#: ../tool/seahorse-passphrase.c:359
+#: ../tool/seahorse-passphrase.c:115
 #, c-format
 msgid "Enter new passphrase for '%s'"
 msgstr "Idatzi '%s'(r)en pasaesaldi berria"
 
-#: ../tool/seahorse-passphrase.c:361
+#: ../tool/seahorse-passphrase.c:117
 #, c-format
 msgid "Enter passphrase for '%s'"
 msgstr "Idatzi '%s'(r)en pasaesaldia"
 
-#: ../tool/seahorse-passphrase.c:364
+#: ../tool/seahorse-passphrase.c:120
 msgid "Enter new passphrase"
 msgstr "Idatzi pasaesaldi berria"
 
-#: ../tool/seahorse-passphrase.c:366
+#: ../tool/seahorse-passphrase.c:122
 msgid "Enter passphrase"
 msgstr "Idatzi pasaesaldia"
+
+#: ../tool/seahorse-passphrase.c:127
+msgid "Passphrase"
+msgstr "Pasaesaldia"
+
+#: ../tool/seahorse-passphrase.c:135
+msgid "Ok"
+msgstr "Ados"
+
+#: ../tool/seahorse-passphrase.c:136
+msgid "Cancel"
+msgstr "Utzi"
 
 #: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
 msgid "Decrypt File"
@@ -208,47 +262,47 @@ msgstr "Egiaztatu sinadura"
 msgid "Progress Title"
 msgstr "Progresioaren izenburua"
 
-#: ../tool/seahorse-tool.c:61
+#: ../tool/seahorse-tool.c:58
 msgid "Import keys from the file"
 msgstr "Inportatu gakoak fitxategitik"
 
-#: ../tool/seahorse-tool.c:63
+#: ../tool/seahorse-tool.c:60
 msgid "Encrypt file"
 msgstr "Enkriptatu fitxategia"
 
-#: ../tool/seahorse-tool.c:65
+#: ../tool/seahorse-tool.c:62
 msgid "Sign file with default key"
 msgstr "Sinatu fitxategia gako lehenetsiarekin"
 
-#: ../tool/seahorse-tool.c:67
+#: ../tool/seahorse-tool.c:64
 msgid "Encrypt and sign file with default key"
 msgstr "Enkriptatu eta sinatu fitxategia gako lehenetsiarekin"
 
-#: ../tool/seahorse-tool.c:69
+#: ../tool/seahorse-tool.c:66
 msgid "Decrypt encrypted file"
 msgstr "Desenkriptatu fitxategi enkriptatua"
 
-#: ../tool/seahorse-tool.c:71
+#: ../tool/seahorse-tool.c:68
 msgid "Verify signature file"
 msgstr "Egiaztatu sinadura-fitxategia"
 
-#: ../tool/seahorse-tool.c:73
+#: ../tool/seahorse-tool.c:70
 msgid "Read list of URIs on standard in"
 msgstr "Irakurri sarrera estandarreko URIen zerrenda"
 
-#: ../tool/seahorse-tool.c:75
+#: ../tool/seahorse-tool.c:72
 msgid "file..."
 msgstr "fitxategia..."
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Aukeratu hartzaileak"
+#: ../tool/seahorse-tool.c:168
+msgid "Encryption settings"
+msgstr "Enkriptazioaren ezarpenak"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:233 ../tool/seahorse-tool.c:347
 msgid "Couldn't load keys"
 msgstr "Ezin izan dira gakoak kargatu"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:250
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "Aukeratu fitxategi enkriptatuaren izena '%s'(r)entzat"
@@ -311,7 +365,7 @@ msgstr "Aukeratu jatorrizko fitxategia '%s'(r)entzat"
 msgid "No valid signatures found"
 msgstr "Ez da baliozko sinadurarik aurkitu"
 
-#: ../tool/seahorse-tool.c:697
+#: ../tool/seahorse-tool.c:695
 msgid "File Encryption Tool"
 msgstr "Fitxategiak enkriptatzeko tresna"
 
@@ -360,81 +414,81 @@ msgstr "Egiaztatzea"
 msgid "Couldn't verify file: %s"
 msgstr "Ezin izan da fitxategia egiaztatu: %s"
 
-#: ../tool/seahorse-tool-files.c:120
+#: ../tool/seahorse-tool-files.c:116
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: ../tool/seahorse-tool-files.c:117
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:122
+#: ../tool/seahorse-tool-files.c:118
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: ../tool/seahorse-tool-files.c:125
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:130
+#: ../tool/seahorse-tool-files.c:126
 msgid "Self-extracting zip (.exe)"
 msgstr "Zip autoerauzlea (.exe)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: ../tool/seahorse-tool-files.c:128
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:133
+#: ../tool/seahorse-tool-files.c:129
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:135
+#: ../tool/seahorse-tool-files.c:131
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: ../tool/seahorse-tool-files.c:133
 msgid "Tar uncompressed (.tar)"
 msgstr "Tar konprimitu gabea (.tar)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: ../tool/seahorse-tool-files.c:134
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "Tar bzip-ekin konprimitua (.tar.bz)"
 
-#: ../tool/seahorse-tool-files.c:139
+#: ../tool/seahorse-tool-files.c:135
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "Tar bzip2-rekin konprimitua (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: ../tool/seahorse-tool-files.c:136
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "Tar gzip-ekin konprimitua (.tar.gz)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: ../tool/seahorse-tool-files.c:137
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "Tar lzop-ekin konprimitua (.tar.lzo)"
 
-#: ../tool/seahorse-tool-files.c:142
+#: ../tool/seahorse-tool-files.c:138
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "Tar compress-ekin konprimitua (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: ../tool/seahorse-tool-files.c:140
 msgid "War (.war)"
 msgstr "War (.war)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: ../tool/seahorse-tool-files.c:141
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: ../tool/seahorse-tool-files.c:142
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:147
+#: ../tool/seahorse-tool-files.c:143
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:327
+#: ../tool/seahorse-tool-files.c:325
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
@@ -443,7 +497,7 @@ msgstr[1] "%d fitxategi "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:332
+#: ../tool/seahorse-tool-files.c:330
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -452,69 +506,69 @@ msgstr[1] "eta %d karpeta hautatu dituzu"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:337
+#: ../tool/seahorse-tool-files.c:335
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
-#: ../tool/seahorse-tool-files.c:345
+#: ../tool/seahorse-tool-files.c:343
 #, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
 msgstr[0] "Fitxategi %d hautatu duzu"
 msgstr[1] "%d fitxategi hautatu dituzu"
 
-#: ../tool/seahorse-tool-files.c:350
+#: ../tool/seahorse-tool-files.c:348
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
 msgstr[0] "Fitxategi %d hautatu duzu"
 msgstr[1] "%d karpeta hautatu dituzu"
 
-#: ../tool/seahorse-tool-files.c:868
+#: ../tool/seahorse-tool-files.c:863
 msgid "Preparing..."
 msgstr "Prestatzen..."
 
-#: ../tool/seahorse-tool-files.c:877 ../tool/seahorse-tool-files.c:900
+#: ../tool/seahorse-tool-files.c:872 ../tool/seahorse-tool-files.c:895
 msgid "Couldn't list files"
 msgstr "Ezin izan da fitxategien zerrenda egin"
 
-#: ../tool/seahorse-tool-files.c:887 ../tool/seahorse-util.c:647
+#: ../tool/seahorse-tool-files.c:882 ../tool/seahorse-util.c:396
 msgid "Couldn't package files"
 msgstr "Ezin izan dira fitxategiak paketatu"
 
-#: ../tool/seahorse-util.c:173
+#: ../tool/seahorse-util.c:170
 msgid "Decryption failed. You probably do not have the decryption key."
 msgstr ""
 "Huts egin du desenkriptatzean. Segur aski desenkriptatzeko gakoa falta duzu."
 
-#: ../tool/seahorse-util.c:223
+#: ../tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
 msgstr "%3$d-%2$m-%1$Y"
 
-#: ../tool/seahorse-util.c:642
+#: ../tool/seahorse-util.c:391
 msgid "Couldn't run file-roller"
 msgstr "Ezin izan da file-roller exekutatu"
 
-#: ../tool/seahorse-util.c:648
+#: ../tool/seahorse-util.c:397
 msgid "The file-roller process did not complete successfully"
 msgstr "File-roller prozesua ez da behar bezala osatu"
 
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:708
+#: ../tool/seahorse-util.c:433
 msgid "All key files"
 msgstr "Gako-fitxategi guztiak"
 
-#: ../tool/seahorse-util.c:715 ../tool/seahorse-util.c:755
+#: ../tool/seahorse-util.c:440 ../tool/seahorse-util.c:480
 msgid "All files"
 msgstr "Fitxategi guztiak"
 
-#: ../tool/seahorse-util.c:748
+#: ../tool/seahorse-util.c:473
 msgid "Archive files"
 msgstr "Artxibo-fitxategiak"
 
-#: ../tool/seahorse-util.c:777
+#: ../tool/seahorse-util.c:502
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -524,11 +578,18 @@ msgstr ""
 "\n"
 "Fitxategi berriarekin ordeztu nahi duzu?"
 
-#: ../tool/seahorse-util.c:780
+#: ../tool/seahorse-util.c:505
 msgid "_Replace"
 msgstr "_Ordeztu"
 
-#: ../tool/seahorse-widget.c:365
-#, c-format
-msgid "Could not display help: %s"
-msgstr "Ezin izan da laguntza erakutsi: %s"
+#~ msgid "Password:"
+#~ msgstr "Pasahitza:"
+
+#~ msgid "Confirm:"
+#~ msgstr "Berretsi:"
+
+#~ msgid "Choose Recipients"
+#~ msgstr "Aukeratu hartzaileak"
+
+#~ msgid "Could not display help: %s"
+#~ msgstr "Ezin izan da laguntza erakutsi: %s"
