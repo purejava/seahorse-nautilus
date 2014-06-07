@@ -8,18 +8,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
-"=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-03 23:46+0000\n"
-"PO-Revision-Date: 2013-07-15 08:14+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-06-04 22:18+0000\n"
+"PO-Revision-Date: 2014-06-07 13:35+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
@@ -31,7 +31,6 @@ msgid "File extension for packages when handling mulitple files."
 msgstr "Επέκταση αρχείου για πακέτα κατά τον χειρισμό πολλαπλών αρχείων."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
-#| msgid "Encrypt each file separately"
 msgid "Handle multiple files separately"
 msgstr "Χειρισμός πολλαπλών αρχείων ξεχωριστά"
 
@@ -39,7 +38,7 @@ msgstr "Χειρισμός πολλαπλών αρχείων ξεχωριστά"
 msgid ""
 "When handling multiple files, don't package them but process separately."
 msgstr ""
-"Κατά τον χειρισμό πολλαπλών αρχείων, να μην τα συσκευάζετε, αλλά να τα "
+"Κατά τον χειρισμό πολλαπλών αρχείων, να μην τα πακετάρετε, αλλά να τα "
 "επεξεργάζεστε χωριστά."
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
@@ -202,7 +201,7 @@ msgstr "Κακή υπογραφή"
 
 #: ../tool/seahorse-notification.c:647
 msgid "Couldn't verify signature."
-msgstr "Αδύνατη η επιβεβαίωση υπογραφής."
+msgstr "Αδύνατη η επαλήθευση της υπογραφής."
 
 #: ../tool/seahorse-notify.xml.h:1
 msgid "Notification Messages"
@@ -253,7 +252,7 @@ msgstr "Εισαγωγή κλειδιού"
 
 #: ../tool/seahorse-pgp-signature.desktop.in.in.h:1
 msgid "Verify Signature"
-msgstr "Διαπίστωση υπογραφής"
+msgstr "Επαλήθευση υπογραφής"
 
 #: ../tool/seahorse-progress.xml.h:1
 msgid "Progress Title"
@@ -281,7 +280,7 @@ msgstr "Αποκρυπτογράφηση κρυπτογραφημένου αρχ
 
 #: ../tool/seahorse-tool.c:71
 msgid "Verify signature file"
-msgstr "Διαπίστωση αρχείου υπογραφής"
+msgstr "Επαλήθευση αρχείου υπογραφής"
 
 #: ../tool/seahorse-tool.c:73
 msgid "Read list of URIs on standard in"
@@ -291,50 +290,50 @@ msgstr "Ανάγνωση λίστας URI στην κανονική είσοδο
 msgid "file..."
 msgstr "αρχείο..."
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Επιλογή παραληπτών"
+#: ../tool/seahorse-tool.c:171
+msgid "Encryption settings"
+msgstr "Ρυθμίσεις κρυπτογράφησης"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
 msgid "Couldn't load keys"
 msgstr "Αδύνατη η φόρτωση κλειδιών"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:253
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "Επιλογή ονόματος κρυπτογραφημένου αρχείου για '%s'"
 
-#: ../tool/seahorse-tool.c:325
+#: ../tool/seahorse-tool.c:328
 msgid "Choose Signer"
 msgstr "Επιλογή υπογράφοντα"
 
-#: ../tool/seahorse-tool.c:367
+#: ../tool/seahorse-tool.c:370
 #, c-format
 msgid "Choose Signature File Name for '%s'"
 msgstr "Επιλογή ονόματος αρχείου υπογραφής για '%s'"
 
-#: ../tool/seahorse-tool.c:407
+#: ../tool/seahorse-tool.c:410
 msgid "Import is complete"
 msgstr "Η εισαγωγή ολοκληρώθηκε"
 
-#: ../tool/seahorse-tool.c:440
+#: ../tool/seahorse-tool.c:443
 msgid "Importing keys ..."
 msgstr "Γίνεται εισαγωγή κλειδιών..."
 
-#: ../tool/seahorse-tool.c:470
+#: ../tool/seahorse-tool.c:473
 msgid "Import Failed"
 msgstr "Η εισαγωγή απέτυχε"
 
-#: ../tool/seahorse-tool.c:471
+#: ../tool/seahorse-tool.c:474
 msgid "Keys were found but not imported."
 msgstr "Κλειδιά βρέθηκαν αλλά η εισαγωγή τους δεν έγινε."
 
-#: ../tool/seahorse-tool.c:494
+#: ../tool/seahorse-tool.c:497
 #, c-format
 msgid "Imported key"
 msgstr "Εισαγόμενο κλειδί"
 
-#: ../tool/seahorse-tool.c:496
+#: ../tool/seahorse-tool.c:499
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -342,12 +341,12 @@ msgstr[0] "Εισήχθει %d κλειδί"
 msgstr[1] "Εισήχησαν %d κλειδιά"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: ../tool/seahorse-tool.c:521
 #, c-format
 msgid "Choose Decrypted File Name for '%s'"
 msgstr "Επιλογή ονόματος αποκρυπτογραφημένου αρχείου για το '%s'"
 
-#: ../tool/seahorse-tool.c:575
+#: ../tool/seahorse-tool.c:578
 #, c-format
 msgid "Choose Original File for '%s'"
 msgstr "Επιλογή αυθεντικού αρχείου για '%s'"
@@ -357,59 +356,59 @@ msgstr "Επιλογή αυθεντικού αρχείου για '%s'"
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: ../tool/seahorse-tool.c:651
 #, c-format
 msgid "No valid signatures found"
 msgstr "Δε βρέθηκαν έγκυρες υπογραφές"
 
-#: ../tool/seahorse-tool.c:695
+#: ../tool/seahorse-tool.c:698
 msgid "File Encryption Tool"
 msgstr "Εργαλείο κρυπτογράφησης αρχείων"
 
-#: ../tool/seahorse-tool.c:713
+#: ../tool/seahorse-tool.c:716
 msgid "Encrypting"
 msgstr "Κρυπτογραφείται"
 
-#: ../tool/seahorse-tool.c:714
+#: ../tool/seahorse-tool.c:717
 #, c-format
 msgid "Couldn't encrypt file: %s"
 msgstr "Αδύνατη η κρυπτογράφηση αρχείου: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: ../tool/seahorse-tool.c:725
 msgid "Signing"
 msgstr "Υπογράφεται"
 
-#: ../tool/seahorse-tool.c:723
+#: ../tool/seahorse-tool.c:726
 #, c-format
 msgid "Couldn't sign file: %s"
 msgstr "Αδύνατη η υπογραφή αρχείου: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: ../tool/seahorse-tool.c:731
 msgid "Importing"
 msgstr "Γίνεται εισαγωγή"
 
-#: ../tool/seahorse-tool.c:729
+#: ../tool/seahorse-tool.c:732
 #, c-format
 msgid "Couldn't import keys from file: %s"
 msgstr "Αδύνατη η εισαγωγή κλειδιών από το αρχείο: %s"
 
-#: ../tool/seahorse-tool.c:735
+#: ../tool/seahorse-tool.c:738
 msgid "Decrypting"
 msgstr "Γίνεται αποκρυπρογράφηση"
 
-#: ../tool/seahorse-tool.c:736
+#: ../tool/seahorse-tool.c:739
 #, c-format
 msgid "Couldn't decrypt file: %s"
 msgstr "Αδύνατη η αποκρυπτογράφηση αρχείου: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: ../tool/seahorse-tool.c:744
 msgid "Verifying"
-msgstr "Γίνεται διαπίστωση"
+msgstr "Γίνεται επαλήθευση"
 
-#: ../tool/seahorse-tool.c:742
+#: ../tool/seahorse-tool.c:745
 #, c-format
 msgid "Couldn't verify file: %s"
-msgstr "Αδύνατη η διαπίστωση αρχείου: %s"
+msgstr "Αδύνατη η επαλήθευση αρχείου: %s"
 
 #: ../tool/seahorse-tool-files.c:119
 msgid "Ace (.ace)"
@@ -579,6 +578,9 @@ msgstr ""
 #: ../tool/seahorse-util.c:508
 msgid "_Replace"
 msgstr "_Αντικατάσταση"
+
+#~ msgid "Choose Recipients"
+#~ msgstr "Επιλογή παραληπτών"
 
 #~ msgid "Password:"
 #~ msgstr "Κωδικός:"
