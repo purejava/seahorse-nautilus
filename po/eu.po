@@ -2,13 +2,15 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2008, 2010, 2011, 2014.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2008, 2010, 2011, 2014, 2015.
+# Edurne Labaka <elabaka@uzei.com>, 2015.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: seahorse-nautilus master\n"
+"Project-Id-Version: seahorse-nautilus gnome-3-10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-03 12:38+0200\n"
-"PO-Revision-Date: 2014-05-03 12:36+0200\n"
+"POT-Creation-Date: 2015-02-07 18:10+0100\n"
+"PO-Revision-Date: 2014-11-19 16:49+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -16,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
 msgid "File extension for packages"
@@ -437,27 +439,27 @@ msgstr "Rar (.rar)"
 
 #: ../tool/seahorse-tool-files.c:136
 msgid "Tar uncompressed (.tar)"
-msgstr "Tar konprimitu gabea (.tar)"
+msgstr "Tar konprimatu gabea (.tar)"
 
 #: ../tool/seahorse-tool-files.c:137
 msgid "Tar compressed with bzip (.tar.bz)"
-msgstr "Tar bzip-ekin konprimitua (.tar.bz)"
+msgstr "Tar bzip-ekin konprimatua (.tar.bz)"
 
 #: ../tool/seahorse-tool-files.c:138
 msgid "Tar compressed with bzip2 (.tar.bz2)"
-msgstr "Tar bzip2-rekin konprimitua (.tar.bz2)"
+msgstr "Tar bzip2-rekin konprimatua (.tar.bz2)"
 
 #: ../tool/seahorse-tool-files.c:139
 msgid "Tar compressed with gzip (.tar.gz)"
-msgstr "Tar gzip-ekin konprimitua (.tar.gz)"
+msgstr "Tar gzip-ekin konprimatua (.tar.gz)"
 
 #: ../tool/seahorse-tool-files.c:140
 msgid "Tar compressed with lzop (.tar.lzo)"
-msgstr "Tar lzop-ekin konprimitua (.tar.lzo)"
+msgstr "Tar lzop-ekin konprimatua (.tar.lzo)"
 
 #: ../tool/seahorse-tool-files.c:141
 msgid "Tar compressed with compress (.tar.Z)"
-msgstr "Tar compress-ekin konprimitua (.tar.Z)"
+msgstr "Tar compress-ekin konprimatua (.tar.Z)"
 
 #: ../tool/seahorse-tool-files.c:143
 msgid "War (.war)"
