@@ -7,21 +7,66 @@
 # Baris Cicek <baris@teamforce.name.tr>, 2004, 2007, 2008.
 # Sertaç Ö. Yıldız <sertacyildiz@gmail.com>, 2007.
 # Muhammet Kara <muhammet.k@gmail.com>, 2011.
+# Necdet Yücel <necdetyucel@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-07 11:29+0200\n"
-"PO-Revision-Date: 2011-04-27 00:07+0300\n"
-"Last-Translator: Muhammet Kara <muhammet.k@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
+"=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-12-19 16:22+0000\n"
+"PO-Revision-Date: 2015-02-14 23:12+0000\n"
+"Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1423955579.000000\n"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
+msgid "File extension for packages"
+msgstr "Paketler için dosya uzantısı"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
+msgid "File extension for packages when handling multiple files."
+msgstr "Çoklu dosyalar işlenirken paketler için dosya uzantısı."
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
+#| msgid "Encrypt each file separately"
+msgid "Handle multiple files separately"
+msgstr "Dosyaları ayrı ayrı işle"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
+msgid ""
+"When handling multiple files, don't package them but process separately."
+msgstr "Çoklu dosyaları işlerken onları birlikte paketleme, ayrı ayrı işle."
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
+msgid "Use armor mode when encrypting"
+msgstr "Şifreleme sırasında zırh kipini kullan"
+
+#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
+msgid "Use PGP ASCII armor mode when encrypting or signing files."
+msgstr "Dosyaları şifrelerken veya imzalarken PGP ASCII zırh kipini kullan."
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
+msgid "Width of the window"
+msgstr "Pencerenin genişliği"
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:2
+msgid "Width (in pixels) of the window."
+msgstr "Pencerenin (piksel cinsinden) genişliği."
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:3
+msgid "Height of the window"
+msgstr "Pencerenin yüksekliği"
+
+#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:4
+msgid "Height (in pixels) of the window."
+msgstr "Pencerenin (piksel cinsinden) yüksekliği."
 
 #: ../nautilus-ext/seahorse-nautilus.c:158
 msgid "Encrypt..."
@@ -42,20 +87,16 @@ msgid_plural "Sign the selected files"
 msgstr[0] "Seçili dosyayı imzala"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:1
+msgid "Encrypt Multiple Files"
+msgstr "Birden çok Dosyayı Şifrele"
+
+#: ../tool/seahorse-multi-encrypt.xml.h:2
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>Birden çok dosya veya klasör seçtiniz</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
-msgid ""
-"Because the files are located remotely, each file will be encrypted "
-"separately."
-msgstr ""
-"Dosyalar uzaktaki bir bilgisayarda olduğu için dosyalar ayrı ayrı "
-"şifrelenecek."
-
 #: ../tool/seahorse-multi-encrypt.xml.h:3
-msgid "Encrypt Multiple Files"
-msgstr "Birden çok Dosyayı Şifrele"
+msgid "encrypted-package"
+msgstr "şifrelenmiş-paket"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:4
 msgid "Encrypt each file separately"
@@ -66,94 +107,110 @@ msgid "Encrypt packed together in a package"
 msgstr "Dosyaları bir paket halinde şifrele"
 
 #: ../tool/seahorse-multi-encrypt.xml.h:6
-msgid "Package Name:"
-msgstr "Paket Adı:"
-
-#: ../tool/seahorse-multi-encrypt.xml.h:7
 msgid "Packaging:"
 msgstr "Paketlenen:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:8
-msgid "encrypted-package"
-msgstr "şifrelenmiş-paket"
+#: ../tool/seahorse-multi-encrypt.xml.h:7
+msgid "Package Name:"
+msgstr "Paket Adı:"
 
-#: ../tool/seahorse-notification.c:580 ../tool/seahorse-notification.c:605
+#: ../tool/seahorse-multi-encrypt.xml.h:8
+msgid ""
+"Because the files are located remotely, each file will be encrypted "
+"separately."
+msgstr ""
+"Dosyalar uzaktaki bir bilgisayarda olduğu için dosyalar ayrı ayrı "
+"şifrelenecek."
+
+#: ../tool/seahorse-notification.c:572
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Anahtar içe aktarıldı"
 
-#: ../tool/seahorse-notification.c:584 ../tool/seahorse-notification.c:604
+#: ../tool/seahorse-notification.c:576
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
 msgstr[0] "%d anahtar içe aktarıldı"
 
-#: ../tool/seahorse-notification.c:586
+#: ../tool/seahorse-notification.c:578
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
 msgstr[0] "İçe aktarılmış anahtar"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:623
+#: ../tool/seahorse-notification.c:606
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr ""
 "<key id='%s'/> tarafından imzalanmış, %s tarihinde <i><b>süresi dolmuş</b></"
 "i>."
 
-#: ../tool/seahorse-notification.c:624
+#: ../tool/seahorse-notification.c:607
 msgid "Invalid Signature"
 msgstr "Geçersiz İmza"
 
-#: ../tool/seahorse-notification.c:630
+#: ../tool/seahorse-notification.c:613
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr ""
 "<i><key id='%s'/></i> tarafından imzalanmış, %s tarihinde <b>Süresi Dolmuş</"
 "b>."
 
-#: ../tool/seahorse-notification.c:631
+#: ../tool/seahorse-notification.c:614
 msgid "Expired Signature"
 msgstr "Süresi Dolmuş İmza"
 
-#: ../tool/seahorse-notification.c:637
+#: ../tool/seahorse-notification.c:620
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr ""
 "<key id='%s'/> tarafından imzalanmış, %s tarihinde <i><b>Feshedilmiş</b></i>."
 
-#: ../tool/seahorse-notification.c:638
+#: ../tool/seahorse-notification.c:621
 msgid "Revoked Signature"
 msgstr "Feshedilmiş İmza"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:644
+#: ../tool/seahorse-notification.c:628
+msgid "Good Signature"
+msgstr "İyi İmza"
+
+#: ../tool/seahorse-notification.c:629
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "<i><key id='%s'/></i> tarafından %s tarihinde imzalanmış."
 
-#: ../tool/seahorse-notification.c:645
-msgid "Good Signature"
-msgstr "İyi İmza"
+#: ../tool/seahorse-notification.c:631
+#| msgid "Invalid Signature"
+msgid "Untrusted Valid Signature"
+msgstr "Güvenilmeyen Geçerli İmza"
 
-#: ../tool/seahorse-notification.c:650
+#: ../tool/seahorse-notification.c:632
+#, c-format
+#| msgid "Signed by <i><key id='%s'/></i> on %s."
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr ""
+"Geçerli ama <b>güvenilmeyen</b> imza <i><key id='%s'/></i> tarafından %s "
+"üzerinde oluşturulmuş"
+
+#: ../tool/seahorse-notification.c:638
 msgid "Signing key not in keyring."
 msgstr "İmzalayan anahtar anahtarlıkta değil."
 
-#: ../tool/seahorse-notification.c:651
+#: ../tool/seahorse-notification.c:639
 msgid "Unknown Signature"
 msgstr "Bilinmeyen İmza"
 
-#: ../tool/seahorse-notification.c:655
+#: ../tool/seahorse-notification.c:643
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Kötü veya hileli imza. İmzalanan veri değiştirilmiş."
 
-#: ../tool/seahorse-notification.c:656
+#: ../tool/seahorse-notification.c:644
 msgid "Bad Signature"
 msgstr "Kötü İmza"
 
-#: ../tool/seahorse-notification.c:664
+#: ../tool/seahorse-notification.c:652
 msgid "Couldn't verify signature."
 msgstr "İmza doğrulanamadı."
 
@@ -161,41 +218,40 @@ msgstr "İmza doğrulanamadı."
 msgid "Notification Messages"
 msgstr "Uyarı Mesajları"
 
-#: ../tool/seahorse-passphrase.c:200
-msgid "Passphrase"
-msgstr "Parola Metni"
-
-#: ../tool/seahorse-passphrase.c:203
-msgid "Password:"
-msgstr "Parola:"
-
-#. The second and main entry
-#: ../tool/seahorse-passphrase.c:267
-msgid "Confirm:"
-msgstr "Onayla:"
-
-#: ../tool/seahorse-passphrase.c:355
+#: ../tool/seahorse-passphrase.c:114
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Yanlış parola metni."
 
-#: ../tool/seahorse-passphrase.c:359
+#: ../tool/seahorse-passphrase.c:118
 #, c-format
 msgid "Enter new passphrase for '%s'"
 msgstr "'%s' için yeni parola metni girin"
 
-#: ../tool/seahorse-passphrase.c:361
+#: ../tool/seahorse-passphrase.c:120
 #, c-format
 msgid "Enter passphrase for '%s'"
 msgstr "'%s' için parola metni girin"
 
-#: ../tool/seahorse-passphrase.c:364
+#: ../tool/seahorse-passphrase.c:123
 msgid "Enter new passphrase"
 msgstr "Yeni parola metni gir"
 
-#: ../tool/seahorse-passphrase.c:366
+#: ../tool/seahorse-passphrase.c:125
 msgid "Enter passphrase"
 msgstr "Parola metnini girin"
+
+#: ../tool/seahorse-passphrase.c:130
+msgid "Passphrase"
+msgstr "Parola Metni"
+
+#: ../tool/seahorse-passphrase.c:138
+msgid "Ok"
+msgstr "Tamam"
+
+#: ../tool/seahorse-passphrase.c:139
+msgid "Cancel"
+msgstr "İptal"
 
 #: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
 msgid "Decrypt File"
@@ -245,62 +301,63 @@ msgstr "URI listesini standart girdiden oku"
 msgid "file..."
 msgstr "dosya..."
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Alıcıları Seçin"
+#: ../tool/seahorse-tool.c:171
+#| msgid "Encrypting"
+msgid "Encryption settings"
+msgstr "Şifreleme ayarları"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
+#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
 msgid "Couldn't load keys"
 msgstr "Anahtarlar yüklenemedi"
 
-#: ../tool/seahorse-tool.c:252
+#: ../tool/seahorse-tool.c:253
 #, c-format
 msgid "Choose Encrypted File Name for '%s'"
 msgstr "\"%s\" için Şifrelenmiş Dosya İsmi Seçin"
 
-#: ../tool/seahorse-tool.c:325
+#: ../tool/seahorse-tool.c:328
 msgid "Choose Signer"
 msgstr "İmzalayanı Seçin"
 
-#: ../tool/seahorse-tool.c:367
+#: ../tool/seahorse-tool.c:370
 #, c-format
 msgid "Choose Signature File Name for '%s'"
 msgstr "'%s' için İmza Dosyası İsmi Seçin"
 
-#: ../tool/seahorse-tool.c:407
+#: ../tool/seahorse-tool.c:410
 msgid "Import is complete"
 msgstr "İçe aktarım tamamlandı"
 
-#: ../tool/seahorse-tool.c:440
+#: ../tool/seahorse-tool.c:443
 msgid "Importing keys ..."
 msgstr "Anahtarlar içe aktarılıyor..."
 
-#: ../tool/seahorse-tool.c:470
+#: ../tool/seahorse-tool.c:473
 msgid "Import Failed"
 msgstr "İçe Aktarım Başarısız"
 
-#: ../tool/seahorse-tool.c:471
+#: ../tool/seahorse-tool.c:474
 msgid "Keys were found but not imported."
 msgstr "Anahtarlar bulundu ancak içe aktarılmadı."
 
-#: ../tool/seahorse-tool.c:494
+#: ../tool/seahorse-tool.c:497
 #, c-format
 msgid "Imported key"
 msgstr "İçe aktarılmış anahtar"
 
-#: ../tool/seahorse-tool.c:496
+#: ../tool/seahorse-tool.c:499
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
 msgstr[0] "%d anahtar içe aktarıldı"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: ../tool/seahorse-tool.c:521
 #, c-format
 msgid "Choose Decrypted File Name for '%s'"
 msgstr "\"%s\" için Şifresi Çözülmüş osyanın İsmini Seçin"
 
-#: ../tool/seahorse-tool.c:575
+#: ../tool/seahorse-tool.c:578
 #, c-format
 msgid "Choose Original File for '%s'"
 msgstr "'%s' için Orijinal Dosya Seçin"
@@ -310,135 +367,135 @@ msgstr "'%s' için Orijinal Dosya Seçin"
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: ../tool/seahorse-tool.c:651
 #, c-format
 msgid "No valid signatures found"
 msgstr "Geçerli imza bulunamadı"
 
-#: ../tool/seahorse-tool.c:697
+#: ../tool/seahorse-tool.c:698
 msgid "File Encryption Tool"
 msgstr "Dosya Şifreleme Aracı"
 
-#: ../tool/seahorse-tool.c:713
+#: ../tool/seahorse-tool.c:716
 msgid "Encrypting"
 msgstr "Şifreleme"
 
-#: ../tool/seahorse-tool.c:714
+#: ../tool/seahorse-tool.c:717
 #, c-format
 msgid "Couldn't encrypt file: %s"
 msgstr "Dosya şifrelenemedi: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: ../tool/seahorse-tool.c:725
 msgid "Signing"
 msgstr "İmzalanıyor"
 
-#: ../tool/seahorse-tool.c:723
+#: ../tool/seahorse-tool.c:726
 #, c-format
 msgid "Couldn't sign file: %s"
 msgstr "Dosya imzalanamadı: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: ../tool/seahorse-tool.c:731
 msgid "Importing"
 msgstr "İçe aktarılıyor"
 
-#: ../tool/seahorse-tool.c:729
+#: ../tool/seahorse-tool.c:732
 #, c-format
 msgid "Couldn't import keys from file: %s"
 msgstr "Anahtarlar dosyadan içe aktarılamadı: %s"
 
-#: ../tool/seahorse-tool.c:735
+#: ../tool/seahorse-tool.c:738
 msgid "Decrypting"
 msgstr "Şifresi çözülüyor"
 
-#: ../tool/seahorse-tool.c:736
+#: ../tool/seahorse-tool.c:739
 #, c-format
 msgid "Couldn't decrypt file: %s"
 msgstr "Dosya şifresi çözülemedi: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: ../tool/seahorse-tool.c:744
 msgid "Verifying"
 msgstr "Doğrulanıyor"
 
-#: ../tool/seahorse-tool.c:742
+#: ../tool/seahorse-tool.c:745
 #, c-format
 msgid "Couldn't verify file: %s"
 msgstr "Dosya doğrulanamadı: %s"
 
-#: ../tool/seahorse-tool-files.c:120
+#: ../tool/seahorse-tool-files.c:119
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: ../tool/seahorse-tool-files.c:120
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:122
+#: ../tool/seahorse-tool-files.c:121
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: ../tool/seahorse-tool-files.c:128
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:130
+#: ../tool/seahorse-tool-files.c:129
 msgid "Self-extracting zip (.exe)"
 msgstr "Kendinden açılır zip (.exe)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: ../tool/seahorse-tool-files.c:131
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:133
+#: ../tool/seahorse-tool-files.c:132
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:135
+#: ../tool/seahorse-tool-files.c:134
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: ../tool/seahorse-tool-files.c:136
 msgid "Tar uncompressed (.tar)"
 msgstr "Açılmış tar (.tar)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: ../tool/seahorse-tool-files.c:137
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "bzip ile sıkıştırılmış tar (.tar.bz)"
 
-#: ../tool/seahorse-tool-files.c:139
+#: ../tool/seahorse-tool-files.c:138
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "bzip2 ile sıkıştırılmış tar (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: ../tool/seahorse-tool-files.c:139
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "gzip ile sıkıştırılmış tar (.tar.gz)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: ../tool/seahorse-tool-files.c:140
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "lzop ile sıkıştırılmış tar (.tar.lzo)"
 
-#: ../tool/seahorse-tool-files.c:142
+#: ../tool/seahorse-tool-files.c:141
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "compress ile sıkıştırılmış tar (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: ../tool/seahorse-tool-files.c:143
 msgid "War (.war)"
 msgstr "War (.war)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: ../tool/seahorse-tool-files.c:144
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: ../tool/seahorse-tool-files.c:145
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:147
+#: ../tool/seahorse-tool-files.c:146
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:327
+#: ../tool/seahorse-tool-files.c:328
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
@@ -446,7 +503,7 @@ msgstr[0] "%d dosya"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:332
+#: ../tool/seahorse-tool-files.c:333
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -454,32 +511,32 @@ msgstr[0] "ve %d klasör seçtiniz"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:337
+#: ../tool/seahorse-tool-files.c:338
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
-#: ../tool/seahorse-tool-files.c:345
-#, fuzzy, c-format
+#: ../tool/seahorse-tool-files.c:346
+#, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
-msgstr[0] "%d dosya"
+msgstr[0] "%d dosya seçtiniz"
 
-#: ../tool/seahorse-tool-files.c:350
+#: ../tool/seahorse-tool-files.c:351
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
 msgstr[0] "%d klasör seçtiniz"
 
-#: ../tool/seahorse-tool-files.c:868
+#: ../tool/seahorse-tool-files.c:866
 msgid "Preparing..."
 msgstr "Hazırlanıyor..."
 
-#: ../tool/seahorse-tool-files.c:877 ../tool/seahorse-tool-files.c:900
+#: ../tool/seahorse-tool-files.c:875 ../tool/seahorse-tool-files.c:898
 msgid "Couldn't list files"
 msgstr "Dosyalar listelenemedi"
 
-#: ../tool/seahorse-tool-files.c:887 ../tool/seahorse-util.c:647
+#: ../tool/seahorse-tool-files.c:885 ../tool/seahorse-util.c:399
 msgid "Couldn't package files"
 msgstr "Dosyalar paketlenemedi"
 
@@ -489,33 +546,33 @@ msgstr ""
 "Şifre çözme başarısız oldu. Muhtemelen şifre çözme anahtarına sahip "
 "değilsiniz."
 
-#: ../tool/seahorse-util.c:223
+#: ../tool/seahorse-util.c:200
 msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
-#: ../tool/seahorse-util.c:642
+#: ../tool/seahorse-util.c:394
 msgid "Couldn't run file-roller"
 msgstr "Arşiv Yöneticisi başlatılamadı"
 
-#: ../tool/seahorse-util.c:648
+#: ../tool/seahorse-util.c:400
 msgid "The file-roller process did not complete successfully"
 msgstr "file-roller süreci başarıyla sonlanamadı"
 
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:708
+#: ../tool/seahorse-util.c:436
 msgid "All key files"
 msgstr "Tüm anahtar dosyaları"
 
-#: ../tool/seahorse-util.c:715 ../tool/seahorse-util.c:755
+#: ../tool/seahorse-util.c:443 ../tool/seahorse-util.c:483
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: ../tool/seahorse-util.c:748
+#: ../tool/seahorse-util.c:476
 msgid "Archive files"
 msgstr "Arşiv dosyaları"
 
-#: ../tool/seahorse-util.c:777
+#: ../tool/seahorse-util.c:505
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -525,11 +582,18 @@ msgstr ""
 "\n"
 "Yeni dosyayı onun yerine koymak ister misiniz?"
 
-#: ../tool/seahorse-util.c:780
+#: ../tool/seahorse-util.c:508
 msgid "_Replace"
 msgstr "Ye_rine koy"
 
-#: ../tool/seahorse-widget.c:365
-#, c-format
-msgid "Could not display help: %s"
-msgstr "Yardım görüntülenemedi: %s"
+#~ msgid "Password:"
+#~ msgstr "Parola:"
+
+#~ msgid "Confirm:"
+#~ msgstr "Onayla:"
+
+#~ msgid "Choose Recipients"
+#~ msgstr "Alıcıları Seçin"
+
+#~ msgid "Could not display help: %s"
+#~ msgstr "Yardım görüntülenemedi: %s"
