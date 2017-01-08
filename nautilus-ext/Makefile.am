@@ -1,5 +1,5 @@
 
-INCLUDES = -I$(top_builddir) 	\
+libnautilus_seahorse_la_CPPFLAGS = -I$(top_builddir) 	\
 	-I$(top_srcdir) 			\
 	$(NAUTILUS_CFLAGS) 			\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"

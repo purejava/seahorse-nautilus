@@ -1,7 +1,7 @@
 uidir = $(datadir)/seahorse-nautilus/ui/
 localedir = $(datadir)/locale
 
-INCLUDES = -I$(top_builddir) \
+seahorse_tool_CPPFLAGS = -I$(top_builddir) \
 	-I$(top_srcdir) \
 	-I$(top_srcdir)/libseahorse \
 	$(SEAHORSE_CFLAGS) \
