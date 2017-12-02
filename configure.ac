@@ -25,12 +25,17 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 AM_DISABLE_STATIC
 AM_PROG_LIBTOOL
-IT_PROG_INTLTOOL([0.35.0])
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
 
 AC_SYS_LARGEFILE
 AC_TYPE_OFF_T
 AC_FUNC_FSEEKO
+
+# -----------------------------------------------------------------------------
+# i18n
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 GETTEXT_PACKAGE=seahorse-nautilus
 AC_SUBST(GETTEXT_PACKAGE)
@@ -40,7 +45,6 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of the gettext dom
 # GLib and GTK+ stuff
 
 GLIB_GSETTINGS
-AM_GLIB_GNU_GETTEXT
 
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= 3.0 gio-2.0)
 

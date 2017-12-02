@@ -203,7 +203,7 @@ object_set_property (GObject *object, guint prop_id, const GValue *value, GParam
     case PROP_NAME:
         g_return_if_fail (swidget->name == NULL);
         swidget->name = g_value_dup_string (value);
-        path = g_strdup_printf ("%sseahorse-%s.xml",
+        path = g_strdup_printf ("%sseahorse-%s.ui",
                                 SEAHORSE_UIDIR, swidget->name);
         swidget->gtkbuilder = gtk_builder_new ();
         gtk_builder_add_from_file (swidget->gtkbuilder, path, &error);
@@ -345,7 +345,7 @@ seahorse_widget_get_widget (SeahorseWidget *swidget, const char *identifier)
 {
     GtkWidget *widget = GTK_WIDGET (gtk_builder_get_object (swidget->gtkbuilder, identifier));
     if (widget == NULL)
-	    g_warning ("could not find widget %s for seahorse-%s.xml", identifier, swidget->name);
+	    g_warning ("could not find widget %s for seahorse-%s.ui", identifier, swidget->name);
     return widget;
 }
 

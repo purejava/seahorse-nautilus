@@ -39,21 +39,22 @@ seahorse-marshal.c: seahorse-marshal.list $(GLIB_GENMARSHAL)
 	$(GLIB_GENMARSHAL) $< --body --prefix=seahorse_marshal >> $@
 
 ui_DATA = \
-	seahorse-notify.xml \
-	seahorse-progress.xml \
-	seahorse-multi-encrypt.xml
+	seahorse-notify.ui \
+	seahorse-progress.ui \
+	seahorse-multi-encrypt.ui
 
 seahorse_tool_LDADD = \
 	$(SEAHORSE_LIBS) \
 	$(LIBCRYPTUI_LIBS)
 
-@INTLTOOL_DESKTOP_RULE@
 desktopdir = $(datadir)/applications
 desktop_in_files = \
 	seahorse-pgp-encrypted.desktop.in \
 	seahorse-pgp-signature.desktop.in \
 	seahorse-pgp-keys.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 man_MANS = seahorse-tool.1
 

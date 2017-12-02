@@ -14,15 +14,8 @@ EXTRA_DIST = \
 	MAINTAINERS \
 	NEWS \
 	README \
-	THANKS \
-	intltool-extract.in \
-	intltool-merge.in \
-	intltool-update.in
+	THANKS
 
-DISTCLEANFILES = \
-	intltool-extract \
-	intltool-merge \
-	intltool-update
 
 DISTCHECK_CONFIGURE_FLAGS = \
 	--with-nautilus-ext-dir=/tmp

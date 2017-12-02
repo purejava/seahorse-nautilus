@@ -1,5 +1,5 @@
 [Desktop Entry]
-_Name=Verify Signature
+Name=Verify Signature
 MimeType=application/pgp-signature;
 Exec=seahorse-tool --verify %U
 Type=Application

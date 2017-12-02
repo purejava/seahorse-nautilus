@@ -1,5 +1,5 @@
 [Desktop Entry]
-_Name=Decrypt File
+Name=Decrypt File
 MimeType=application/pgp-encrypted;
 Exec=seahorse-tool --decrypt %U
 Type=Application
