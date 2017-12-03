@@ -1,0 +1,3 @@
+option('check-compatible-gpg', type: 'boolean', value: true, description: 'Perform a rudimentary check if the GPG and GPG versions are compatible')
+option('nautilus-ext-dir', type: 'string', value: '', description: 'Path to the nautilus extensions directory')
+option('libnotify', type: 'boolean', value: true, description: 'Allow libnotify notifications')

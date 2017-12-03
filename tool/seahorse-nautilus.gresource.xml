@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gresources>
+  <gresource prefix="/org/gnome/Seahorse">
+    <file preprocess="xml-stripblanks">seahorse-multi-encrypt.ui</file>
+    <file preprocess="xml-stripblanks">seahorse-notify.ui</file>
+    <file preprocess="xml-stripblanks">seahorse-progress.ui</file>
+  </gresource>
+</gresources>
