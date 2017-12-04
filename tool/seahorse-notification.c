@@ -646,7 +646,7 @@ seahorse_notify_signatures (const gchar* data, gpgme_verify_result_t status)
     default:
         if (status->signatures->status != 0)
             seahorse_util_handle_gpgme (status->signatures->status,
-                                        _("Couldn't verify signature."));
+                                        _("Couldn’t verify signature."));
         return;
     };
 

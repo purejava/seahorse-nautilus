@@ -69,7 +69,7 @@ static const GOptionEntry options[] = {
     { "uri-list", 'T', 0, G_OPTION_ARG_NONE, &read_uris,
         N_("Read list of URIs on standard in"), NULL },
     { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_STRING_ARRAY, &arg_uris,
-        NULL, N_("file...") },
+        NULL, N_("file…") },
     { NULL }
 };
 
@@ -230,7 +230,7 @@ prompt_recipients (gpgme_key_t *signkey, gboolean *symmetric)
         gpgme_key_unref (*signkey);
 
     if (gerr)
-        seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
+        seahorse_util_handle_gpgme (gerr, _("Couldn’t load keys"));
 
     return NULL;
 }
@@ -247,7 +247,7 @@ encrypt_sign_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t urida
 
     /* File to encrypt to */
     touri = seahorse_util_add_suffix (uri, SEAHORSE_CRYPT_SUFFIX,
-                                      _("Choose Encrypted File Name for '%s'"));
+                                      _("Choose Encrypted File Name for “%s”"));
     if (!touri)
         return FALSE;
 
@@ -344,7 +344,7 @@ prompt_signer ()
         gpgme_release (ctx);
 
         if (gerr != 0)
-            seahorse_util_handle_gpgme (gerr, _("Couldn't load keys"));
+            seahorse_util_handle_gpgme (gerr, _("Couldn’t load keys"));
     }
 
     g_object_unref (ckstore);
@@ -364,7 +364,7 @@ sign_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
 
     /* File to encrypt to */
     touri = seahorse_util_add_suffix (uri, SEAHORSE_SIG_SUFFIX,
-                                      _("Choose Signature File Name for '%s'"));
+                                      _("Choose Signature File Name for “%s”"));
     if (!touri)
         return FALSE;
 
@@ -437,7 +437,7 @@ import_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
                                                      G_TYPE_INVALID);
 
         seahorse_operation_mark_start (op);
-        seahorse_operation_mark_progress (op, _("Importing keys ..."), 0.5);
+        seahorse_operation_mark_progress (op, _("Importing keys…"), 0.5);
     } else {
         g_free (buffer);
 
@@ -515,7 +515,7 @@ decrypt_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
     gchar *touri;
 
     /* File to decrypt to */
-    touri = seahorse_util_remove_suffix (uri, _("Choose Decrypted File Name for '%s'"));
+    touri = seahorse_util_remove_suffix (uri, _("Choose Decrypted File Name for “%s”"));
     if (!touri)
         return FALSE;
 
@@ -572,7 +572,7 @@ verify_start (SeahorseToolMode *mode, const gchar *uri, gpgme_data_t uridata,
         gchar *t;
 
         unesc_uri = g_uri_unescape_string (seahorse_util_uri_get_last (uri), NULL);
-        t = g_strdup_printf (_("Choose Original File for '%s'"),
+        t = g_strdup_printf (_("Choose Original File for “%s”"),
                              unesc_uri);
 
         dialog = gtk_file_chooser_dialog_new (t,
@@ -716,7 +716,7 @@ main (int argc, char **argv)
         mode.recipients = prompt_recipients (&mode.signer, &mode.symmetric);
         if (mode.recipients || mode.symmetric) {
             mode.title = _("Encrypting");
-            mode.errmsg = _("Couldn't encrypt file: %s");
+            mode.errmsg = _("Couldn’t encrypt file: %s");
             mode.startcb = encrypt_sign_start;
             mode.package = TRUE;
         }
@@ -725,26 +725,26 @@ main (int argc, char **argv)
         mode.signer = prompt_signer ();
         if (mode.signer) {
             mode.title = _("Signing");
-            mode.errmsg = _("Couldn't sign file: %s");
+            mode.errmsg = _("Couldn’t sign file: %s");
             mode.startcb = sign_start;
         }
 
     } else if (mode_import) {
         mode.title = _("Importing");
-        mode.errmsg = _("Couldn't import keys from file: %s");
+        mode.errmsg = _("Couldn’t import keys from file: %s");
         mode.startcb = import_start;
         mode.donecb = import_done;
         mode.imports = 0;
 
     } else if (mode_decrypt) {
         mode.title = _("Decrypting");
-        mode.errmsg = _("Couldn't decrypt file: %s");
+        mode.errmsg = _("Couldn’t decrypt file: %s");
         mode.startcb = decrypt_start;
         mode.donecb = decrypt_done;
 
     } else if (mode_verify) {
         mode.title = _("Verifying");
-        mode.errmsg = _("Couldn't verify file: %s");
+        mode.errmsg = _("Couldn’t verify file: %s");
         mode.startcb = verify_start;
         mode.donecb = verify_done;
 

@@ -8,7 +8,7 @@
 		<key name="separate-files" type="b">
 			<default>false</default>
 			<summary>Handle multiple files separately</summary>
-			<description>When handling multiple files, don't package them but process separately.</description>
+			<description>When handling multiple files, don’t package them but process separately.</description>
 		</key>
 		<key name="armor-mode" type="b">
 			<default>false</default>

@@ -112,9 +112,9 @@ seahorse_passphrase_get (gconstpointer dummy, const gchar *passphrase_hint,
 
 	if (split_uid && split_uid[0] && split_uid[1]) {
 		if (flags & SEAHORSE_PASS_NEW)
-			label = g_strdup_printf (_("Enter new passphrase for '%s'"), split_uid[1]);
+			label = g_strdup_printf (_("Enter new passphrase for “%s”"), split_uid[1]);
 		else
-			label = g_strdup_printf (_("Enter passphrase for '%s'"), split_uid[1]);
+			label = g_strdup_printf (_("Enter passphrase for “%s”"), split_uid[1]);
 	} else {
 		if (flags & SEAHORSE_PASS_NEW)
 			label = g_strdup (_("Enter new passphrase"));
@@ -132,7 +132,7 @@ seahorse_passphrase_get (gconstpointer dummy, const gchar *passphrase_hint,
 
 	gcr_prompt_set_password_new (prompt, flags & SEAHORSE_PASS_NEW);
 
-	gcr_prompt_set_continue_label (prompt, _("Ok"));
+	gcr_prompt_set_continue_label (prompt, _("OK"));
 	gcr_prompt_set_cancel_label (prompt, _("Cancel"));
 
 	g_free (label);

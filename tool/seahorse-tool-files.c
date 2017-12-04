@@ -860,7 +860,7 @@ seahorse_tool_files_process (SeahorseToolMode *mode, const gchar **uris)
 
     /* Start progress bar */
     seahorse_tool_progress_start (mode->title);
-    if (!seahorse_tool_progress_update (-1, _("Preparing...")))
+    if (!seahorse_tool_progress_update (-1, _("Preparing…")))
         goto finally;
 
     /*
@@ -869,7 +869,7 @@ seahorse_tool_files_process (SeahorseToolMode *mode, const gchar **uris)
      */
 
     if (!step_check_uris (&ctx, uris, &err)) {
-        errdesc = _("Couldn't list files");
+        errdesc = _("Couldn’t list files");
         goto finally;
     }
 
@@ -879,7 +879,7 @@ seahorse_tool_files_process (SeahorseToolMode *mode, const gchar **uris)
      */
     if (mode->package) {
         if (!step_process_multiple (&ctx, uris, &err)) {
-            errdesc = _("Couldn't package files");
+            errdesc = _("Couldn’t package files");
             goto finally;
         }
     }
@@ -892,7 +892,7 @@ seahorse_tool_files_process (SeahorseToolMode *mode, const gchar **uris)
      * dealing with. This also gets file size info.
      */
     if (!step_expand_uris (&ctx, &err)) {
-        errdesc = _("Couldn't list files");
+        errdesc = _("Couldn’t list files");
         goto finally;
     }
 
