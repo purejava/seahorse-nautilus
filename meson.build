@@ -23,7 +23,8 @@ uidir = join_paths(datadir, 'seahorse-nautilus', 'ui')
 config_h_dir = include_directories('.')
 
 # Dependencies
-min_glib_version = '2.10.0'
+min_glib_version = '2.44'
+min_gtk_version = '3.18'
 accepted_gpg_versions= ['1.2.0', '1.4.0', '2.0.0', '2.1.0', '2.2.0' ]
 min_gpgme_version = '1.0.0'
 
@@ -35,7 +36,7 @@ message('Nautilus extension dir: "@0@"'.format(nautilus_ext_dir))
 
 glib = dependency('gio-2.0', version: '>= ' + min_glib_version)
 gio = dependency('gio-2.0', version: '>= ' + min_glib_version)
-gtk = dependency('gtk+-3.0', version: '>= 3.0')
+gtk = dependency('gtk+-3.0', version: '>= ' + min_gtk_version)
 dbus_glib = dependency('dbus-glib-1', version: '>= 0.35')
 cryptui = dependency('cryptui-0.0', version: '>= 3.9.90')
 gcr = dependency('gcr-3', version: '>= 3.4.0')
