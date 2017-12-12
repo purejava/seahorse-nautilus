@@ -37,7 +37,6 @@ message('Nautilus extension dir: "@0@"'.format(nautilus_ext_dir))
 glib = dependency('gio-2.0', version: '>= ' + min_glib_version)
 gio = dependency('gio-2.0', version: '>= ' + min_glib_version)
 gtk = dependency('gtk+-3.0', version: '>= ' + min_gtk_version)
-dbus_glib = dependency('dbus-glib-1', version: '>= 0.35')
 cryptui = dependency('cryptui-0.0', version: '>= 3.9.90')
 gcr = dependency('gcr-3', version: '>= 3.4.0')
 if libnotify_enabled
