@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -6,18 +7,31 @@
 
 	<name xml:lang="en">seahorse-nautilus</name>
 	<shortdesc xml:lang="en">PGP encryption and signing for Nautilus</shortdesc>
+	<description>
+		The Seahorse Nautilus extension is an extension for
+		Nautilus (also known as Files) which allows encryption
+		and decryption of OpenPGP files using GnuPG.
+	</description>
 
 	<homepage rdf:resource="https://wiki.gnome.org/Apps/Seahorse" />
 	<mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/seahorse-list" />
 	<download-page rdf:resource="http://download.gnome.org/sources/seahorse-nautilus/" />
-	<bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=seahorse-plugins" />
-	<category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
+	<bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=seahorse" />
+	<category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
+	<programming-language>C</programming-language>
 	
 	<maintainer>
 		<foaf:Person>
 			<foaf:name>Stef Walter</foaf:name>
 			<foaf:mbox rdf:resource="mailto:stef@memberwebs.com" />
 			<gnome:userid>stefw</gnome:userid>
+		</foaf:Person>
+	</maintainer>
+	<maintainer>
+		<foaf:Person>
+			<foaf:name>Niels De Graef</foaf:name>
+			<foaf:mbox rdf:resource="mailto:nielsdegraef@gmail.com" />
+			<gnome:userid>nielsdg</gnome:userid>
 		</foaf:Person>
 	</maintainer>
 </Project>
