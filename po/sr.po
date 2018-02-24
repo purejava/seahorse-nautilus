@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=seahor"
 "se&keywords=I18N+L10N&component=Nautilus\n"
 "POT-Creation-Date: 2018-02-20 23:20+0000\n"
-"PO-Revision-Date: 2018-02-24 08:58+0200\n"
+"PO-Revision-Date: 2018-02-24 13:56+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -328,7 +328,7 @@ msgstr "Не могу да учитам кључеве"
 #, c-format
 #| msgid "Choose Encrypted File Name for '%s'"
 msgid "Choose Encrypted File Name for “%s”"
-msgstr "Изаберите име шифроване датотеке за „%s“"
+msgstr "Изаберите назив шифроване датотеке за „%s“"
 
 #: tool/seahorse-tool.c:325
 msgid "Choose Signer"
@@ -338,7 +338,7 @@ msgstr "Изаберите потписника"
 #, c-format
 #| msgid "Choose Signature File Name for '%s'"
 msgid "Choose Signature File Name for “%s”"
-msgstr "Изаберите име потписане датотеке за „%s“"
+msgstr "Изаберите назив потписане датотеке за „%s“"
 
 #: tool/seahorse-tool.c:407
 msgid "Import is complete"
@@ -377,7 +377,7 @@ msgstr[3] "Увезен је један кључ"
 #, c-format
 #| msgid "Choose Decrypted File Name for '%s'"
 msgid "Choose Decrypted File Name for “%s”"
-msgstr "Изаберите име дешифроване датотеке за „%s“"
+msgstr "Изаберите назив дешифроване датотеке за „%s“"
 
 #: tool/seahorse-tool.c:575
 #, c-format
@@ -600,7 +600,7 @@ msgstr "Дешифровање није успело. Вероватно нем�
 
 #: tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
-msgstr "%d.%m.%Y."
+msgstr "%d.%m.%Y"
 
 #: tool/seahorse-util.c:391
 #| msgid "Couldn't run file-roller"
@@ -613,7 +613,7 @@ msgstr "Процес управљача архивама није успешно
 
 #: tool/seahorse-util.c:418
 msgid "_Save"
-msgstr ""
+msgstr "_Сачувај"
 
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
