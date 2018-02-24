@@ -1,20 +1,20 @@
 # Serbian translation of seahorse
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003, 2004.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003–2018.
 # This file is distributed under the same license as the seahorse package.
 # Maintainer: Dušan Živojnov <calvin@verat.net>
 # Translated on 2009-05-09 by: Branko Kokanović <branko.kokanovic@gmail.com>
 # Branko Kokanović <branko.kokanovic@gmail.com>, 2009.
 # Miloš Popović <gpopac@gmail.com>, 2010.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011, 2013, 2014.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011–2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: Seahorse\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
-"=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-02 04:00+0000\n"
-"PO-Revision-Date: 2014-01-27 22:39+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=seahor"
+"se&keywords=I18N+L10N&component=Nautilus\n"
+"POT-Creation-Date: 2018-02-20 23:20+0000\n"
+"PO-Revision-Date: 2018-02-24 08:58+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <gnom@prevod.org>\n"
+"Language-Team: srpski <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,57 +23,59 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
+#: data/org.gnome.seahorse.nautilus.gschema.xml:5
 msgid "File extension for packages"
 msgstr "Proširenje datoteke za pakete"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
-#| msgid "File extension for packages when handling mulitple files."
+#: data/org.gnome.seahorse.nautilus.gschema.xml:6
 msgid "File extension for packages when handling multiple files."
 msgstr "Proširenje datoteke za pakete prilikom obrade brojnih datoteka."
 
 # bug: s/seperately/separately/
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
+#: data/org.gnome.seahorse.nautilus.gschema.xml:10
 msgid "Handle multiple files separately"
 msgstr "Obrađuje svaku datoteku zasebno"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
+#: data/org.gnome.seahorse.nautilus.gschema.xml:11
+#| msgid ""
+#| "When handling multiple files, don't package them but process separately."
 msgid ""
-"When handling multiple files, don't package them but process separately."
+"When handling multiple files, don’t package them but process separately."
 msgstr ""
 "Kada obrađuje brojne datoteke, neće ih pakovati već će ih obraditi zasebno."
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
+#: data/org.gnome.seahorse.nautilus.gschema.xml:15
 msgid "Use armor mode when encrypting"
 msgstr "Koristi odbrambeni režim prilikom šifrovanja"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
+#: data/org.gnome.seahorse.nautilus.gschema.xml:16
 msgid "Use PGP ASCII armor mode when encrypting or signing files."
 msgstr ""
 "Koristiće PGP ASKRI odbrambeni režim prilikom šifrovanja ili potpisivanja "
 "datoteka."
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:5
 msgid "Width of the window"
 msgstr "Širina prozora"
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:2
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:6
 msgid "Width (in pixels) of the window."
 msgstr "Širina prozora (u tačkicama)."
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:3
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:10
 msgid "Height of the window"
 msgstr "Visina prozora"
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:4
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:11
 msgid "Height (in pixels) of the window."
 msgstr "Visina prozora (u tačkicama)."
 
-#: ../nautilus-ext/seahorse-nautilus.c:158
-msgid "Encrypt..."
-msgstr "Šifruj..."
+#: nautilus-ext/seahorse-nautilus.c:158
+#| msgid "Encrypt..."
+msgid "Encrypt…"
+msgstr "Šifruj…"
 
-#: ../nautilus-ext/seahorse-nautilus.c:159
+#: nautilus-ext/seahorse-nautilus.c:159
 msgid "Encrypt (and optionally sign) the selected file"
 msgid_plural "Encrypt the selected files"
 msgstr[0] "Šifruj (i opciono potpiši) izabranu datoteku"
@@ -81,11 +83,11 @@ msgstr[1] "Šifruj izabrane datoteke"
 msgstr[2] "Šifruj izabrane datoteke"
 msgstr[3] "Šifruj (i opciono potpiši) izabranu datoteku"
 
-#: ../nautilus-ext/seahorse-nautilus.c:165
+#: nautilus-ext/seahorse-nautilus.c:165
 msgid "Sign"
 msgstr "Potpiši"
 
-#: ../nautilus-ext/seahorse-nautilus.c:166
+#: nautilus-ext/seahorse-nautilus.c:166
 msgid "Sign the selected file"
 msgid_plural "Sign the selected files"
 msgstr[0] "Potpiši izabranu datoteku"
@@ -93,43 +95,43 @@ msgstr[1] "Potpiši izabrane datoteke"
 msgstr[2] "Potpiši izabrane datoteke"
 msgstr[3] "Potpiši izabranu datoteku"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:1
+#: tool/seahorse-multi-encrypt.ui:8
 msgid "Encrypt Multiple Files"
 msgstr "Šifruj više datoteka"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
+#: tool/seahorse-multi-encrypt.ui:24
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>Izabrali ste više datoteka ili direktorijuma</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:3
+#: tool/seahorse-multi-encrypt.ui:51
 msgid "encrypted-package"
 msgstr "šifrovani-paket"
 
 # bug: s/seperately/separately/
-#: ../tool/seahorse-multi-encrypt.xml.h:4
+#: tool/seahorse-multi-encrypt.ui:87
 msgid "Encrypt each file separately"
 msgstr "Šifruj svaku datoteku zasebno"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:5
+#: tool/seahorse-multi-encrypt.ui:104
 msgid "Encrypt packed together in a package"
 msgstr "Šifruj zajedno spakovano u paket"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:6
+#: tool/seahorse-multi-encrypt.ui:126
 msgid "Packaging:"
 msgstr "Vrsta pakovanja:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:7
+#: tool/seahorse-multi-encrypt.ui:137
 msgid "Package Name:"
 msgstr "Naziv paketa:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:8
+#: tool/seahorse-multi-encrypt.ui:156
 msgid ""
 "Because the files are located remotely, each file will be encrypted "
 "separately."
 msgstr ""
 "Pošto su datoteke na udaljenim računarima, svaka će biti zasebno šifrovana."
 
-#: ../tool/seahorse-notification.c:572
+#: tool/seahorse-notification.c:569
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Uvezen ključ"
@@ -137,7 +139,7 @@ msgstr[1] "Uvezeni ključevi"
 msgstr[2] "Uvezeni ključevi"
 msgstr[3] "Uvezen ključ"
 
-#: ../tool/seahorse-notification.c:576
+#: tool/seahorse-notification.c:573
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
@@ -147,7 +149,7 @@ msgstr[2] "Uvezeno je %i ključeva"
 msgstr[3] "Uvezen je jedan ključ"
 
 # bug: plural-forms
-#: ../tool/seahorse-notification.c:578
+#: tool/seahorse-notification.c:575
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
@@ -157,205 +159,211 @@ msgstr[2] "Uvezeni su ključevi za"
 msgstr[3] "Uvezen je ključ za"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:606
+#: tool/seahorse-notification.c:603
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr "Potpisao je <i><key id='%s'/> <b>ističe</b></i> %s."
 
-#: ../tool/seahorse-notification.c:607
+#: tool/seahorse-notification.c:604
 msgid "Invalid Signature"
 msgstr "Neispravan potpis"
 
-#: ../tool/seahorse-notification.c:613
+#: tool/seahorse-notification.c:610
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr "Potpisano od <i><key id='%s'/></i> %s <b>Istekao</b>."
 
-#: ../tool/seahorse-notification.c:614
+#: tool/seahorse-notification.c:611
 msgid "Expired Signature"
 msgstr "Istekao potpis"
 
-#: ../tool/seahorse-notification.c:620
+#: tool/seahorse-notification.c:617
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr "Potpisan od <i><key id='%s'/> <b>Opozvan</b></i> %s."
 
-#: ../tool/seahorse-notification.c:621
+#: tool/seahorse-notification.c:618
 msgid "Revoked Signature"
 msgstr "Opozvan potpis"
 
-#: ../tool/seahorse-notification.c:628
+#: tool/seahorse-notification.c:625
 msgid "Good Signature"
 msgstr "Dobar potpis"
 
-#: ../tool/seahorse-notification.c:629
+#: tool/seahorse-notification.c:626
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "Potpisan od <i><key id='%s'/></i> %s."
 
-#: ../tool/seahorse-notification.c:631
-#| msgid "Invalid Signature"
+#: tool/seahorse-notification.c:628
 msgid "Untrusted Valid Signature"
 msgstr "Nepoverljiv ispravan potpis"
 
-#: ../tool/seahorse-notification.c:632
+#: tool/seahorse-notification.c:629
 #, c-format
-#| msgid "Signed by <i><key id='%s'/></i> on %s."
 msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
-msgstr "Ispravan ali <b>nepoverljiv</b> potpis od <i><key id='%s'/></i> na „%s“."
+msgstr ""
+"Ispravan ali <b>nepoverljiv</b> potpis od <i><key id='%s'/></i> na „%s“."
 
-#: ../tool/seahorse-notification.c:638
+#: tool/seahorse-notification.c:635
 msgid "Signing key not in keyring."
 msgstr "Ključ za potpis nije u privesku ključeva."
 
-#: ../tool/seahorse-notification.c:639
+#: tool/seahorse-notification.c:636
 msgid "Unknown Signature"
 msgstr "Nepoznat potpis"
 
-#: ../tool/seahorse-notification.c:643
+#: tool/seahorse-notification.c:640
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Loš ili falsifikovan potpis. Potpisani podaci su menjani."
 
-#: ../tool/seahorse-notification.c:644
+#: tool/seahorse-notification.c:641
 msgid "Bad Signature"
 msgstr "Loš potpis"
 
-#: ../tool/seahorse-notification.c:652
-msgid "Couldn't verify signature."
+#: tool/seahorse-notification.c:649
+#| msgid "Couldn't verify signature."
+msgid "Couldn’t verify signature."
 msgstr "Ne mogu da proverim potpis."
 
-#: ../tool/seahorse-notify.xml.h:1
+#: tool/seahorse-notify.ui:8
 msgid "Notification Messages"
 msgstr "Obaveštajne poruke"
 
-#: ../tool/seahorse-passphrase.c:114
+#: tool/seahorse-passphrase.c:111
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Pogrešna lozinka."
 
-#: ../tool/seahorse-passphrase.c:118
+#: tool/seahorse-passphrase.c:115
 #, c-format
-msgid "Enter new passphrase for '%s'"
+#| msgid "Enter new passphrase for '%s'"
+msgid "Enter new passphrase for “%s”"
 msgstr "Unesite novu lozinku za „%s“"
 
-#: ../tool/seahorse-passphrase.c:120
+#: tool/seahorse-passphrase.c:117
 #, c-format
-msgid "Enter passphrase for '%s'"
+#| msgid "Enter passphrase for '%s'"
+msgid "Enter passphrase for “%s”"
 msgstr "Unesite lozinku za „%s“"
 
-#: ../tool/seahorse-passphrase.c:123
+#: tool/seahorse-passphrase.c:120
 msgid "Enter new passphrase"
 msgstr "Unesite novu lozinku"
 
-#: ../tool/seahorse-passphrase.c:125
+#: tool/seahorse-passphrase.c:122
 msgid "Enter passphrase"
 msgstr "Unesite lozinku"
 
-#: ../tool/seahorse-passphrase.c:130
+#: tool/seahorse-passphrase.c:127
 msgid "Passphrase"
 msgstr "Lozinka"
 
-#: ../tool/seahorse-passphrase.c:138
-msgid "Ok"
+#: tool/seahorse-passphrase.c:135
+msgid "OK"
 msgstr "U redu"
 
-#: ../tool/seahorse-passphrase.c:139
+#: tool/seahorse-passphrase.c:136
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
+#: tool/seahorse-pgp-encrypted.desktop.in.in:3
 msgid "Decrypt File"
 msgstr "Dešifruj datoteku"
 
-#: ../tool/seahorse-pgp-keys.desktop.in.in.h:1
+#: tool/seahorse-pgp-keys.desktop.in.in:3
 msgid "Import Key"
 msgstr "Uvezi ključ"
 
-#: ../tool/seahorse-pgp-signature.desktop.in.in.h:1
+#: tool/seahorse-pgp-signature.desktop.in.in:3
 msgid "Verify Signature"
 msgstr "Proveri potpis"
 
-#: ../tool/seahorse-progress.xml.h:1
+#: tool/seahorse-progress.ui:8
 msgid "Progress Title"
 msgstr "Naslov napretka"
 
-#: ../tool/seahorse-tool.c:61
+#: tool/seahorse-tool.c:58
 msgid "Import keys from the file"
 msgstr "Uvezi ključeve iz datoteke"
 
-#: ../tool/seahorse-tool.c:63
+#: tool/seahorse-tool.c:60
 msgid "Encrypt file"
 msgstr "Šifruj datoteku"
 
-#: ../tool/seahorse-tool.c:65
+#: tool/seahorse-tool.c:62
 msgid "Sign file with default key"
 msgstr "Potpiši datoteku pomoću osnovnog ključa"
 
-#: ../tool/seahorse-tool.c:67
+#: tool/seahorse-tool.c:64
 msgid "Encrypt and sign file with default key"
 msgstr "Šifruj i potpiši datoteku pomoću osnovnog ključa"
 
-#: ../tool/seahorse-tool.c:69
+#: tool/seahorse-tool.c:66
 msgid "Decrypt encrypted file"
 msgstr "Dešifruj šifrovanu datoteku"
 
-#: ../tool/seahorse-tool.c:71
+#: tool/seahorse-tool.c:68
 msgid "Verify signature file"
 msgstr "Proveri datoteku potpisa"
 
-#: ../tool/seahorse-tool.c:73
+#: tool/seahorse-tool.c:70
 msgid "Read list of URIs on standard in"
 msgstr "Pročitaj spisak adresa na standardnom ulazu"
 
-#: ../tool/seahorse-tool.c:75
-msgid "file..."
-msgstr "datoteka..."
+#: tool/seahorse-tool.c:72
+msgid "file…"
+msgstr "datoteka…"
 
-#: ../tool/seahorse-tool.c:171
+#: tool/seahorse-tool.c:168
 msgid "Encryption settings"
 msgstr "Podešavanja šifrovanja"
 
-#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
-msgid "Couldn't load keys"
+#: tool/seahorse-tool.c:233 tool/seahorse-tool.c:347
+#| msgid "Couldn't load keys"
+msgid "Couldn’t load keys"
 msgstr "Ne mogu da učitam ključeve"
 
-#: ../tool/seahorse-tool.c:253
+#: tool/seahorse-tool.c:250
 #, c-format
-msgid "Choose Encrypted File Name for '%s'"
+#| msgid "Choose Encrypted File Name for '%s'"
+msgid "Choose Encrypted File Name for “%s”"
 msgstr "Izaberite ime šifrovane datoteke za „%s“"
 
-#: ../tool/seahorse-tool.c:328
+#: tool/seahorse-tool.c:325
 msgid "Choose Signer"
 msgstr "Izaberite potpisnika"
 
-#: ../tool/seahorse-tool.c:370
+#: tool/seahorse-tool.c:367
 #, c-format
-msgid "Choose Signature File Name for '%s'"
+#| msgid "Choose Signature File Name for '%s'"
+msgid "Choose Signature File Name for “%s”"
 msgstr "Izaberite ime potpisane datoteke za „%s“"
 
-#: ../tool/seahorse-tool.c:410
+#: tool/seahorse-tool.c:407
 msgid "Import is complete"
 msgstr "Uvoz je završen"
 
-#: ../tool/seahorse-tool.c:443
-msgid "Importing keys ..."
-msgstr "Uvozim ključeve ..."
+#: tool/seahorse-tool.c:440
+#| msgid "Importing keys ..."
+msgid "Importing keys…"
+msgstr "Uvozim ključeve…"
 
-#: ../tool/seahorse-tool.c:473
+#: tool/seahorse-tool.c:470
 msgid "Import Failed"
 msgstr "Uvoz nije uspeo"
 
-#: ../tool/seahorse-tool.c:474
+#: tool/seahorse-tool.c:471
 msgid "Keys were found but not imported."
 msgstr "Ključevi su nađeni ali nisu uveženi."
 
 # bug: plural-forms
-#: ../tool/seahorse-tool.c:497
+#: tool/seahorse-tool.c:494
 #, c-format
 msgid "Imported key"
 msgstr "Uvezoh ključ"
 
-#: ../tool/seahorse-tool.c:499
+#: tool/seahorse-tool.c:496
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -365,151 +373,167 @@ msgstr[2] "Uvezeno je %d ključeva"
 msgstr[3] "Uvezen je jedan ključ"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:521
+#: tool/seahorse-tool.c:518
 #, c-format
-msgid "Choose Decrypted File Name for '%s'"
+#| msgid "Choose Decrypted File Name for '%s'"
+msgid "Choose Decrypted File Name for “%s”"
 msgstr "Izaberite ime dešifrovane datoteke za „%s“"
 
-#: ../tool/seahorse-tool.c:578
+#: tool/seahorse-tool.c:575
 #, c-format
-msgid "Choose Original File for '%s'"
+#| msgid "Choose Original File for '%s'"
+msgid "Choose Original File for “%s”"
 msgstr "Izaberite izvornu datoteku za „%s“"
+
+#: tool/seahorse-tool.c:580 tool/seahorse-util.c:417 tool/seahorse-util.c:504
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "_Otkaži"
+
+#: tool/seahorse-tool.c:581
+msgid "_Open"
+msgstr "_Otvori"
 
 #.
 #. * TODO: What should happen with multiple files at this point.
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:651
+#: tool/seahorse-tool.c:648
 #, c-format
 msgid "No valid signatures found"
 msgstr "Ne mogu da nađem nijedan ispravan potpis"
 
-#: ../tool/seahorse-tool.c:698
+#: tool/seahorse-tool.c:696
 msgid "File Encryption Tool"
 msgstr "Alat za šifrovanje datoteka"
 
-#: ../tool/seahorse-tool.c:716
+#: tool/seahorse-tool.c:718
 msgid "Encrypting"
 msgstr "Dešifrujem"
 
-#: ../tool/seahorse-tool.c:717
+#: tool/seahorse-tool.c:719
 #, c-format
-msgid "Couldn't encrypt file: %s"
+#| msgid "Couldn't encrypt file: %s"
+msgid "Couldn’t encrypt file: %s"
 msgstr "Ne mogu da šifrujem datoteku: %s"
 
-#: ../tool/seahorse-tool.c:725
+#: tool/seahorse-tool.c:727
 msgid "Signing"
 msgstr "Potpisujem"
 
-#: ../tool/seahorse-tool.c:726
+#: tool/seahorse-tool.c:728
 #, c-format
-msgid "Couldn't sign file: %s"
+#| msgid "Couldn't sign file: %s"
+msgid "Couldn’t sign file: %s"
 msgstr "Ne mogu da potpišem datoteku: %s"
 
-#: ../tool/seahorse-tool.c:731
+#: tool/seahorse-tool.c:733
 msgid "Importing"
 msgstr "Uvozim"
 
-#: ../tool/seahorse-tool.c:732
+#: tool/seahorse-tool.c:734
 #, c-format
-msgid "Couldn't import keys from file: %s"
+#| msgid "Couldn't import keys from file: %s"
+msgid "Couldn’t import keys from file: %s"
 msgstr "Ne mogu da uvezem ključeve iz datoteke: %s"
 
-#: ../tool/seahorse-tool.c:738
+#: tool/seahorse-tool.c:740
 msgid "Decrypting"
 msgstr "Dešifrujem"
 
-#: ../tool/seahorse-tool.c:739
+#: tool/seahorse-tool.c:741
 #, c-format
-msgid "Couldn't decrypt file: %s"
+#| msgid "Couldn't decrypt file: %s"
+msgid "Couldn’t decrypt file: %s"
 msgstr "Ne mogu da dešifrujem datoteku: %s"
 
-#: ../tool/seahorse-tool.c:744
+#: tool/seahorse-tool.c:746
 msgid "Verifying"
 msgstr "Proveravam"
 
-#: ../tool/seahorse-tool.c:745
+#: tool/seahorse-tool.c:747
 #, c-format
-msgid "Couldn't verify file: %s"
+#| msgid "Couldn't verify file: %s"
+msgid "Couldn’t verify file: %s"
 msgstr "Ne mogu da proverim datoteku: %s"
 
-#: ../tool/seahorse-tool-files.c:119
+#: tool/seahorse-tool-files.c:116
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:120
+#: tool/seahorse-tool-files.c:117
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: tool/seahorse-tool-files.c:118
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:128
+#: tool/seahorse-tool-files.c:125
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: tool/seahorse-tool-files.c:126
 msgid "Self-extracting zip (.exe)"
 msgstr "Samootpakujući zip (.exe)"
 
-#: ../tool/seahorse-tool-files.c:131
+#: tool/seahorse-tool-files.c:128
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: tool/seahorse-tool-files.c:129
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:134
+#: tool/seahorse-tool-files.c:131
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:136
+#: tool/seahorse-tool-files.c:133
 msgid "Tar uncompressed (.tar)"
 msgstr "Nezapakovan Tar (.tar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: tool/seahorse-tool-files.c:134
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "Tar zapakovan bzipom (.tar.bz)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: tool/seahorse-tool-files.c:135
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "Tar zapakovan bzipom 2 (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:139
+#: tool/seahorse-tool-files.c:136
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "Tar zapakovan gzipom (.tar.gz)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: tool/seahorse-tool-files.c:137
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "Tar zapakovan lzopom (.tar.lzo)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: tool/seahorse-tool-files.c:138
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "Tar zapakovan kompresom (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:143
+#: tool/seahorse-tool-files.c:140
 msgid "War (.war)"
 msgstr "Var (.war)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: tool/seahorse-tool-files.c:141
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: tool/seahorse-tool-files.c:142
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: tool/seahorse-tool-files.c:143
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 # bug: plural-forms
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:328
+#: tool/seahorse-tool-files.c:325
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
@@ -520,7 +544,7 @@ msgstr[3] "Izabrali ste jednu datoteku "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:333
+#: tool/seahorse-tool-files.c:330
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -531,13 +555,13 @@ msgstr[3] "i jednu fasciklu"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:338
+#: tool/seahorse-tool-files.c:335
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
 # bug: plural-forms
-#: ../tool/seahorse-tool-files.c:346
+#: tool/seahorse-tool-files.c:343
 #, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
@@ -546,7 +570,7 @@ msgstr[1] "Izabrali ste %d datoteke"
 msgstr[2] "Izabrali ste %d datoteka"
 msgstr[3] "Izabrali ste jednu datoteku"
 
-#: ../tool/seahorse-tool-files.c:351
+#: tool/seahorse-tool-files.c:348
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
@@ -555,49 +579,57 @@ msgstr[1] "Izabrali ste %d direktorijuma"
 msgstr[2] "Izabrali ste %d direktorijuma"
 msgstr[3] "Izabrali ste jedan direktorijum"
 
-#: ../tool/seahorse-tool-files.c:866
-msgid "Preparing..."
-msgstr "Pripremam..."
+#: tool/seahorse-tool-files.c:863
+#| msgid "Preparing..."
+msgid "Preparing…"
+msgstr "Pripremam…"
 
-#: ../tool/seahorse-tool-files.c:875 ../tool/seahorse-tool-files.c:898
-msgid "Couldn't list files"
+#: tool/seahorse-tool-files.c:872 tool/seahorse-tool-files.c:895
+#| msgid "Couldn't list files"
+msgid "Couldn’t list files"
 msgstr "Ne mogu da izlistam datoteke"
 
-#: ../tool/seahorse-tool-files.c:885 ../tool/seahorse-util.c:399
-msgid "Couldn't package files"
+#: tool/seahorse-tool-files.c:882 tool/seahorse-util.c:396
+#| msgid "Couldn't package files"
+msgid "Couldn’t package files"
 msgstr "Ne mogu da upakujem datoteke"
 
-#: ../tool/seahorse-util.c:173
+#: tool/seahorse-util.c:170
 msgid "Decryption failed. You probably do not have the decryption key."
 msgstr "Dešifrovanje nije uspelo. Verovatno nemate ključ za dešifrovanje."
 
-#: ../tool/seahorse-util.c:200
+#: tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
-msgstr "%d.%m.%Y"
+msgstr "%d.%m.%Y."
 
-#: ../tool/seahorse-util.c:394
-msgid "Couldn't run file-roller"
+#: tool/seahorse-util.c:391
+#| msgid "Couldn't run file-roller"
+msgid "Couldn’t run file-roller"
 msgstr "Ne mogu da pokrenem Upravljača arhivama"
 
-#: ../tool/seahorse-util.c:400
+#: tool/seahorse-util.c:397
 msgid "The file-roller process did not complete successfully"
 msgstr "Proces upravljača arhivama nije uspešno završen"
 
+#: tool/seahorse-util.c:418
+msgid "_Save"
+msgstr ""
+
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:436
+#: tool/seahorse-util.c:433
 msgid "All key files"
 msgstr "Sve datoteke ključeva"
 
-#: ../tool/seahorse-util.c:443 ../tool/seahorse-util.c:483
+#: tool/seahorse-util.c:440 tool/seahorse-util.c:480
 msgid "All files"
 msgstr "Sve datoteke"
 
-#: ../tool/seahorse-util.c:476
+#: tool/seahorse-util.c:473
 msgid "Archive files"
 msgstr "Datoteke arhive"
 
-#: ../tool/seahorse-util.c:505
+#: tool/seahorse-util.c:502
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -607,6 +639,12 @@ msgstr ""
 "\n"
 "Da li želite da je zamenite novom?"
 
-#: ../tool/seahorse-util.c:508
+#: tool/seahorse-util.c:505
 msgid "_Replace"
 msgstr "_Zameni"
+
+#~ msgid "Ok"
+#~ msgstr "U redu"
+
+#~ msgid "file..."
+#~ msgstr "datoteka..."
