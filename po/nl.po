@@ -6,9 +6,10 @@
 # Reinout van Schouwen <reinouts@gnome.org>, 2007
 # Vincent van Adrighem <adrighem@gnome.org>, 2007
 # Wouter Bolsterlee <wbolster@gnome.org>, 2007–2010
+# Nathan Follens <nthn@unseen.is>, 2015-2018
 #
 # armor         harnas
-# decrypt       ontcijferen
+# decrypt       ontsleutelen
 # encrypt       versleutelen
 # encryption    versleuteling
 # keyring       sleutelbos
@@ -22,42 +23,116 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Seahorse\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-07 11:29+0200\n"
-"PO-Revision-Date: 2010-09-19 20:29+0200\n"
-"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=seahorse&keywords=I18N+L10N&component=Nautilus\n"
+"POT-Creation-Date: 2018-02-20 23:20+0000\n"
+"PO-Revision-Date: 2018-02-26 15:31+0100\n"
+"Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
 
-#: ../nautilus-ext/seahorse-nautilus.c:158
-msgid "Encrypt..."
+#: data/org.gnome.seahorse.nautilus.gschema.xml:5
+msgid "File extension for packages"
+msgstr "Bestandsextensie voor archieven"
+
+#: data/org.gnome.seahorse.nautilus.gschema.xml:6
+msgid "File extension for packages when handling multiple files."
+msgstr "Bestandsextensie voor archieven bij werken met meerdere bestanden."
+
+#: data/org.gnome.seahorse.nautilus.gschema.xml:10
+msgid "Handle multiple files separately"
+msgstr "Elk bestand afzonderlijk verwerken"
+
+#: data/org.gnome.seahorse.nautilus.gschema.xml:11
+msgid ""
+"When handling multiple files, don’t package them but process separately."
+msgstr ""
+"Verwerk bij werken met meerdere bestanden elk bestand apart en pak ze niet "
+"in."
+
+#: data/org.gnome.seahorse.nautilus.gschema.xml:15
+msgid "Use armor mode when encrypting"
+msgstr "Gebruik armor-modus bij versleuteling"
+
+#: data/org.gnome.seahorse.nautilus.gschema.xml:16
+msgid "Use PGP ASCII armor mode when encrypting or signing files."
+msgstr ""
+"Gebruik PGP ASCII armor-modus bij versleuteling of ondertekening van "
+"bestanden."
+
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:5
+msgid "Width of the window"
+msgstr "Breedte van het venster"
+
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:6
+msgid "Width (in pixels) of the window."
+msgstr "Breedte (in pixels) van het venster."
+
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:10
+msgid "Height of the window"
+msgstr "Hoogte van het venster"
+
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:11
+msgid "Height (in pixels) of the window."
+msgstr "Hoogte (in pixels) van het venster."
+
+#: nautilus-ext/seahorse-nautilus.c:158
+msgid "Encrypt…"
 msgstr "Versleutelen…"
 
-#: ../nautilus-ext/seahorse-nautilus.c:159
+#: nautilus-ext/seahorse-nautilus.c:159
 msgid "Encrypt (and optionally sign) the selected file"
 msgid_plural "Encrypt the selected files"
 msgstr[0] "Bestand versleutelen (en optioneel signeren)"
 msgstr[1] "Bestanden versleutelen (en optioneel signeren)"
 
-#: ../nautilus-ext/seahorse-nautilus.c:165
+#: nautilus-ext/seahorse-nautilus.c:165
 msgid "Sign"
 msgstr "Ondertekenen"
 
-#: ../nautilus-ext/seahorse-nautilus.c:166
+#: nautilus-ext/seahorse-nautilus.c:166
 msgid "Sign the selected file"
 msgid_plural "Sign the selected files"
 msgstr[0] "Bestand versleutelen"
 msgstr[1] "Bestanden versleutelen"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:1
+#: tool/seahorse-multi-encrypt.ui:8
+msgid "Encrypt Multiple Files"
+msgstr "Meerdere bestanden versleutelen"
+
+#: tool/seahorse-multi-encrypt.ui:24
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>U heeft meerdere bestanden of mappen geselecteerd</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
+#: tool/seahorse-multi-encrypt.ui:51
+msgid "encrypted-package"
+msgstr "encrypted-package"
+
+#: tool/seahorse-multi-encrypt.ui:87
+msgid "Encrypt each file separately"
+msgstr "Elk bestand afzonderlijk versleutelen"
+
+# vrij vertaald (Wouter Bolsterlee)
+#: tool/seahorse-multi-encrypt.ui:104
+msgid "Encrypt packed together in a package"
+msgstr "Versleuteling als totaalarchief"
+
+# vrij vertaald (Wouter Bolsterlee)
+#: tool/seahorse-multi-encrypt.ui:126
+msgid "Packaging:"
+msgstr "Archieftype:"
+
+# vrij vertaald (Wouter Bolsterlee)
+#: tool/seahorse-multi-encrypt.ui:137
+msgid "Package Name:"
+msgstr "Archiefnaam:"
+
+#: tool/seahorse-multi-encrypt.ui:156
 msgid ""
 "Because the files are located remotely, each file will be encrypted "
 "separately."
@@ -65,47 +140,20 @@ msgstr ""
 "Omdat de bestanden zich op andere machine bevinden, zal elk bestand "
 "afzonderlijk worden versleuteld."
 
-#: ../tool/seahorse-multi-encrypt.xml.h:3
-msgid "Encrypt Multiple Files"
-msgstr "Meerdere bestanden versleutelen"
-
-#: ../tool/seahorse-multi-encrypt.xml.h:4
-msgid "Encrypt each file separately"
-msgstr "Elk bestand afzonderlijk versleutelen"
-
-# vrij vertaald (Wouter Bolsterlee)
-#: ../tool/seahorse-multi-encrypt.xml.h:5
-msgid "Encrypt packed together in a package"
-msgstr "Versleuteling als totaalarchief"
-
-# vrij vertaald (Wouter Bolsterlee)
-#: ../tool/seahorse-multi-encrypt.xml.h:6
-msgid "Package Name:"
-msgstr "Archiefnaam:"
-
-# vrij vertaald (Wouter Bolsterlee)
-#: ../tool/seahorse-multi-encrypt.xml.h:7
-msgid "Packaging:"
-msgstr "Archieftype:"
-
-#: ../tool/seahorse-multi-encrypt.xml.h:8
-msgid "encrypted-package"
-msgstr "encrypted-package"
-
-#: ../tool/seahorse-notification.c:580 ../tool/seahorse-notification.c:605
+#: tool/seahorse-notification.c:569
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Sleutel geïmporteerd"
 msgstr[1] "Sleutels geïmporteerd"
 
-#: ../tool/seahorse-notification.c:584 ../tool/seahorse-notification.c:604
+#: tool/seahorse-notification.c:573
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
 msgstr[0] "%i sleutel geïmporteerd"
 msgstr[1] "%i sleutels geïmporteerd"
 
-#: ../tool/seahorse-notification.c:586
+#: tool/seahorse-notification.c:575
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
@@ -113,197 +161,207 @@ msgstr[0] "Sleutel geïmporteerd voor"
 msgstr[1] "Sleutels geïmporteerd voor"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:623
+#: tool/seahorse-notification.c:603
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr "Ondertekend door <i><key id='%s'/> <b>verlopen</b></i> op %s."
 
-#: ../tool/seahorse-notification.c:624
+#: tool/seahorse-notification.c:604
 msgid "Invalid Signature"
 msgstr "Ongeldige handtekening"
 
-#: ../tool/seahorse-notification.c:630
+#: tool/seahorse-notification.c:610
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr "Ondertekend door <i><key id='%s'/></i> op %s. <b>Verlopen</b>."
 
-#: ../tool/seahorse-notification.c:631
+#: tool/seahorse-notification.c:611
 msgid "Expired Signature"
 msgstr "Verlopen handtekening"
 
-#: ../tool/seahorse-notification.c:637
+#: tool/seahorse-notification.c:617
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr "Ondertekend door <i><key id='%s' />. <b>Ingetrokken</b></i> op %s."
 
-#: ../tool/seahorse-notification.c:638
+#: tool/seahorse-notification.c:618
 msgid "Revoked Signature"
 msgstr "Ingetrokken handtekening"
 
-#. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:644
+#: tool/seahorse-notification.c:625
+msgid "Good Signature"
+msgstr "Geldige handtekening"
+
+#: tool/seahorse-notification.c:626
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "Ondertekend door <i><key id='%s' /></i> op %s."
 
-#: ../tool/seahorse-notification.c:645
-msgid "Good Signature"
-msgstr "Geldige handtekening"
+#: tool/seahorse-notification.c:628
+msgid "Untrusted Valid Signature"
+msgstr "Niet-vertrouwde geldige handtekening"
 
-#: ../tool/seahorse-notification.c:650
+#: tool/seahorse-notification.c:629
+#, c-format
+msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
+msgstr ""
+"Geldige maar <b>niet-vertrouwde</b> ondertekening door <i><key id='%s' /></"
+"i> op %s."
+
+#: tool/seahorse-notification.c:635
 msgid "Signing key not in keyring."
 msgstr "Handtekening-sleutel niet in sleutelbos."
 
-#: ../tool/seahorse-notification.c:651
+#: tool/seahorse-notification.c:636
 msgid "Unknown Signature"
 msgstr "Onbekende handtekening"
 
-#: ../tool/seahorse-notification.c:655
+#: tool/seahorse-notification.c:640
 msgid "Bad or forged signature. The signed data was modified."
 msgstr ""
 "Incorrecte of vervalste handtekening. De ondertekende gegevens zijn niet "
 "authentiek."
 
-#: ../tool/seahorse-notification.c:656
+#: tool/seahorse-notification.c:641
 msgid "Bad Signature"
 msgstr "Ongeldige handtekening"
 
-#: ../tool/seahorse-notification.c:664
-msgid "Couldn't verify signature."
-msgstr "Kan handtekening niet verifiëren"
+#: tool/seahorse-notification.c:649
+msgid "Couldn’t verify signature."
+msgstr "Kan handtekening niet verifiëren."
 
-#: ../tool/seahorse-notify.xml.h:1
+#: tool/seahorse-notify.ui:8
 msgid "Notification Messages"
 msgstr "Meldingen"
 
-#: ../tool/seahorse-passphrase.c:200
-msgid "Passphrase"
-msgstr "Wachtwoordzin"
-
-#: ../tool/seahorse-passphrase.c:203
-msgid "Password:"
-msgstr "Wachtwoord:"
-
-#. The second and main entry
-#: ../tool/seahorse-passphrase.c:267
-msgid "Confirm:"
-msgstr "Wachtwoord (nogmaals):"
-
-#: ../tool/seahorse-passphrase.c:355
+#: tool/seahorse-passphrase.c:111
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Wachtwoordzin incorrect."
 
-#: ../tool/seahorse-passphrase.c:359
+#: tool/seahorse-passphrase.c:115
 #, c-format
-msgid "Enter new passphrase for '%s'"
-msgstr "Nieuwe wachtwoordzin voor ‘%s’ opgeven"
+msgid "Enter new passphrase for “%s”"
+msgstr "Voer nieuw wachtwoord in voor ‘%s’"
 
-#: ../tool/seahorse-passphrase.c:361
+#: tool/seahorse-passphrase.c:117
 #, c-format
-msgid "Enter passphrase for '%s'"
-msgstr "Wachtwoordzin voor ‘%s’ opgeven"
+msgid "Enter passphrase for “%s”"
+msgstr "Voer wachtwoord in voor ‘%s’"
 
-#: ../tool/seahorse-passphrase.c:364
+#: tool/seahorse-passphrase.c:120
 msgid "Enter new passphrase"
 msgstr "Nieuwe wachtwoordzin opgeven"
 
-#: ../tool/seahorse-passphrase.c:366
+#: tool/seahorse-passphrase.c:122
 msgid "Enter passphrase"
 msgstr "Wachtwoordzin opgeven"
 
-#: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
-msgid "Decrypt File"
-msgstr "Bestand ontcijferen"
+#: tool/seahorse-passphrase.c:127
+msgid "Passphrase"
+msgstr "Wachtwoordzin"
 
-#: ../tool/seahorse-pgp-keys.desktop.in.in.h:1
+#: tool/seahorse-passphrase.c:135
+msgid "OK"
+msgstr "Oké"
+
+#: tool/seahorse-passphrase.c:136
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: tool/seahorse-pgp-encrypted.desktop.in.in:3
+msgid "Decrypt File"
+msgstr "Bestand ontsleutelen"
+
+#: tool/seahorse-pgp-keys.desktop.in.in:3
 msgid "Import Key"
 msgstr "Sleutel importeren"
 
-#: ../tool/seahorse-pgp-signature.desktop.in.in.h:1
+#: tool/seahorse-pgp-signature.desktop.in.in:3
 msgid "Verify Signature"
 msgstr "Ondertekening verifiëren"
 
-#: ../tool/seahorse-progress.xml.h:1
+#: tool/seahorse-progress.ui:8
 msgid "Progress Title"
 msgstr "Voortgangstitel"
 
-#: ../tool/seahorse-tool.c:61
+#: tool/seahorse-tool.c:58
 msgid "Import keys from the file"
 msgstr "Sleutels uit bestand importeren"
 
-#: ../tool/seahorse-tool.c:63
+#: tool/seahorse-tool.c:60
 msgid "Encrypt file"
 msgstr "Bestand versleutelen"
 
-#: ../tool/seahorse-tool.c:65
+#: tool/seahorse-tool.c:62
 msgid "Sign file with default key"
 msgstr "Bestand ondertekenen met standaardsleutel"
 
-#: ../tool/seahorse-tool.c:67
+#: tool/seahorse-tool.c:64
 msgid "Encrypt and sign file with default key"
 msgstr "Bestand versleutelen en ondertekenen met standaardsleutel"
 
-#: ../tool/seahorse-tool.c:69
+#: tool/seahorse-tool.c:66
 msgid "Decrypt encrypted file"
-msgstr "Een versleuteld bestand ontcijferenen"
+msgstr "Een versleuteld bestand ontsleutelen"
 
-#: ../tool/seahorse-tool.c:71
+#: tool/seahorse-tool.c:68
 msgid "Verify signature file"
 msgstr "Handtekeningbestand verifiëren"
 
-#: ../tool/seahorse-tool.c:73
+#: tool/seahorse-tool.c:70
 msgid "Read list of URIs on standard in"
 msgstr "Lijst met URI's lezen op de standaard invoer"
 
-#: ../tool/seahorse-tool.c:75
-msgid "file..."
+#: tool/seahorse-tool.c:72
+msgid "file…"
 msgstr "bestand…"
 
-#: ../tool/seahorse-tool.c:169
-msgid "Choose Recipients"
-msgstr "Geadresseerden kiezen"
+# encrypt is hier een werkwoord
+#: tool/seahorse-tool.c:168
+msgid "Encryption settings"
+msgstr "Versleutelingsinstellingen"
 
-#: ../tool/seahorse-tool.c:234 ../tool/seahorse-tool.c:347
-msgid "Couldn't load keys"
-msgstr "Kan sleutels niet laden"
+#: tool/seahorse-tool.c:233 tool/seahorse-tool.c:347
+msgid "Couldn’t load keys"
+msgstr "Laden van sleutels mislukt"
 
-#: ../tool/seahorse-tool.c:252
+#: tool/seahorse-tool.c:250
 #, c-format
-msgid "Choose Encrypted File Name for '%s'"
-msgstr "Naam voor versleuteld bestand kiezen voor '%s'"
+msgid "Choose Encrypted File Name for “%s”"
+msgstr "Kies een versleuteldbestandsnaam voor ‘%s’"
 
-#: ../tool/seahorse-tool.c:325
+#: tool/seahorse-tool.c:325
 msgid "Choose Signer"
 msgstr "Ondertekening kiezen"
 
-#: ../tool/seahorse-tool.c:367
+#: tool/seahorse-tool.c:367
 #, c-format
-msgid "Choose Signature File Name for '%s'"
-msgstr "Naam voor handtekeningbestand kiezen voor ‘%s’"
+msgid "Choose Signature File Name for “%s”"
+msgstr "Kies een ondertekeningsbestandsnaam voor ‘%s’"
 
-#: ../tool/seahorse-tool.c:407
+#: tool/seahorse-tool.c:407
 msgid "Import is complete"
 msgstr "Importeren voltooid"
 
-#: ../tool/seahorse-tool.c:440
-msgid "Importing keys ..."
+#: tool/seahorse-tool.c:440
+msgid "Importing keys…"
 msgstr "Sleutels importeren…"
 
-#: ../tool/seahorse-tool.c:470
+#: tool/seahorse-tool.c:470
 msgid "Import Failed"
 msgstr "Importeren mislukt"
 
-#: ../tool/seahorse-tool.c:471
+#: tool/seahorse-tool.c:471
 msgid "Keys were found but not imported."
 msgstr "Er zijn sleutels gevonden maar niet geïmporteerd."
 
-#: ../tool/seahorse-tool.c:494
+#: tool/seahorse-tool.c:494
 #, c-format
 msgid "Imported key"
 msgstr "Geïmporteerde sleutel"
 
-#: ../tool/seahorse-tool.c:496
+#: tool/seahorse-tool.c:496
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -311,161 +369,169 @@ msgstr[0] "%d sleutel geïmporteerd"
 msgstr[1] "%d sleutels geïmporteerd"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:518
+#: tool/seahorse-tool.c:518
 #, c-format
-msgid "Choose Decrypted File Name for '%s'"
-msgstr "Naam voor ontcijferd bestand kiezen voor ‘%s’"
+msgid "Choose Decrypted File Name for “%s”"
+msgstr "Kies een ontsleuteldbestandsnaam voor ‘%s’"
 
-#: ../tool/seahorse-tool.c:575
+#: tool/seahorse-tool.c:575
 #, c-format
-msgid "Choose Original File for '%s'"
-msgstr "Oorspronkelijk bestand kiezen voor ‘%s’"
+msgid "Choose Original File for “%s”"
+msgstr "Kies oorspronkelijk bestand voor ‘%s’"
+
+#: tool/seahorse-tool.c:580 tool/seahorse-util.c:417 tool/seahorse-util.c:504
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: tool/seahorse-tool.c:581
+msgid "_Open"
+msgstr "_Openen"
 
 #.
 #. * TODO: What should happen with multiple files at this point.
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:648
+#: tool/seahorse-tool.c:648
 #, c-format
 msgid "No valid signatures found"
 msgstr "Geen geldige handtekening gevonden"
 
-#: ../tool/seahorse-tool.c:697
+#: tool/seahorse-tool.c:696
 msgid "File Encryption Tool"
 msgstr "Bestandsversleuteling"
 
 # encrypt is hier een werkwoord
-#: ../tool/seahorse-tool.c:713
+#: tool/seahorse-tool.c:718
 msgid "Encrypting"
 msgstr "Versleutelen"
 
-#: ../tool/seahorse-tool.c:714
+#: tool/seahorse-tool.c:719
 #, c-format
-msgid "Couldn't encrypt file: %s"
-msgstr "Kan bestand niet versleutelen: %s"
+msgid "Couldn’t encrypt file: %s"
+msgstr "Versleutelen van bestand mislukt: %s"
 
-#: ../tool/seahorse-tool.c:722
+#: tool/seahorse-tool.c:727
 msgid "Signing"
 msgstr "Ondertekenen"
 
-#: ../tool/seahorse-tool.c:723
+#: tool/seahorse-tool.c:728
 #, c-format
-msgid "Couldn't sign file: %s"
-msgstr "Kan bestand niet ondertekenen: %s"
+msgid "Couldn’t sign file: %s"
+msgstr "Ondertekenen van bestand mislukt: %s"
 
-#: ../tool/seahorse-tool.c:728
+#: tool/seahorse-tool.c:733
 msgid "Importing"
 msgstr "Importeren"
 
-#: ../tool/seahorse-tool.c:729
+#: tool/seahorse-tool.c:734
 #, c-format
-msgid "Couldn't import keys from file: %s"
-msgstr "Kan sleutels niet importeren vanuit bestand: %s"
+msgid "Couldn’t import keys from file: %s"
+msgstr "Sleutels importeren vanuit bestand mislukt: %s"
 
 # encrypt is hier een werkwoord
-#: ../tool/seahorse-tool.c:735
+#: tool/seahorse-tool.c:740
 msgid "Decrypting"
-msgstr "Ontcijferen"
+msgstr "Ontsleutelen"
 
-#: ../tool/seahorse-tool.c:736
+#: tool/seahorse-tool.c:741
 #, c-format
-msgid "Couldn't decrypt file: %s"
-msgstr "Kan bestand niet ontcijferen: %s"
+msgid "Couldn’t decrypt file: %s"
+msgstr "Bestand ontsleutelen mislukt: %s"
 
-#: ../tool/seahorse-tool.c:741
+#: tool/seahorse-tool.c:746
 msgid "Verifying"
 msgstr "Verifiëren"
 
-#: ../tool/seahorse-tool.c:742
+#: tool/seahorse-tool.c:747
 #, c-format
-msgid "Couldn't verify file: %s"
-msgstr "Kan bestand verifiëren: %s"
+msgid "Couldn’t verify file: %s"
+msgstr "Bestand verifiëren mislukt: %s"
 
-#: ../tool/seahorse-tool-files.c:120
+#: tool/seahorse-tool-files.c:116
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: tool/seahorse-tool-files.c:117
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:122
+#: tool/seahorse-tool-files.c:118
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: tool/seahorse-tool-files.c:125
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:130
+#: tool/seahorse-tool-files.c:126
 msgid "Self-extracting zip (.exe)"
 msgstr "Zelf-uitpakkende zip (.exe)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: tool/seahorse-tool-files.c:128
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:133
+#: tool/seahorse-tool-files.c:129
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:135
+#: tool/seahorse-tool-files.c:131
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: tool/seahorse-tool-files.c:133
 msgid "Tar uncompressed (.tar)"
 msgstr "Tar, niet ingepakt (.tar)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: tool/seahorse-tool-files.c:134
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "Tar, niet ingepakt"
 
-#: ../tool/seahorse-tool-files.c:139
+#: tool/seahorse-tool-files.c:135
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "Tar, met bzip2 ingepakt (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: tool/seahorse-tool-files.c:136
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "Tar, met gzip ingepakt (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: tool/seahorse-tool-files.c:137
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "Tar, met lzop ingepakt (.tar.lzo)"
 
-#: ../tool/seahorse-tool-files.c:142
+#: tool/seahorse-tool-files.c:138
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "Tar, met compress ingepakt (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: tool/seahorse-tool-files.c:140
 msgid "War (.war)"
 msgstr "War (.war)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: tool/seahorse-tool-files.c:141
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: tool/seahorse-tool-files.c:142
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:147
+#: tool/seahorse-tool-files.c:143
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:327
+#: tool/seahorse-tool-files.c:325
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
-msgstr[0] "U heeft %d bestand geselecteerd"
-msgstr[1] "U heeft %d bestanden geselecteerd"
+msgstr[0] "U heeft %d bestand geselecteerd "
+msgstr[1] "U heeft %d bestanden geselecteerd "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:332
+#: tool/seahorse-tool-files.c:330
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -474,69 +540,74 @@ msgstr[1] "en %d mappen"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:337
+#: tool/seahorse-tool-files.c:335
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
-#: ../tool/seahorse-tool-files.c:345
-#, fuzzy, c-format
+#: tool/seahorse-tool-files.c:343
+#, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
 msgstr[0] "U heeft %d bestand geselecteerd"
 msgstr[1] "U heeft %d bestanden geselecteerd"
 
-#: ../tool/seahorse-tool-files.c:350
+#: tool/seahorse-tool-files.c:348
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
 msgstr[0] "U heeft %d map geselecteerd"
 msgstr[1] "U heeft %d mappen geselecteerd"
 
-#: ../tool/seahorse-tool-files.c:868
-msgid "Preparing..."
+#: tool/seahorse-tool-files.c:863
+msgid "Preparing…"
 msgstr "Voorbereiden…"
 
-#: ../tool/seahorse-tool-files.c:877 ../tool/seahorse-tool-files.c:900
-msgid "Couldn't list files"
-msgstr "Kan bestandslijst niet opvragen"
+#: tool/seahorse-tool-files.c:872 tool/seahorse-tool-files.c:895
+msgid "Couldn’t list files"
+msgstr "Opvragen van bestandslijst mislukt"
 
-#: ../tool/seahorse-tool-files.c:887 ../tool/seahorse-util.c:647
-msgid "Couldn't package files"
-msgstr "Kan bestanden niet inpakken"
+#: tool/seahorse-tool-files.c:882 tool/seahorse-util.c:396
+msgid "Couldn’t package files"
+msgstr "Inpakken van bestanden mislukt"
 
-#: ../tool/seahorse-util.c:173
+#: tool/seahorse-util.c:170
 msgid "Decryption failed. You probably do not have the decryption key."
 msgstr ""
-"Ontcijferen mislukt. Waarschijnlijk is de ontcijfersleutel niet beschikbaar."
+"Ontsleutelen mislukt. Waarschijnlijk is de ontsleutelingssleutel niet "
+"beschikbaar."
 
-#: ../tool/seahorse-util.c:223
+#: tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
-#: ../tool/seahorse-util.c:642
-msgid "Couldn't run file-roller"
-msgstr "Kon file-roller niet uitvoeren"
+#: tool/seahorse-util.c:391
+msgid "Couldn’t run file-roller"
+msgstr "Uitvoeren van file-roller mislukt"
 
-#: ../tool/seahorse-util.c:648
+#: tool/seahorse-util.c:397
 msgid "The file-roller process did not complete successfully"
 msgstr "Het ‘file-roller’ proces is niet juist voltooid"
 
+#: tool/seahorse-util.c:418
+msgid "_Save"
+msgstr "Op_slaan"
+
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:708
+#: tool/seahorse-util.c:433
 msgid "All key files"
 msgstr "Alle sleutelbestanden"
 
-#: ../tool/seahorse-util.c:715 ../tool/seahorse-util.c:755
+#: tool/seahorse-util.c:440 tool/seahorse-util.c:480
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: ../tool/seahorse-util.c:748
+#: tool/seahorse-util.c:473
 msgid "Archive files"
 msgstr "Archiefbestanden"
 
-#: ../tool/seahorse-util.c:777
+#: tool/seahorse-util.c:502
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -546,11 +617,24 @@ msgstr ""
 "\n"
 "Wilt u het overschrijven met een nieuw bestand?"
 
-#: ../tool/seahorse-util.c:780
+#: tool/seahorse-util.c:505
 msgid "_Replace"
 msgstr "_Vervangen"
 
-#: ../tool/seahorse-widget.c:365
-#, c-format
-msgid "Could not display help: %s"
-msgstr "Kon de hulp niet weergeven: %s"
+#~ msgid "Ok"
+#~ msgstr "Oké"
+
+#~ msgid "file..."
+#~ msgstr "bestand…"
+
+#~ msgid "Password:"
+#~ msgstr "Wachtwoord:"
+
+#~ msgid "Confirm:"
+#~ msgstr "Wachtwoord (nogmaals):"
+
+#~ msgid "Choose Recipients"
+#~ msgstr "Geadresseerden kiezen"
+
+#~ msgid "Could not display help: %s"
+#~ msgstr "Kon de hulp niet weergeven: %s"
