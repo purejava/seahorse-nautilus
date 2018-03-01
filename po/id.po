@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse-nautilus master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-19 16:22+0000\n"
-"PO-Revision-Date: 2014-01-02 10:58+0700\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=seahorse&keywords=I18N+L10N&component=Nautilus\n"
+"POT-Creation-Date: 2018-02-20 23:20+0000\n"
+"PO-Revision-Date: 2018-03-01 17:08+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: GNOME Indonesian Translation Team <gnome@i15n.org>\n"
 "Language: id_ID\n"
@@ -17,472 +17,480 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.0.6\n"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
+#: data/org.gnome.seahorse.nautilus.gschema.xml:5
 msgid "File extension for packages"
 msgstr "Ekstensi berkas bagi paket"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
+#: data/org.gnome.seahorse.nautilus.gschema.xml:6
 msgid "File extension for packages when handling multiple files."
 msgstr "Ekstensi berkas bagi paket ketika menangani banyak berkas."
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
+#: data/org.gnome.seahorse.nautilus.gschema.xml:10
 msgid "Handle multiple files separately"
 msgstr "Tangani berkas berganda secara terpisah"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
+#: data/org.gnome.seahorse.nautilus.gschema.xml:11
 msgid ""
-"When handling multiple files, don't package them but process separately."
+"When handling multiple files, don’t package them but process separately."
 msgstr ""
 "Ketika menangani berkas berganda, jangan paketkan mereka tapi proses secara "
 "terpisah."
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
+#: data/org.gnome.seahorse.nautilus.gschema.xml:15
 msgid "Use armor mode when encrypting"
 msgstr "Pakai mode armor ketika menyandikan"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
+#: data/org.gnome.seahorse.nautilus.gschema.xml:16
 msgid "Use PGP ASCII armor mode when encrypting or signing files."
 msgstr ""
 "Pakai mode armor ASCII PGP ketika menyandikan atau menandatangani berkas."
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:5
 msgid "Width of the window"
 msgstr "Lebar jendela"
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:2
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:6
 msgid "Width (in pixels) of the window."
 msgstr "Lebar jendela (dalam piksel)."
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:3
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:10
 msgid "Height of the window"
 msgstr "Tinggi jendela"
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:4
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:11
 msgid "Height (in pixels) of the window."
 msgstr "Tinggi jendela (dalam piksel)."
 
-#: ../nautilus-ext/seahorse-nautilus.c:158
-msgid "Encrypt..."
-msgstr "Sandikan..."
+#: nautilus-ext/seahorse-nautilus.c:158
+msgid "Encrypt…"
+msgstr "Sandikan…"
 
-#: ../nautilus-ext/seahorse-nautilus.c:159
+#: nautilus-ext/seahorse-nautilus.c:159
 msgid "Encrypt (and optionally sign) the selected file"
 msgid_plural "Encrypt the selected files"
 msgstr[0] "Sandikan (dan boleh juga menandatangani) berkas yang dipilih"
 
-#: ../nautilus-ext/seahorse-nautilus.c:165
+#: nautilus-ext/seahorse-nautilus.c:165
 msgid "Sign"
 msgstr "Tandatangani"
 
-#: ../nautilus-ext/seahorse-nautilus.c:166
+#: nautilus-ext/seahorse-nautilus.c:166
 msgid "Sign the selected file"
 msgid_plural "Sign the selected files"
 msgstr[0] "Tanda tangani berkas yang dipilih"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:1
+#: tool/seahorse-multi-encrypt.ui:8
 msgid "Encrypt Multiple Files"
 msgstr "Sandikan Beberapa Berkas"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
+#: tool/seahorse-multi-encrypt.ui:24
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>Anda telah memilih beberapa berkas atau folder</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:3
+#: tool/seahorse-multi-encrypt.ui:51
 msgid "encrypted-package"
 msgstr "encrypted-package"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:4
+#: tool/seahorse-multi-encrypt.ui:87
 msgid "Encrypt each file separately"
 msgstr "Sandikan setiap berkas terpisah"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:5
+#: tool/seahorse-multi-encrypt.ui:104
 msgid "Encrypt packed together in a package"
 msgstr "Sandikan bersama dalam satu paket"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:6
+#: tool/seahorse-multi-encrypt.ui:126
 msgid "Packaging:"
 msgstr "Pemaketan:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:7
+#: tool/seahorse-multi-encrypt.ui:137
 msgid "Package Name:"
 msgstr "Nama Paket:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:8
+#: tool/seahorse-multi-encrypt.ui:156
 msgid ""
 "Because the files are located remotely, each file will be encrypted "
 "separately."
 msgstr "Karena berkas di lokasi jauh, setiap berkas akan disandikan terpisah."
 
-#: ../tool/seahorse-notification.c:572
+#: tool/seahorse-notification.c:569
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Kunci Diimpor"
 
-#: ../tool/seahorse-notification.c:576
+#: tool/seahorse-notification.c:573
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
 msgstr[0] "Diimpor %i kunci"
 
-#: ../tool/seahorse-notification.c:578
+#: tool/seahorse-notification.c:575
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
 msgstr[0] "Kunci yang diimpor bagi"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:606
+#: tool/seahorse-notification.c:603
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr "Ditandatangani oleh <i><key id='%s'/> <b>kadaluarsa</b></i> pada %s."
 
-#: ../tool/seahorse-notification.c:607
+#: tool/seahorse-notification.c:604
 msgid "Invalid Signature"
 msgstr "Tanda Tangan Tak Valid"
 
-#: ../tool/seahorse-notification.c:613
+#: tool/seahorse-notification.c:610
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr ""
 "Ditandatangani oleh <i><key id='%s'/></i> pada %s <b>Telah Kadaluarsa</b>."
 
-#: ../tool/seahorse-notification.c:614
+#: tool/seahorse-notification.c:611
 msgid "Expired Signature"
 msgstr "Tanda Tangan Kadaluarsa"
 
-#: ../tool/seahorse-notification.c:620
+#: tool/seahorse-notification.c:617
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr "Ditandatangani oleh <i><key id='%s'/> <b>Dicabut</b></i> pada %s."
 
-#: ../tool/seahorse-notification.c:621
+#: tool/seahorse-notification.c:618
 msgid "Revoked Signature"
 msgstr "Tanda Tangan Yang Dicabut"
 
-#: ../tool/seahorse-notification.c:628
+#: tool/seahorse-notification.c:625
 msgid "Good Signature"
 msgstr "Tanda Tangan Baik"
 
-#: ../tool/seahorse-notification.c:629
+#: tool/seahorse-notification.c:626
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "Ditandatangani oleh <i><key id='%s'/></i> pada %s."
 
-#: ../tool/seahorse-notification.c:631
+#: tool/seahorse-notification.c:628
 msgid "Untrusted Valid Signature"
 msgstr "Tanda Tangan Valid Tak Dipercaya"
 
-#: ../tool/seahorse-notification.c:632
+#: tool/seahorse-notification.c:629
 #, c-format
 msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
 msgstr ""
 "Tanda tangan yang valid tapi <b>tak dipercaya</b> oleh <i><key id='%s'/></i> "
 "pada %s."
 
-#: ../tool/seahorse-notification.c:638
+#: tool/seahorse-notification.c:635
 msgid "Signing key not in keyring."
 msgstr "Kunci penandatangan tidak ada di ring kunci."
 
-#: ../tool/seahorse-notification.c:639
+#: tool/seahorse-notification.c:636
 msgid "Unknown Signature"
 msgstr "Tanda Tangan Tak Dikenal"
 
-#: ../tool/seahorse-notification.c:643
+#: tool/seahorse-notification.c:640
 msgid "Bad or forged signature. The signed data was modified."
 msgstr ""
 "Tanda tangan buruk atau dipalsukan. Data yang ditandatangani telah diubah."
 
-#: ../tool/seahorse-notification.c:644
+#: tool/seahorse-notification.c:641
 msgid "Bad Signature"
 msgstr "Tanda Tangan Buruk"
 
-#: ../tool/seahorse-notification.c:652
-msgid "Couldn't verify signature."
-msgstr "Tidak dapat menguji kebenaran tanda tangan."
+#: tool/seahorse-notification.c:649
+msgid "Couldn’t verify signature."
+msgstr "Tak bisa verifikasi tanda tangan."
 
-#: ../tool/seahorse-notify.xml.h:1
+#: tool/seahorse-notify.ui:8
 msgid "Notification Messages"
 msgstr "Pesan Pemberitahuan"
 
-#: ../tool/seahorse-passphrase.c:114
+#: tool/seahorse-passphrase.c:111
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Frasa sandi salah."
 
-#: ../tool/seahorse-passphrase.c:118
+#: tool/seahorse-passphrase.c:115
 #, c-format
-msgid "Enter new passphrase for '%s'"
-msgstr "Masukkan frasa sandi baru bagi '%s'"
+msgid "Enter new passphrase for “%s”"
+msgstr "Masukkan frasa sandi baru bagi \"%s\""
 
-#: ../tool/seahorse-passphrase.c:120
+#: tool/seahorse-passphrase.c:117
 #, c-format
-msgid "Enter passphrase for '%s'"
-msgstr "Masukkan frasa sandi untuk '%s'"
+msgid "Enter passphrase for “%s”"
+msgstr "Masukkan frasa sandi untuk \"%s\""
 
-#: ../tool/seahorse-passphrase.c:123
+#: tool/seahorse-passphrase.c:120
 msgid "Enter new passphrase"
 msgstr "Masukkan frasa sandi baru"
 
-#: ../tool/seahorse-passphrase.c:125
+#: tool/seahorse-passphrase.c:122
 msgid "Enter passphrase"
 msgstr "Masukkan frasa sandi"
 
-#: ../tool/seahorse-passphrase.c:130
+#: tool/seahorse-passphrase.c:127
 msgid "Passphrase"
 msgstr "Frase Sandi"
 
-#: ../tool/seahorse-passphrase.c:138
-msgid "Ok"
-msgstr "Ok"
+#: tool/seahorse-passphrase.c:135
+msgid "OK"
+msgstr "OK"
 
-#: ../tool/seahorse-passphrase.c:139
+#: tool/seahorse-passphrase.c:136
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
+#: tool/seahorse-pgp-encrypted.desktop.in.in:3
 msgid "Decrypt File"
 msgstr "Awa Sandikan Berkas"
 
-#: ../tool/seahorse-pgp-keys.desktop.in.in.h:1
+#: tool/seahorse-pgp-keys.desktop.in.in:3
 msgid "Import Key"
 msgstr "Impor Kunci"
 
-#: ../tool/seahorse-pgp-signature.desktop.in.in.h:1
+#: tool/seahorse-pgp-signature.desktop.in.in:3
 msgid "Verify Signature"
 msgstr "Periksa Tanda Tangan"
 
-#: ../tool/seahorse-progress.xml.h:1
+#: tool/seahorse-progress.ui:8
 msgid "Progress Title"
 msgstr "Judul Kemajuan"
 
-#: ../tool/seahorse-tool.c:61
+#: tool/seahorse-tool.c:58
 msgid "Import keys from the file"
 msgstr "Impor kunci dari berkas"
 
-#: ../tool/seahorse-tool.c:63
+#: tool/seahorse-tool.c:60
 msgid "Encrypt file"
 msgstr "Sandikan berkas"
 
-#: ../tool/seahorse-tool.c:65
+#: tool/seahorse-tool.c:62
 msgid "Sign file with default key"
 msgstr "Tanda tangani berkas dengan kunci baku"
 
-#: ../tool/seahorse-tool.c:67
+#: tool/seahorse-tool.c:64
 msgid "Encrypt and sign file with default key"
 msgstr "Sandikan dan tanda tangani berkas dengan kunci baku"
 
-#: ../tool/seahorse-tool.c:69
+#: tool/seahorse-tool.c:66
 msgid "Decrypt encrypted file"
 msgstr "Awa sandikan berkas tersandi"
 
-#: ../tool/seahorse-tool.c:71
+#: tool/seahorse-tool.c:68
 msgid "Verify signature file"
 msgstr "Periksa berkas tanda tangan"
 
-#: ../tool/seahorse-tool.c:73
+#: tool/seahorse-tool.c:70
 msgid "Read list of URIs on standard in"
 msgstr "Baca daftar URI dari stdin"
 
-#: ../tool/seahorse-tool.c:75
-msgid "file..."
-msgstr "berkas..."
+#: tool/seahorse-tool.c:72
+msgid "file…"
+msgstr "berkas…"
 
-#: ../tool/seahorse-tool.c:171
+#: tool/seahorse-tool.c:168
 msgid "Encryption settings"
 msgstr "Pengaturan penyandian"
 
-#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
-msgid "Couldn't load keys"
+#: tool/seahorse-tool.c:233 tool/seahorse-tool.c:347
+msgid "Couldn’t load keys"
 msgstr "Tak bisa memuat kunci"
 
-#: ../tool/seahorse-tool.c:253
+#: tool/seahorse-tool.c:250
 #, c-format
-msgid "Choose Encrypted File Name for '%s'"
-msgstr "Pilih Nama Berkas Tersandi bagi '%s'"
+msgid "Choose Encrypted File Name for “%s”"
+msgstr "Pilih Nama Berkas Tersandi bagi \"%s\""
 
-#: ../tool/seahorse-tool.c:328
+#: tool/seahorse-tool.c:325
 msgid "Choose Signer"
 msgstr "Pilih Penanda Tangan"
 
-#: ../tool/seahorse-tool.c:370
+#: tool/seahorse-tool.c:367
 #, c-format
-msgid "Choose Signature File Name for '%s'"
-msgstr "Pilih Nama Berkas Tanda Tangan bagi '%s'"
+msgid "Choose Signature File Name for “%s”"
+msgstr "Pilih Nama Berkas Tanda Tangan bagi \"%s\""
 
-#: ../tool/seahorse-tool.c:410
+#: tool/seahorse-tool.c:407
 msgid "Import is complete"
 msgstr "Impor tak lengkap"
 
-#: ../tool/seahorse-tool.c:443
-msgid "Importing keys ..."
-msgstr "Mengimpor kunci..."
+#: tool/seahorse-tool.c:440
+msgid "Importing keys…"
+msgstr "Mengimpor kunci‪…"
 
-#: ../tool/seahorse-tool.c:473
+#: tool/seahorse-tool.c:470
 msgid "Import Failed"
 msgstr "Impor Gagal"
 
-#: ../tool/seahorse-tool.c:474
+#: tool/seahorse-tool.c:471
 msgid "Keys were found but not imported."
 msgstr "Kunci ditemukan tapi tak diimpor."
 
-#: ../tool/seahorse-tool.c:497
+#: tool/seahorse-tool.c:494
 #, c-format
 msgid "Imported key"
 msgstr "Kunci diimpor"
 
-#: ../tool/seahorse-tool.c:499
+#: tool/seahorse-tool.c:496
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
 msgstr[0] "Diimpor %d kunci"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:521
+#: tool/seahorse-tool.c:518
 #, c-format
-msgid "Choose Decrypted File Name for '%s'"
-msgstr "Pilih Nama Berkas Terawa Sandi bagi '%s'"
+msgid "Choose Decrypted File Name for “%s”"
+msgstr "Pilih Nama Berkas Terawa Sandi bagi \"%s\""
 
-#: ../tool/seahorse-tool.c:578
+#: tool/seahorse-tool.c:575
 #, c-format
-msgid "Choose Original File for '%s'"
-msgstr "Pilih Berkas Asli bagi '%s'"
+msgid "Choose Original File for “%s”"
+msgstr "Pilih Berkas Asli bagi \"%s\""
+
+#: tool/seahorse-tool.c:580 tool/seahorse-util.c:417 tool/seahorse-util.c:504
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: tool/seahorse-tool.c:581
+msgid "_Open"
+msgstr "_Buka"
 
 #.
 #. * TODO: What should happen with multiple files at this point.
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:651
+#: tool/seahorse-tool.c:648
 #, c-format
 msgid "No valid signatures found"
 msgstr "Tak ditemukan tanda tangan yang valid"
 
-#: ../tool/seahorse-tool.c:698
+#: tool/seahorse-tool.c:696
 msgid "File Encryption Tool"
 msgstr "Perkakas Penyandian Berkas"
 
-#: ../tool/seahorse-tool.c:716
+#: tool/seahorse-tool.c:718
 msgid "Encrypting"
 msgstr "Menyandikan"
 
-#: ../tool/seahorse-tool.c:717
+#: tool/seahorse-tool.c:719
 #, c-format
-msgid "Couldn't encrypt file: %s"
+msgid "Couldn’t encrypt file: %s"
 msgstr "Tak bisa menyandikan berkas: %s"
 
-#: ../tool/seahorse-tool.c:725
+#: tool/seahorse-tool.c:727
 msgid "Signing"
 msgstr "Menandatangani"
 
-#: ../tool/seahorse-tool.c:726
+#: tool/seahorse-tool.c:728
 #, c-format
-msgid "Couldn't sign file: %s"
+msgid "Couldn’t sign file: %s"
 msgstr "Tak bisa menandatangani berkas: %s"
 
-#: ../tool/seahorse-tool.c:731
+#: tool/seahorse-tool.c:733
 msgid "Importing"
 msgstr "Mengimpor"
 
-#: ../tool/seahorse-tool.c:732
+#: tool/seahorse-tool.c:734
 #, c-format
-msgid "Couldn't import keys from file: %s"
+msgid "Couldn’t import keys from file: %s"
 msgstr "Tak bisa mengimpor kunci dari berkas: %s"
 
-#: ../tool/seahorse-tool.c:738
+#: tool/seahorse-tool.c:740
 msgid "Decrypting"
 msgstr "Mengawa Sandi"
 
-#: ../tool/seahorse-tool.c:739
+#: tool/seahorse-tool.c:741
 #, c-format
-msgid "Couldn't decrypt file: %s"
+msgid "Couldn’t decrypt file: %s"
 msgstr "Tak bisa mengawa sandi berkas: %s"
 
-#: ../tool/seahorse-tool.c:744
+#: tool/seahorse-tool.c:746
 msgid "Verifying"
 msgstr "Memeriksa"
 
-#: ../tool/seahorse-tool.c:745
+#: tool/seahorse-tool.c:747
 #, c-format
-msgid "Couldn't verify file: %s"
-msgstr "Tak bisa memeriksa berkas: %s"
+msgid "Couldn’t verify file: %s"
+msgstr "Tak bisa verifikasi berkas: %s"
 
-#: ../tool/seahorse-tool-files.c:119
+#: tool/seahorse-tool-files.c:116
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:120
+#: tool/seahorse-tool-files.c:117
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: tool/seahorse-tool-files.c:118
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:128
+#: tool/seahorse-tool-files.c:125
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: tool/seahorse-tool-files.c:126
 msgid "Self-extracting zip (.exe)"
 msgstr "Zip mengekstrak sendiri (.exe)"
 
-#: ../tool/seahorse-tool-files.c:131
+#: tool/seahorse-tool-files.c:128
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: tool/seahorse-tool-files.c:129
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:134
+#: tool/seahorse-tool-files.c:131
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:136
+#: tool/seahorse-tool-files.c:133
 msgid "Tar uncompressed (.tar)"
 msgstr "Tar tidak dikompres (.tar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: tool/seahorse-tool-files.c:134
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "Tar dikompres dengan bzip (.tar.bz)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: tool/seahorse-tool-files.c:135
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "Tar dikompres dengan bzip2 (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:139
+#: tool/seahorse-tool-files.c:136
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "Tar dikompres dengan gzip (.tar.gz)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: tool/seahorse-tool-files.c:137
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "Tar dikompres dengan lzop (.tar.lzo)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: tool/seahorse-tool-files.c:138
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "Tar dikompres dengan compress (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:143
+#: tool/seahorse-tool-files.c:140
 msgid "War (.war)"
 msgstr "War (.war)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: tool/seahorse-tool-files.c:141
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: tool/seahorse-tool-files.c:142
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: tool/seahorse-tool-files.c:143
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:328
+#: tool/seahorse-tool-files.c:325
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
@@ -490,7 +498,7 @@ msgstr[0] "Anda telah memilih %d berkas "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:333
+#: tool/seahorse-tool-files.c:330
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -498,67 +506,71 @@ msgstr[0] "dan %d folder"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:338
+#: tool/seahorse-tool-files.c:335
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
-#: ../tool/seahorse-tool-files.c:346
+#: tool/seahorse-tool-files.c:343
 #, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
-msgstr[0] "Anda telah memilih %d berkas "
+msgstr[0] "Anda telah memilih %d berkas"
 
-#: ../tool/seahorse-tool-files.c:351
+#: tool/seahorse-tool-files.c:348
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
 msgstr[0] "Anda telah memilih %d folder"
 
-#: ../tool/seahorse-tool-files.c:866
-msgid "Preparing..."
-msgstr "Mempersiapkan..."
+#: tool/seahorse-tool-files.c:863
+msgid "Preparing…"
+msgstr "Mempersiapkan…"
 
-#: ../tool/seahorse-tool-files.c:875 ../tool/seahorse-tool-files.c:898
-msgid "Couldn't list files"
+#: tool/seahorse-tool-files.c:872 tool/seahorse-tool-files.c:895
+msgid "Couldn’t list files"
 msgstr "Tak bisa mendaftar berkas"
 
-#: ../tool/seahorse-tool-files.c:885 ../tool/seahorse-util.c:399
-msgid "Couldn't package files"
+#: tool/seahorse-tool-files.c:882 tool/seahorse-util.c:396
+msgid "Couldn’t package files"
 msgstr "Tak bisa memaketkan berkas"
 
-#: ../tool/seahorse-util.c:173
+#: tool/seahorse-util.c:170
 msgid "Decryption failed. You probably do not have the decryption key."
 msgstr ""
 "Pengawa-sandian gagal. Anda barangkali tidak memiliki kunci pengawa-sandian."
 
-#: ../tool/seahorse-util.c:200
+#: tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
 msgstr "%Y-%m-%d"
 
-#: ../tool/seahorse-util.c:394
-msgid "Couldn't run file-roller"
+#: tool/seahorse-util.c:391
+msgid "Couldn’t run file-roller"
 msgstr "Tak bisa menjalankan file-roller"
 
-#: ../tool/seahorse-util.c:400
+#: tool/seahorse-util.c:397
 msgid "The file-roller process did not complete successfully"
 msgstr "Proses file-roller tidak selesai dengan sukses"
 
+#: tool/seahorse-util.c:418
+msgid "_Save"
+msgstr "_Simpan"
+
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:436
+#: tool/seahorse-util.c:433
 msgid "All key files"
 msgstr "Semua berkas kunci"
 
-#: ../tool/seahorse-util.c:443 ../tool/seahorse-util.c:483
+#: tool/seahorse-util.c:440 tool/seahorse-util.c:480
 msgid "All files"
 msgstr "Semua berkas"
 
-#: ../tool/seahorse-util.c:476
+#: tool/seahorse-util.c:473
 msgid "Archive files"
 msgstr "Berkas arsip"
 
-#: ../tool/seahorse-util.c:505
+#: tool/seahorse-util.c:502
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -568,6 +580,6 @@ msgstr ""
 "\n"
 "Anda ingin menggantikannya dengan suatu berkas baru?"
 
-#: ../tool/seahorse-util.c:508
+#: tool/seahorse-util.c:505
 msgid "_Replace"
 msgstr "_Ganti nama"
