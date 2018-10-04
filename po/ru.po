@@ -11,10 +11,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: seahorse trunk\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=seahorse-nautilus&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-19 16:22+0000\n"
-"PO-Revision-Date: 2015-02-06 02:07+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/seahorse-nautilus/"
+"issues\n"
+"POT-Creation-Date: 2018-06-10 18:14+0000\n"
+"PO-Revision-Date: 2018-10-04 23:35+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -22,104 +22,103 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.1.1\n"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:1
+#: data/org.gnome.seahorse.nautilus.gschema.xml:5
 msgid "File extension for packages"
 msgstr "Расширение файла для пакетов"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:2
+#: data/org.gnome.seahorse.nautilus.gschema.xml:6
 msgid "File extension for packages when handling multiple files."
 msgstr "Расширение файла для пакетов при работе с несколькими файлами."
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:3
-#| msgid "Encrypt each file separately"
+#: data/org.gnome.seahorse.nautilus.gschema.xml:10
 msgid "Handle multiple files separately"
 msgstr "Раздельная обработка нескольких файлов"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:4
+#: data/org.gnome.seahorse.nautilus.gschema.xml:11
 msgid ""
-"When handling multiple files, don't package them but process separately."
+"When handling multiple files, don’t package them but process separately."
 msgstr ""
 "При работе с несколькими файлами, не упаковать их, но обрабатывать отдельно."
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:5
+#: data/org.gnome.seahorse.nautilus.gschema.xml:15
 msgid "Use armor mode when encrypting"
 msgstr "Использовать режим «armor» при шифровании"
 
-#: ../data/org.gnome.seahorse.nautilus.gschema.xml.h:6
+#: data/org.gnome.seahorse.nautilus.gschema.xml:16
 msgid "Use PGP ASCII armor mode when encrypting or signing files."
 msgstr ""
 "Использовать режим «PGP ASCII armor» при шифровании или подписи файлов."
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:1
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:5
 msgid "Width of the window"
 msgstr "Ширина окна"
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:2
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:6
 msgid "Width (in pixels) of the window."
 msgstr "Ширина окна (в пикселях)."
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:3
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:10
 msgid "Height of the window"
 msgstr "Высота окна"
 
-#: ../data/org.gnome.seahorse.nautilus.window.gschema.xml.h:4
+#: data/org.gnome.seahorse.nautilus.window.gschema.xml:11
 msgid "Height (in pixels) of the window."
 msgstr "Высота окна (в пикселях)."
 
-#: ../nautilus-ext/seahorse-nautilus.c:158
-msgid "Encrypt..."
+#: nautilus-ext/seahorse-nautilus.c:158
+msgid "Encrypt…"
 msgstr "Зашифровать…"
 
-#: ../nautilus-ext/seahorse-nautilus.c:159
+#: nautilus-ext/seahorse-nautilus.c:159
 msgid "Encrypt (and optionally sign) the selected file"
 msgid_plural "Encrypt the selected files"
 msgstr[0] "Зашифровать и, возможно, подписать выделенный файл"
 msgstr[1] "Зашифровать и, возможно, подписать выделенные файлы"
 msgstr[2] "Зашифровать и, возможно, подписать выделенные файлы"
 
-#: ../nautilus-ext/seahorse-nautilus.c:165
+#: nautilus-ext/seahorse-nautilus.c:165
 msgid "Sign"
 msgstr "Подписать"
 
-#: ../nautilus-ext/seahorse-nautilus.c:166
+#: nautilus-ext/seahorse-nautilus.c:166
 msgid "Sign the selected file"
 msgid_plural "Sign the selected files"
 msgstr[0] "Подписать выделенный файл"
 msgstr[1] "Подписать выделенные файлы"
 msgstr[2] "Подписать выделенные файлы"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:1
+#: tool/seahorse-multi-encrypt.ui:8
 msgid "Encrypt Multiple Files"
 msgstr "Зашифровать несколько файлов"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:2
+#: tool/seahorse-multi-encrypt.ui:24
 msgid "<b>You have selected multiple files or folders</b>"
 msgstr "<b>Выбрано несколько файлов или папок</b>"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:3
+#: tool/seahorse-multi-encrypt.ui:51
 msgid "encrypted-package"
 msgstr "encrypted-package"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:4
+#: tool/seahorse-multi-encrypt.ui:87
 msgid "Encrypt each file separately"
 msgstr "Зашифровать каждый файл отдельно"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:5
+#: tool/seahorse-multi-encrypt.ui:104
 msgid "Encrypt packed together in a package"
 msgstr "Зашифровать в упакованном виде"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:6
+#: tool/seahorse-multi-encrypt.ui:126
 msgid "Packaging:"
 msgstr "Упаковщик:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:7
+#: tool/seahorse-multi-encrypt.ui:137
 msgid "Package Name:"
 msgstr "Имя архива:"
 
-#: ../tool/seahorse-multi-encrypt.xml.h:8
+#: tool/seahorse-multi-encrypt.ui:156
 msgid ""
 "Because the files are located remotely, each file will be encrypted "
 "separately."
@@ -127,14 +126,14 @@ msgstr ""
 "Так как файлы находятся на сетевых ресурсах, каждый из них будет зашифрован "
 "отдельно."
 
-#: ../tool/seahorse-notification.c:572
+#: tool/seahorse-notification.c:569
 msgid "Key Imported"
 msgid_plural "Keys Imported"
 msgstr[0] "Ключ импортирован"
 msgstr[1] "Ключи импортированы"
 msgstr[2] "Ключи импортированы"
 
-#: ../tool/seahorse-notification.c:576
+#: tool/seahorse-notification.c:573
 #, c-format
 msgid "Imported %i key"
 msgid_plural "Imported %i keys"
@@ -142,7 +141,7 @@ msgstr[0] "Импортирован %i ключ"
 msgstr[1] "Импортировано %i ключа"
 msgstr[2] "Импортировано %i ключей"
 
-#: ../tool/seahorse-notification.c:578
+#: tool/seahorse-notification.c:575
 #, c-format
 msgid "Imported a key for"
 msgid_plural "Imported keys for"
@@ -151,206 +150,203 @@ msgstr[1] "Импортированы ключи для"
 msgstr[2] "Импортированы ключи для"
 
 #. TRANSLATORS: <key id='xxx'> is a custom markup tag, do not translate.
-#: ../tool/seahorse-notification.c:606
+#: tool/seahorse-notification.c:603
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
 msgstr "Подписано <i><key id='%s'/> <b>истекло</b></i> %s."
 
-#: ../tool/seahorse-notification.c:607
+#: tool/seahorse-notification.c:604
 msgid "Invalid Signature"
 msgstr "Недопустимая подпись"
 
-#: ../tool/seahorse-notification.c:613
+#: tool/seahorse-notification.c:610
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
 msgstr "Подписано <i><key id='%s'/></i> %s <b>Срок действия истёк</b>."
 
-#: ../tool/seahorse-notification.c:614
+#: tool/seahorse-notification.c:611
 msgid "Expired Signature"
 msgstr "Просроченная подпись"
 
-#: ../tool/seahorse-notification.c:620
+#: tool/seahorse-notification.c:617
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
 msgstr "Подписано <i><key id='%s'/> <b>Подпись отозвана</b></i> %s."
 
-#: ../tool/seahorse-notification.c:621
+#: tool/seahorse-notification.c:618
 msgid "Revoked Signature"
 msgstr "Отозванная подпись"
 
-#: ../tool/seahorse-notification.c:628
+#: tool/seahorse-notification.c:625
 msgid "Good Signature"
 msgstr "Правильная подпись"
 
-#: ../tool/seahorse-notification.c:629
+#: tool/seahorse-notification.c:626
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
 msgstr "Подписано <i><key id='%s'/></i> %s."
 
-#: ../tool/seahorse-notification.c:631
-#| msgid "Invalid Signature"
+#: tool/seahorse-notification.c:628
 msgid "Untrusted Valid Signature"
 msgstr "Ненадёжная действительная подпись"
 
-#: ../tool/seahorse-notification.c:632
+#: tool/seahorse-notification.c:629
 #, c-format
-#| msgid "Signed by <i><key id='%s'/></i> on %s."
 msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
 msgstr ""
 "Действительная, но <b>ненадёжная</b> подпись <i><key id='%s'/></i> от %s."
 
-#: ../tool/seahorse-notification.c:638
+#: tool/seahorse-notification.c:635
 msgid "Signing key not in keyring."
 msgstr "В связке ключей отсутствует ключ для этой подписи."
 
-#: ../tool/seahorse-notification.c:639
+#: tool/seahorse-notification.c:636
 msgid "Unknown Signature"
 msgstr "Неизвестная подпись"
 
-#: ../tool/seahorse-notification.c:643
+#: tool/seahorse-notification.c:640
 msgid "Bad or forged signature. The signed data was modified."
 msgstr "Неправильная или поддельная подпись. Подписанные данные были изменены."
 
-#: ../tool/seahorse-notification.c:644
+#: tool/seahorse-notification.c:641
 msgid "Bad Signature"
 msgstr "Неправильная подпись"
 
-#: ../tool/seahorse-notification.c:652
-msgid "Couldn't verify signature."
+#: tool/seahorse-notification.c:649
+msgid "Couldn’t verify signature."
 msgstr "Не удалось проверить подпись."
 
-#: ../tool/seahorse-notify.xml.h:1
+#: tool/seahorse-notify.ui:8
 msgid "Notification Messages"
 msgstr "Сообщения уведомления"
 
-#: ../tool/seahorse-passphrase.c:114
+#: tool/seahorse-passphrase.c:111
 #, c-format
 msgid "Wrong passphrase."
 msgstr "Неправильный пароль."
 
-#: ../tool/seahorse-passphrase.c:118
+#: tool/seahorse-passphrase.c:115
 #, c-format
-msgid "Enter new passphrase for '%s'"
+msgid "Enter new passphrase for “%s”"
 msgstr "Введите новый пароль для «%s»"
 
-#: ../tool/seahorse-passphrase.c:120
+#: tool/seahorse-passphrase.c:117
 #, c-format
-msgid "Enter passphrase for '%s'"
+msgid "Enter passphrase for “%s”"
 msgstr "Введите пароль для «%s»"
 
-#: ../tool/seahorse-passphrase.c:123
+#: tool/seahorse-passphrase.c:120
 msgid "Enter new passphrase"
 msgstr "Введите новый пароль"
 
-#: ../tool/seahorse-passphrase.c:125
+#: tool/seahorse-passphrase.c:122
 msgid "Enter passphrase"
 msgstr "Введите пароль"
 
-#: ../tool/seahorse-passphrase.c:130
+#: tool/seahorse-passphrase.c:127
 msgid "Passphrase"
 msgstr "Пароль"
 
-#: ../tool/seahorse-passphrase.c:138
-msgid "Ok"
+#: tool/seahorse-passphrase.c:135
+msgid "OK"
 msgstr "ОК"
 
-#: ../tool/seahorse-passphrase.c:139
+#: tool/seahorse-passphrase.c:136
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../tool/seahorse-pgp-encrypted.desktop.in.in.h:1
+#: tool/seahorse-pgp-encrypted.desktop.in.in:3
 msgid "Decrypt File"
 msgstr "Расшифровать файл"
 
-#: ../tool/seahorse-pgp-keys.desktop.in.in.h:1
+#: tool/seahorse-pgp-keys.desktop.in.in:3
 msgid "Import Key"
 msgstr "Импортировать ключ"
 
-#: ../tool/seahorse-pgp-signature.desktop.in.in.h:1
+#: tool/seahorse-pgp-signature.desktop.in.in:3
 msgid "Verify Signature"
 msgstr "Проверить подпись"
 
-#: ../tool/seahorse-progress.xml.h:1
+#: tool/seahorse-progress.ui:8
 msgid "Progress Title"
 msgstr "Заголовок выполнения"
 
-#: ../tool/seahorse-tool.c:61
+#: tool/seahorse-tool.c:58
 msgid "Import keys from the file"
 msgstr "Импортировать ключи из файла"
 
-#: ../tool/seahorse-tool.c:63
+#: tool/seahorse-tool.c:60
 msgid "Encrypt file"
 msgstr "Зашифровать файл"
 
-#: ../tool/seahorse-tool.c:65
+#: tool/seahorse-tool.c:62
 msgid "Sign file with default key"
 msgstr "Подписать файл ключом по умолчанию"
 
-#: ../tool/seahorse-tool.c:67
+#: tool/seahorse-tool.c:64
 msgid "Encrypt and sign file with default key"
 msgstr "Зашифровать и подписать файл ключом по умолчанию"
 
-#: ../tool/seahorse-tool.c:69
+#: tool/seahorse-tool.c:66
 msgid "Decrypt encrypted file"
 msgstr "Расшифровать зашифрованный файл"
 
-#: ../tool/seahorse-tool.c:71
+#: tool/seahorse-tool.c:68
 msgid "Verify signature file"
 msgstr "Проверить подпись файла"
 
-#: ../tool/seahorse-tool.c:73
+#: tool/seahorse-tool.c:70
 msgid "Read list of URIs on standard in"
 msgstr "Прочитать список URI со стандартного ввода"
 
-#: ../tool/seahorse-tool.c:75
-msgid "file..."
+#: tool/seahorse-tool.c:72
+msgid "file…"
 msgstr "файл…"
 
-#: ../tool/seahorse-tool.c:171
-#| msgid "Encrypting"
+#: tool/seahorse-tool.c:168
 msgid "Encryption settings"
 msgstr "Параметры шифрования"
 
-#: ../tool/seahorse-tool.c:236 ../tool/seahorse-tool.c:350
-msgid "Couldn't load keys"
+#: tool/seahorse-tool.c:233 tool/seahorse-tool.c:347
+msgid "Couldn’t load keys"
 msgstr "Не удалось загрузить ключи"
 
-#: ../tool/seahorse-tool.c:253
+#: tool/seahorse-tool.c:250
 #, c-format
-msgid "Choose Encrypted File Name for '%s'"
+msgid "Choose Encrypted File Name for “%s”"
 msgstr "Выберите имя зашифрованного файла для «%s»"
 
-#: ../tool/seahorse-tool.c:328
+#: tool/seahorse-tool.c:325
 msgid "Choose Signer"
 msgstr "Выберите автора подписи"
 
-#: ../tool/seahorse-tool.c:370
+#: tool/seahorse-tool.c:367
 #, c-format
-msgid "Choose Signature File Name for '%s'"
+msgid "Choose Signature File Name for “%s”"
 msgstr "Выберите имя файла подписи для «%s»"
 
-#: ../tool/seahorse-tool.c:410
+#: tool/seahorse-tool.c:407
 msgid "Import is complete"
 msgstr "Импорт завершён"
 
-#: ../tool/seahorse-tool.c:443
-msgid "Importing keys ..."
-msgstr "Импортирование ключей…"
+#: tool/seahorse-tool.c:440
+msgid "Importing keys…"
+msgstr "Импорт ключей…"
 
-#: ../tool/seahorse-tool.c:473
+#: tool/seahorse-tool.c:470
 msgid "Import Failed"
 msgstr "Не удалось импортировать"
 
-#: ../tool/seahorse-tool.c:474
+#: tool/seahorse-tool.c:471
 msgid "Keys were found but not imported."
 msgstr "Ключи были найдены, но не импортированы."
 
-#: ../tool/seahorse-tool.c:497
+#: tool/seahorse-tool.c:494
 #, c-format
 msgid "Imported key"
 msgstr "Ключ импортирован"
 
-#: ../tool/seahorse-tool.c:499
+#: tool/seahorse-tool.c:496
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
@@ -359,150 +355,158 @@ msgstr[1] "Импортировано %d ключа"
 msgstr[2] "Импортировано %d ключей"
 
 #. File to decrypt to
-#: ../tool/seahorse-tool.c:521
+#: tool/seahorse-tool.c:518
 #, c-format
-msgid "Choose Decrypted File Name for '%s'"
+msgid "Choose Decrypted File Name for “%s”"
 msgstr "Выберите имя расшифрованного файла для «%s»"
 
-#: ../tool/seahorse-tool.c:578
+#: tool/seahorse-tool.c:575
 #, c-format
-msgid "Choose Original File for '%s'"
+msgid "Choose Original File for “%s”"
 msgstr "Выберите исходный файл для «%s»"
+
+#: tool/seahorse-tool.c:580 tool/seahorse-util.c:417 tool/seahorse-util.c:504
+msgid "_Cancel"
+msgstr "_Отменить"
+
+#: tool/seahorse-tool.c:581
+msgid "_Open"
+msgstr "_Открыть"
 
 #.
 #. * TODO: What should happen with multiple files at this point.
 #. * The last thing we want to do is cascade a big pile of error
 #. * dialogs at the user.
 #.
-#: ../tool/seahorse-tool.c:651
+#: tool/seahorse-tool.c:648
 #, c-format
 msgid "No valid signatures found"
 msgstr "Не найдены допустимые подписи"
 
-#: ../tool/seahorse-tool.c:698
+#: tool/seahorse-tool.c:696
 msgid "File Encryption Tool"
 msgstr "Инструмент шифрования файлов"
 
-#: ../tool/seahorse-tool.c:716
+#: tool/seahorse-tool.c:718
 msgid "Encrypting"
 msgstr "Зашифровка"
 
-#: ../tool/seahorse-tool.c:717
+#: tool/seahorse-tool.c:719
 #, c-format
-msgid "Couldn't encrypt file: %s"
+msgid "Couldn’t encrypt file: %s"
 msgstr "Не удалось зашифровать файл: %s"
 
-#: ../tool/seahorse-tool.c:725
+#: tool/seahorse-tool.c:727
 msgid "Signing"
 msgstr "Подписывание"
 
-#: ../tool/seahorse-tool.c:726
+#: tool/seahorse-tool.c:728
 #, c-format
-msgid "Couldn't sign file: %s"
+msgid "Couldn’t sign file: %s"
 msgstr "Не удалось подписать файл: %s"
 
-#: ../tool/seahorse-tool.c:731
+#: tool/seahorse-tool.c:733
 msgid "Importing"
 msgstr "Импорт"
 
-#: ../tool/seahorse-tool.c:732
+#: tool/seahorse-tool.c:734
 #, c-format
-msgid "Couldn't import keys from file: %s"
-msgstr "Не удалось импортировать ключ из файла: %s"
+msgid "Couldn’t import keys from file: %s"
+msgstr "Не удалось импортировать ключи из файла: %s"
 
-#: ../tool/seahorse-tool.c:738
+#: tool/seahorse-tool.c:740
 msgid "Decrypting"
 msgstr "Расшифровка"
 
-#: ../tool/seahorse-tool.c:739
+#: tool/seahorse-tool.c:741
 #, c-format
-msgid "Couldn't decrypt file: %s"
+msgid "Couldn’t decrypt file: %s"
 msgstr "Не удалось расшифровать файл: %s"
 
-#: ../tool/seahorse-tool.c:744
+#: tool/seahorse-tool.c:746
 msgid "Verifying"
 msgstr "Проверка"
 
-#: ../tool/seahorse-tool.c:745
+#: tool/seahorse-tool.c:747
 #, c-format
-msgid "Couldn't verify file: %s"
-msgstr "Не удалось проверить подпись файла: %s"
+msgid "Couldn’t verify file: %s"
+msgstr "Не удалось проверить файл: %s"
 
-#: ../tool/seahorse-tool-files.c:119
+#: tool/seahorse-tool-files.c:116
 msgid "Ace (.ace)"
 msgstr "Ace (.ace)"
 
-#: ../tool/seahorse-tool-files.c:120
+#: tool/seahorse-tool-files.c:117
 msgid "Ar (.ar)"
 msgstr "Ar (.ar)"
 
-#: ../tool/seahorse-tool-files.c:121
+#: tool/seahorse-tool-files.c:118
 msgid "Arj (.arj)"
 msgstr "Arj (.arj)"
 
-#: ../tool/seahorse-tool-files.c:128
+#: tool/seahorse-tool-files.c:125
 msgid "Ear (.ear)"
 msgstr "Ear (.ear)"
 
-#: ../tool/seahorse-tool-files.c:129
+#: tool/seahorse-tool-files.c:126
 msgid "Self-extracting zip (.exe)"
 msgstr "Самоизвлекающийся zip (.exe)"
 
-#: ../tool/seahorse-tool-files.c:131
+#: tool/seahorse-tool-files.c:128
 msgid "Jar (.jar)"
 msgstr "Jar (.jar)"
 
-#: ../tool/seahorse-tool-files.c:132
+#: tool/seahorse-tool-files.c:129
 msgid "Lha (.lzh)"
 msgstr "Lha (.lzh)"
 
-#: ../tool/seahorse-tool-files.c:134
+#: tool/seahorse-tool-files.c:131
 msgid "Rar (.rar)"
 msgstr "Rar (.rar)"
 
-#: ../tool/seahorse-tool-files.c:136
+#: tool/seahorse-tool-files.c:133
 msgid "Tar uncompressed (.tar)"
 msgstr "Несжатый tar (.tar)"
 
-#: ../tool/seahorse-tool-files.c:137
+#: tool/seahorse-tool-files.c:134
 msgid "Tar compressed with bzip (.tar.bz)"
 msgstr "Tar, сжатый с помощью bzip (.tar.bz)"
 
-#: ../tool/seahorse-tool-files.c:138
+#: tool/seahorse-tool-files.c:135
 msgid "Tar compressed with bzip2 (.tar.bz2)"
 msgstr "Tar, сжатый с помощью bzip2 (.tar.bz2)"
 
-#: ../tool/seahorse-tool-files.c:139
+#: tool/seahorse-tool-files.c:136
 msgid "Tar compressed with gzip (.tar.gz)"
 msgstr "Tar, сжатый с помощью gzip (.tar.gz)"
 
-#: ../tool/seahorse-tool-files.c:140
+#: tool/seahorse-tool-files.c:137
 msgid "Tar compressed with lzop (.tar.lzo)"
 msgstr "Tar, сжатый с помощью lzop (.tar.lzop)"
 
-#: ../tool/seahorse-tool-files.c:141
+#: tool/seahorse-tool-files.c:138
 msgid "Tar compressed with compress (.tar.Z)"
 msgstr "Tar, сжатый с помощью compress (.tar.Z)"
 
-#: ../tool/seahorse-tool-files.c:143
+#: tool/seahorse-tool-files.c:140
 msgid "War (.war)"
 msgstr "War (.war)"
 
-#: ../tool/seahorse-tool-files.c:144
+#: tool/seahorse-tool-files.c:141
 msgid "Zip (.zip)"
 msgstr "Zip (.zip)"
 
-#: ../tool/seahorse-tool-files.c:145
+#: tool/seahorse-tool-files.c:142
 msgid "Zoo (.zoo)"
 msgstr "Zoo (.zoo)"
 
-#: ../tool/seahorse-tool-files.c:146
+#: tool/seahorse-tool-files.c:143
 msgid "7-Zip (.7z)"
 msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:328
+#: tool/seahorse-tool-files.c:325
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
@@ -512,7 +516,7 @@ msgstr[2] "Выбрано %d файлов "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
-#: ../tool/seahorse-tool-files.c:333
+#: tool/seahorse-tool-files.c:330
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
@@ -522,12 +526,12 @@ msgstr[2] "и %d папок"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
-#: ../tool/seahorse-tool-files.c:338
+#: tool/seahorse-tool-files.c:335
 #, c-format
 msgid "<b>%s%s</b>"
 msgstr "<b>%s%s</b>"
 
-#: ../tool/seahorse-tool-files.c:346
+#: tool/seahorse-tool-files.c:343
 #, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
@@ -535,7 +539,7 @@ msgstr[0] "Выбран %d файл"
 msgstr[1] "Выбрано %d файла"
 msgstr[2] "Выбрано %d файлов"
 
-#: ../tool/seahorse-tool-files.c:351
+#: tool/seahorse-tool-files.c:348
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
@@ -543,49 +547,53 @@ msgstr[0] "Выбрана %d папка"
 msgstr[1] "Выбрано %d папки"
 msgstr[2] "Выбрано %d папок"
 
-#: ../tool/seahorse-tool-files.c:866
-msgid "Preparing..."
+#: tool/seahorse-tool-files.c:863
+msgid "Preparing…"
 msgstr "Подготовка…"
 
-#: ../tool/seahorse-tool-files.c:875 ../tool/seahorse-tool-files.c:898
-msgid "Couldn't list files"
+#: tool/seahorse-tool-files.c:872 tool/seahorse-tool-files.c:895
+msgid "Couldn’t list files"
 msgstr "Не удалось перечислить файлы"
 
-#: ../tool/seahorse-tool-files.c:885 ../tool/seahorse-util.c:399
-msgid "Couldn't package files"
+#: tool/seahorse-tool-files.c:882 tool/seahorse-util.c:396
+msgid "Couldn’t package files"
 msgstr "Не удалось запаковать файлы"
 
-#: ../tool/seahorse-util.c:173
+#: tool/seahorse-util.c:170
 msgid "Decryption failed. You probably do not have the decryption key."
 msgstr "Не удалось расшифровать. Вероятно, у вас нет ключа для расшифровки."
 
-#: ../tool/seahorse-util.c:200
+#: tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
 msgstr "%d.%m.%Y"
 
-#: ../tool/seahorse-util.c:394
-msgid "Couldn't run file-roller"
+#: tool/seahorse-util.c:391
+msgid "Couldn’t run file-roller"
 msgstr "Не удалось запустить менеджер архивов"
 
-#: ../tool/seahorse-util.c:400
+#: tool/seahorse-util.c:397
 msgid "The file-roller process did not complete successfully"
 msgstr "Процесс Менеджера архивов не был успешно завершён"
 
+#: tool/seahorse-util.c:418
+msgid "_Save"
+msgstr "Со_хранить"
+
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
-#: ../tool/seahorse-util.c:436
+#: tool/seahorse-util.c:433
 msgid "All key files"
 msgstr "Все файлы ключей"
 
-#: ../tool/seahorse-util.c:443 ../tool/seahorse-util.c:483
+#: tool/seahorse-util.c:440 tool/seahorse-util.c:480
 msgid "All files"
 msgstr "Все файлы"
 
-#: ../tool/seahorse-util.c:476
+#: tool/seahorse-util.c:473
 msgid "Archive files"
 msgstr "Архивные файлы"
 
-#: ../tool/seahorse-util.c:505
+#: tool/seahorse-util.c:502
 msgid ""
 "<b>A file already exists with this name.</b>\n"
 "\n"
@@ -595,9 +603,15 @@ msgstr ""
 "\n"
 "Заменить его новым файлом?"
 
-#: ../tool/seahorse-util.c:508
+#: tool/seahorse-util.c:505
 msgid "_Replace"
 msgstr "_Заменить"
+
+#~ msgid "Ok"
+#~ msgstr "ОК"
+
+#~ msgid "file..."
+#~ msgstr "файл…"
 
 #~ msgid "Password:"
 #~ msgstr "Пароль:"
