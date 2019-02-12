@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/seahorse-nautilus/"
 "issues\n"
 "POT-Creation-Date: 2018-12-15 22:53+0000\n"
-"PO-Revision-Date: 2019-02-10 21:14+0100\n"
+"PO-Revision-Date: 2019-02-12 07:51+0100\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
@@ -21,28 +21,30 @@ msgstr ""
 
 #: data/org.gnome.seahorse.nautilus.gschema.xml:5
 msgid "File extension for packages"
-msgstr ""
+msgstr "Estension di file par pachets"
 
 #: data/org.gnome.seahorse.nautilus.gschema.xml:6
 msgid "File extension for packages when handling multiple files."
-msgstr ""
+msgstr "Estension di file par pachets cuant che si gjestìs plui file."
 
 #: data/org.gnome.seahorse.nautilus.gschema.xml:10
 msgid "Handle multiple files separately"
-msgstr ""
+msgstr "Gjestìs plui file in maniere separade"
 
 #: data/org.gnome.seahorse.nautilus.gschema.xml:11
 msgid ""
 "When handling multiple files, don’t package them but process separately."
 msgstr ""
+"Cuant che si gjestìs plui file, no sta impachetâju ma lavoriju in maniere "
+"separade."
 
 #: data/org.gnome.seahorse.nautilus.gschema.xml:15
 msgid "Use armor mode when encrypting"
-msgstr ""
+msgstr "Dopre modalitât armor cuant che si cifre"
 
 #: data/org.gnome.seahorse.nautilus.gschema.xml:16
 msgid "Use PGP ASCII armor mode when encrypting or signing files."
-msgstr ""
+msgstr "Dopre modalitât armor ASCII PGP cuant che si cifre o si firme file."
 
 #: data/org.gnome.seahorse.nautilus.window.gschema.xml:5
 msgid "Width of the window"
@@ -67,8 +69,8 @@ msgstr "Cifre…"
 #: nautilus-ext/seahorse-nautilus.c:159
 msgid "Encrypt (and optionally sign) the selected file"
 msgid_plural "Encrypt the selected files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cifre (e in opzion firme) il file selezionât"
+msgstr[1] "Cifre i file selezionâts"
 
 #: nautilus-ext/seahorse-nautilus.c:165
 msgid "Sign"
@@ -90,7 +92,7 @@ msgstr "<b>Si à selezionât plui file o cartelis</b>"
 
 #: tool/seahorse-multi-encrypt.ui:51
 msgid "encrypted-package"
-msgstr ""
+msgstr "pachet-cifrât"
 
 #: tool/seahorse-multi-encrypt.ui:87
 msgid "Encrypt each file separately"
@@ -98,21 +100,23 @@ msgstr "Cifre ogni file di bessôl"
 
 #: tool/seahorse-multi-encrypt.ui:104
 msgid "Encrypt packed together in a package"
-msgstr ""
+msgstr "Cifre adun impachetant intun pachet"
 
 #: tool/seahorse-multi-encrypt.ui:126
 msgid "Packaging:"
-msgstr ""
+msgstr "Pachet:"
 
 #: tool/seahorse-multi-encrypt.ui:137
 msgid "Package Name:"
-msgstr ""
+msgstr "Non pachet:"
 
 #: tool/seahorse-multi-encrypt.ui:156
 msgid ""
 "Because the files are located remotely, each file will be encrypted "
 "separately."
 msgstr ""
+"Par vie che i file a son archiviâts in rimot, ogni file al vignarà cifrât "
+"di bessôl."
 
 #: tool/seahorse-notification.c:569
 msgid "Key Imported"
@@ -138,7 +142,7 @@ msgstr[1] "Impuartadis clâfs par"
 #: tool/seahorse-notification.c:603
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>expired</b></i> on %s."
-msgstr ""
+msgstr "Firmât di <i><key id='%s'/> <b>scjadût</b></i> ai %s."
 
 #: tool/seahorse-notification.c:604
 msgid "Invalid Signature"
@@ -147,7 +151,7 @@ msgstr "Firme no valide"
 #: tool/seahorse-notification.c:610
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s <b>Expired</b>."
-msgstr ""
+msgstr "Firmât di <i><key id='%s'/></i> ai %s <b>Scjadût</b>."
 
 #: tool/seahorse-notification.c:611
 msgid "Expired Signature"
@@ -156,7 +160,7 @@ msgstr "Firme scjadude"
 #: tool/seahorse-notification.c:617
 #, c-format
 msgid "Signed by <i><key id='%s'/> <b>Revoked</b></i> on %s."
-msgstr ""
+msgstr "Firmât di <i><key id='%s'/> <b>Revocât</b></i> ai %s."
 
 #: tool/seahorse-notification.c:618
 msgid "Revoked Signature"
@@ -169,20 +173,20 @@ msgstr "Firme buine"
 #: tool/seahorse-notification.c:626
 #, c-format
 msgid "Signed by <i><key id='%s'/></i> on %s."
-msgstr ""
+msgstr "Firmât ai <i><key id='%s'/></i> ai %s."
 
 #: tool/seahorse-notification.c:628
 msgid "Untrusted Valid Signature"
-msgstr ""
+msgstr "Firme valide no afidabile"
 
 #: tool/seahorse-notification.c:629
 #, c-format
 msgid "Valid but <b>untrusted</b> signature by <i><key id='%s'/></i> on %s."
-msgstr ""
+msgstr "Firme di <i><key id='%s'/> valide ma <b>no afidabile</b></i> ai %s."
 
 #: tool/seahorse-notification.c:635
 msgid "Signing key not in keyring."
-msgstr ""
+msgstr "Firme di clâf che no je tal puarteclâfs."
 
 #: tool/seahorse-notification.c:636
 msgid "Unknown Signature"
@@ -190,11 +194,11 @@ msgstr "Firme no cognossude"
 
 #: tool/seahorse-notification.c:640
 msgid "Bad or forged signature. The signed data was modified."
-msgstr ""
+msgstr "Firme sbaliade o dismenteade. I dâts firmâts a son stâts modificâts."
 
 #: tool/seahorse-notification.c:641
 msgid "Bad Signature"
-msgstr ""
+msgstr "Firme sbaliade"
 
 #: tool/seahorse-notification.c:649
 msgid "Couldn’t verify signature."
@@ -202,7 +206,7 @@ msgstr "Impussibil verificâ la firme."
 
 #: tool/seahorse-notify.ui:8
 msgid "Notification Messages"
-msgstr ""
+msgstr "Messaçs di notifiche"
 
 #: tool/seahorse-passphrase.c:111
 #, c-format
@@ -241,7 +245,7 @@ msgstr "Anule"
 
 #: tool/seahorse-pgp-encrypted.desktop.in.in:3
 msgid "Decrypt File"
-msgstr ""
+msgstr "Decifre file"
 
 #: tool/seahorse-pgp-keys.desktop.in.in:3
 msgid "Import Key"
@@ -253,7 +257,7 @@ msgstr "Verifiche la firme"
 
 #: tool/seahorse-progress.ui:8
 msgid "Progress Title"
-msgstr ""
+msgstr "Titul di avanzament"
 
 #: tool/seahorse-tool.c:58
 msgid "Import keys from the file"
@@ -269,11 +273,11 @@ msgstr "Firme il file cun la clâf predefinide"
 
 #: tool/seahorse-tool.c:64
 msgid "Encrypt and sign file with default key"
-msgstr ""
+msgstr "Cifre e firme il file cu la clâf predefinide"
 
 #: tool/seahorse-tool.c:66
 msgid "Decrypt encrypted file"
-msgstr ""
+msgstr "Decifre il file cifrât"
 
 #: tool/seahorse-tool.c:68
 msgid "Verify signature file"
@@ -281,7 +285,7 @@ msgstr "Verifiche il file de firme"
 
 #: tool/seahorse-tool.c:70
 msgid "Read list of URIs on standard in"
-msgstr ""
+msgstr "Lei la liste dai URI sul standard input"
 
 #: tool/seahorse-tool.c:72
 msgid "file…"
@@ -298,7 +302,7 @@ msgstr "Impussibil cjariâ lis clâfs"
 #: tool/seahorse-tool.c:250
 #, c-format
 msgid "Choose Encrypted File Name for “%s”"
-msgstr ""
+msgstr "Sielç il non dal file cifrât par “%s”"
 
 #: tool/seahorse-tool.c:325
 msgid "Choose Signer"
@@ -307,7 +311,7 @@ msgstr "Sielç il firmatari"
 #: tool/seahorse-tool.c:367
 #, c-format
 msgid "Choose Signature File Name for “%s”"
-msgstr ""
+msgstr "Sielç il non dal file de firme par “%s”"
 
 #: tool/seahorse-tool.c:407
 msgid "Import is complete"
@@ -319,42 +323,42 @@ msgstr "Daûr a impuartâ lis clâfs…"
 
 #: tool/seahorse-tool.c:470
 msgid "Import Failed"
-msgstr ""
+msgstr "Importazion falide"
 
 #: tool/seahorse-tool.c:471
 msgid "Keys were found but not imported."
-msgstr ""
+msgstr "Clâfs cjatadis ma no impuartadis."
 
 #: tool/seahorse-tool.c:494
 #, c-format
 msgid "Imported key"
-msgstr ""
+msgstr "Clâf impuartade"
 
 #: tool/seahorse-tool.c:496
 #, c-format
 msgid "Imported %d key"
 msgid_plural "Imported %d keys"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d clâf impuartade"
+msgstr[1] "%d clâfs impuartadis"
 
 #. File to decrypt to
 #: tool/seahorse-tool.c:518
 #, c-format
 msgid "Choose Decrypted File Name for “%s”"
-msgstr ""
+msgstr "Sielç il non dal file decifrât par “%s”"
 
 #: tool/seahorse-tool.c:575
 #, c-format
 msgid "Choose Original File for “%s”"
-msgstr ""
+msgstr "Sielç il file origjinâl par “%s”"
 
 #: tool/seahorse-tool.c:580 tool/seahorse-util.c:417 tool/seahorse-util.c:504
 msgid "_Cancel"
-msgstr ""
+msgstr "_Anule"
 
 #: tool/seahorse-tool.c:581
 msgid "_Open"
-msgstr ""
+msgstr "_Vierç"
 
 #.
 #. * TODO: What should happen with multiple files at this point.
@@ -364,128 +368,128 @@ msgstr ""
 #: tool/seahorse-tool.c:648
 #, c-format
 msgid "No valid signatures found"
-msgstr ""
+msgstr "Nissune firme valide cjatade"
 
 #: tool/seahorse-tool.c:696
 msgid "File Encryption Tool"
-msgstr ""
+msgstr "Strument par cifrâ i file"
 
 #: tool/seahorse-tool.c:718
 msgid "Encrypting"
-msgstr ""
+msgstr "Daûr a cifrâ"
 
 #: tool/seahorse-tool.c:719
 #, c-format
 msgid "Couldn’t encrypt file: %s"
-msgstr ""
+msgstr "Impussibil cifrâ il file: %s"
 
 #: tool/seahorse-tool.c:727
 msgid "Signing"
-msgstr ""
+msgstr "Daûr a firmâ"
 
 #: tool/seahorse-tool.c:728
 #, c-format
 msgid "Couldn’t sign file: %s"
-msgstr ""
+msgstr "Impussibil firmâ il file: %s"
 
 #: tool/seahorse-tool.c:733
 msgid "Importing"
-msgstr ""
+msgstr "Daûr a impuartâ"
 
 #: tool/seahorse-tool.c:734
 #, c-format
 msgid "Couldn’t import keys from file: %s"
-msgstr ""
+msgstr "Impussibil impuartâ lis clâfs dal file: %s"
 
 #: tool/seahorse-tool.c:740
 msgid "Decrypting"
-msgstr ""
+msgstr "Daûr a decifrâ"
 
 #: tool/seahorse-tool.c:741
 #, c-format
 msgid "Couldn’t decrypt file: %s"
-msgstr ""
+msgstr "Impussibil decifrâ il file: %s"
 
 #: tool/seahorse-tool.c:746
 msgid "Verifying"
-msgstr ""
+msgstr "Daûr a verificâ"
 
 #: tool/seahorse-tool.c:747
 #, c-format
 msgid "Couldn’t verify file: %s"
-msgstr ""
+msgstr "Impussibil verificâ il file: %s"
 
 #: tool/seahorse-tool-files.c:116
 msgid "Ace (.ace)"
-msgstr ""
+msgstr "Ace (.ace)"
 
 #: tool/seahorse-tool-files.c:117
 msgid "Ar (.ar)"
-msgstr ""
+msgstr "Ar (.ar)"
 
 #: tool/seahorse-tool-files.c:118
 msgid "Arj (.arj)"
-msgstr ""
+msgstr "Arj (.arj)"
 
 #: tool/seahorse-tool-files.c:125
 msgid "Ear (.ear)"
-msgstr ""
+msgstr "Ear (.ear)"
 
 #: tool/seahorse-tool-files.c:126
 msgid "Self-extracting zip (.exe)"
-msgstr ""
+msgstr "Zip a auto-estrazion (.exe)"
 
 #: tool/seahorse-tool-files.c:128
 msgid "Jar (.jar)"
-msgstr ""
+msgstr "Jar (.jar)"
 
 #: tool/seahorse-tool-files.c:129
 msgid "Lha (.lzh)"
-msgstr ""
+msgstr "Lha (.lzh)"
 
 #: tool/seahorse-tool-files.c:131
 msgid "Rar (.rar)"
-msgstr ""
+msgstr "Rar (.rar)"
 
 #: tool/seahorse-tool-files.c:133
 msgid "Tar uncompressed (.tar)"
-msgstr ""
+msgstr "Tar no comprimût (.tar)"
 
 #: tool/seahorse-tool-files.c:134
 msgid "Tar compressed with bzip (.tar.bz)"
-msgstr ""
+msgstr "Tar comprimût cun bzip (.tar.bz)"
 
 #: tool/seahorse-tool-files.c:135
 msgid "Tar compressed with bzip2 (.tar.bz2)"
-msgstr ""
+msgstr "Tar comprimût cun bzip2 (.tar.bz2)"
 
 #: tool/seahorse-tool-files.c:136
 msgid "Tar compressed with gzip (.tar.gz)"
-msgstr ""
+msgstr "Tar comprimût cun gzip (.tar.gz)"
 
 #: tool/seahorse-tool-files.c:137
 msgid "Tar compressed with lzop (.tar.lzo)"
-msgstr ""
+msgstr "Tar comprimût cun lzop (.tar.lzo)"
 
 #: tool/seahorse-tool-files.c:138
 msgid "Tar compressed with compress (.tar.Z)"
-msgstr ""
+msgstr "Tar comprimût cun compress (.tar.Z)"
 
 #: tool/seahorse-tool-files.c:140
 msgid "War (.war)"
-msgstr ""
+msgstr "War (.war)"
 
 #: tool/seahorse-tool-files.c:141
 msgid "Zip (.zip)"
-msgstr ""
+msgstr "Zip (.zip)"
 
 #: tool/seahorse-tool-files.c:142
 msgid "Zoo (.zoo)"
-msgstr ""
+msgstr "Zoo (.zoo)"
 
 #: tool/seahorse-tool-files.c:143
 msgid "7-Zip (.7z)"
-msgstr ""
+msgstr "7-Zip (.7z)"
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
@@ -493,8 +497,8 @@ msgstr ""
 #, c-format
 msgid "You have selected %d file "
 msgid_plural "You have selected %d files "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Si à selezionât %d file "
+msgstr[1] "Si à selezionât %d file "
 
 #. TRANSLATOR: This string will become
 #. * "You have selected %d files and %d folders"
@@ -502,75 +506,75 @@ msgstr[1] ""
 #, c-format
 msgid "and %d folder"
 msgid_plural "and %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "e %d cartele"
+msgstr[1] "e %d cartelis"
 
 #. TRANSLATOR: "%s%s" are "You have selected %d files and %d folders"
 #. * Swap order with "%2$s%1$s" if needed
 #: tool/seahorse-tool-files.c:335
 #, c-format
 msgid "<b>%s%s</b>"
-msgstr ""
+msgstr "<b>%s%s</b>"
 
 #: tool/seahorse-tool-files.c:343
 #, c-format
 msgid "You have selected %d file"
 msgid_plural "You have selected %d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Si à selezionât %d file"
+msgstr[1] "Si à selezionât %d file"
 
 #: tool/seahorse-tool-files.c:348
 #, c-format
 msgid "You have selected %d folder"
 msgid_plural "You have selected %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Si à selezionât %d cartele"
+msgstr[1] "Si à selezionât %d cartelis"
 
 #: tool/seahorse-tool-files.c:863
 msgid "Preparing…"
-msgstr ""
+msgstr "Daûr a prontâ…"
 
 #: tool/seahorse-tool-files.c:872 tool/seahorse-tool-files.c:895
 msgid "Couldn’t list files"
-msgstr ""
+msgstr "Impussibil listâ i file"
 
 #: tool/seahorse-tool-files.c:882 tool/seahorse-util.c:396
 msgid "Couldn’t package files"
-msgstr ""
+msgstr "Impussibil impachetâ i file"
 
 #: tool/seahorse-util.c:170
 msgid "Decryption failed. You probably do not have the decryption key."
-msgstr ""
+msgstr "Decifrazion falide. Forsit no je presinte la clâf di decifrazion."
 
 #: tool/seahorse-util.c:197
 msgid "%Y-%m-%d"
-msgstr ""
+msgstr "%d-%m-%Y"
 
 #: tool/seahorse-util.c:391
 msgid "Couldn’t run file-roller"
-msgstr ""
+msgstr "Impussibil eseguî file-roller"
 
 #: tool/seahorse-util.c:397
 msgid "The file-roller process did not complete successfully"
-msgstr ""
+msgstr "Il procès file-roller nol è terminât cun sucès"
 
 #: tool/seahorse-util.c:418
 msgid "_Save"
-msgstr ""
+msgstr "_Salve"
 
 #. Filter for PGP keys. We also include *.asc, as in many
 #. cases that extension is associated with text/plain
 #: tool/seahorse-util.c:433
 msgid "All key files"
-msgstr ""
+msgstr "Ducj i file clâf"
 
 #: tool/seahorse-util.c:440 tool/seahorse-util.c:480
 msgid "All files"
-msgstr ""
+msgstr "Ducj i files"
 
 #: tool/seahorse-util.c:473
 msgid "Archive files"
-msgstr ""
+msgstr "File di archivi"
 
 #: tool/seahorse-util.c:502
 msgid ""
@@ -578,7 +582,10 @@ msgid ""
 "\n"
 "Do you want to replace it with a new file?"
 msgstr ""
+"<b>Al esist za un file cun chest non.</b>\n"
+"\n"
+"Sostituîlu cuntun gnûf file?"
 
 #: tool/seahorse-util.c:505
 msgid "_Replace"
-msgstr ""
+msgstr "_Sostituìs"
