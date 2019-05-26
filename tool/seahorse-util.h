@@ -30,6 +30,8 @@
 
 #include "config.h"
 
+extern GSettings *seahorse_tool_settings;
+
 typedef enum {
     SEAHORSE_CRYPT_SUFFIX,
     SEAHORSE_SIG_SUFFIX,

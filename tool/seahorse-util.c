@@ -523,6 +523,38 @@ seahorse_util_chooser_save_prompt (GtkWidget *dialog)
 }
 
 /**
+ * lookup_encryption_extension:
+ *
+ * Helps to determine the extension for %SEAHORSE_CRYPT_SUFFIX. The extension string
+ * is looked up in the gesetting encryption-extension. A valid extension is a dot '.'
+ * followed by three characters.
+ *
+ * Returns: the gesetting encryption-extension if valid. NULL otherwise
+ **/
+gchar*
+lookup_encryption_extension ()
+{
+    gchar *gsext;
+    GSettings *seahorse_tool_settings = NULL;
+    GRegex *regex = NULL;
+    GMatchInfo *match_info;
+
+    seahorse_tool_settings = g_settings_new ("org.gnome.seahorse.nautilus");
+
+    gsext = g_settings_get_string(seahorse_tool_settings, "encryption-extension");
+    regex = g_regex_new ("^\\.\\w\\w\\w$", G_REGEX_OPTIMIZE, 0, NULL);
+    g_regex_match (regex, gsext, 0, &match_info);
+
+    g_object_unref (seahorse_tool_settings);
+    seahorse_tool_settings = NULL;
+
+    if (g_match_info_matches (match_info))
+        return gsext;
+    else
+        return NULL;
+}
+
+/**
  * seahorse_util_add_suffix:
  * @ctx: Gpgme Context
  * @path: Path of an existing file
@@ -530,9 +562,10 @@ seahorse_util_chooser_save_prompt (GtkWidget *dialog)
  * @prompt: Overwrite prompt text
  *
  * Constructs a new path for a file based on @path plus a suffix determined by
- * @suffix. If ASCII Armor is enabled, the suffix will be '.asc'. Otherwise the
- * suffix will be '.pgp' if @suffix is %SEAHORSE_CRYPT_SUFFIX or '.sig' if
- * @suffix is %SEAHORSE_SIG_SUFFIX.
+ * @suffix. If ASCII Armor is enabled, the suffix will be '.asc'. If @suffix is
+ * %SEAHORSE_CRYPT_SUFFIX the suffix can either be what is defined in the gsetting
+ * encryption-extension or will fallback to '.pgp'. If @suffix is %SEAHORSE_SIG_SUFFIX
+ * the suffix will be '.sig'.
  *
  * Returns: A new path with the suffix appended to @path. NULL if prompt cancelled
  **/
@@ -540,12 +573,16 @@ gchar*
 seahorse_util_add_suffix (const gchar *path, SeahorseSuffix suffix, const gchar *prompt)
 {
     GtkWidget *dialog;
-    const gchar *ext;
+    gchar *ext;
     gchar *uri;
     gchar *t;
 
     if (suffix == SEAHORSE_CRYPT_SUFFIX)
-        ext = SEAHORSE_EXT_PGP;
+        {
+            ext = lookup_encryption_extension ();
+            if (ext == NULL)
+                ext = SEAHORSE_EXT_PGP;
+        }
     else
         ext = SEAHORSE_EXT_SIG;
 

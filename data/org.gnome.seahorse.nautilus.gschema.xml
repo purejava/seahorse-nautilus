@@ -15,5 +15,10 @@
 			<summary>Use armor mode when encrypting</summary>
 			<description>Use PGP ASCII armor mode when encrypting or signing files.</description>
 		</key>
+		<key name="encryption-extension" type="s">
+			<default>'.pgp'</default>
+			<summary>File extension for encrypted files.</summary>
+			<description>File extension for encrypted files. Configurable for compatibility reasons to other platforms.</description>
+		</key>
 	</schema>
 </schemalist>
